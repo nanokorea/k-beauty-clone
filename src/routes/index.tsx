@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
-import { products, news, contact } from "@/data/site";
+import { supabase } from "@/integrations/supabase/client";
+import { products, contact } from "@/data/site";
 import slide1 from "@/assets/slide1.jpg.asset.json";
 import slide2 from "@/assets/slide2.jpg.asset.json";
 import slide3 from "@/assets/slide3.jpg.asset.json";

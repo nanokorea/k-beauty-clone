@@ -9,10 +9,13 @@ import { products, contact } from "@/data/site";
 import slide1 from "@/assets/slide1-optimized.jpg.asset.json";
 import slide2 from "@/assets/slide2-optimized.jpg.asset.json";
 import slide3 from "@/assets/slide3-optimized.jpg.asset.json";
-import mobileHero1 from "@/assets/mobile-hero-1.jpg.asset.json";
-import mobileHero2 from "@/assets/mobile-hero-2.jpg.asset.json";
-import mobileHero3 from "@/assets/mobile-hero-3.jpg.asset.json";
-import mobileHero4 from "@/assets/mobile-hero-4.jpg.asset.json";
+// 모바일 히어로는 public 폴더의 최적화 원본 사진을 직접 사용합니다
+const mobileSlides = [
+  "/mobile-hero-v2-1.jpg",
+  "/mobile-hero-v2-2.jpg",
+  "/mobile-hero-v2-3.jpg",
+  "/mobile-hero-v2-4.jpg",
+];
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import howtoImg from "@/assets/howto.jpg.asset.json";
 import contactBanner from "@/assets/contact-banner.jpg.asset.json";
@@ -40,7 +43,6 @@ export const Route = createFileRoute("/")({
 });
 
 const desktopSlides = [slide1.url, slide2.url, slide3.url];
-const mobileSlides = [mobileHero1.url, mobileHero2.url, mobileHero3.url, mobileHero4.url];
 
 function Hero() {
   const [i, setI] = useState(0);

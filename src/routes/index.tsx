@@ -45,7 +45,12 @@ const mobileSlides = [mobileHero1.url, mobileHero2.url, mobileHero3.url, mobileH
 function Hero() {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % mobileSlides.length), 5000);
+    const t = setInterval(() => {
+      const slideCount = window.matchMedia("(min-width: 640px)").matches
+        ? desktopSlides.length
+        : mobileSlides.length;
+      setI((v) => (v + 1) % slideCount);
+    }, 5000);
     return () => clearInterval(t);
   }, []);
 

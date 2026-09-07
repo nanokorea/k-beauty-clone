@@ -11,11 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as HowToWashRouteImport } from './routes/how-to-wash'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
+import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -25,6 +29,16 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -47,77 +61,114 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsSlugRoute = ProductsSlugRouteImport.update({
   id: '/products/$slug',
   path: '/products/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopSlugRoute = ShopSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ShopRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
+  '/shop': typeof ShopRouteWithChildren
   '/products/$slug': typeof ProductsSlugRoute
+  '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
+  '/shop': typeof ShopRouteWithChildren
   '/products/$slug': typeof ProductsSlugRoute
+  '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
+  '/shop': typeof ShopRouteWithChildren
   '/products/$slug': typeof ProductsSlugRoute
+  '/shop/$slug': typeof ShopSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
+    | '/cart'
     | '/contact'
     | '/faq'
     | '/how-to-wash'
     | '/news'
+    | '/shop'
     | '/products/$slug'
+    | '/shop/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
+    | '/cart'
     | '/contact'
     | '/faq'
     | '/how-to-wash'
     | '/news'
+    | '/shop'
     | '/products/$slug'
+    | '/shop/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/auth'
+    | '/cart'
     | '/contact'
     | '/faq'
     | '/how-to-wash'
     | '/news'
+    | '/shop'
     | '/products/$slug'
+    | '/shop/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
+  CartRoute: typeof CartRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   HowToWashRoute: typeof HowToWashRoute
   NewsRoute: typeof NewsRoute
+  ShopRoute: typeof ShopRouteWithChildren
   ProductsSlugRoute: typeof ProductsSlugRoute
 }
 
@@ -135,6 +186,20 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -165,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products/$slug': {
       id: '/products/$slug'
       path: '/products/$slug'
@@ -172,16 +244,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/$slug': {
+      id: '/shop/$slug'
+      path: '/$slug'
+      fullPath: '/shop/$slug'
+      preLoaderRoute: typeof ShopSlugRouteImport
+      parentRoute: typeof ShopRoute
+    }
   }
 }
+
+interface ShopRouteChildren {
+  ShopSlugRoute: typeof ShopSlugRoute
+}
+
+const ShopRouteChildren: ShopRouteChildren = {
+  ShopSlugRoute: ShopSlugRoute,
+}
+
+const ShopRouteWithChildren = ShopRoute._addFileChildren(ShopRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
+  CartRoute: CartRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   HowToWashRoute: HowToWashRoute,
   NewsRoute: NewsRoute,
+  ShopRoute: ShopRouteWithChildren,
   ProductsSlugRoute: ProductsSlugRoute,
 }
 export const routeTree = rootRouteImport

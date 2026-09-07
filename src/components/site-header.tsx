@@ -159,6 +159,16 @@ export function SiteHeader() {
             </li>
             <li>
               <Link
+                to="/shop"
+                onClick={() => setOpen(false)}
+                className="block py-3 text-sm font-semibold tracking-widest"
+              >
+                STORE
+              </Link>
+            </li>
+
+            <li>
+              <Link
                 to={session ? "/mypage" : "/auth"}
                 onClick={() => setOpen(false)}
                 className="block py-3 text-sm"

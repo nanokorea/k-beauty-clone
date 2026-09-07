@@ -67,7 +67,7 @@ function MyPage() {
     if (!data.user) return;
     const { error } = await supabase
       .from("profiles")
-      .upsert({ id: data.user.id, email: data.user.email, ...form });
+      .upsert({ id: data.user.id, email: data.user.email ?? null, ...form });
     setBusy(false);
     if (error) toast.error("저장에 실패했습니다.");
     else toast.success("회원 정보를 저장했습니다.");

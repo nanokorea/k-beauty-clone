@@ -6,16 +6,20 @@ import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
 import { products, contact } from "@/data/site";
-import slide1 from "@/assets/slide1-optimized.jpg.asset.json";
-import slide2 from "@/assets/slide2-optimized.jpg.asset.json";
-import slide3 from "@/assets/slide3-optimized.jpg.asset.json";
-// 모바일 히어로는 public 폴더의 최적화 원본 사진을 직접 사용합니다
+// PC/모바일 히어로는 public 폴더의 최적화 배너 이미지를 사용합니다
+const desktopSlides = [
+  "/pc-hero-1.jpg",
+  "/pc-hero-2.jpg",
+  "/pc-hero-3.jpg",
+  "/pc-hero-4.jpg",
+];
 const mobileSlides = [
   "/mobile-hero-v2-1.jpg",
   "/mobile-hero-v2-2.jpg",
   "/mobile-hero-v2-3.jpg",
   "/mobile-hero-v2-4.jpg",
 ];
+
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import howtoImg from "@/assets/howto.jpg.asset.json";
 import contactBanner from "@/assets/contact-banner.jpg.asset.json";

@@ -50,7 +50,7 @@ export function SiteHeader() {
           scrolled ? "min-h-14 py-2" : "min-h-20 py-3"
         }`}
       >
-        <Link to="/" className="shrink-0" aria-label="EI JUNCO CLASSIC 홈">
+        <Link to="/" className="shrink-0 flex flex-col items-center" aria-label="EI JUNCO CLASSIC 홈">
           <img
             src={logoBar.url}
             alt="EI JUNCO CLASSIC"
@@ -59,7 +59,7 @@ export function SiteHeader() {
             }`}
           />
           <p
-            className={`mt-1.5 font-medium tracking-[0.28em] text-ink/70 transition-all duration-500 ${
+            className={`mt-1.5 text-center font-medium tracking-[0.28em] text-ink/70 transition-all duration-500 ${
               scrolled ? "text-[10px] sm:text-[11px]" : "text-[11px] sm:text-xs"
             }`}
           >

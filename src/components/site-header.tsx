@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, ShoppingCart, User, X } from "lucide-react";
 import logoBar from "@/assets/logo-bar.jpg.asset.json";
+import headerBg from "@/assets/slide2-optimized.jpg.asset.json";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
@@ -11,15 +12,59 @@ const navLinkClass =
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { count } = useCart();
   const { session, isAdmin } = useAuth();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-antique-gold/35 bg-porcelain/95 shadow-sm backdrop-blur-xl">
-      <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-4 px-5 py-3 lg:px-8">
+    <header
+      className={`sticky top-0 z-50 border-b transition-all duration-500 ${
+        scrolled
+          ? "border-antique-gold/35 bg-porcelain/95 shadow-md backdrop-blur-xl"
+          : "border-antique-gold/25 bg-porcelain shadow-sm"
+      }`}
+    >
+      {/* 이미지 배경: 스크롤 전에만 표시 */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${
+          scrolled ? "opacity-0" : "opacity-100"
+        }`}
+        style={{ backgroundImage: `url(${headerBg.url})` }}
+      />
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 bg-porcelain/80 transition-opacity duration-700 ${
+          scrolled ? "opacity-0" : "opacity-100"
+        }`}
+      />
+      <div
+        className={`relative mx-auto flex max-w-[1500px] items-center gap-4 px-5 transition-all duration-500 lg:px-8 ${
+          scrolled ? "min-h-14 py-2" : "min-h-20 py-3"
+        }`}
+      >
         <Link to="/" className="shrink-0" aria-label="EI JUNCO CLASSIC 홈">
-          <img src={logoBar.url} alt="EI JUNCO CLASSIC" className="h-auto w-[300px] object-contain sm:w-[380px]" />
-          <p className="mt-1.5 text-[11px] font-medium tracking-[0.28em] text-ink/70 sm:text-xs">일본 프리미엄 미용 비누</p>
+          <img
+            src={logoBar.url}
+            alt="EI JUNCO CLASSIC"
+            className={`h-auto object-contain transition-all duration-500 ${
+              scrolled ? "w-[240px] sm:w-[300px]" : "w-[300px] sm:w-[380px]"
+            }`}
+          />
+          <p
+            className={`mt-1.5 font-medium tracking-[0.28em] text-ink/70 transition-all duration-500 ${
+              scrolled ? "text-[10px] sm:text-[11px]" : "text-[11px] sm:text-xs"
+            }`}
+          >
+            일본 프리미엄 미용 비누
+          </p>
         </Link>
 
 

@@ -7,7 +7,7 @@ import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
 
 const navLinkClass =
-  "text-sm tracking-wide text-foreground/85 transition-colors hover:text-primary";
+  "whitespace-nowrap text-sm tracking-wide text-foreground/85 transition-colors hover:text-primary";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ export function SiteHeader() {
           <img src={logoBar.url} alt="EI JUNCO CLASSIC" className="h-10 w-auto md:h-11" />
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-6 lg:flex">
+        <nav className="ml-auto hidden items-center gap-5 xl:flex">
           <Link to="/" className={navLinkClass}>
             홈
           </Link>
@@ -71,11 +71,11 @@ export function SiteHeader() {
               관리자
             </Link>
           ) : null}
-          <Link to={session ? "/mypage" : "/auth"} className="inline-flex items-center gap-1.5 text-sm">
+          <Link to={session ? "/mypage" : "/auth"} className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm">
             <User className="size-4" />
             {session ? "마이페이지" : "로그인"}
           </Link>
-          <Link to="/cart" className="relative inline-flex items-center gap-1.5 text-sm font-medium">
+          <Link to="/cart" className="relative inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-medium">
             <ShoppingCart className="size-4" />
             장바구니
             {count > 0 ? (
@@ -86,7 +86,7 @@ export function SiteHeader() {
           </Link>
         </nav>
 
-        <div className="ml-auto flex items-center gap-1 lg:hidden">
+        <div className="ml-auto flex items-center gap-1 xl:hidden">
           <Link to="/cart" className="relative inline-flex items-center p-2">
             <ShoppingCart className="size-5" />
             {count > 0 ? (
@@ -107,7 +107,7 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <nav className="border-t border-border bg-card lg:hidden">
+        <nav className="border-t border-border bg-card xl:hidden">
           <ul className="mx-auto max-w-[1400px] divide-y divide-border px-4">
             <li>
               <Link to="/" onClick={() => setOpen(false)} className="block py-3 text-sm">

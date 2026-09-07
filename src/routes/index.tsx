@@ -302,32 +302,6 @@ function Home() {
           <img src={contactBanner.url} alt="" className="w-full object-cover" loading="lazy" />
         </section>
 
-        <section className="py-20">
-          <SectionHeading title="문의하기" sub="Contact" />
-          <div className="mx-auto mt-10 max-w-[900px] px-4 text-center">
-            <p className="text-[15px] font-medium">
-              의뢰 및 업무 내용에 대한 문의는 언제든지 편하게 연락해 주세요
-            </p>
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              <a
-                href={`tel:${contact.phone}`}
-                className="rounded-sm border border-border bg-card px-6 py-8 transition-colors hover:border-primary"
-              >
-                <span className="block text-3xl font-semibold text-primary">{contact.phone}</span>
-                <span className="mt-3 block text-xs text-muted-foreground">{contact.hours}</span>
-              </a>
-              <Link
-                to="/contact"
-                className="rounded-sm border border-border bg-card px-6 py-8 transition-colors hover:border-primary"
-              >
-                <span className="block text-lg font-semibold">문의 폼으로 문의하기</span>
-                <span className="mt-3 block text-xs text-muted-foreground">
-                  영업일 기준 3일 이내에 담당자가 연락드립니다
-                </span>
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
       <SiteFooter />
     </div>

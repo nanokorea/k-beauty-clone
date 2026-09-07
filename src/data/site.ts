@@ -107,6 +107,6 @@ export const news: NewsItem[] = [
 ];
 
 export const contact = {
-  phone: "03-6661-9430",
+  phone: "031-356-5682",
   hours: "접수 시간: 10:00 ~ 17:00 (토·일·공휴일 및 연말연시 제외)",
 };

@@ -43,7 +43,6 @@ export const Route = createFileRoute("/")({
 });
 
 const desktopSlides = [slide1.url, slide2.url, slide3.url];
-const mobileSlides = [mobileHero1.url, mobileHero2.url, mobileHero3.url, mobileHero4.url];
 
 function Hero() {
   const [i, setI] = useState(0);

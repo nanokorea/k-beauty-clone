@@ -21,7 +21,7 @@ const mobileSlides = [
 ];
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
-import howtoImg from "@/assets/howto.jpg.asset.json";
+import howtoImg from "@/assets/howto-v2.png.asset.json";
 import contactBanner from "@/assets/contact-banner.jpg.asset.json";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
 
@@ -240,11 +240,11 @@ function Home() {
           <div className="mx-auto max-w-[700px] px-4 text-center">
             <img
               src={howtoImg.url}
-              alt="올바른 한방 거품 팩 세안법"
+              alt="올바른 거품 팩 세안법"
               className="mx-auto w-full rounded-sm"
               loading="lazy"
             />
-            <p className="mt-6 text-lg font-semibold">올바른 한방·거품 팩 세안법</p>
+            <p className="mt-6 text-lg font-semibold">올바른 거품 팩 세안법</p>
             <Link
               to="/how-to-wash"
               className="mt-5 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"

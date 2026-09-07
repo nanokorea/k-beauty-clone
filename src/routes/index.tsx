@@ -76,6 +76,21 @@ function Hero() {
 }
 
 function Home() {
+  const { data: notices, isLoading: noticesLoading } = useQuery({
+    queryKey: ["posts", "notice", "home"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .eq("category", "notice")
+        .eq("published", true)
+        .order("created_at", { ascending: false })
+        .limit(3);
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <div className="min-h-screen">
       <SiteHeader />

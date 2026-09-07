@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
-import howtoImg from "@/assets/howto.jpg.asset.json";
+import howtoImg from "@/assets/howto-v2.png.asset.json";
 
 export const Route = createFileRoute("/how-to-wash")({
   head: () => ({
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/how-to-wash")({
       { title: "올바른 거품 팩 세안법 | JUNCO CLASSIC 한국" },
       {
         name: "description",
-        content: "JUNCO CLASSIC 미용비누를 200% 활용하는 한방 거품 팩 세안법을 단계별로 안내합니다.",
+        content: "JUNCO CLASSIC 미용비누를 200% 활용하는 거품 팩 세안법을 단계별로 안내합니다.",
       },
       { property: "og:title", content: "올바른 거품 팩 세안법 | JUNCO CLASSIC 한국" },
       { property: "og:description", content: "한방 거품 팩 세안법 단계별 안내." },
@@ -35,7 +35,7 @@ function HowToWash() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="py-16">
-        <SectionHeading title="올바른 한방·거품 팩 세안법" sub="How to wash" />
+        <SectionHeading title="올바른 거품 팩 세안법" sub="How to wash" />
         <div className="mx-auto mt-12 max-w-[820px] px-4">
           <img src={howtoImg.url} alt="거품 팩 세안법" className="w-full rounded-sm" />
           <ol className="mt-10 space-y-5">

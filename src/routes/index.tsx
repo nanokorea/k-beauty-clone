@@ -54,22 +54,25 @@ const slides = [
 
 function Hero() {
   const [i, setI] = useState(0);
+  const activeSlide = slides[i] ?? slides[0];
   useEffect(() => {
     const t = setInterval(() => setI((v) => (v + 1) % slides.length), 6000);
     return () => clearInterval(t);
   }, []);
+
+  if (!activeSlide) return null;
 
   return (
     <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain">
       <div className="mx-auto grid min-h-[680px] max-w-[1500px] lg:grid-cols-12">
         <div className="relative z-10 flex items-center px-6 py-16 sm:px-10 lg:col-span-5 lg:px-16 lg:py-20 xl:px-24">
           <div className="max-w-[520px]">
-            <p className="mb-7 text-xs font-bold uppercase text-oxide">{slides[i].eyebrow}</p>
+            <p className="mb-7 text-xs font-bold uppercase text-oxide">{activeSlide.eyebrow}</p>
             <h1 className="text-4xl font-bold leading-tight text-ink sm:text-5xl lg:text-6xl">
-              {slides[i].title}
+              {activeSlide.title}
             </h1>
             <p className="mt-7 max-w-md text-base font-medium leading-8 text-ink/75 sm:text-lg">
-              {slides[i].description}
+              {activeSlide.description}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Button asChild size="lg" className="h-13 rounded-sm bg-oxide px-9 font-semibold text-primary-foreground shadow-none hover:bg-oxide/90">

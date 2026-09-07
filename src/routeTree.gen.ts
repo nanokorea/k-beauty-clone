@@ -16,9 +16,11 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GuideRouteImport } from './routes/guide'
 import { Route as HowToWashRouteImport } from './routes/how-to-wash'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedCheckoutRouteImport } from './routes/_authenticated/checkout'
 import { Route as AuthenticatedMypageRouteImport } from './routes/_authenticated/mypage'
 import { Route as AuthenticatedOrdersRouteImport } from './routes/_authenticated/orders'
@@ -59,6 +61,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HowToWashRoute = HowToWashRouteImport.update({
   id: '/how-to-wash',
   path: '/how-to-wash',
@@ -73,6 +80,11 @@ const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedCheckoutRoute = AuthenticatedCheckoutRouteImport.update({
   id: '/checkout',
@@ -107,9 +119,11 @@ export interface FileRoutesByFullPath {
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/guide': typeof GuideRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
   '/shop': typeof ShopRouteWithChildren
+  '/admin': typeof AuthenticatedAdminRoute
   '/checkout': typeof AuthenticatedCheckoutRoute
   '/mypage': typeof AuthenticatedMypageRoute
   '/orders': typeof AuthenticatedOrdersRoute
@@ -123,9 +137,11 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/guide': typeof GuideRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
   '/shop': typeof ShopRouteWithChildren
+  '/admin': typeof AuthenticatedAdminRoute
   '/checkout': typeof AuthenticatedCheckoutRoute
   '/mypage': typeof AuthenticatedMypageRoute
   '/orders': typeof AuthenticatedOrdersRoute
@@ -141,9 +157,11 @@ export interface FileRoutesById {
   '/cart': typeof CartRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/guide': typeof GuideRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
   '/shop': typeof ShopRouteWithChildren
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/checkout': typeof AuthenticatedCheckoutRoute
   '/_authenticated/mypage': typeof AuthenticatedMypageRoute
   '/_authenticated/orders': typeof AuthenticatedOrdersRoute
@@ -159,9 +177,11 @@ export interface FileRouteTypes {
     | '/cart'
     | '/contact'
     | '/faq'
+    | '/guide'
     | '/how-to-wash'
     | '/news'
     | '/shop'
+    | '/admin'
     | '/checkout'
     | '/mypage'
     | '/orders'
@@ -175,9 +195,11 @@ export interface FileRouteTypes {
     | '/cart'
     | '/contact'
     | '/faq'
+    | '/guide'
     | '/how-to-wash'
     | '/news'
     | '/shop'
+    | '/admin'
     | '/checkout'
     | '/mypage'
     | '/orders'
@@ -192,9 +214,11 @@ export interface FileRouteTypes {
     | '/cart'
     | '/contact'
     | '/faq'
+    | '/guide'
     | '/how-to-wash'
     | '/news'
     | '/shop'
+    | '/_authenticated/admin'
     | '/_authenticated/checkout'
     | '/_authenticated/mypage'
     | '/_authenticated/orders'
@@ -210,6 +234,7 @@ export interface RootRouteChildren {
   CartRoute: typeof CartRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  GuideRoute: typeof GuideRoute
   HowToWashRoute: typeof HowToWashRoute
   NewsRoute: typeof NewsRoute
   ShopRoute: typeof ShopRouteWithChildren
@@ -267,6 +292,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/how-to-wash': {
       id: '/how-to-wash'
       path: '/how-to-wash'
@@ -287,6 +319,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/checkout': {
       id: '/_authenticated/checkout'
@@ -327,12 +366,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
   AuthenticatedCheckoutRoute: typeof AuthenticatedCheckoutRoute
   AuthenticatedMypageRoute: typeof AuthenticatedMypageRoute
   AuthenticatedOrdersRoute: typeof AuthenticatedOrdersRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
   AuthenticatedCheckoutRoute: AuthenticatedCheckoutRoute,
   AuthenticatedMypageRoute: AuthenticatedMypageRoute,
   AuthenticatedOrdersRoute: AuthenticatedOrdersRoute,
@@ -359,6 +400,7 @@ const rootRouteChildren: RootRouteChildren = {
   CartRoute: CartRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  GuideRoute: GuideRoute,
   HowToWashRoute: HowToWashRoute,
   NewsRoute: NewsRoute,
   ShopRoute: ShopRouteWithChildren,

@@ -130,7 +130,7 @@ function ProductsAdmin() {
   });
 
   const update = useMutation({
-    mutationFn: async (payload: { id: string; values: Record<string, unknown> }) => {
+    mutationFn: async (payload: { id: string; values: { price?: number; is_active?: boolean } }) => {
       const { error } = await supabase.from("products").update(payload.values).eq("id", payload.id);
       if (error) throw error;
     },

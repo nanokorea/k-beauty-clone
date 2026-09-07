@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, ShoppingCart, User, X } from "lucide-react";
 import logoBar from "@/assets/logo-bar.jpg.asset.json";
-import headerBg from "@/assets/slide2-optimized.jpg.asset.json";
+const headerBgUrl = "/header-bg.jpg";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
@@ -37,7 +37,7 @@ export function SiteHeader() {
         className={`pointer-events-none absolute inset-0 bg-cover bg-center transition-opacity duration-700 ${
           scrolled ? "opacity-0" : "opacity-100"
         }`}
-        style={{ backgroundImage: `url(${headerBg.url})` }}
+        style={{ backgroundImage: `url(${headerBgUrl})` }}
       />
       <div
         aria-hidden

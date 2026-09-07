@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
+import { User, ShoppingCart } from "lucide-react";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
-import { contact, products } from "@/data/site";
+import { contact } from "@/data/site";
 
 export function SiteFooter() {
   return (

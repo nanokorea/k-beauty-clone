@@ -178,8 +178,8 @@ function Home() {
             {news.map((n) => (
               <li key={n.title} className="flex gap-5 border-b border-border pb-6">
                 <img
-                  src={eiMark.url}
-                  alt=""
+                  src={n.image ?? eiMark.url}
+                  alt={n.image ? n.title : ""}
                   className="size-16 shrink-0 rounded-sm object-cover"
                   loading="lazy"
                 />

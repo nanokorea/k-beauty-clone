@@ -28,16 +28,26 @@ function NewsPage() {
       <SectionHeading title="공지사항" sub="NOTICE" />
       <ul className="mt-10 divide-y divide-border border-y border-border">
         {news.map((n) => (
-          <li key={n.title} className="py-6">
-            <p className="text-xs tracking-wide text-muted-foreground">
-              {n.date}
-            </p>
-            <h2 className="mt-2 text-base font-semibold text-foreground">
-              {n.title}
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-foreground/80">
-              {n.excerpt}
-            </p>
+          <li key={n.title} className="flex gap-5 py-6">
+            {n.image ? (
+              <img
+                src={n.image}
+                alt={n.title}
+                className="size-20 shrink-0 rounded-sm object-cover"
+                loading="lazy"
+              />
+            ) : null}
+            <div>
+              <p className="text-xs tracking-wide text-muted-foreground">
+                {n.date}
+              </p>
+              <h2 className="mt-2 text-base font-semibold text-foreground">
+                {n.title}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+                {n.excerpt}
+              </p>
+            </div>
           </li>
         ))}
       </ul>

@@ -78,7 +78,15 @@ export const products: Product[] = [
   },
 ];
 
-export const news = [
+export type NewsItem = {
+  title: string;
+  date: string;
+  excerpt: string;
+  /** 공지에 넣을 사진 URL. 없으면 EI 마크가 표시됩니다. */
+  image?: string;
+};
+
+export const news: NewsItem[] = [
   {
     title: "JUNCO CLASSIC 100g 재입고 안내",
     date: "2023년 12월 29일",

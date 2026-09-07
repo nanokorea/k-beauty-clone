@@ -9,6 +9,10 @@ import { products, contact } from "@/data/site";
 import slide1 from "@/assets/slide1-optimized.jpg.asset.json";
 import slide2 from "@/assets/slide2-optimized.jpg.asset.json";
 import slide3 from "@/assets/slide3-optimized.jpg.asset.json";
+import mobileHero1 from "@/assets/mobile-hero-1.jpg.asset.json";
+import mobileHero2 from "@/assets/mobile-hero-2.jpg.asset.json";
+import mobileHero3 from "@/assets/mobile-hero-3.jpg.asset.json";
+import mobileHero4 from "@/assets/mobile-hero-4.jpg.asset.json";
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import howtoImg from "@/assets/howto.jpg.asset.json";
 import contactBanner from "@/assets/contact-banner.jpg.asset.json";
@@ -35,38 +39,64 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const slides = [slide1.url, slide2.url, slide3.url];
+const desktopSlides = [slide1.url, slide2.url, slide3.url];
+const mobileSlides = [mobileHero1.url, mobileHero2.url, mobileHero3.url, mobileHero4.url];
 
 function Hero() {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % slides.length), 5000);
+    const t = setInterval(() => setI((v) => (v + 1) % mobileSlides.length), 5000);
     return () => clearInterval(t);
   }, []);
 
   return (
     <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain">
-      <div className="relative aspect-[1004/350] w-full sm:h-auto sm:aspect-[1004/350]">
-        {slides.map((src, idx) => (
+      <div className="relative aspect-[4/5] w-full sm:hidden">
+        {mobileSlides.map((src, idx) => (
           <img
             key={src}
             src={src}
-            alt={`JUNCO CLASSIC 배너 ${idx + 1}`}
-            className={`absolute inset-0 size-full object-contain object-center transition-opacity duration-700 motion-reduce:transition-none sm:object-cover ${
+            alt={`JUNCO CLASSIC 모바일 배너 ${idx + 1}`}
+            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
               idx === i ? "opacity-100" : "opacity-0"
             }`}
           />
         ))}
       </div>
-      <div className="flex h-8 items-center justify-center gap-2 sm:absolute sm:bottom-4 sm:left-1/2 sm:z-20 sm:h-auto sm:-translate-x-1/2">
-        {slides.map((src, idx) => (
+      <div className="relative hidden aspect-[1004/350] w-full sm:block">
+        {desktopSlides.map((src, idx) => (
+          <img
+            key={src}
+            src={src}
+            alt={`JUNCO CLASSIC 배너 ${idx + 1}`}
+            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
+              idx === i % desktopSlides.length ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
+      <div className="flex h-9 items-center justify-center gap-2 sm:hidden">
+        {mobileSlides.map((src, idx) => (
+          <button
+            key={src}
+            type="button"
+            aria-label={`슬라이드 ${idx + 1}`}
+            onClick={() => setI(idx)}
+            className={`h-1.5 w-8 rounded-full border border-ink/15 transition-colors ${
+              idx === i ? "bg-oxide" : "bg-background/85"
+            }`}
+          />
+        ))}
+      </div>
+      <div className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 items-center justify-center gap-2 sm:flex">
+        {desktopSlides.map((src, idx) => (
           <button
             key={src}
             type="button"
             aria-label={`슬라이드 ${idx + 1}`}
             onClick={() => setI(idx)}
             className={`h-1.5 w-10 rounded-full border border-ink/15 transition-colors ${
-              idx === i ? "bg-oxide" : "bg-background/85"
+              idx === i % desktopSlides.length ? "bg-oxide" : "bg-background/85"
             }`}
           />
         ))}

@@ -22,6 +22,9 @@ export function SiteHeader() {
         </Link>
 
         <nav className="ml-auto hidden items-center gap-7 lg:flex">
+          <Link to="/" className={navLinkClass}>
+            홈
+          </Link>
           <Link to="/about" className={navLinkClass}>
             EI
           </Link>
@@ -45,8 +48,14 @@ export function SiteHeader() {
               </ul>
             </div>
           </div>
+          <Link to="/how-to-wash" className={navLinkClass}>
+            세안법
+          </Link>
           <Link to="/faq" className={navLinkClass}>
             자주 묻는 질문
+          </Link>
+          <Link to="/news" className={navLinkClass}>
+            공지사항
           </Link>
           <Link to="/contact" className={navLinkClass}>
             문의하기
@@ -76,6 +85,11 @@ export function SiteHeader() {
         <nav className="border-t border-border bg-card lg:hidden">
           <ul className="mx-auto max-w-[1400px] divide-y divide-border px-4">
             <li>
+              <Link to="/" onClick={() => setOpen(false)} className="block py-3 text-sm">
+                홈
+              </Link>
+            </li>
+            <li>
               <Link
                 to="/about"
                 onClick={() => setOpen(false)}
@@ -97,8 +111,18 @@ export function SiteHeader() {
               </li>
             ))}
             <li>
+              <Link to="/how-to-wash" onClick={() => setOpen(false)} className="block py-3 text-sm">
+                세안법
+              </Link>
+            </li>
+            <li>
               <Link to="/faq" onClick={() => setOpen(false)} className="block py-3 text-sm">
                 자주 묻는 질문
+              </Link>
+            </li>
+            <li>
+              <Link to="/news" onClick={() => setOpen(false)} className="block py-3 text-sm">
+                공지사항
               </Link>
             </li>
             <li>

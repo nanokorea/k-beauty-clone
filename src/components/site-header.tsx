@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, ShoppingCart, User, X } from "lucide-react";
 import logoBar from "@/assets/logo-bar.jpg.asset.json";
-import headerBg from "@/assets/slide2-optimized.jpg.asset.json";
+const headerBgUrl = "/header-bg.jpg";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";

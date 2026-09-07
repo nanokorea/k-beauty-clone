@@ -48,9 +48,6 @@ export function SiteHeader() {
               </ul>
             </div>
           </div>
-          <Link to="/shop" className={navLinkClass}>
-            스토어
-          </Link>
           <Link to="/how-to-wash" className={navLinkClass}>
             세안법
           </Link>
@@ -66,6 +63,10 @@ export function SiteHeader() {
           <Link to="/contact" className={navLinkClass}>
             견적 문의
           </Link>
+          <Link to="/shop" className={`${navLinkClass} font-semibold tracking-widest`}>
+            STORE
+          </Link>
+
           {isAdmin ? (
             <Link to="/admin" className={`${navLinkClass} text-primary`}>
               관리자
@@ -119,11 +120,6 @@ export function SiteHeader() {
                 EI
               </Link>
             </li>
-            <li>
-              <Link to="/shop" onClick={() => setOpen(false)} className="block py-3 text-sm">
-                스토어
-              </Link>
-            </li>
             {products.map((p) => (
               <li key={p.slug}>
                 <Link
@@ -161,6 +157,16 @@ export function SiteHeader() {
                 견적 문의
               </Link>
             </li>
+            <li>
+              <Link
+                to="/shop"
+                onClick={() => setOpen(false)}
+                className="block py-3 text-sm font-semibold tracking-widest"
+              >
+                STORE
+              </Link>
+            </li>
+
             <li>
               <Link
                 to={session ? "/mypage" : "/auth"}

@@ -120,11 +120,6 @@ export function SiteHeader() {
                 EI
               </Link>
             </li>
-            <li>
-              <Link to="/shop" onClick={() => setOpen(false)} className="block py-3 text-sm">
-                스토어
-              </Link>
-            </li>
             {products.map((p) => (
               <li key={p.slug}>
                 <Link

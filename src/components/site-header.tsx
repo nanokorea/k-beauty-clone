@@ -18,8 +18,10 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-antique-gold/35 bg-porcelain/95 shadow-sm backdrop-blur-xl">
       <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-4 px-5 py-3 lg:px-8">
         <Link to="/" className="shrink-0" aria-label="EI JUNCO CLASSIC 홈">
-          <img src={logoBar.url} alt="EI JUNCO CLASSIC" className="h-auto w-[250px] object-contain sm:w-72" />
+          <img src={logoBar.url} alt="EI JUNCO CLASSIC" className="h-auto w-[300px] object-contain sm:w-[380px]" />
+          <p className="mt-1.5 text-[11px] font-medium tracking-[0.28em] text-ink/70 sm:text-xs">일본 프리미엄 미용 비누</p>
         </Link>
+
 
         <nav className="ml-auto hidden items-center gap-4 xl:flex">
           <Link to="/" className={navLinkClass}>

@@ -1,27 +1,27 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, ShoppingCart, X } from "lucide-react";
+import { Menu, ShoppingCart, User, X } from "lucide-react";
 import logoBar from "@/assets/logo-bar.jpg.asset.json";
 import { products } from "@/data/site";
+import { useCart } from "@/lib/cart";
+import { useAuth } from "@/hooks/use-auth";
 
 const navLinkClass =
   "text-sm tracking-wide text-foreground/85 transition-colors hover:text-primary";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { count } = useCart();
+  const { session, isAdmin } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur">
       <div className="mx-auto flex max-w-[1400px] items-center gap-6 px-4 py-2">
         <Link to="/" className="shrink-0">
-          <img
-            src={logoBar.url}
-            alt="EI JUNCO CLASSIC"
-            className="h-10 w-auto md:h-11"
-          />
+          <img src={logoBar.url} alt="EI JUNCO CLASSIC" className="h-10 w-auto md:h-11" />
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-7 lg:flex">
+        <nav className="ml-auto hidden items-center gap-6 lg:flex">
           <Link to="/" className={navLinkClass}>
             홈
           </Link>
@@ -48,8 +48,14 @@ export function SiteHeader() {
               </ul>
             </div>
           </div>
+          <Link to="/shop" className={navLinkClass}>
+            스토어
+          </Link>
           <Link to="/how-to-wash" className={navLinkClass}>
             세안법
+          </Link>
+          <Link to="/guide" className={navLinkClass}>
+            활용 가이드
           </Link>
           <Link to="/faq" className={navLinkClass}>
             자주 묻는 질문
@@ -58,27 +64,46 @@ export function SiteHeader() {
             공지사항
           </Link>
           <Link to="/contact" className={navLinkClass}>
-            문의하기
+            견적 문의
           </Link>
-          <a
-            href="https://juncoclassic.cart.fc2.com/?ca=all"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium tracking-wide text-foreground transition-colors hover:text-primary"
-          >
+          {isAdmin ? (
+            <Link to="/admin" className={`${navLinkClass} text-primary`}>
+              관리자
+            </Link>
+          ) : null}
+          <Link to={session ? "/mypage" : "/auth"} className="inline-flex items-center gap-1.5 text-sm">
+            <User className="size-4" />
+            {session ? "마이페이지" : "로그인"}
+          </Link>
+          <Link to="/cart" className="relative inline-flex items-center gap-1.5 text-sm font-medium">
             <ShoppingCart className="size-4" />
-            ONLINE STORE
-          </a>
+            장바구니
+            {count > 0 ? (
+              <span className="ml-0.5 rounded-full bg-primary px-1.5 py-0.5 text-[10px] leading-none text-primary-foreground">
+                {count}
+              </span>
+            ) : null}
+          </Link>
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="ml-auto inline-flex items-center justify-center rounded-md p-2 lg:hidden"
-          aria-label="메뉴"
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        <div className="ml-auto flex items-center gap-1 lg:hidden">
+          <Link to="/cart" className="relative inline-flex items-center p-2">
+            <ShoppingCart className="size-5" />
+            {count > 0 ? (
+              <span className="absolute right-0 top-0 rounded-full bg-primary px-1.5 py-0.5 text-[10px] leading-none text-primary-foreground">
+                {count}
+              </span>
+            ) : null}
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex items-center justify-center rounded-md p-2"
+            aria-label="메뉴"
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
       </div>
 
       {open ? (
@@ -90,12 +115,13 @@ export function SiteHeader() {
               </Link>
             </li>
             <li>
-              <Link
-                to="/about"
-                onClick={() => setOpen(false)}
-                className="block py-3 text-sm"
-              >
+              <Link to="/about" onClick={() => setOpen(false)} className="block py-3 text-sm">
                 EI
+              </Link>
+            </li>
+            <li>
+              <Link to="/shop" onClick={() => setOpen(false)} className="block py-3 text-sm">
+                스토어
               </Link>
             </li>
             {products.map((p) => (
@@ -116,6 +142,11 @@ export function SiteHeader() {
               </Link>
             </li>
             <li>
+              <Link to="/guide" onClick={() => setOpen(false)} className="block py-3 text-sm">
+                활용 가이드
+              </Link>
+            </li>
+            <li>
               <Link to="/faq" onClick={() => setOpen(false)} className="block py-3 text-sm">
                 자주 묻는 질문
               </Link>
@@ -127,19 +158,25 @@ export function SiteHeader() {
             </li>
             <li>
               <Link to="/contact" onClick={() => setOpen(false)} className="block py-3 text-sm">
-                문의하기
+                견적 문의
               </Link>
             </li>
             <li>
-              <a
-                href="https://juncoclassic.cart.fc2.com/?ca=all"
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                to={session ? "/mypage" : "/auth"}
+                onClick={() => setOpen(false)}
                 className="block py-3 text-sm"
               >
-                ONLINE STORE
-              </a>
+                {session ? "마이페이지" : "로그인 · 회원가입"}
+              </Link>
             </li>
+            {isAdmin ? (
+              <li>
+                <Link to="/admin" onClick={() => setOpen(false)} className="block py-3 text-sm text-primary">
+                  관리자
+                </Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
       ) : null}

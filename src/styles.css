@@ -141,8 +141,10 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family:
-      "Noto Sans KR",
+      "Pretendard Variable",
+      Pretendard,
       -apple-system,
+      BlinkMacSystemFont,
       "Apple SD Gothic Neo",
       "Malgun Gothic",
       sans-serif;

@@ -7,7 +7,7 @@ import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
 
 const navLinkClass =
-  "relative whitespace-nowrap py-2 text-[13px] font-semibold text-ink transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-oxide after:transition-transform hover:text-oxide hover:after:scale-x-100";
+  "relative whitespace-nowrap py-2 text-xs font-semibold text-ink transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-oxide after:transition-transform hover:text-oxide hover:after:scale-x-100";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -16,12 +16,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-antique-gold/35 bg-porcelain/95 shadow-sm backdrop-blur-xl">
-      <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-7 px-5 py-3 lg:px-8">
+      <div className="mx-auto flex min-h-20 max-w-[1500px] items-center gap-4 px-5 py-3 lg:px-8">
         <Link to="/" className="shrink-0" aria-label="EI JUNCO CLASSIC 홈">
-          <img src={logoBar.url} alt="EI JUNCO CLASSIC" className="h-11 w-auto object-contain md:h-13" />
+          <img src={logoBar.url} alt="EI JUNCO CLASSIC" className="h-auto w-[250px] object-contain sm:w-72" />
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-6 xl:flex">
+        <nav className="ml-auto hidden items-center gap-4 xl:flex">
           <Link to="/" className={navLinkClass}>
             홈
           </Link>

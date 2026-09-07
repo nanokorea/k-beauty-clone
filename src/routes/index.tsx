@@ -68,7 +68,7 @@ function Hero() {
         <div className="relative z-10 flex items-center px-6 py-16 sm:px-10 lg:col-span-5 lg:px-16 lg:py-20 xl:px-24">
           <div className="max-w-[520px]">
             <p className="mb-7 text-xs font-bold uppercase text-oxide">{activeSlide.eyebrow}</p>
-            <h1 className="text-4xl font-bold leading-tight text-ink sm:text-5xl lg:text-6xl">
+            <h1 className="break-keep text-4xl font-bold leading-tight text-ink sm:text-5xl">
               {activeSlide.title}
             </h1>
             <p className="mt-7 max-w-md text-base font-medium leading-8 text-ink/75 sm:text-lg">

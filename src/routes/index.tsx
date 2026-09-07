@@ -46,8 +46,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const desktopSlides = [slide1.url, slide2.url, slide3.url];
-
 function DesktopHero() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -59,7 +57,7 @@ function DesktopHero() {
 
   return (
     <section className="relative hidden overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:block">
-      <div className="relative aspect-[1004/350] w-full">
+      <div className="relative aspect-[1600/720] w-full">
         {desktopSlides.map((src, idx) => (
           <img
             key={src}
@@ -98,8 +96,8 @@ function MobileHero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain">
-      <div className="relative mx-auto aspect-[4/5] w-full sm:max-w-md">
+    <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:hidden">
+      <div className="relative mx-auto aspect-[4/5] w-full">
         {mobileSlides.map((src, idx) => (
           <img
             key={src}

@@ -23,6 +23,22 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/shop" className="transition-colors hover:text-primary">
+                온라인 스토어
+              </Link>
+            </li>
+            <li>
+              <Link to="/guide" className="transition-colors hover:text-primary">
+                제품 활용 가이드
+              </Link>
+            </li>
+            <li>
+              <Link to="/mypage" className="transition-colors hover:text-primary">
+                마이페이지
+              </Link>
+            </li>
+            <li>
+
               <Link to="/how-to-wash" className="transition-colors hover:text-primary">
                 올바른 거품 팩 세안법
               </Link>

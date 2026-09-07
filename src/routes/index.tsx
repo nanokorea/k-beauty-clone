@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
-import { products, contact } from "@/data/site";
+import { products } from "@/data/site";
 // PC/모바일 히어로는 public 폴더의 최적화 배너 이미지를 사용합니다
 const desktopSlides = [
   "/pc-hero-1.jpg",
@@ -302,32 +302,6 @@ function Home() {
           <img src={contactBanner.url} alt="" className="w-full object-cover" loading="lazy" />
         </section>
 
-        <section className="py-20">
-          <SectionHeading title="문의하기" sub="Contact" />
-          <div className="mx-auto mt-10 max-w-[900px] px-4 text-center">
-            <p className="text-[15px] font-medium">
-              의뢰 및 업무 내용에 대한 문의는 언제든지 편하게 연락해 주세요
-            </p>
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              <a
-                href={`tel:${contact.phone}`}
-                className="rounded-sm border border-border bg-card px-6 py-8 transition-colors hover:border-primary"
-              >
-                <span className="block text-3xl font-semibold text-primary">{contact.phone}</span>
-                <span className="mt-3 block text-xs text-muted-foreground">{contact.hours}</span>
-              </a>
-              <Link
-                to="/contact"
-                className="rounded-sm border border-border bg-card px-6 py-8 transition-colors hover:border-primary"
-              >
-                <span className="block text-lg font-semibold">문의 폼으로 문의하기</span>
-                <span className="mt-3 block text-xs text-muted-foreground">
-                  영업일 기준 3일 이내에 담당자가 연락드립니다
-                </span>
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
       <SiteFooter />
     </div>

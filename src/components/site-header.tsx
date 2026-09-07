@@ -63,6 +63,10 @@ export function SiteHeader() {
           <Link to="/contact" className={navLinkClass}>
             견적 문의
           </Link>
+          <Link to="/shop" className={`${navLinkClass} font-semibold tracking-widest`}>
+            STORE
+          </Link>
+
           {isAdmin ? (
             <Link to="/admin" className={`${navLinkClass} text-primary`}>
               관리자

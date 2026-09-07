@@ -25,7 +25,7 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 overflow-hidden border-b transition-all duration-500 ${
+      className={`sticky top-0 z-50 border-b transition-all duration-500 ${
         scrolled
           ? "border-antique-gold/35 bg-porcelain/95 shadow-md backdrop-blur-xl"
           : "border-antique-gold/25 bg-porcelain shadow-sm"

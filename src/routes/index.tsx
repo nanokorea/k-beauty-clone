@@ -1,24 +1,230 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { SectionHeading } from "@/components/section-heading";
+import { products, news, contact } from "@/data/site";
+import slide1 from "@/assets/slide1.jpg.asset.json";
+import slide2 from "@/assets/slide2.jpg.asset.json";
+import slide3 from "@/assets/slide3.jpg.asset.json";
+import aboutImg from "@/assets/about-ei.jpg.asset.json";
+import howtoImg from "@/assets/howto.jpg.asset.json";
+import contactBanner from "@/assets/contact-banner.jpg.asset.json";
+import eiMark from "@/assets/ei-mark.jpg.asset.json";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "EI JUNCO CLASSIC 한국 공식 | 일본 미용비누" },
+      {
+        name: "description",
+        content:
+          "일본 제일의 비누 장인 이시노 에이이치가 만든 미용비누 JUNCO CLASSIC. 한방 식물 추출물과 콜라겐을 담은 고급 세안 비누 한국 공식 사이트.",
+      },
+      { property: "og:title", content: "EI JUNCO CLASSIC 한국 공식" },
+      {
+        property: "og:description",
+        content: "한방 식물 추출물과 미용 성분을 담은 일본 고급 세안 미용비누.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const slides = [slide1.url, slide2.url, slide3.url];
+
+function Hero() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % slides.length), 5000);
+    return () => clearInterval(t);
+  }, []);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <section className="relative overflow-hidden border-b border-accent">
+      <div className="relative aspect-[1905/720] w-full">
+        {slides.map((src, idx) => (
+          <img
+            key={src}
+            src={src}
+            alt="JUNCO CLASSIC"
+            className={`absolute inset-0 size-full object-cover transition-opacity duration-700 ${
+              idx === i ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+        {slides.map((src, idx) => (
+          <button
+            key={src}
+            type="button"
+            aria-label={`슬라이드 ${idx + 1}`}
+            onClick={() => setI(idx)}
+            className={`h-1 w-10 rounded-full transition-colors ${
+              idx === i ? "bg-primary" : "bg-foreground/25"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Home() {
+  return (
+    <div className="min-h-screen">
+      <SiteHeader />
+      <main>
+        <Hero />
+
+        <section className="bg-card py-20">
+          <SectionHeading title="EI에 대하여" sub="About EI" />
+          <div className="mx-auto mt-12 grid max-w-[1100px] items-start gap-10 px-4 md:grid-cols-2">
+            <Link to="/about">
+              <img
+                src={aboutImg.url}
+                alt="비누 장인 이시노 에이이치"
+                className="w-full rounded-sm object-cover shadow-sm transition-opacity hover:opacity-90"
+              />
+            </Link>
+            <div className="space-y-4 text-[15px] leading-8 text-foreground/85">
+              <p>
+                '일본 제일의 비누 아저씨'로 친근하게 불리는 이시노 에이이치 씨는 반세기가 넘도록
+                비누 업계를 이끌어 온 제일인자입니다. 오랜 세월 쌓아온 풍부한 지식과 경험을
+                바탕으로 언제나 소비자의 눈높이에서 비누를 만들며 수많은 제품을 개발해 왔습니다.
+              </p>
+              <p>
+                수많은 브랜드 비누를 탄생시킨 이시노 씨는 그 집대성으로 자신의 이름을 딴 브랜드
+                'EI'를 시작했습니다.
+              </p>
+              <p>
+                EI 브랜드는 한방 식물 추출물과 콜라겐 등의 미용 성분을 아낌없이 배합하여 높은
+                보습력을 실현한 다양한 미용비누를 선보이고 있습니다.
+              </p>
+              <p>
+                이시노 에이이치 씨가 개발한 미용비누는 NHK를 비롯해 신문, 『비마녀 Beauty』,
+                『크로와상』 등 수많은 매체와 여성지에 소개되었습니다. 그 높은 품질로 뷰티
+                관계자와 배우, 모델을 비롯한 많은 분들이 애용하고 있습니다.
+              </p>
+              <Link
+                to="/about"
+                className="inline-flex items-center rounded-sm border border-primary px-6 py-2.5 text-sm text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              >
+                자세히 보기
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20">
+          <SectionHeading title="JUNCO CLASSIC 시리즈" sub="JUNCO CLASSIC Series" />
+          <div className="mx-auto mt-12 max-w-[1100px] space-y-16 px-4">
+            {products.map((p, idx) => (
+              <div
+                key={p.slug}
+                className={`grid items-center gap-8 md:grid-cols-2 ${
+                  idx % 2 === 1 ? "md:[&>a]:order-2" : ""
+                }`}
+              >
+                <Link to="/products/$slug" params={{ slug: p.slug }}>
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-full rounded-sm object-cover shadow-sm transition-opacity hover:opacity-90"
+                    loading="lazy"
+                  />
+                </Link>
+                <div>
+                  <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
+                  <p className="mt-2 text-sm text-primary">- {p.sub} -</p>
+                  <p className="mt-5 text-[15px] leading-8 text-foreground/85">{p.summary}</p>
+                  <Link
+                    to="/products/$slug"
+                    params={{ slug: p.slug }}
+                    className="mt-6 inline-flex items-center rounded-sm border border-primary px-6 py-2.5 text-sm text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+                  >
+                    제품 보기
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-secondary/60 py-16">
+          <div className="mx-auto max-w-[700px] px-4 text-center">
+            <img
+              src={howtoImg.url}
+              alt="올바른 한방 거품 팩 세안법"
+              className="mx-auto w-full rounded-sm"
+              loading="lazy"
+            />
+            <p className="mt-6 text-lg font-semibold">올바른 한방·거품 팩 세안법</p>
+            <Link
+              to="/how-to-wash"
+              className="mt-5 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              자세히 보기
+            </Link>
+          </div>
+        </section>
+
+        <section className="py-20">
+          <SectionHeading title="공지사항" sub="Information" />
+          <ul className="mx-auto mt-12 max-w-[900px] space-y-6 px-4">
+            {news.map((n) => (
+              <li key={n.title} className="flex gap-5 border-b border-border pb-6">
+                <img
+                  src={eiMark.url}
+                  alt=""
+                  className="size-16 shrink-0 rounded-sm object-cover"
+                  loading="lazy"
+                />
+                <div>
+                  <p className="font-medium text-primary">{n.title}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{n.date}</p>
+                  <p className="mt-2 text-sm leading-7 text-foreground/80">{n.excerpt}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <img src={contactBanner.url} alt="" className="w-full object-cover" loading="lazy" />
+        </section>
+
+        <section className="py-20">
+          <SectionHeading title="문의하기" sub="Contact" />
+          <div className="mx-auto mt-10 max-w-[900px] px-4 text-center">
+            <p className="text-[15px] font-medium">
+              의뢰 및 업무 내용에 대한 문의는 언제든지 편하게 연락해 주세요
+            </p>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              <a
+                href={`tel:${contact.phone}`}
+                className="rounded-sm border border-border bg-card px-6 py-8 transition-colors hover:border-primary"
+              >
+                <span className="block text-3xl font-semibold text-primary">{contact.phone}</span>
+                <span className="mt-3 block text-xs text-muted-foreground">{contact.hours}</span>
+              </a>
+              <Link
+                to="/contact"
+                className="rounded-sm border border-border bg-card px-6 py-8 transition-colors hover:border-primary"
+              >
+                <span className="block text-lg font-semibold">문의 폼으로 문의하기</span>
+                <span className="mt-3 block text-xs text-muted-foreground">
+                  영업일 기준 3일 이내에 담당자가 연락드립니다
+                </span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
     </div>
   );
 }

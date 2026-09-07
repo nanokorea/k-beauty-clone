@@ -4,11 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
-import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { products, contact } from "@/data/site";
-import heroClassic from "@/assets/hero-classic-clean.jpg";
-import heroBaby from "@/assets/hero-baby-clean.jpg";
+import slide1 from "@/assets/slide1-optimized.jpg.asset.json";
+import slide2 from "@/assets/slide2-optimized.jpg.asset.json";
+import slide3 from "@/assets/slide3-optimized.jpg.asset.json";
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import howtoImg from "@/assets/howto.jpg.asset.json";
 import contactBanner from "@/assets/contact-banner.jpg.asset.json";
@@ -35,79 +35,38 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const slides = [
-  {
-    image: heroClassic,
-    eyebrow: "EI JUNCO CLASSIC",
-    title: "피부 본연의 아름다움",
-    description: "엄선한 식물 성분과 장인의 정성으로 완성한 일본 프리미엄 미용비누",
-    alt: "붉은 JUNCO CLASSIC 미용비누와 장미 꽃잎",
-  },
-  {
-    image: heroBaby,
-    eyebrow: "JUNCO CLASSIC BABY",
-    title: "가족을 위한 순한 세안",
-    description: "소중한 피부를 생각한 부드럽고 정갈한 데일리 클렌징",
-    alt: "유리 접시 위 JUNCO CLASSIC BABY 비누",
-  },
-];
+const slides = [slide1.url, slide2.url, slide3.url];
 
 function Hero() {
   const [i, setI] = useState(0);
-  const activeSlide = slides[i] ?? slides[0];
   useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % slides.length), 6000);
+    const t = setInterval(() => setI((v) => (v + 1) % slides.length), 5000);
     return () => clearInterval(t);
   }, []);
 
-  if (!activeSlide) return null;
-
   return (
     <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain">
-      <div className="mx-auto grid min-h-[680px] max-w-[1500px] lg:grid-cols-12">
-        <div className="relative z-10 flex items-center px-6 py-16 sm:px-10 lg:col-span-5 lg:px-16 lg:py-20 xl:px-24">
-          <div className="max-w-[520px]">
-            <p className="mb-7 text-xs font-bold uppercase text-oxide">{activeSlide.eyebrow}</p>
-            <h1 className="break-keep text-4xl font-bold leading-tight text-ink sm:text-5xl">
-              {activeSlide.title}
-            </h1>
-            <p className="mt-7 max-w-md text-base font-medium leading-8 text-ink/75 sm:text-lg">
-              {activeSlide.description}
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-6">
-              <Button asChild size="lg" className="h-13 rounded-sm bg-oxide px-9 font-semibold text-primary-foreground shadow-none hover:bg-oxide/90">
-                <Link to="/shop">제품 만나보기</Link>
-              </Button>
-              <Link to="/about" className="group inline-flex items-center gap-4 text-sm font-bold text-ink">
-                EI 이야기
-                <span className="h-px w-10 bg-antique-gold transition-all group-hover:w-16" />
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="relative min-h-[480px] overflow-hidden bg-secondary lg:col-span-7 lg:min-h-[680px]">
-          {slides.map((slide, idx) => (
-            <img
-              key={slide.image}
-              src={slide.image}
-              alt={slide.alt}
-              className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
-                idx === i ? "opacity-100" : "opacity-0"
-              }`}
-            />
-          ))}
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-20 bg-gradient-to-r from-porcelain to-transparent lg:block" />
-        </div>
+      <div className="relative aspect-[1004/350] w-full">
+        {slides.map((src, idx) => (
+          <img
+            key={src}
+            src={src}
+            alt={`JUNCO CLASSIC 배너 ${idx + 1}`}
+            className={`absolute inset-0 size-full object-cover transition-opacity duration-700 motion-reduce:transition-none ${
+              idx === i ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
       </div>
-      <div className="absolute bottom-6 left-6 z-20 flex items-center gap-3 sm:left-10 lg:left-auto lg:right-10">
-        {slides.map((slide, idx) => (
+      <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 sm:bottom-4">
+        {slides.map((src, idx) => (
           <button
-            key={slide.image}
+            key={src}
             type="button"
             aria-label={`슬라이드 ${idx + 1}`}
             onClick={() => setI(idx)}
-            className={`h-1.5 w-12 rounded-full border border-ink/15 transition-colors ${
-              idx === i ? "bg-oxide" : "bg-background/80"
+            className={`h-1.5 w-10 rounded-full border border-ink/15 transition-colors ${
+              idx === i ? "bg-oxide" : "bg-background/85"
             }`}
           />
         ))}

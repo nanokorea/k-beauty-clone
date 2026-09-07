@@ -28,6 +28,9 @@ export function SiteHeader() {
           <Link to="/about" className={navLinkClass}>
             EI
           </Link>
+          <Link to="/brand-story" className={navLinkClass}>
+            Brand Story
+          </Link>
           <div className="group relative">
             <button className={navLinkClass} type="button">
               JUNCO CLASSIC 시리즈
@@ -51,17 +54,11 @@ export function SiteHeader() {
           <Link to="/how-to-wash" className={navLinkClass}>
             세안법
           </Link>
-          <Link to="/guide" className={navLinkClass}>
-            활용 가이드
-          </Link>
           <Link to="/faq" className={navLinkClass}>
             자주 묻는 질문
           </Link>
           <Link to="/news" className={navLinkClass}>
             공지사항
-          </Link>
-          <Link to="/contact" className={navLinkClass}>
-            견적 문의
           </Link>
           <Link to="/shop" className={`${navLinkClass} text-oxide`}>
             STORE
@@ -120,6 +117,11 @@ export function SiteHeader() {
                 EI
               </Link>
             </li>
+            <li>
+              <Link to="/brand-story" onClick={() => setOpen(false)} className="block py-3 text-sm">
+                Brand Story
+              </Link>
+            </li>
             {products.map((p) => (
               <li key={p.slug}>
                 <Link
@@ -138,11 +140,6 @@ export function SiteHeader() {
               </Link>
             </li>
             <li>
-              <Link to="/guide" onClick={() => setOpen(false)} className="block py-3 text-sm">
-                활용 가이드
-              </Link>
-            </li>
-            <li>
               <Link to="/faq" onClick={() => setOpen(false)} className="block py-3 text-sm">
                 자주 묻는 질문
               </Link>
@@ -150,11 +147,6 @@ export function SiteHeader() {
             <li>
               <Link to="/news" onClick={() => setOpen(false)} className="block py-3 text-sm">
                 공지사항
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" onClick={() => setOpen(false)} className="block py-3 text-sm">
-                견적 문의
               </Link>
             </li>
             <li>

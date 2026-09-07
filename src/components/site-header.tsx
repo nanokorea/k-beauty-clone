@@ -48,9 +48,6 @@ export function SiteHeader() {
               </ul>
             </div>
           </div>
-          <Link to="/shop" className={navLinkClass}>
-            스토어
-          </Link>
           <Link to="/how-to-wash" className={navLinkClass}>
             세안법
           </Link>

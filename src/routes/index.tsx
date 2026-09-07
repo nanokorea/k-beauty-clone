@@ -46,19 +46,19 @@ function Hero() {
 
   return (
     <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain">
-      <div className="relative h-[clamp(240px,64vw,320px)] w-full sm:h-auto sm:aspect-[1004/350]">
+      <div className="relative aspect-[1004/350] w-full sm:h-auto sm:aspect-[1004/350]">
         {slides.map((src, idx) => (
           <img
             key={src}
             src={src}
             alt={`JUNCO CLASSIC 배너 ${idx + 1}`}
-            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
+            className={`absolute inset-0 size-full object-contain object-center transition-opacity duration-700 motion-reduce:transition-none sm:object-cover ${
               idx === i ? "opacity-100" : "opacity-0"
             }`}
           />
         ))}
       </div>
-      <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 sm:bottom-4">
+      <div className="flex h-8 items-center justify-center gap-2 sm:absolute sm:bottom-4 sm:left-1/2 sm:z-20 sm:h-auto sm:-translate-x-1/2">
         {slides.map((src, idx) => (
           <button
             key={src}

@@ -1,46 +1,55 @@
 import { Link } from "@tanstack/react-router";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
-import { contact } from "@/data/site";
+import { contact, products } from "@/data/site";
 
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border bg-secondary/60">
-      <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 md:grid-cols-3">
-        <div>
-          <img src={eiMark.url} alt="EI" className="h-16 w-16 rounded-sm object-cover" />
+      <div className="mx-auto max-w-[1200px] px-4 py-14">
+        <div className="text-center">
+          <img
+            src={eiMark.url}
+            alt="EI"
+            className="mx-auto h-16 w-16 rounded-sm object-cover"
+          />
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
             EI · JUNCO CLASSIC 한국 공식 사이트
             <br />
             Shaping beauty with you!
           </p>
         </div>
-        <div>
-          <h3 className="text-sm font-semibold tracking-wide">메뉴</h3>
-          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+
+        <nav className="mt-10">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-center text-sm text-muted-foreground sm:grid-cols-3 md:grid-cols-5">
+            <li>
+              <Link to="/" className="transition-colors hover:text-primary">
+                홈
+              </Link>
+            </li>
             <li>
               <Link to="/about" className="transition-colors hover:text-primary">
-                EI에 대하여
+                EI
               </Link>
             </li>
             <li>
-              <Link to="/shop" className="transition-colors hover:text-primary">
-                온라인 스토어
+              <Link to="/brand-story" className="transition-colors hover:text-primary">
+                Brand Story
               </Link>
             </li>
+            {products.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  to="/products/$slug"
+                  params={{ slug: p.slug }}
+                  className="transition-colors hover:text-primary"
+                >
+                  {p.sub}
+                </Link>
+              </li>
+            ))}
             <li>
-              <Link to="/guide" className="transition-colors hover:text-primary">
-                제품 활용 가이드
-              </Link>
-            </li>
-            <li>
-              <Link to="/mypage" className="transition-colors hover:text-primary">
-                마이페이지
-              </Link>
-            </li>
-            <li>
-
               <Link to="/how-to-wash" className="transition-colors hover:text-primary">
-                올바른 거품 팩 세안법
+                세안법
               </Link>
             </li>
             <li>
@@ -54,16 +63,27 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="transition-colors hover:text-primary">
-                문의하기
+              <Link
+                to="/shop"
+                className="font-semibold tracking-widest text-oxide transition-colors hover:text-primary"
+              >
+                STORE
               </Link>
             </li>
           </ul>
-        </div>
-        <div>
-          <h3 className="text-sm font-semibold tracking-wide">문의</h3>
-          <p className="mt-4 text-2xl font-semibold text-primary">{contact.phone}</p>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{contact.hours}</p>
+        </nav>
+
+        <div className="mt-10 border-t border-border pt-8 text-center">
+          <p className="text-sm font-medium text-muted-foreground">고객센터</p>
+          <a
+            href={`tel:${contact.phone}`}
+            className="mt-2 inline-block text-2xl font-semibold text-primary"
+          >
+            {contact.phone}
+          </a>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+            {contact.hours}
+          </p>
         </div>
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">

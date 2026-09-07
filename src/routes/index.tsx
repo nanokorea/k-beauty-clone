@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
-import { products, contact } from "@/data/site";
+import { products } from "@/data/site";
 // PC/모바일 히어로는 public 폴더의 최적화 배너 이미지를 사용합니다
 const desktopSlides = [
   "/pc-hero-1.jpg",

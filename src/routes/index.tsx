@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
-import { products, news, contact } from "@/data/site";
+import { supabase } from "@/integrations/supabase/client";
+import { products, contact } from "@/data/site";
 import slide1 from "@/assets/slide1.jpg.asset.json";
 import slide2 from "@/assets/slide2.jpg.asset.json";
 import slide3 from "@/assets/slide3.jpg.asset.json";
@@ -74,6 +76,21 @@ function Hero() {
 }
 
 function Home() {
+  const { data: notices, isLoading: noticesLoading } = useQuery({
+    queryKey: ["posts", "notice", "home"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .eq("category", "notice")
+        .eq("published", true)
+        .order("created_at", { ascending: false })
+        .limit(3);
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <div className="min-h-screen">
       <SiteHeader />
@@ -173,25 +190,48 @@ function Home() {
         </section>
 
         <section className="py-20">
-          <SectionHeading title="공지사항" sub="Information" />
-          <ul className="mx-auto mt-12 max-w-[900px] space-y-6 px-4">
-            {news.map((n) => (
-              <li key={n.title} className="flex gap-5 border-b border-border pb-6">
-                <img
-                  src={n.image ?? eiMark.url}
-                  alt={n.image ? n.title : ""}
-                  className="size-16 shrink-0 rounded-sm object-cover"
-                  loading="lazy"
-                />
-                <div>
-                  <p className="font-medium text-primary">{n.title}</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{n.date}</p>
-                  <p className="mt-2 text-sm leading-7 text-foreground/80">{n.excerpt}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <SectionHeading title="공지사항" sub="NOTICE" />
+          <div className="mx-auto mt-10 max-w-[900px] px-4">
+            {noticesLoading ? (
+              <p className="py-10 text-center text-sm text-muted-foreground">불러오는 중…</p>
+            ) : (notices ?? []).length === 0 ? (
+              <p className="py-10 text-center text-sm text-muted-foreground">등록된 공지가 없습니다.</p>
+            ) : (
+              <ul className="divide-y divide-border border-y border-border">
+                {(notices ?? []).map((n) => (
+                  <li key={n.id}>
+                    <Link to="/news" className="flex gap-5 py-6 transition-colors hover:bg-secondary/40">
+                      <img
+                        src={n.image_url ?? eiMark.url}
+                        alt={n.image_url ? n.title : ""}
+                        className="size-20 shrink-0 object-cover"
+                        loading="lazy"
+                      />
+                      <div>
+                        <p className="text-xs tracking-wide text-muted-foreground">
+                          {new Date(n.created_at).toLocaleDateString("ko-KR")}
+                        </p>
+                        <h3 className="mt-2 text-base font-semibold text-foreground">{n.title}</h3>
+                        <p className="mt-2 line-clamp-2 text-sm leading-7 text-foreground/85">
+                          {n.excerpt || n.content}
+                        </p>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <div className="mt-8 text-center">
+              <Link
+                to="/news"
+                className="inline-flex items-center rounded-sm border border-primary px-8 py-3 text-sm text-primary transition-colors hover:bg-secondary"
+              >
+                공지사항 전체 보기
+              </Link>
+            </div>
+          </div>
         </section>
+
 
         <section>
           <img src={contactBanner.url} alt="" className="w-full object-cover" loading="lazy" />

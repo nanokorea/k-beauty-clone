@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
+import { User, ShoppingCart } from "lucide-react";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
-import { contact, products } from "@/data/site";
+import { contact } from "@/data/site";
 
 export function SiteFooter() {
   return (
@@ -36,17 +37,11 @@ export function SiteFooter() {
                 Brand Story
               </Link>
             </li>
-            {products.map((p) => (
-              <li key={p.slug}>
-                <Link
-                  to="/products/$slug"
-                  params={{ slug: p.slug }}
-                  className="transition-colors hover:text-primary"
-                >
-                  {p.sub}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link to="/shop" className="transition-colors hover:text-primary">
+                JUNCO CLASSIC 시리즈
+              </Link>
+            </li>
             <li>
               <Link to="/how-to-wash" className="transition-colors hover:text-primary">
                 세안법
@@ -68,6 +63,24 @@ export function SiteFooter() {
                 className="font-semibold tracking-widest text-oxide transition-colors hover:text-primary"
               >
                 STORE
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/mypage"
+                className="inline-flex items-center justify-center gap-1 transition-colors hover:text-primary"
+              >
+                <User className="size-3.5" />
+                마이페이지
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/cart"
+                className="inline-flex items-center justify-center gap-1 transition-colors hover:text-primary"
+              >
+                <ShoppingCart className="size-3.5" />
+                장바구니
               </Link>
             </li>
           </ul>

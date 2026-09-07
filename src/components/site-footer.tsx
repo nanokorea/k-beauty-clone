@@ -33,6 +33,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/news" className="transition-colors hover:text-primary">
+                공지사항
+              </Link>
+            </li>
+            <li>
               <Link to="/contact" className="transition-colors hover:text-primary">
                 문의하기
               </Link>

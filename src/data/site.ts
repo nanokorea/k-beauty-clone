@@ -3,6 +3,7 @@ import productMaternity from "@/assets/product-maternity.jpg.asset.json";
 import productBaby from "@/assets/product-baby.jpg.asset.json";
 import productRecollection from "@/assets/product-recollection.jpg.asset.json";
 import productSdc from "@/assets/product-sdc.jpg.asset.json";
+import productKakitannin from "@/assets/product-kakitannin.png.asset.json";
 
 export type Product = {
   slug: string;
@@ -25,6 +26,19 @@ export const products: Product[] = [
       "JUNCO CLASSIC은 세안과 동시에 비누에 담긴 미용 성분이 피부를 촉촉하게 감싸주는 이상적인 세안 비누입니다.",
       "민감한 피부부터 피부 나이가 신경 쓰이는 분까지, 폭넓은 연령대의 여성들에게 꾸준한 지지를 받아왔습니다.",
       "1000여 종의 한방 식물 중 엄선한 식물 추출물을 배합하고, 아시아인의 피부에 맞추어 개발한 획기적인 미용비누입니다.",
+    ],
+  },
+  {
+    slug: "junco-classic-clear-kakitannin",
+    name: "JUNCO CLASSIC Clear Kakitannin",
+    sub: "클리어 카키타닌",
+    image: productKakitannin.url,
+    summary:
+      "\"자연에서 찾은 개운함! 일본 전통 장인의 손길로 만든 감탄닌(Persimmon) 프리미엄 보디 비누\" 감에 들어있는 '탄닌' 성분은 땀냄새, 체취, 불쾌한 냄새를 싹 잡아주고 피부 노폐물을 깔끔하게 씻어내 주는 데 매우 효과적입니다.",
+    body: [
+      "감 추출물(감 탄닌)의 깨끗한 세정력 — 감에 들어있는 '탄닌' 성분은 땀냄새, 체취, 불쾌한 냄새를 싹 잡아주고 피부 노폐물을 깔끔하게 씻어내 주는 데 매우 효과적입니다.",
+      "일본 전통 수제 제조 방식 — 대량 생산하는 일반 합성 비누와 달리, 일본의 전통 비누 제조 기법으로 정성껏 만들어 피부에 자극이 적고 밀도 높은 쫀쫀한 거품이 납니다.",
+      "매일매일 부담 없는 데일리 보디 케어 — 샤워망(거품망)이 함께 구성되어 있어 거품이 잘 나며, 매일매일 샤워할 때 피부를 촉촉하고 매끄럽게 유지해 줍니다.",
     ],
   },
   {

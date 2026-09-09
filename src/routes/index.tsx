@@ -22,7 +22,7 @@ const mobileSlides = [
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import howtoImg from "@/assets/howto-v2.png.asset.json";
-import contactBanner from "@/assets/contact-banner.jpg.asset.json";
+import homeBottomBanner from "@/assets/home-bottom-kakitannin.png.asset.json";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -299,7 +299,12 @@ function Home() {
 
 
         <section>
-          <img src={contactBanner.url} alt="" className="w-full object-cover" loading="lazy" />
+          <img
+            src={homeBottomBanner.url}
+            alt="JUNCO CLASSIC 비누 제품 컬렉션"
+            className="w-full object-cover"
+            loading="lazy"
+          />
         </section>
 
       </main>

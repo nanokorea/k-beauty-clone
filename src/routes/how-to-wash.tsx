@@ -42,7 +42,7 @@ function HowToWash() {
             {steps.map((s) => (
               <li key={s.t} className="rounded-sm border border-border bg-card p-5">
                 <p className="font-semibold text-primary">{s.t}</p>
-                <p className="mt-2 text-[15px] leading-8 text-foreground/85">{s.d}</p>
+                <p className="mt-2 text-[15px] leading-7 text-foreground/85">{s.d}</p>
               </li>
             ))}
           </ol>

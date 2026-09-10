@@ -222,7 +222,7 @@ function Home() {
                 <div>
                   <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
                   <p className="mt-2 text-sm text-primary">- {p.sub} -</p>
-                  <p className="mt-5 text-[15px] leading-8 text-foreground/85">{p.summary}</p>
+                  <p className="mt-5 text-[15px] leading-7 text-foreground/85">{p.summary}</p>
                   <Link
                     to="/products/$slug"
                     params={{ slug: p.slug }}

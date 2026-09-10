@@ -37,7 +37,7 @@ function ProductPage() {
         <SectionHeading title={product.name} sub={product.sub} />
         <div className="mx-auto mt-12 grid max-w-[1100px] items-start gap-10 px-4 md:grid-cols-2">
           <img src={product.image} alt={product.name} className="w-full rounded-sm" />
-          <div className="space-y-4 text-[15px] leading-8 text-foreground/85">
+          <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
             <p className="font-medium text-foreground">{product.summary}</p>
             {product.body.map((line) => (
               <p key={line}>{line}</p>

@@ -201,14 +201,14 @@ function ProductPage() {
 
             <section className="mt-16 border-t border-border pt-10">
               <h2 className="text-lg font-semibold">상품 설명</h2>
-              <p className="mt-5 whitespace-pre-line text-[15px] leading-8 text-foreground/85">
+              <p className="mt-5 whitespace-pre-line text-[15px] leading-7 text-foreground/85">
                 {product.description || product.summary}
               </p>
 
               {product.features ? (
                 <div className="mt-8 bg-secondary p-6">
                   <h3 className="text-sm font-semibold">[ 상품 특징 ]</h3>
-                  <p className="mt-3 text-[15px] leading-8 text-foreground/85">{product.features}</p>
+                  <p className="mt-3 text-[15px] leading-7 text-foreground/85">{product.features}</p>
                 </div>
               ) : null}
 

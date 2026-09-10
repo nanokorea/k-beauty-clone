@@ -172,7 +172,7 @@ function Home() {
                 className="w-full rounded-sm object-cover shadow-sm transition-opacity hover:opacity-90"
               />
             </Link>
-            <div className="space-y-4 text-[15px] leading-8 text-foreground/85">
+            <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
               <p>
                 '일본 제일의 비누 아저씨'로 친근하게 불리는 이시노 에이이치 씨는 반세기가 넘도록
                 비누 업계를 이끌어 온 제일인자입니다. 오랜 세월 쌓아온 풍부한 지식과 경험을

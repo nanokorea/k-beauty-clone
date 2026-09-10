@@ -31,7 +31,7 @@ function About() {
       <SiteHeader />
       <main className="py-16">
         <SectionHeading title="EI에 대하여" sub="About EI" />
-        <div className="mx-auto mt-12 max-w-[900px] space-y-6 px-4 text-[15px] leading-8 text-foreground/85">
+        <div className="mx-auto mt-12 max-w-[900px] space-y-6 px-4 text-[15px] leading-7 text-foreground/85">
           <img src={aboutImg.url} alt="비누 장인 이시노 에이이치" className="w-full rounded-sm" />
           <p>
             '일본 제일의 비누 아저씨'로 친근하게 불리는 이시노 에이이치 씨는 반세기가 넘도록 비누

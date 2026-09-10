@@ -23,7 +23,7 @@ function BrandStoryPage() {
       <SiteHeader />
       <main className="mx-auto max-w-[900px] px-4 py-16">
         <SectionHeading title="Brand Story" sub="브랜드 이야기" />
-        <div className="mt-12 space-y-6 text-[15px] leading-8 text-foreground/85">
+        <div className="mt-12 space-y-6 text-[15px] leading-7 text-foreground/85">
           <p>브랜드 스토리 내용을 이곳에 추가해 주세요.</p>
         </div>
       </main>

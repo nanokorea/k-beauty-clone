@@ -53,6 +53,16 @@ function ProductPage() {
           </div>
         </div>
 
+        {product.detailImages?.length ? (
+          <div className="mx-auto mt-16 max-w-[900px] space-y-8 px-4">
+            {product.detailImages.map((src) => (
+              <img key={src} src={src} alt={`${product.name} 상세 이미지`} className="w-full rounded-sm" loading="lazy" />
+            ))}
+          </div>
+        ) : null}
+
+
+
         <div className="mx-auto mt-20 max-w-[1100px] px-4">
           <h3 className="text-lg font-semibold">다른 제품</h3>
           <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

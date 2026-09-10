@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "일본 제일의 비누 장인 이시노 에이이치가 만든 미용비누 JUNCO CLASSIC. 한방 식물 추출물과 콜라겐을 담은 고급 세안 비누 한국 공식 사이트.",
+          "일본 제일의 비누 장인 이시노 에이이치(石野栄一)가 만든 미용비누 JUNCO CLASSIC. 한방 식물 추출물과 콜라겐을 담은 고급 세안 비누 한국 공식 사이트.",
       },
       { property: "og:title", content: "EI JUNCO CLASSIC 한국 공식" },
       {
@@ -168,13 +168,13 @@ function Home() {
             <Link to="/about">
               <img
                 src={aboutImg.url}
-                alt="비누 장인 이시노 에이이치"
+                alt="비누 장인 이시노 에이이치(石野栄一)"
                 className="w-full rounded-sm object-cover shadow-sm transition-opacity hover:opacity-90"
               />
             </Link>
             <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
               <p>
-                '일본 제일의 비누 아저씨'로 친근하게 불리는 이시노 에이이치 씨는 반세기가 넘도록
+                '일본 제일의 비누 아저씨「日本一の石鹸おじさん」'로 친근하게 불리는 이시노 에이이치(石野栄一) 씨는 반세기가 넘도록
                 비누 업계를 이끌어 온 제일인자입니다. 오랜 세월 쌓아온 풍부한 지식과 경험을
                 바탕으로 언제나 소비자의 눈높이에서 비누를 만들며 수많은 제품을 개발해 왔습니다.
               </p>
@@ -187,7 +187,7 @@ function Home() {
                 보습력을 실현한 다양한 미용비누를 선보이고 있습니다.
               </p>
               <p>
-                이시노 에이이치 씨가 개발한 미용비누는 NHK를 비롯해 신문, 『비마녀 Beauty』,
+                이시노 에이이치(石野栄一) 씨가 개발한 미용비누는 NHK를 비롯해 신문, 『비마녀 Beauty』,
                 『크로와상』 등 수많은 매체와 여성지에 소개되었습니다. 그 높은 품질로 뷰티
                 관계자와 배우, 모델을 비롯한 많은 분들이 애용하고 있습니다.
               </p>

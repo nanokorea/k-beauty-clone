@@ -4,6 +4,8 @@ import productBaby from "@/assets/product-baby.jpg.asset.json";
 import productRecollection from "@/assets/product-recollection.jpg.asset.json";
 import productSdc from "@/assets/product-sdc.jpg.asset.json";
 import productKakitannin from "@/assets/product-kakitannin.png.asset.json";
+import productPureCollagen from "@/assets/product-pure-collagen.png.asset.json";
+import pureCollagenDetail from "@/assets/pure-collagen-detail.png.asset.json";
 
 export type Product = {
   slug: string;
@@ -12,7 +14,10 @@ export type Product = {
   image: string;
   summary: string;
   body: string[];
+  /** 상세 페이지 하단에 추가로 보여줄 이미지 */
+  detailImages?: string[];
 };
+
 
 export const products: Product[] = [
   {
@@ -41,6 +46,22 @@ export const products: Product[] = [
       "매일매일 부담 없는 데일리 보디 케어 — 샤워망(거품망)이 함께 구성되어 있어 거품이 잘 나며, 매일매일 샤워할 때 피부를 촉촉하고 매끄럽게 유지해 줍니다.",
     ],
   },
+  {
+    slug: "junco-classic-pure-collagen",
+    name: "JUNCO CLASSIC Pure Collagen",
+    sub: "준코 클래식 퓨어 콜라겐",
+    image: productPureCollagen.url,
+    detailImages: [pureCollagenDetail.url],
+    summary:
+      "비누 1개(100g)당 가수분해 콜라겐 5,000mg과 코엔자임 Q10을 담아, 세안 후에도 당김 없이 촉촉함을 지켜주는 고보습 세안비누입니다.",
+    body: [
+      "고농축 '가수분해 콜라겐' 배합 (5000mg) — 비누 1개(100g)당 5,000mg의 가수분해 콜라겐(Hydrolyzed Collagen)이 함유되어 있습니다. 일반 세안 비누와 달리 높은 보습 성분이 세안 후에도 피부 당김 없이 촉촉함을 유지해 줍니다.",
+      "코엔자임 Q10(Coenzyme Q10) 함유 — 패키지에 표기된 'コエンザイム Q10' 성분이 피부에 영양과 탄력을 부여하고 항산화 케어를 도와줍니다.",
+      "밀도 높은 쫀쫀한 거품(泡パック, 거품 팩 세안) — 자극 없이 미세하고 조밀한 거품이 모공 속 노폐물과 피지를 부드럽게 흡착·세정합니다. 풍성한 거품을 얼굴에 올려놓는 '거품 팩' 용도로 사용하기 좋습니다.",
+      "전통 수제 제법(와쿠네리 공법) — 비누 마이스터 이시노 에이이치(石野栄一)의 독자적인 전통 제법으로 90일 이상 숙성·건조하여 생산됩니다. 유효 미용 성분을 최대 30~40%까지 채워 넣을 수 있어 물에 쉽게 녹거나 무르지 않고 마지막까지 단단하게 사용할 수 있습니다.",
+    ],
+  },
+
   {
     slug: "junco-classic-maternity",
     name: "JUNCO CLASSIC MATERNITY",

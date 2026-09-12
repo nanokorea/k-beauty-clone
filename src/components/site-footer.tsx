@@ -1,92 +1,83 @@
 import { Link } from "@tanstack/react-router";
-import { User, ShoppingCart } from "lucide-react";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
-import { contact } from "@/data/site";
+import { contact, products } from "@/data/site";
+
+type FooterLink = { label: string; to: string; params?: Record<string, string> };
+
+function FooterColumn({ title, links }: { title: string; links: FooterLink[] }) {
+  return (
+    <div>
+      <p className="text-[11px] font-semibold tracking-[0.2em] text-oxide">{title}</p>
+      <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+        {links.map((l) => (
+          <li key={`${l.to}-${l.label}`}>
+            <Link
+              to={l.to}
+              params={l.params as never}
+              className="transition-colors hover:text-primary"
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function SiteFooter() {
+  const shopLinks: FooterLink[] = [
+    { label: "전체 상품", to: "/shop" },
+    ...products.slice(0, 4).map((p) => ({
+      label: p.name,
+      to: "/products/$slug",
+      params: { slug: p.slug },
+    })),
+  ];
+
   return (
     <footer className="mt-24 border-t border-border bg-secondary/60">
       <div className="mx-auto max-w-[1200px] px-4 py-14">
-        <div className="text-center">
-          <img
-            src={eiMark.url}
-            alt="EI"
-            className="mx-auto h-16 w-16 rounded-sm object-cover"
+        <div className="grid gap-10 md:grid-cols-[1.2fr_repeat(4,1fr)]">
+          <div>
+            <img src={eiMark.url} alt="EI" className="h-14 w-14 rounded-sm object-cover" />
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              EI · JUNCO CLASSIC 한국 공식 스토어
+              <br />
+              Shaping beauty with you!
+            </p>
+          </div>
+
+          <FooterColumn title="SHOP" links={shopLinks} />
+          <FooterColumn
+            title="브랜드"
+            links={[
+              { label: "브랜드 스토리", to: "/brand-story" },
+              { label: "장인 이시노 에이이치 (石野栄一)", to: "/about" },
+              { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
+              { label: "제품 활용 가이드", to: "/guide" },
+            ]}
           />
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            EI · JUNCO CLASSIC 한국 공식 사이트
-            <br />
-            Shaping beauty with you!
-          </p>
+          <FooterColumn
+            title="고객센터"
+            links={[
+              { label: "공지사항", to: "/news" },
+              { label: "자주 묻는 질문", to: "/faq" },
+              { label: "1:1 문의", to: "/contact" },
+            ]}
+          />
+          <FooterColumn
+            title="MY"
+            links={[
+              { label: "마이페이지", to: "/mypage" },
+              { label: "주문내역", to: "/orders" },
+              { label: "장바구니", to: "/cart" },
+              { label: "로그인 · 회원가입", to: "/auth" },
+            ]}
+          />
         </div>
 
-        <nav className="mt-10">
-          <ul className="grid grid-cols-2 gap-x-6 gap-y-3 text-center text-sm text-muted-foreground sm:grid-cols-3 md:grid-cols-5">
-            <li>
-              <Link to="/" className="transition-colors hover:text-primary">
-                홈
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="transition-colors hover:text-primary">
-                EI
-              </Link>
-            </li>
-            <li>
-              <Link to="/brand-story" className="transition-colors hover:text-primary">
-                Brand Story
-              </Link>
-            </li>
-            <li>
-              <Link to="/shop" className="transition-colors hover:text-primary">
-                JUNCO CLASSIC 시리즈
-              </Link>
-            </li>
-            <li>
-              <Link to="/how-to-wash" className="transition-colors hover:text-primary">
-                세안법
-              </Link>
-            </li>
-            <li>
-              <Link to="/faq" className="transition-colors hover:text-primary">
-                자주 묻는 질문
-              </Link>
-            </li>
-            <li>
-              <Link to="/news" className="transition-colors hover:text-primary">
-                공지사항
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/shop"
-                className="font-semibold tracking-widest text-oxide transition-colors hover:text-primary"
-              >
-                STORE
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/mypage"
-                className="inline-flex items-center justify-center gap-1 transition-colors hover:text-primary"
-              >
-                <User className="size-3.5" />
-                마이페이지
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/cart"
-                className="inline-flex items-center justify-center gap-1 transition-colors hover:text-primary"
-              >
-                <ShoppingCart className="size-3.5" />
-                장바구니
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="mt-10 border-t border-border pt-8 text-center">
+        <div className="mt-12 border-t border-border pt-8">
           <p className="text-sm font-medium text-muted-foreground">고객센터</p>
           <a
             href={`tel:${contact.phone}`}
@@ -94,9 +85,7 @@ export function SiteFooter() {
           >
             {contact.phone}
           </a>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-            {contact.hours}
-          </p>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{contact.hours}</p>
         </div>
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">

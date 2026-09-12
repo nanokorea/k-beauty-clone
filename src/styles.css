@@ -165,11 +165,11 @@
 
   header nav a,
   header nav button {
-    font-weight: 300;
+    font-weight: 400;
   }
 
   header > div:first-of-type a {
-    font-weight: 400;
+    font-weight: 300;
   }
 
   button,

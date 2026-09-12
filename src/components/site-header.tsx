@@ -8,7 +8,7 @@ import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
 
 const navLinkClass =
-  "relative inline-flex items-center gap-1 whitespace-nowrap py-2 text-[13px] font-semibold tracking-wide text-ink transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-oxide after:transition-transform hover:text-oxide hover:after:scale-x-100";
+  "relative inline-flex items-center gap-1 whitespace-nowrap py-2 text-[13px] font-light tracking-wide text-ink transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-oxide after:transition-transform hover:text-oxide hover:after:scale-x-100";
 
 const utilLinkClass =
   "whitespace-nowrap text-[11px] text-ink/70 transition-colors hover:text-oxide";
@@ -200,14 +200,14 @@ export function SiteHeader() {
 
           <Link
             to={session ? "/mypage" : "/auth"}
-            className="inline-flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-ink transition-colors hover:text-oxide"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap text-[13px] font-light text-ink transition-colors hover:text-oxide"
           >
             <User className="size-4" />
             {session ? "MY" : "로그인"}
           </Link>
           <Link
             to="/cart"
-            className="relative inline-flex items-center gap-1.5 whitespace-nowrap text-[13px] font-semibold text-ink transition-colors hover:text-oxide"
+            className="relative inline-flex items-center gap-1.5 whitespace-nowrap text-[13px] font-light text-ink transition-colors hover:text-oxide"
           >
             <ShoppingCart className="size-4" />
             장바구니

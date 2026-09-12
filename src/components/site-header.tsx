@@ -64,10 +64,30 @@ export function SiteHeader() {
   const { session, isAdmin } = useAuth();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let frameId: number | null = null;
+
+    const updateHeader = () => {
+      frameId = null;
+      const scrollTop = window.scrollY;
+
+      setScrolled((current) => {
+        if (!current && scrollTop > 96) return true;
+        if (current && scrollTop < 24) return false;
+        return current;
+      });
+    };
+
+    const onScroll = () => {
+      if (frameId !== null) return;
+      frameId = window.requestAnimationFrame(updateHeader);
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frameId !== null) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   const shopMenu: MenuLink[] = [

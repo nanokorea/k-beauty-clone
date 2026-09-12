@@ -63,8 +63,8 @@
   --color-ink: var(--ink);
   --color-oxide: var(--oxide);
   --color-antique-gold: var(--antique-gold);
-  --font-display: "Outfit", "Pretendard Variable", sans-serif;
-  --font-sans: "Figtree", "Pretendard Variable", sans-serif;
+  --font-display: "PT Serif", "Noto Sans KR", sans-serif;
+  --font-sans: "Roboto", "Noto Sans KR", sans-serif;
 }
 
 :root {
@@ -150,22 +150,32 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family:
-      "Figtree",
-      "Pretendard Variable",
-      Pretendard,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Apple SD Gothic Neo",
-      "Malgun Gothic",
-      sans-serif;
+    font-family: "Roboto", "Noto Sans KR", sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
 
   h1,
   h2,
   h3 {
-    font-family: "Outfit", "Pretendard Variable", sans-serif;
+    font-family: "PT Serif", "Noto Sans KR", sans-serif;
+    font-weight: 700;
     letter-spacing: 0;
+  }
+
+  header nav a,
+  header nav button {
+    font-weight: 300;
+  }
+
+  header > div:first-of-type a {
+    font-weight: 400;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: "Roboto", "Noto Sans KR", sans-serif;
   }
 }

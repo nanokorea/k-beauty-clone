@@ -35,7 +35,7 @@ const STATUSES = [
   { key: "cancelled", label: "주문 취소" },
 ];
 
-type Tab = "products" | "orders" | "inquiries" | "posts";
+type Tab = "products" | "orders" | "inquiries" | "posts" | "members";
 
 function AdminPage() {
   const { isAdmin, loading } = useAuth();
@@ -68,6 +68,7 @@ function AdminPage() {
             { key: "orders", label: "주문 관리" },
             { key: "inquiries", label: "견적 문의" },
             { key: "posts", label: "공지 · 가이드" },
+            { key: "members", label: "회원 관리" },
           ].map((t) => (
             <button
               key={t.key}
@@ -89,6 +90,7 @@ function AdminPage() {
           {tab === "orders" ? <OrdersAdmin /> : null}
           {tab === "inquiries" ? <InquiriesAdmin /> : null}
           {tab === "posts" ? <PostsAdmin /> : null}
+          {tab === "members" ? <MembersAdmin /> : null}
         </div>
       </main>
       <SiteFooter />
@@ -331,6 +333,37 @@ function InquiriesAdmin() {
           </p>
           {q.subject ? <p className="mt-3 text-sm font-medium">{q.subject}</p> : null}
           <p className="mt-2 whitespace-pre-line text-sm leading-6">{q.message}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function MembersAdmin() {
+  const { data } = useQuery({
+    queryKey: ["admin-members"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("id, username, full_name, email, phone, created_at, marketing_agreed_at")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  return (
+    <ul className="space-y-3">
+      {(data ?? []).map((m) => (
+        <li key={m.id} className="flex flex-wrap items-center gap-3 border border-border bg-card p-4 text-sm">
+          <span className="font-medium">{m.username ?? "-"}</span>
+          <span>{m.full_name ?? "-"}</span>
+          <span className="text-muted-foreground">{m.email}</span>
+          <span className="text-muted-foreground">{m.phone ?? "-"}</span>
+          <span className="ml-auto text-xs text-muted-foreground">
+            {new Date(m.created_at).toLocaleDateString("ko-KR")}
+            {m.marketing_agreed_at ? " · 마케팅 동의" : ""}
+          </span>
         </li>
       ))}
     </ul>

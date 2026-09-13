@@ -364,7 +364,6 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      email_for_username: { Args: { _username: string }; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -372,7 +371,6 @@ export type Database = {
         }
         Returns: boolean
       }
-      username_available: { Args: { _username: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "user"

@@ -283,37 +283,58 @@ export type Database = {
       }
       profiles: {
         Row: {
+          ad_email_agreed_at: string | null
+          ad_sms_agreed_at: string | null
           address: string | null
           address_detail: string | null
+          age14_agreed_at: string | null
           created_at: string
           email: string | null
           full_name: string | null
           id: string
+          marketing_agreed_at: string | null
           phone: string | null
           postcode: string | null
+          privacy_agreed_at: string | null
+          terms_agreed_at: string | null
           updated_at: string
+          username: string | null
         }
         Insert: {
+          ad_email_agreed_at?: string | null
+          ad_sms_agreed_at?: string | null
           address?: string | null
           address_detail?: string | null
+          age14_agreed_at?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
           id: string
+          marketing_agreed_at?: string | null
           phone?: string | null
           postcode?: string | null
+          privacy_agreed_at?: string | null
+          terms_agreed_at?: string | null
           updated_at?: string
+          username?: string | null
         }
         Update: {
+          ad_email_agreed_at?: string | null
+          ad_sms_agreed_at?: string | null
           address?: string | null
           address_detail?: string | null
+          age14_agreed_at?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
           id?: string
+          marketing_agreed_at?: string | null
           phone?: string | null
           postcode?: string | null
+          privacy_agreed_at?: string | null
+          terms_agreed_at?: string | null
           updated_at?: string
+          username?: string | null
         }
         Relationships: []
       }

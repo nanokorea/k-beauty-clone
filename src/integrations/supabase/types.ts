@@ -283,37 +283,58 @@ export type Database = {
       }
       profiles: {
         Row: {
+          ad_email_agreed_at: string | null
+          ad_sms_agreed_at: string | null
           address: string | null
           address_detail: string | null
+          age14_agreed_at: string | null
           created_at: string
           email: string | null
           full_name: string | null
           id: string
+          marketing_agreed_at: string | null
           phone: string | null
           postcode: string | null
+          privacy_agreed_at: string | null
+          terms_agreed_at: string | null
           updated_at: string
+          username: string | null
         }
         Insert: {
+          ad_email_agreed_at?: string | null
+          ad_sms_agreed_at?: string | null
           address?: string | null
           address_detail?: string | null
+          age14_agreed_at?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
           id: string
+          marketing_agreed_at?: string | null
           phone?: string | null
           postcode?: string | null
+          privacy_agreed_at?: string | null
+          terms_agreed_at?: string | null
           updated_at?: string
+          username?: string | null
         }
         Update: {
+          ad_email_agreed_at?: string | null
+          ad_sms_agreed_at?: string | null
           address?: string | null
           address_detail?: string | null
+          age14_agreed_at?: string | null
           created_at?: string
           email?: string | null
           full_name?: string | null
           id?: string
+          marketing_agreed_at?: string | null
           phone?: string | null
           postcode?: string | null
+          privacy_agreed_at?: string | null
+          terms_agreed_at?: string | null
           updated_at?: string
+          username?: string | null
         }
         Relationships: []
       }
@@ -343,6 +364,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      email_for_username: { Args: { _username: string }; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -350,6 +372,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      username_available: { Args: { _username: string }; Returns: boolean }
     }
     Enums: {
       app_role: "admin" | "user"

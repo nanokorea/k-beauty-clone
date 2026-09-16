@@ -103,7 +103,7 @@ export function SiteHeader() {
           <img
             src={logoBar.url}
             alt="EI JUNCO CLASSIC"
-            className="h-auto w-[230px] object-contain sm:w-[280px] xl:w-[300px]"
+            className="h-auto w-[260px] object-contain sm:w-[320px] xl:w-[340px]"
           />
         </Link>
 

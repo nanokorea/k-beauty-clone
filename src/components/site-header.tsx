@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronDown, Menu, Search, ShoppingCart, User, X } from "lucide-react";
-import logoBar from "@/assets/logo-bar.jpg.asset.json";
+import logoBar from "@/assets/ei-junco-logo-sharp.png.asset.json";
+import eiHomeMark from "@/assets/ei-home-mark.png.asset.json";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
@@ -76,9 +77,16 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background shadow-sm">
       {/* 상단 검정색 안내 바 */}
       <div className="bg-ink text-porcelain">
-        <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-2 lg:px-8">
+        <div className="mx-auto grid max-w-[1500px] grid-cols-[1fr_auto_1fr] items-center px-5 py-1.5 lg:px-8">
           <span className={topBarLinkClass}>일본 프리미엄 미용비누</span>
-          <div className="flex items-center gap-4">
+          <Link
+            to="/"
+            className="inline-flex rounded-sm ring-1 ring-porcelain/20 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porcelain"
+            aria-label="홈으로 이동"
+          >
+            <img src={eiHomeMark.url} alt="EI 홈" className="size-7 object-cover sm:size-8" />
+          </Link>
+          <div className="flex items-center justify-end gap-4">
             {isAdmin ? (
               <Link to="/admin" className={`${topBarLinkClass} hover:text-porcelain`}>
                 관리자
@@ -95,7 +103,7 @@ export function SiteHeader() {
           <img
             src={logoBar.url}
             alt="EI JUNCO CLASSIC"
-            className="h-auto w-[200px] object-contain sm:w-[240px]"
+            className="h-auto w-[230px] object-contain sm:w-[280px] xl:w-[300px]"
           />
         </Link>
 

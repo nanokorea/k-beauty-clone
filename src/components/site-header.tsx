@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronDown, Menu, Search, ShoppingCart, User, X } from "lucide-react";
-import logoBar from "@/assets/ei-junco-logo-notext.png.asset.json";
+import logoBar from "@/assets/ei-junco-logo-trim.png.asset.json";
 import eiHomeMark from "@/assets/ei-home-mark.png.asset.json";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";

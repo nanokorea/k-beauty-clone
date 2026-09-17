@@ -48,7 +48,7 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <FooterColumn title="SHOP" links={shopLinks} />
+          <FooterColumn title="STORE" links={shopLinks} />
           <FooterColumn
             title="브랜드"
             links={[

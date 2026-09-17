@@ -110,7 +110,7 @@ export function SiteHeader() {
           <Dropdown label="사용 가이드" items={guideMenu} />
           <Dropdown label="고객센터" items={supportMenu} />
           <Link to="/shop" className={`${navLinkClass} text-oxide`}>
-            SHOP
+            STORE
           </Link>
         </nav>
 
@@ -204,7 +204,7 @@ export function SiteHeader() {
             <MobileGroup title="브랜드 스토리" items={brandMenu} onNavigate={close} />
             <MobileGroup title="사용 가이드" items={guideMenu} onNavigate={close} />
             <MobileGroup title="고객센터" items={supportMenu} onNavigate={close} />
-            <MobileGroup title="SHOP" items={shopMenu} onNavigate={close} />
+            <MobileGroup title="STORE" items={shopMenu} onNavigate={close} />
             <MobileGroup
               title="MY"
               items={[

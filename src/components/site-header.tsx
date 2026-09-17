@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronDown, Menu, Search, ShoppingCart, User, X } from "lucide-react";
-import logoBar from "@/assets/ei-junco-logo-v3.png.asset.json";
-import eiHomeMark from "@/assets/ei-home-mark.png.asset.json";
+import eiHomeLogo from "@/assets/ei-eiichi-ishino-logo.jpg.asset.json";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
@@ -81,10 +80,14 @@ export function SiteHeader() {
           <span className={topBarLinkClass}>일본 프리미엄 미용비누</span>
           <Link
             to="/"
-            className="inline-flex rounded-sm ring-1 ring-porcelain/20 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porcelain"
+            className="inline-flex transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porcelain"
             aria-label="홈으로 이동"
           >
-            <img src={eiHomeMark.url} alt="EI 홈" className="size-7 object-cover sm:size-8" />
+            <img
+              src={eiHomeLogo.url}
+              alt="EI EICHI ISHINO 홈"
+              className="h-8 w-10 object-cover object-top sm:h-9 sm:w-11"
+            />
           </Link>
           <div className="flex items-center justify-end gap-4">
             {isAdmin ? (
@@ -99,14 +102,6 @@ export function SiteHeader() {
 
       {/* 메인 헤더 */}
       <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-4 lg:px-8">
-        <Link to="/" className="shrink-0" aria-label="EI JUNCO CLASSIC 홈">
-          <img
-            src={logoBar.url}
-            alt="EI JUNCO CLASSIC"
-            className="h-auto w-[260px] object-contain sm:w-[320px] xl:w-[340px]"
-          />
-        </Link>
-
         <nav className="hidden items-center gap-8 xl:flex">
           <Link to="/shop" className={`${navLinkClass} text-oxide`}>
             SHOP

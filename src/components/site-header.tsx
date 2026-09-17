@@ -101,66 +101,70 @@ export function SiteHeader() {
       </div>
 
       {/* 메인 헤더 */}
-      <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-4 lg:px-8">
+      <div className="mx-auto grid max-w-[1500px] grid-cols-[1fr_auto_1fr] items-center px-5 py-4 lg:px-8">
+        <div aria-hidden="true" />
+
         <nav className="hidden items-center gap-8 xl:flex">
+          <Dropdown label="브랜드 스토리" items={brandMenu} />
+          <Dropdown label="제품" items={shopMenu} />
+          <Dropdown label="사용 가이드" items={guideMenu} />
+          <Dropdown label="고객센터" items={supportMenu} />
           <Link to="/shop" className={`${navLinkClass} text-oxide`}>
             SHOP
           </Link>
-          <Dropdown label="제품" items={shopMenu} />
-          <Dropdown label="브랜드" items={brandMenu} />
-          <Dropdown label="사용 가이드" items={guideMenu} />
-          <Dropdown label="고객센터" items={supportMenu} />
         </nav>
 
-        <div className="hidden items-center gap-5 text-ink xl:flex">
-          <Link
-            to="/shop"
-            className="inline-flex items-center transition-colors hover:text-oxide"
-            aria-label="검색"
-          >
-            <Search className="size-5" />
-          </Link>
-          <Link
-            to={session ? "/mypage" : "/auth"}
-            className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
-          >
-            <User className="size-5" />
-            {session ? "MY" : "로그인"}
-          </Link>
-          <Link
-            to="/cart"
-            className="relative inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
-          >
-            <ShoppingCart className="size-5" />
-            장바구니
-            {count > 0 ? (
-              <span className="ml-0.5 rounded-full bg-oxide px-1.5 py-0.5 text-[10px] leading-none text-primary-foreground">
-                {count}
-              </span>
-            ) : null}
-          </Link>
-        </div>
+        <div className="flex items-center justify-end gap-5 text-ink">
+          <div className="hidden items-center gap-5 xl:flex">
+            <Link
+              to="/shop"
+              className="inline-flex items-center transition-colors hover:text-oxide"
+              aria-label="검색"
+            >
+              <Search className="size-5" />
+            </Link>
+            <Link
+              to={session ? "/mypage" : "/auth"}
+              className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
+            >
+              <User className="size-5" />
+              {session ? "MY" : "로그인"}
+            </Link>
+            <Link
+              to="/cart"
+              className="relative inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
+            >
+              <ShoppingCart className="size-5" />
+              장바구니
+              {count > 0 ? (
+                <span className="ml-0.5 rounded-full bg-oxide px-1.5 py-0.5 text-[10px] leading-none text-primary-foreground">
+                  {count}
+                </span>
+              ) : null}
+            </Link>
+          </div>
 
-        <div className="ml-auto flex items-center gap-1 text-ink xl:hidden">
-          <Link to="/shop" className="inline-flex items-center p-2" aria-label="검색">
-            <Search className="size-5" />
-          </Link>
-          <Link to="/cart" className="relative inline-flex items-center p-2">
-            <ShoppingCart className="size-5" />
-            {count > 0 ? (
-              <span className="absolute right-0 top-0 rounded-full bg-oxide px-1.5 py-0.5 text-[10px] leading-none text-primary-foreground">
-                {count}
-              </span>
-            ) : null}
-          </Link>
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center justify-center rounded-sm border border-border bg-background p-2"
-            aria-label="메뉴"
-          >
-            {open ? <X className="size-6" /> : <Menu className="size-6" />}
-          </button>
+          <div className="flex items-center gap-1 xl:hidden">
+            <Link to="/shop" className="inline-flex items-center p-2" aria-label="검색">
+              <Search className="size-5" />
+            </Link>
+            <Link to="/cart" className="relative inline-flex items-center p-2">
+              <ShoppingCart className="size-5" />
+              {count > 0 ? (
+                <span className="absolute right-0 top-0 rounded-full bg-oxide px-1.5 py-0.5 text-[10px] leading-none text-primary-foreground">
+                  {count}
+                </span>
+              ) : null}
+            </Link>
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="inline-flex items-center justify-center rounded-sm border border-border bg-background p-2"
+              aria-label="메뉴"
+            >
+              {open ? <X className="size-6" /> : <Menu className="size-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -197,10 +201,10 @@ export function SiteHeader() {
               ) : null}
             </div>
 
-            <MobileGroup title="SHOP" items={shopMenu} onNavigate={close} />
-            <MobileGroup title="브랜드" items={brandMenu} onNavigate={close} />
+            <MobileGroup title="브랜드 스토리" items={brandMenu} onNavigate={close} />
             <MobileGroup title="사용 가이드" items={guideMenu} onNavigate={close} />
             <MobileGroup title="고객센터" items={supportMenu} onNavigate={close} />
+            <MobileGroup title="SHOP" items={shopMenu} onNavigate={close} />
             <MobileGroup
               title="MY"
               items={[

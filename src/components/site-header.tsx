@@ -80,13 +80,13 @@ export function SiteHeader() {
           <span className={topBarLinkClass}>일본 프리미엄 미용비누</span>
           <Link
             to="/"
-            className="inline-flex transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porcelain"
+            className="inline-flex items-center justify-center py-1 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porcelain"
             aria-label="홈으로 이동"
           >
             <img
               src={eiHomeLogo.url}
               alt="EI EICHI ISHINO 홈"
-              className="h-8 w-10 object-cover object-top sm:h-9 sm:w-11"
+              className="h-10 w-auto max-w-24 object-contain sm:h-12 sm:max-w-28"
             />
           </Link>
           <div className="flex items-center justify-end gap-4">

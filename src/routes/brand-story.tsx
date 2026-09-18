@@ -90,7 +90,7 @@ function BrandStoryPage() {
 
         <section className="overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
           <div className="mx-auto grid max-w-[1240px] gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-            <div>
+            <div className="order-2 lg:order-1">
               <div className="relative mx-auto w-full max-w-[570px] pb-16 pr-10 sm:pb-24 sm:pr-20 lg:mx-0">
                 <div className="aspect-[4/5] w-[78%] overflow-hidden bg-secondary shadow-sm">
                   <img
@@ -120,7 +120,7 @@ function BrandStoryPage() {
               </div>
             </div>
 
-            <div className="max-w-[650px]">
+            <div className="order-1 max-w-[650px] lg:order-2">
               <p className="text-xs font-medium uppercase text-primary">Our Heritage · Since 1930</p>
               <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">그 시작은……</h2>
               <div className="mt-7 h-px w-16 bg-antique-gold" />

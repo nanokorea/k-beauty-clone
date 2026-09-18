@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import historyImage from "@/assets/brand-history-original.jpg.asset.json";
 import heritageWorkshopImage from "@/assets/brand-heritage-workshop.jpg.asset.json";
 import heritageRecordImage from "@/assets/brand-heritage-record.jpg.asset.json";
+import heritageFamilyImage from "@/assets/brand-heritage-family.jpg.asset.json";
 import soapsImage from "@/assets/brand-soaps.jpg.asset.json";
 
 export const Route = createFileRoute("/brand-story")({

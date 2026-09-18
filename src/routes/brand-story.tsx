@@ -3,9 +3,8 @@ import { Flower2, Gem, Globe2, HandHeart } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import historyImage from "@/assets/brand-history-original.jpg.asset.json";
-import firstGenerationImage from "@/assets/brand-generation-1.jpg.asset.json";
-import secondGenerationImage from "@/assets/brand-generation-2.jpg.asset.json";
-import thirdGenerationImage from "@/assets/brand-generation-3.jpg.asset.json";
+import heritageWorkshopImage from "@/assets/brand-heritage-workshop.jpg.asset.json";
+import heritageRecordImage from "@/assets/brand-heritage-record.jpg.asset.json";
 import soapsImage from "@/assets/brand-soaps.jpg.asset.json";
 
 export const Route = createFileRoute("/brand-story")({
@@ -27,30 +26,6 @@ export const Route = createFileRoute("/brand-story")({
   }),
   component: BrandStoryPage,
 });
-
-const generations = [
-  {
-    overline: "FIRST GENERATION · 1930",
-    title: "비누의 길을 열다",
-    image: firstGenerationImage.url,
-    alt: "EIICHI ISHINO 창업 1대의 옛 사진",
-    body: "1930년 상하이 쿤밍로의 작은 공방에서 비누 사업을 시작했습니다. 아버지 곁에서 전통 비누 제조 기술을 익힌 경험이 한 세기를 향한 여정의 출발점이 되었습니다.",
-  },
-  {
-    overline: "SECOND GENERATION · 1934",
-    title: "기술을 깊게 다듬다",
-    image: secondGenerationImage.url,
-    alt: "비누의 향과 품질을 확인하는 2대 장인",
-    body: "1934년 상하이에서 태어난 2대 장인은 어린 시절부터 아버지의 공방에서 비누를 가까이했습니다. 끊임없는 연구와 감각으로 가문의 제조 기술을 한층 발전시켰습니다.",
-  },
-  {
-    overline: "THIRD GENERATION · TODAY",
-    title: "다음 세대로 이어가다",
-    image: thirdGenerationImage.url,
-    alt: "공방에서 비누를 연구하고 만드는 3대 장인",
-    body: "전통을 지키되 멈추지 않습니다. 정교한 배합과 제조 공정을 이어받아 오늘의 피부를 위한 더 순하고 완성도 높은 비누를 연구합니다.",
-  },
-];
 
 const values = [
   {
@@ -112,34 +87,45 @@ function BrandStoryPage() {
           </div>
         </section>
 
-        <section className="px-5 py-20 sm:px-8 lg:py-28">
-          <div className="mx-auto max-w-[1180px]">
-            <div className="text-center">
-              <p className="text-xs font-medium uppercase text-primary">Our Heritage</p>
-              <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">세대를 잇는 장인정신</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-7 text-foreground/70">
-                한 사람의 손에서 다음 사람의 손으로, 비누를 대하는 정직한 태도와 섬세한 기술을 이어왔습니다.
-              </p>
+        <section className="overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+          <div className="mx-auto grid max-w-[1240px] gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20">
+            <div className="relative mx-auto w-full max-w-[570px] pb-16 pr-10 sm:pb-24 sm:pr-20 lg:mx-0">
+              <div className="aspect-[4/5] w-[78%] overflow-hidden bg-secondary shadow-sm">
+                <img
+                  src={heritageWorkshopImage.url}
+                  alt="1930년 상하이 쿤밍로의 이시노 가문 공방"
+                  className="size-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="absolute bottom-0 right-0 aspect-[4/3] w-[58%] overflow-hidden border-[8px] border-background bg-background shadow-md sm:border-[12px]">
+                <img
+                  src={heritageRecordImage.url}
+                  alt="이시노 가문의 역사가 기록된 일본 호적 문서"
+                  className="size-full object-cover object-top"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            <div className="mt-14 grid gap-x-8 gap-y-12 md:grid-cols-3">
-              {generations.map((generation) => (
-                <article key={generation.overline}>
-                  <div className="mx-auto aspect-[4/5] max-w-[290px] overflow-hidden rounded-[50%] border border-antique-gold/35 bg-secondary">
-                    <img
-                      src={generation.image}
-                      alt={generation.alt}
-                      className="size-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="mt-7 border-t border-antique-gold/35 pt-6 text-center">
-                    <p className="text-[11px] font-medium text-primary">{generation.overline}</p>
-                    <h3 className="mt-2 text-xl font-bold text-ink">{generation.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-foreground/75">{generation.body}</p>
-                  </div>
-                </article>
-              ))}
+            <div className="max-w-[650px]">
+              <p className="text-xs font-medium uppercase text-primary">Our Heritage · Since 1930</p>
+              <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">그 시작은……</h2>
+              <div className="mt-7 h-px w-16 bg-antique-gold" />
+              <p className="mt-7 text-[15px] leading-7 text-foreground/80 sm:text-base">
+                1930년, 이시노 에이이치(石野栄一) 선생의 아버지인 이시노 에이지(石野栄治)가 상하이
+                쿤밍로(昆明路)의 작은 공방에서 비누를 만들기 시작한 이래, 3대에 걸쳐 오직 ‘피부를 위한
+                진짜 비누’만을 연구해 온 가문의 역사가 담겨 있습니다.
+              </p>
+
+              <div className="mt-9 border-y border-antique-gold/35 py-7">
+                <p className="text-[11px] font-medium uppercase text-primary">First Generation · 1930</p>
+                <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">제1대 | 창립과 기틀 (이시노 에이지)</h3>
+                <p className="mt-4 text-[15px] leading-7 text-foreground/80">
+                  1930년 상하이에서 전통 비누 제조 기술을 바탕으로 사업을 시작하였으며, 1940년 일본으로
+                  귀국하여 일본 사이타마현 코시가야시에서 가문의 제누기술 기틀을 마련 하였습니다.
+                </p>
+              </div>
             </div>
           </div>
         </section>

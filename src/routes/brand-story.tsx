@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Flower2, Gem, Globe2, HandHeart } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import historyImage from "@/assets/brand-history.jpg.asset.json";
+import historyImage from "@/assets/brand-history-original.jpg.asset.json";
 import firstGenerationImage from "@/assets/brand-generation-1.jpg.asset.json";
 import secondGenerationImage from "@/assets/brand-generation-2.jpg.asset.json";
 import thirdGenerationImage from "@/assets/brand-generation-3.jpg.asset.json";

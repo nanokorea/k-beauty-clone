@@ -97,8 +97,8 @@ function BrandStoryPage() {
                 </p>
                 <p className="mt-3 font-display text-base text-primary">Three Generations, One Purpose.</p>
                 <p className="mt-7 max-w-md text-[15px] leading-7 text-foreground/80">
-                  1930년부터 이어진 장인정신. 세대를 거쳐 축적한 기술과 피부를 향한 진심으로,
-                  우리는 오늘도 좋은 비누 한 장을 완성합니다.
+                  1930년부터 이어진 이시노 가문의 가업은 지금도 세대를 거쳐 축적한 기술과 피부를
+                  향한 진심으로, 오늘도 좋은 비누 한 장을 완성합니다.
                 </p>
               </div>
             </div>
@@ -108,13 +108,6 @@ function BrandStoryPage() {
                 alt="1930년 상하이에서 시작한 EIICHI ISHINO의 옛 공방"
                 className="absolute inset-0 size-full object-cover object-left"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-ink/80 px-6 py-5 text-porcelain sm:left-auto sm:right-8 sm:bottom-8 sm:w-80 sm:rounded-sm">
-                <p className="font-display text-2xl font-bold">1930, SHANGHAI</p>
-                <p className="mt-1 text-sm font-medium">비누를 향한 약속이 시작된 곳</p>
-                <p className="mt-3 text-xs leading-5 text-porcelain/75">
-                  작은 공방에서 시작된 성실한 제조와 연구의 정신은 3대에 걸쳐 이어지고 있습니다.
-                </p>
-              </div>
             </div>
           </div>
         </section>

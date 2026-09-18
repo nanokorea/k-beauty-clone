@@ -90,7 +90,7 @@ function BrandStoryPage() {
 
         <section className="overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
           <div className="mx-auto grid max-w-[1240px] gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-            <div>
+            <div className="order-2 lg:order-1">
               <div className="relative mx-auto w-full max-w-[570px] pb-16 pr-10 sm:pb-24 sm:pr-20 lg:mx-0">
                 <div className="aspect-[4/5] w-[78%] overflow-hidden bg-secondary shadow-sm">
                   <img

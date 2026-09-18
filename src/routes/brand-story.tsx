@@ -92,13 +92,13 @@ function BrandStoryPage() {
                 <h1 className="mt-5 text-4xl font-bold text-ink sm:text-5xl lg:text-6xl">EIICHI ISHINO</h1>
                 <div className="my-7 h-px w-16 bg-antique-gold" />
                 <p className="text-2xl font-semibold leading-9 text-ink sm:text-3xl">
-                  3대의 계승,
-                  <br />한결같은 비누의 길
+                  3대를 이어온 100년의 장인 정신과 집념.
                 </p>
                 <p className="mt-3 font-display text-base text-primary">Three Generations, One Purpose.</p>
                 <p className="mt-7 max-w-md text-[15px] leading-7 text-foreground/80">
-                  1930년부터 이어진 이시노 가문의 가업은 지금도 세대를 거쳐 축적한 기술과 피부를
-                  향한 진심으로, 오늘도 좋은 비누 한 장을 완성합니다.
+                  1930년부터 이어진 이시노 가문의 집념.
+                  <br />
+                  세대를 이어온 기술과 피부를 향한 진심으로 오늘도 좋은 비누 한 조각을 만듭니다.
                 </p>
               </div>
             </div>

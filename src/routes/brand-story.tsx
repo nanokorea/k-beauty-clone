@@ -120,7 +120,7 @@ function BrandStoryPage() {
               </div>
             </div>
 
-            <div className="max-w-[650px]">
+            <div className="order-1 max-w-[650px] lg:order-2">
               <p className="text-xs font-medium uppercase text-primary">Our Heritage · Since 1930</p>
               <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">그 시작은……</h2>
               <div className="mt-7 h-px w-16 bg-antique-gold" />

@@ -130,7 +130,7 @@ function BrandStoryPage() {
                 진짜 비누’만을 연구해 온 가문의 역사가 담겨 있습니다.
               </p>
 
-              <div className="mt-10 overflow-hidden bg-secondary shadow-sm">
+              <div className="mt-10 w-2/3 overflow-hidden bg-secondary shadow-sm">
                 <img
                   src={heritageFamilyImage.url}
                   alt="어린 시절 이시노 에이이치와 아버지 이시노 에이지"

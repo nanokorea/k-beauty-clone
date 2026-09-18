@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import historyImage from "@/assets/brand-history-original.jpg.asset.json";
 import heritageWorkshopImage from "@/assets/brand-heritage-workshop.jpg.asset.json";
 import heritageRecordImage from "@/assets/brand-heritage-record.jpg.asset.json";
+import heritageFamilyImage from "@/assets/brand-heritage-family.jpg.asset.json";
 import soapsImage from "@/assets/brand-soaps.jpg.asset.json";
 
 export const Route = createFileRoute("/brand-story")({
@@ -88,23 +89,34 @@ function BrandStoryPage() {
         </section>
 
         <section className="overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
-          <div className="mx-auto grid max-w-[1240px] gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20">
-            <div className="relative mx-auto w-full max-w-[570px] pb-16 pr-10 sm:pb-24 sm:pr-20 lg:mx-0">
-              <div className="aspect-[4/5] w-[78%] overflow-hidden bg-secondary shadow-sm">
-                <img
-                  src={heritageWorkshopImage.url}
-                  alt="1930년 상하이 쿤밍로의 이시노 가문 공방"
-                  className="size-full object-cover"
-                  loading="lazy"
-                />
+          <div className="mx-auto grid max-w-[1240px] gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+            <div>
+              <div className="relative mx-auto w-full max-w-[570px] pb-16 pr-10 sm:pb-24 sm:pr-20 lg:mx-0">
+                <div className="aspect-[4/5] w-[78%] overflow-hidden bg-secondary shadow-sm">
+                  <img
+                    src={heritageWorkshopImage.url}
+                    alt="1930년 상하이 쿤밍로의 이시노 가문 공방"
+                    className="size-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute bottom-0 right-0 aspect-[4/3] w-[58%] overflow-hidden border-[8px] border-background bg-background shadow-md sm:border-[12px]">
+                  <img
+                    src={heritageRecordImage.url}
+                    alt="이시노 가문의 역사가 기록된 일본 호적 문서"
+                    className="size-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
               </div>
-              <div className="absolute bottom-0 right-0 aspect-[4/3] w-[58%] overflow-hidden border-[8px] border-background bg-background shadow-md sm:border-[12px]">
-                <img
-                  src={heritageRecordImage.url}
-                  alt="이시노 가문의 역사가 기록된 일본 호적 문서"
-                  className="size-full object-cover object-top"
-                  loading="lazy"
-                />
+
+              <div className="mx-auto max-w-[570px] border-t border-antique-gold/35 pt-7 lg:mx-0">
+                <p className="text-[11px] font-medium uppercase text-primary">First Generation · 1930</p>
+                <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">제1대 | 창립과 기틀 (이시노 에이지)</h3>
+                <p className="mt-4 text-[15px] leading-7 text-foreground/80">
+                  1930년 상하이에서 전통 비누 제조 기술을 바탕으로 사업을 시작하였으며, 1940년 일본으로
+                  귀국하여 일본 사이타마현 코시가야시에서 가문의 제누기술 기틀을 마련 하였습니다.
+                </p>
               </div>
             </div>
 
@@ -118,13 +130,13 @@ function BrandStoryPage() {
                 진짜 비누’만을 연구해 온 가문의 역사가 담겨 있습니다.
               </p>
 
-              <div className="mt-9 border-y border-antique-gold/35 py-7">
-                <p className="text-[11px] font-medium uppercase text-primary">First Generation · 1930</p>
-                <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">제1대 | 창립과 기틀 (이시노 에이지)</h3>
-                <p className="mt-4 text-[15px] leading-7 text-foreground/80">
-                  1930년 상하이에서 전통 비누 제조 기술을 바탕으로 사업을 시작하였으며, 1940년 일본으로
-                  귀국하여 일본 사이타마현 코시가야시에서 가문의 제누기술 기틀을 마련 하였습니다.
-                </p>
+              <div className="mt-10 overflow-hidden bg-secondary shadow-sm">
+                <img
+                  src={heritageFamilyImage.url}
+                  alt="어린 시절 이시노 에이이치와 아버지 이시노 에이지"
+                  className="w-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

@@ -22,7 +22,9 @@ export function ScrollHighlight({ children, className, delay = 0 }: ScrollHighli
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => setActive(entry.isIntersecting),
+      ([entry]) => {
+        if (entry) setActive(entry.isIntersecting);
+      },
       { rootMargin: `0px 0px -${18 + delay * 5}% 0px`, threshold: 0.12 },
     );
     observer.observe(element);

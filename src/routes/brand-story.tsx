@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Flower2, Gem, Globe2, HandHeart } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ScrollHighlight, StickyHighlight } from "@/components/scroll-highlight";
 import historyImage from "@/assets/brand-history-original.jpg.asset.json";
 import heritageWorkshopImage from "@/assets/brand-heritage-workshop.jpg.asset.json";
 import heritageRecordImage from "@/assets/brand-heritage-record.jpg.asset.json";
@@ -58,14 +59,20 @@ const values = [
 function HeritageIntro() {
   return (
     <div>
-      <p className="text-xs font-medium uppercase text-primary">Our Heritage · Since 1930</p>
-      <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">그 시작은……</h2>
+      <ScrollHighlight>
+        <p className="text-xs font-medium uppercase text-primary">Our Heritage · Since 1930</p>
+      </ScrollHighlight>
+      <ScrollHighlight delay={1}>
+        <h2 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">그 시작은……</h2>
+      </ScrollHighlight>
       <div className="mt-7 h-px w-16 bg-antique-gold" />
-      <p className="mt-7 text-[15px] leading-7 text-foreground/80 sm:text-base">
-        1930년, 이시노 에이이치(石野栄一) 선생의 아버지인 이시노 에이지(石野栄治)가 상하이
-        쿤밍로(昆明路)의 작은 공방에서 비누를 만들기 시작한 이래, 3대에 걸쳐 오직 ‘피부를 위한
-        진짜 비누’만을 연구해 온 가문의 역사가 담겨 있습니다.
-      </p>
+      <ScrollHighlight delay={2}>
+        <p className="mt-7 text-[15px] leading-7 text-foreground/80 sm:text-base">
+          1930년, 이시노 에이이치(石野栄一) 선생의 아버지인 이시노 에이지(石野栄治)가 상하이
+          쿤밍로(昆明路)의 작은 공방에서 비누를 만들기 시작한 이래, 3대에 걸쳐 오직 ‘피부를 위한
+          진짜 비누’만을 연구해 온 가문의 역사가 담겨 있습니다.
+        </p>
+      </ScrollHighlight>
     </div>
   );
 }
@@ -95,14 +102,14 @@ function HeritageCollage() {
 
 function HeritageFirstGeneration() {
   return (
-    <div className="mx-auto max-w-[570px] border-t border-antique-gold/35 pt-16 lg:mx-0 lg:pt-20">
+    <ScrollHighlight className="mx-auto max-w-[570px] border-t border-antique-gold/35 pt-16 lg:mx-0 lg:pt-20">
       <p className="text-[11px] font-medium uppercase text-primary">First Generation · 1930</p>
       <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">제1대 | 창립과 기틀 (이시노 에이지)</h3>
       <p className="mt-4 text-[15px] leading-7 text-foreground/80">
         1930년 상하이에서 전통 비누 제조 기술을 바탕으로 사업을 시작하였으며, 1940년 일본으로
         귀국하여 일본 사이타마현 코시가야시에서 가문의 제누기술 기틀을 마련 하였습니다.
       </p>
-    </div>
+    </ScrollHighlight>
   );
 }
 
@@ -175,8 +182,8 @@ function BrandStoryPage() {
         </section>
 
         <section className="border-y border-antique-gold/25 bg-secondary/45 px-5 py-20 sm:px-8 lg:py-24">
-          <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-            <div>
+          <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div className="lg:sticky lg:top-32">
               <img
                 src={soapsImage.url}
                 alt="3대의 기술로 완성한 EIICHI ISHINO 비누"
@@ -184,13 +191,15 @@ function BrandStoryPage() {
                 loading="lazy"
               />
             </div>
-            <div>
-              <p className="text-xs font-medium uppercase text-primary">Our Philosophy</p>
-              <h2 className="mt-3 text-3xl font-bold leading-10 text-ink">좋은 비누 한 장을 위해</h2>
-              <p className="mt-5 max-w-2xl text-[15px] leading-7 text-foreground/75">
-                3대가 이어온 것은 제조법만이 아닙니다. 피부를 존중하는 마음, 원료를 고르는 기준,
-                그리고 매일 더 나은 결과를 향해 나아가는 자세까지 함께 계승합니다.
-              </p>
+            <StickyHighlight
+              eyebrow="Our Philosophy"
+              title="좋은 비누 한 장을 위해"
+              lines={[
+                "3대가 이어온 것은 제조법만이 아닙니다.",
+                "피부를 존중하는 마음, 원료를 고르는 기준,",
+                "매일 더 나은 결과를 향해 나아가는 자세까지 함께 계승합니다.",
+              ]}
+            >
               <div className="mt-10 grid gap-px overflow-hidden rounded-sm border border-antique-gold/30 bg-antique-gold/30 sm:grid-cols-2">
                 {values.map((value) => {
                   const Icon = value.icon;
@@ -204,7 +213,7 @@ function BrandStoryPage() {
                   );
                 })}
               </div>
-            </div>
+            </StickyHighlight>
           </div>
         </section>
       </main>

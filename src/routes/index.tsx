@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
+import { ScrollHighlight } from "@/components/scroll-highlight";
 import { supabase } from "@/integrations/supabase/client";
 import { products } from "@/data/site";
 // PC/모바일 히어로는 public 폴더의 최적화 배너 이미지를 사용합니다
@@ -172,7 +173,7 @@ function Home() {
                 className="w-full rounded-sm object-cover shadow-sm transition-opacity hover:opacity-90"
               />
             </Link>
-            <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
+            <ScrollHighlight className="space-y-4 text-[15px] leading-7 text-foreground/85">
               <p>
                 '일본 제일의 비누 아저씨「日本一の石鹸おじさん」'로 친근하게 불리는 이시노 에이이치(石野栄一) 씨는 반세기가 넘도록
                 비누 업계를 이끌어 온 제일인자입니다. 오랜 세월 쌓아온 풍부한 지식과 경험을
@@ -197,7 +198,7 @@ function Home() {
               >
                 자세히 보기
               </Link>
-            </div>
+            </ScrollHighlight>
           </div>
         </section>
 
@@ -219,7 +220,7 @@ function Home() {
                     loading="lazy"
                   />
                 </Link>
-                <div>
+                <ScrollHighlight delay={idx % 2}>
                   <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
                   <p className="mt-2 text-sm text-primary">- {p.sub} -</p>
                   <p className="mt-5 text-[15px] leading-7 text-foreground/85">{p.summary}</p>
@@ -230,7 +231,7 @@ function Home() {
                   >
                     제품 보기
                   </Link>
-                </div>
+                </ScrollHighlight>
               </div>
             ))}
           </div>

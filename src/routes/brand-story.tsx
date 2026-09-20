@@ -176,7 +176,7 @@ function BrandStoryPage() {
             </div>
             <div className="max-w-[650px]">
               <HeritageIntro />
-              <HeritageFamilyPhoto className="mt-24 w-2/3" />
+              <HeritageFamilyPhoto className="mt-[480px] w-2/3" />
             </div>
           </div>
         </section>

@@ -127,6 +127,19 @@ function HeritageFamilyPhoto({ className = "" }: { className?: string }) {
   );
 }
 
+function HeritageSecondGenerationPhoto({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-2/3 overflow-hidden bg-secondary shadow-sm ${className}`}>
+      <img
+        src={secondGenerationImage.url}
+        alt="이시노 에이이치(石野栄一)와 함께한 공방 단체 사진"
+        className="w-full object-cover"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
 function HeritageSecondGeneration({ className = "" }: { className?: string }) {
   return (
     <ScrollHighlight

@@ -7,6 +7,7 @@ import historyImage from "@/assets/brand-history-original.jpg.asset.json";
 import heritageWorkshopImage from "@/assets/brand-heritage-workshop.jpg.asset.json";
 import heritageRecordImage from "@/assets/brand-heritage-record.jpg.asset.json";
 import heritageFamilyImage from "@/assets/brand-heritage-family.jpg.asset.json";
+import secondGenerationImage from "@/assets/brand-second-generation.jpg.asset.json";
 import soapsImage from "@/assets/brand-soaps.jpg.asset.json";
 
 export const Route = createFileRoute("/brand-story")({
@@ -126,6 +127,19 @@ function HeritageFamilyPhoto({ className = "" }: { className?: string }) {
   );
 }
 
+function HeritageSecondGenerationPhoto({ className = "" }: { className?: string }) {
+  return (
+    <div className={`w-2/3 overflow-hidden bg-secondary shadow-sm ${className}`}>
+      <img
+        src={secondGenerationImage.url}
+        alt="이시노 에이이치(石野栄一)와 함께한 공방 단체 사진"
+        className="w-full object-cover"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
 function HeritageSecondGeneration({ className = "" }: { className?: string }) {
   return (
     <ScrollHighlight
@@ -179,6 +193,7 @@ function BrandStoryPage() {
             <HeritageCollage />
             <HeritageFirstGeneration />
             <HeritageFamilyPhoto className="w-2/3" />
+            <HeritageSecondGenerationPhoto className="w-2/3" />
             <HeritageSecondGeneration />
           </div>
 
@@ -191,6 +206,7 @@ function BrandStoryPage() {
             <div className="max-w-[650px]">
               <HeritageIntro />
               <HeritageFamilyPhoto className="mt-[480px] w-2/3" />
+              <HeritageSecondGenerationPhoto className="mt-10 w-2/3" />
               <HeritageSecondGeneration className="mt-16" />
             </div>
           </div>

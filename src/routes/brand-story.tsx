@@ -193,6 +193,7 @@ function BrandStoryPage() {
             <HeritageCollage />
             <HeritageFirstGeneration />
             <HeritageFamilyPhoto className="w-2/3" />
+            <HeritageSecondGenerationPhoto className="w-2/3" />
             <HeritageSecondGeneration />
           </div>
 

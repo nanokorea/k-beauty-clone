@@ -102,7 +102,7 @@ function HeritageCollage() {
 
 function HeritageFirstGeneration() {
   return (
-    <ScrollHighlight className="mx-auto max-w-[570px] border-t border-antique-gold/35 pt-16 lg:mx-0 lg:pt-20">
+    <ScrollHighlight className="mx-auto max-w-[570px] border-t border-antique-gold/35 pt-28 lg:mx-0 lg:pt-36">
       <p className="text-[11px] font-medium uppercase text-primary">First Generation · 1930</p>
       <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">제1대 | 창립과 기틀 (이시노 에이지)</h3>
       <p className="mt-4 text-[15px] leading-7 text-foreground/80">
@@ -176,7 +176,7 @@ function BrandStoryPage() {
             </div>
             <div className="max-w-[650px]">
               <HeritageIntro />
-              <HeritageFamilyPhoto className="mt-10 w-2/3" />
+              <HeritageFamilyPhoto className="mt-24 w-2/3" />
             </div>
           </div>
         </section>

@@ -129,7 +129,7 @@ function HeritageFamilyPhoto({ className = "" }: { className?: string }) {
 
 function HeritageSecondGenerationPhoto({ className = "" }: { className?: string }) {
   return (
-    <div className={`mt-10 w-full overflow-hidden bg-secondary shadow-sm lg:mt-24 ${className}`}>
+    <div className={`mt-10 w-[87%] overflow-hidden bg-secondary shadow-sm lg:mt-24 ${className}`}>
       <img
         src={secondGenerationImage.url}
         alt="이시노 에이이치(石野栄一)와 함께한 공방 단체 사진"

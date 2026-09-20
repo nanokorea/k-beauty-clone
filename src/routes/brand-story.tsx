@@ -193,8 +193,6 @@ function BrandStoryPage() {
             <HeritageCollage />
             <HeritageFirstGeneration />
             <HeritageFamilyPhoto className="w-2/3" />
-            <HeritageSecondGenerationPhoto className="w-2/3" />
-            <HeritageSecondGeneration />
           </div>
 
           {/* Desktop: 기존 2단 레이아웃 유지 */}
@@ -206,9 +204,15 @@ function BrandStoryPage() {
             <div className="max-w-[650px]">
               <HeritageIntro />
               <HeritageFamilyPhoto className="mt-[480px] w-2/3" />
-              <HeritageSecondGenerationPhoto className="mt-10 w-2/3" />
-              <HeritageSecondGeneration className="mt-16" />
             </div>
+          </div>
+        </section>
+
+        {/* Second Generation: 사진(왼쪽) + 문구(오른쪽) 나란히 배치 */}
+        <section className="px-5 pb-20 sm:px-8 lg:pb-28">
+          <div className="mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <HeritageSecondGenerationPhoto className="mx-auto lg:mx-0" />
+            <HeritageSecondGeneration />
           </div>
         </section>
 

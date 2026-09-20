@@ -177,6 +177,7 @@ function BrandStoryPage() {
             <HeritageCollage />
             <HeritageFirstGeneration />
             <HeritageFamilyPhoto className="w-2/3" />
+            <HeritageSecondGeneration />
           </div>
 
           {/* Desktop: 기존 2단 레이아웃 유지 */}

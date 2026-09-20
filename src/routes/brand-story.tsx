@@ -126,6 +126,19 @@ function HeritageFamilyPhoto({ className = "" }: { className?: string }) {
   );
 }
 
+function HeritageSecondGeneration({ className = "" }: { className?: string }) {
+  return (
+    <ScrollHighlight
+      className={`mx-auto max-w-[570px] border-t border-antique-gold/35 pt-16 lg:mx-0 lg:pt-20 ${className}`}
+    >
+      <p className="text-[11px] font-medium uppercase text-primary">Second Generation</p>
+      <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">
+        제2대 | 기술 완성과 발전 EI 브랜드의 시작 (이시노 에이이치, 石野栄一)
+      </h3>
+    </ScrollHighlight>
+  );
+}
+
 function BrandStoryPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -166,6 +179,7 @@ function BrandStoryPage() {
             <HeritageCollage />
             <HeritageFirstGeneration />
             <HeritageFamilyPhoto className="w-2/3" />
+            <HeritageSecondGeneration />
           </div>
 
           {/* Desktop: 기존 2단 레이아웃 유지 */}
@@ -177,6 +191,7 @@ function BrandStoryPage() {
             <div className="max-w-[650px]">
               <HeritageIntro />
               <HeritageFamilyPhoto className="mt-[480px] w-2/3" />
+              <HeritageSecondGeneration className="mt-16" />
             </div>
           </div>
         </section>

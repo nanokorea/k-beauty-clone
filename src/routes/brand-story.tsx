@@ -166,7 +166,7 @@ function HeritageSecondGeneration({ className = "" }: { className?: string }) {
 
 function SecondGenerationLegacy() {
   return (
-    <section className="overflow-hidden border-y border-antique-gold/25 bg-secondary/30 px-5 py-20 sm:px-8 lg:py-28">
+    <section className="overflow-hidden border-y border-antique-gold/25 bg-story-ivory px-5 py-20 sm:px-8 lg:py-28">
       <div className="mx-auto grid max-w-[1240px] items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
         <ScrollHighlight className="max-w-[680px]">
           <p className="text-[11px] font-medium uppercase text-primary">The Master of Japanese Soap</p>
@@ -285,7 +285,7 @@ function BrandStoryPage() {
           </div>
         </section>
 
-        <section className="overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+        <section className="overflow-hidden bg-story-ivory px-5 py-20 sm:px-8 lg:py-28">
           {/* Mobile: Our Heritage 문구 → 공방·호적 사진 → First Generation 문구 → 사진3 */}
           <div className="mx-auto flex max-w-[1240px] flex-col gap-14 lg:hidden">
             <HeritageIntro />
@@ -319,7 +319,7 @@ function BrandStoryPage() {
 
         <ThirdGenerationStory />
 
-        <section className="border-y border-antique-gold/25 bg-secondary/45 px-5 py-20 sm:px-8 lg:py-24">
+        <section className="border-y border-antique-gold/25 bg-story-ivory px-5 py-20 sm:px-8 lg:py-24">
           <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div className="lg:sticky lg:top-32">
               <img

@@ -3,8 +3,8 @@ import productMaternity from "@/assets/product-maternity.jpg.asset.json";
 import productBaby from "@/assets/product-baby.jpg.asset.json";
 import productRecollection from "@/assets/product-recollection.jpg.asset.json";
 import productSdc from "@/assets/product-sdc.jpg.asset.json";
-import productKakitannin from "@/assets/product-kakitannin.png.asset.json";
-import productPureCollagen from "@/assets/product-pure-collagen.png.asset.json";
+import productKakitannin from "@/assets/product-kakitannin-v2.jpg.asset.json";
+import productPureCollagen from "@/assets/product-pure-collagen-v2.jpg.asset.json";
 import pureCollagenDetail from "@/assets/pure-collagen-detail.png.asset.json";
 
 export type Product = {

@@ -8,6 +8,8 @@ import heritageWorkshopImage from "@/assets/brand-heritage-workshop.jpg.asset.js
 import heritageRecordImage from "@/assets/brand-heritage-record.jpg.asset.json";
 import heritageFamilyImage from "@/assets/brand-heritage-family.jpg.asset.json";
 import secondGenerationImage from "@/assets/brand-second-generation-highlighted.jpg.asset.json";
+import eiichiPortraitImage from "@/assets/brand-eiichi-portrait.jpg.asset.json";
+import eiichiMediaImage from "@/assets/brand-eiichi-media.jpg.asset.json";
 import soapsImage from "@/assets/brand-soaps.jpg.asset.json";
 
 export const Route = createFileRoute("/brand-story")({
@@ -161,6 +163,56 @@ function HeritageSecondGeneration({ className = "" }: { className?: string }) {
   );
 }
 
+function SecondGenerationLegacy() {
+  return (
+    <section className="overflow-hidden border-y border-antique-gold/25 bg-secondary/30 px-5 py-20 sm:px-8 lg:py-28">
+      <div className="mx-auto grid max-w-[1240px] items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
+        <ScrollHighlight className="max-w-[680px]">
+          <p className="text-[11px] font-medium uppercase text-primary">The Master of Japanese Soap</p>
+          <h2 className="mt-3 text-2xl font-bold leading-9 text-ink sm:text-3xl">
+            일본 수제비누의 거장
+            <br />
+            이시노 에이이치(石野栄一)
+          </h2>
+          <div className="mt-7 h-px w-16 bg-antique-gold" />
+          <div className="mt-7 space-y-6 text-[15px] leading-7 text-foreground/80 sm:text-base">
+            <p>
+              일본 언론 및 미디어(NHK 등)에서 ‘일본 최고의 비누 장인(日本一の石けんおじさん)’과
+              “일본비누 아저씨”로 소개될 만큼 독보적인 입지를 구축했습니다.
+            </p>
+            <p>
+              유명 명품 비누들의 레시피를 직접 개발하고 OEM 제조를 주도해 온 이시노 에이이치(石野栄一)
+              선생이 자신의 이름을 직접 내걸고(EI = Eiichi ISHINO) 탄생시킨 유일한 독자 브랜드가 바로
+              EI입니다.
+            </p>
+          </div>
+        </ScrollHighlight>
+
+        <ScrollHighlight delay={1} className="mx-auto w-full max-w-[530px]">
+          <div className="relative pb-[28%] pl-[19%] pt-[4%]">
+            <div className="ml-auto aspect-[4/5] w-[76%] overflow-hidden bg-secondary shadow-sm">
+              <img
+                src={eiichiMediaImage.url}
+                alt="이시노 에이이치(石野栄一)를 소개한 일본 언론 기사"
+                className="size-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="absolute bottom-0 left-0 aspect-[3/4] w-[62%] overflow-hidden border-[8px] border-background bg-background shadow-md sm:border-[12px]">
+              <img
+                src={eiichiPortraitImage.url}
+                alt="JUNCO CLASSIC 비누를 든 이시노 에이이치(石野栄一)"
+                className="size-full object-cover object-top"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </ScrollHighlight>
+      </div>
+    </section>
+  );
+}
+
 function BrandStoryPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -223,6 +275,8 @@ function BrandStoryPage() {
             <HeritageSecondGeneration />
           </div>
         </section>
+
+        <SecondGenerationLegacy />
 
         <section className="border-y border-antique-gold/25 bg-secondary/45 px-5 py-20 sm:px-8 lg:py-24">
           <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">

@@ -154,6 +154,8 @@ function HeritageSecondGeneration({ className = "" }: { className?: string }) {
         전개해 온 전문 기업입니다.
         <br />
         타사 브랜드의 제품을 개발·생산해 주는 OEM(주문자 위탁 생산) 방식을 중심으로 성장해 왔습니다.
+        <br />
+        이 시기에 수많은 일본 수제 명품을 탄생 시켰습니다.
       </p>
     </ScrollHighlight>
   );

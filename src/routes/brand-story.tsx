@@ -10,6 +10,7 @@ import heritageFamilyImage from "@/assets/brand-heritage-family.jpg.asset.json";
 import secondGenerationImage from "@/assets/brand-second-generation-highlighted.jpg.asset.json";
 import eiichiPortraitImage from "@/assets/brand-eiichi-portrait.jpg.asset.json";
 import eiichiMediaImage from "@/assets/brand-eiichi-media.jpg.asset.json";
+import thirdGenerationImage from "@/assets/brand-third-generation.jpg.asset.json";
 import soapsImage from "@/assets/brand-soaps.jpg.asset.json";
 
 export const Route = createFileRoute("/brand-story")({
@@ -213,6 +214,44 @@ function SecondGenerationLegacy() {
   );
 }
 
+function ThirdGenerationStory() {
+  return (
+    <section className="overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div className="mx-auto grid max-w-[1240px] items-center gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-24">
+        <ScrollHighlight className="max-w-[570px]">
+          <p className="text-[11px] font-medium uppercase text-primary">Third Generation · The Future</p>
+          <h2 className="mt-3 text-2xl font-bold leading-9 text-ink sm:text-3xl">
+            제3대 | 혁신과 세계화
+            <br />
+            <span className="text-xl sm:text-2xl">(이시노 에이이치 가문 3대)</span>
+          </h2>
+          <div className="mt-7 h-px w-16 bg-antique-gold" />
+          <p className="mt-7 text-[15px] leading-7 text-foreground/80 sm:text-base">
+            브랜드의 창시자인 제2대 이시노 에이이치는 2023년 작고하였으며, 이후 제3대인 그의 아들이
+            전통 기법과 현대 피부 과학 기술을 융합하여 더욱 온화하고 우수한 품질의 프리미엄 스킨케어
+            비누를 세계 시장에 선보이고 있습니다.
+          </p>
+        </ScrollHighlight>
+
+        <ScrollHighlight delay={1} className="w-full">
+          <div className="relative pb-5 pr-5 sm:pb-8 sm:pr-8">
+            <div className="absolute bottom-0 right-0 h-[88%] w-[90%] border border-antique-gold/40" aria-hidden="true" />
+            <div className="relative aspect-[16/10] overflow-hidden bg-secondary shadow-sm">
+              <img
+                src={thirdGenerationImage.url}
+                alt="연구실에서 비누를 연구하는 제2대 이시노 에이이치와 제3대 계승자"
+                className="size-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <p className="mt-4 text-right font-display text-xs text-primary">Tradition, Science, and Tomorrow.</p>
+        </ScrollHighlight>
+      </div>
+    </section>
+  );
+}
+
 function BrandStoryPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -277,6 +316,8 @@ function BrandStoryPage() {
         </section>
 
         <SecondGenerationLegacy />
+
+        <ThirdGenerationStory />
 
         <section className="border-y border-antique-gold/25 bg-secondary/45 px-5 py-20 sm:px-8 lg:py-24">
           <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">

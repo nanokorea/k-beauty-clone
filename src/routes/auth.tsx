@@ -437,7 +437,7 @@ function SignupForm() {
           <tbody>
             <tr>
               <td className="border border-border p-2">회원제 서비스 이용 / 본인확인</td>
-              <td className="border border-border p-2">이름, 아이디, 비밀번호, 이메일, 휴대 전화</td>
+              <td className="border border-border p-2">이름, 아이디, 비밀번호, 이메일, 휴대 전화, 주소</td>
               <td className="border border-border p-2 font-semibold">회원 탈퇴 후 즉시</td>
               <td className="border border-border p-2">
                 <input

@@ -1,5 +1,35 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+declare global {
+  interface Window {
+    daum?: {
+      Postcode: new (options: {
+        oncomplete: (data: { zonecode: string; roadAddress: string; jibunAddress: string }) => void;
+      }) => { open: () => void };
+    };
+  }
+}
+
+const POSTCODE_SCRIPT_ID = "daum-postcode-script";
+
+function loadPostcodeScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (window.daum?.Postcode) return resolve();
+    const existing = document.getElementById(POSTCODE_SCRIPT_ID);
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = POSTCODE_SCRIPT_ID;
+    script.src = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("주소 검색 창을 불러오지 못했습니다."));
+    document.head.appendChild(script);
+  });
+}
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { SiteHeader } from "@/components/site-header";

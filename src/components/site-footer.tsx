@@ -52,8 +52,8 @@ export function SiteFooter() {
           <FooterColumn
             title="브랜드"
             links={[
-              { label: "브랜드 스토리", to: "/brand-story" },
-              { label: "장인 이시노 에이이치 (石野栄一)", to: "/about" },
+              { label: "BRAND HISTORY", to: "/brand-story" },
+              { label: "EI STORY", to: "/about" },
               { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
               { label: "제품 활용 가이드", to: "/guide" },
             ]}

@@ -209,8 +209,28 @@ function SignupForm() {
   const [busy, setBusy] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
 
+  const detailRef = useRef<HTMLInputElement>(null);
+
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm({ ...form, [k]: e.target.value });
+
+  const searchAddress = async () => {
+    try {
+      await loadPostcodeScript();
+      new window.daum!.Postcode({
+        oncomplete: (data) => {
+          setForm((prev) => ({
+            ...prev,
+            postcode: data.zonecode,
+            address1: data.roadAddress || data.jibunAddress,
+          }));
+          detailRef.current?.focus();
+        },
+      }).open();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "주소 검색을 열지 못했습니다.");
+    }
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();

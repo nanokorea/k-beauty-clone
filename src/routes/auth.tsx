@@ -1,5 +1,35 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+declare global {
+  interface Window {
+    daum?: {
+      Postcode: new (options: {
+        oncomplete: (data: { zonecode: string; roadAddress: string; jibunAddress: string }) => void;
+      }) => { open: () => void };
+    };
+  }
+}
+
+const POSTCODE_SCRIPT_ID = "daum-postcode-script";
+
+function loadPostcodeScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (window.daum?.Postcode) return resolve();
+    const existing = document.getElementById(POSTCODE_SCRIPT_ID);
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true });
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = POSTCODE_SCRIPT_ID;
+    script.src = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error("주소 검색 창을 불러오지 못했습니다."));
+    document.head.appendChild(script);
+  });
+}
 import { toast } from "sonner";
 import { useServerFn } from "@tanstack/react-start";
 import { SiteHeader } from "@/components/site-header";
@@ -164,6 +194,9 @@ function SignupForm() {
     password2: "",
     email: "",
     phone: "",
+    postcode: "",
+    address1: "",
+    address2: "",
   });
   const [agree, setAgree] = useState<Agreements>({
     age14: false,
@@ -176,8 +209,28 @@ function SignupForm() {
   const [busy, setBusy] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
 
+  const detailRef = useRef<HTMLInputElement>(null);
+
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm({ ...form, [k]: e.target.value });
+
+  const searchAddress = async () => {
+    try {
+      await loadPostcodeScript();
+      new window.daum!.Postcode({
+        oncomplete: (data) => {
+          setForm((prev) => ({
+            ...prev,
+            postcode: data.zonecode,
+            address1: data.roadAddress || data.jibunAddress,
+          }));
+          detailRef.current?.focus();
+        },
+      }).open();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "주소 검색을 열지 못했습니다.");
+    }
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -203,6 +256,9 @@ function SignupForm() {
             full_name: form.name,
             username: form.username.trim(),
             phone: form.phone,
+            postcode: form.postcode,
+            address1: form.address1,
+            address2: form.address2,
             age14_agreed: agree.age14,
             terms_agreed: agree.terms,
             privacy_agreed: agree.privacy,
@@ -296,6 +352,44 @@ function SignupForm() {
             placeholder="010-0000-0000"
           />
         </div>
+        <div className={rowClass}>
+          <span className={labelClass}>주소</span>
+          <div className="w-full space-y-2">
+            <div className="flex gap-2">
+              <input
+                required
+                readOnly
+                className={`${inputClass} cursor-pointer`}
+                value={form.postcode}
+                placeholder="우편번호"
+                onClick={searchAddress}
+              />
+              <button
+                type="button"
+                onClick={searchAddress}
+                className="shrink-0 rounded-sm border border-border px-4 py-2 text-sm transition-colors hover:bg-secondary"
+              >
+                주소 검색
+              </button>
+            </div>
+            <input
+              required
+              readOnly
+              className={`${inputClass} cursor-pointer`}
+              value={form.address1}
+              placeholder="기본 주소 (주소 검색으로 입력)"
+              onClick={searchAddress}
+            />
+            <input
+              ref={detailRef}
+              required
+              className={inputClass}
+              value={form.address2}
+              onChange={set("address2")}
+              placeholder="상세 주소 (동·호수 등)"
+            />
+          </div>
+        </div>
       </div>
 
       <div>
@@ -343,7 +437,7 @@ function SignupForm() {
           <tbody>
             <tr>
               <td className="border border-border p-2">회원제 서비스 이용 / 본인확인</td>
-              <td className="border border-border p-2">이름, 아이디, 비밀번호, 이메일, 휴대 전화</td>
+              <td className="border border-border p-2">이름, 아이디, 비밀번호, 이메일, 휴대 전화, 주소</td>
               <td className="border border-border p-2 font-semibold">회원 탈퇴 후 즉시</td>
               <td className="border border-border p-2">
                 <input

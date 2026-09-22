@@ -287,6 +287,8 @@ export type Database = {
           ad_sms_agreed_at: string | null
           address: string | null
           address_detail: string | null
+          address1: string | null
+          address2: string | null
           age14_agreed_at: string | null
           created_at: string
           email: string | null
@@ -305,6 +307,8 @@ export type Database = {
           ad_sms_agreed_at?: string | null
           address?: string | null
           address_detail?: string | null
+          address1?: string | null
+          address2?: string | null
           age14_agreed_at?: string | null
           created_at?: string
           email?: string | null
@@ -323,6 +327,8 @@ export type Database = {
           ad_sms_agreed_at?: string | null
           address?: string | null
           address_detail?: string | null
+          address1?: string | null
+          address2?: string | null
           age14_agreed_at?: string | null
           created_at?: string
           email?: string | null

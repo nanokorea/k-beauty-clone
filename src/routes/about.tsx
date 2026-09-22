@@ -90,6 +90,8 @@ function About() {
               className="w-full"
             />
           </div>
+
+          <HistorySection />
         </div>
       </main>
       <SiteFooter />

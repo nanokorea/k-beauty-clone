@@ -13,6 +13,7 @@ import historyTalisa from "@/assets/history-talisa.jpg.asset.json";
 import historyJunoa from "@/assets/history-junoa.jpg.asset.json";
 import historyJunco from "@/assets/history-junco.jpg.asset.json";
 import historySdc from "@/assets/history-sdc.jpg.asset.json";
+import historyBanner from "@/assets/history-banner.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

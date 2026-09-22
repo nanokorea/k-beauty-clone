@@ -352,6 +352,44 @@ function SignupForm() {
             placeholder="010-0000-0000"
           />
         </div>
+        <div className={rowClass}>
+          <span className={labelClass}>주소</span>
+          <div className="w-full space-y-2">
+            <div className="flex gap-2">
+              <input
+                required
+                readOnly
+                className={`${inputClass} cursor-pointer`}
+                value={form.postcode}
+                placeholder="우편번호"
+                onClick={searchAddress}
+              />
+              <button
+                type="button"
+                onClick={searchAddress}
+                className="shrink-0 rounded-sm border border-border px-4 py-2 text-sm transition-colors hover:bg-secondary"
+              >
+                주소 검색
+              </button>
+            </div>
+            <input
+              required
+              readOnly
+              className={`${inputClass} cursor-pointer`}
+              value={form.address1}
+              placeholder="기본 주소 (주소 검색으로 입력)"
+              onClick={searchAddress}
+            />
+            <input
+              ref={detailRef}
+              required
+              className={inputClass}
+              value={form.address2}
+              onChange={set("address2")}
+              placeholder="상세 주소 (동·호수 등)"
+            />
+          </div>
+        </div>
       </div>
 
       <div>

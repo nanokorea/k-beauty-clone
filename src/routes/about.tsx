@@ -5,6 +5,14 @@ import frameTop from "@/assets/about-nr-t.gif.asset.json";
 import frameMid from "@/assets/about-nr-m.gif.asset.json";
 import frameEnd from "@/assets/about-nr-e.gif.asset.json";
 import nrsyIcon from "@/assets/nrsy-icon.gif.asset.json";
+import historyMaternity from "@/assets/history-maternity.jpg.asset.json";
+import historyRecollection from "@/assets/history-recollection.jpg.asset.json";
+import historyBaby from "@/assets/history-baby.jpg.asset.json";
+import historyMasha from "@/assets/history-masha.jpg.asset.json";
+import historyTalisa from "@/assets/history-talisa.jpg.asset.json";
+import historyJunoa from "@/assets/history-junoa.jpg.asset.json";
+import historyJunco from "@/assets/history-junco.jpg.asset.json";
+import historySdc from "@/assets/history-sdc.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

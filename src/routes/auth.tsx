@@ -194,6 +194,9 @@ function SignupForm() {
     password2: "",
     email: "",
     phone: "",
+    postcode: "",
+    address1: "",
+    address2: "",
   });
   const [agree, setAgree] = useState<Agreements>({
     age14: false,

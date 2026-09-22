@@ -188,59 +188,58 @@ const corporateHistory = [
 function HistorySection() {
   return (
     <section className="mt-24">
-      <div className="text-center">
-        <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
-          Eiichi Ishino
-        </div>
-        <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
-          HISTORY
-        </div>
-        <div className="mt-4 text-[13px] text-[#666]">브랜드 연혁</div>
+      {/* 상단 브라운 배너 */}
+      <img
+        src={historyBanner.url}
+        alt="Eiichi Ishino"
+        className="w-full"
+        loading="lazy"
+      />
+
+      <div className="mt-6 border-b border-[#ccc] pb-1 text-[12px] leading-[15px] text-[#999]">
+        홈 &gt; 브랜드 연혁
       </div>
 
-      {/* 제품 연혁 타임라인 */}
-      <div className="relative mx-auto mt-16 max-w-[922px] px-4 md:px-0">
-        <div
-          className="absolute left-1/2 top-3 hidden h-[calc(100%-1.5rem)] w-[2px] -translate-x-1/2 bg-[#2b2b2b] md:block"
-          aria-hidden="true"
-        />
-        <ul className="space-y-16 md:space-y-0">
-          {productHistory.map((item, index) => (
+      <div className="mt-14 text-center">
+        <div className="text-[40px] font-light leading-none tracking-[0.18em] text-[#333]">
+          HISTORY
+        </div>
+        <div className="mt-4 text-[13px] tracking-[0.1em] text-[#a98c48]">
+          브랜드 연혁
+        </div>
+      </div>
+
+      {/* 제품 연혁 */}
+      <div className="mx-auto mt-16 max-w-[922px]">
+        <ul className="space-y-14">
+          {productHistory.map((item) => (
             <li
               key={item.name}
-              className={`relative md:flex ${
-                item.side === "right" ? "md:justify-end" : "md:justify-start"
-              } ${index === 0 ? "" : "md:-mt-10"}`}
+              className={`flex flex-col gap-6 md:flex-row md:items-center md:gap-10 ${
+                item.side === "right" ? "md:flex-row-reverse" : ""
+              }`}
             >
-              <span
-                className="absolute left-1/2 top-2 hidden h-[9px] w-[15px] -translate-x-1/2 rounded-full bg-[#2b2b2b] md:block"
-                aria-hidden="true"
-              />
+              <div className="md:w-1/2">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="mx-auto w-full max-w-[380px] object-contain"
+                  loading="lazy"
+                />
+              </div>
               <div
                 className={`md:w-1/2 ${
-                  item.side === "right" ? "md:pl-10 md:text-left" : "md:pr-10 md:text-right"
+                  item.side === "right" ? "md:text-right" : "md:text-left"
                 }`}
               >
                 <h3 className="text-[21px] font-normal tracking-[0.04em] text-[#a98c48]">
                   {item.name}
                 </h3>
-                <p
-                  className={`mt-2 text-[15px] leading-[1.8] text-[#555] ${
-                    item.side === "right" ? "md:text-left" : "md:text-right"
-                  }`}
-                >
+                <p className="mt-3 text-[15px] leading-[1.9] text-[#555]">
                   {item.developed}년 연구·개발
                   <br />
                   {item.launched}년 판매 시작
                 </p>
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className={`mt-5 w-full max-w-[320px] ${
-                    item.side === "right" ? "md:ml-auto" : "md:mr-auto"
-                  }`}
-                  loading="lazy"
-                />
               </div>
             </li>
           ))}
@@ -248,35 +247,47 @@ function HistorySection() {
       </div>
 
       {/* 회사 연혁 */}
-      <div className="mx-auto mt-24 max-w-[1000px] border border-[#e3d7bd] bg-[#fdf6e6] px-6 py-12 md:px-14">
-        <div className="relative">
-          <div
-            className="absolute left-[10px] top-2 hidden h-[calc(100%-1rem)] w-px bg-[#333] md:left-1/2 md:block"
-            aria-hidden="true"
-          />
-          <ul className="space-y-12">
-            {corporateHistory.map((item) => (
-              <li key={item.year} className="relative md:flex md:items-start md:gap-10">
-                <span
-                  className="absolute left-1/2 top-2 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-[#333] md:block"
-                  aria-hidden="true"
-                />
-                <div className="md:w-[38%] md:pr-10 md:text-right">
-                  <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#333]">
-                    {item.year}
-                  </div>
-                  <div className="mt-2 text-[12px] tracking-[0.16em] text-[#a98c48]">
-                    {item.era}
-                  </div>
+      <div className="relative mx-auto mt-24 max-w-[1000px] border border-[#e3d7bd] bg-[#fdf6e6] px-6 py-14 md:px-16">
+        <Corner className="left-3 top-3" />
+        <Corner className="right-3 top-3 rotate-90" />
+        <Corner className="right-3 bottom-3 rotate-180" />
+        <Corner className="bottom-3 left-3 -rotate-90" />
+        <ul className="space-y-14">
+          {corporateHistory.map((item, index) => (
+            <li
+              key={item.year}
+              className={`flex flex-col gap-4 md:flex-row md:items-start md:gap-10 ${
+                index % 2 === 1 ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              <div
+                className={`md:w-[34%] ${
+                  index % 2 === 1 ? "md:text-left" : "md:text-right"
+                }`}
+              >
+                <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#333]">
+                  {item.year}
                 </div>
-                <p className="mt-3 text-[14px] leading-[1.9] text-[#666] md:mt-0 md:w-[62%] md:pl-10">
-                  {item.body}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
+                <div className="mt-2 text-[12px] tracking-[0.16em] text-[#a98c48]">
+                  {item.era}
+                </div>
+              </div>
+              <p className="text-[14px] leading-[1.9] text-[#666] md:w-[66%]">
+                {item.body}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
+  );
+}
+
+function Corner({ className }: { className: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`pointer-events-none absolute h-6 w-6 border-l border-t border-[#d8c49a] ${className}`}
+    />
   );
 }

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ChevronDown, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import eiHomeLogo from "@/assets/ei-eiichi-ishino-logo.jpg.asset.json";
+import eiWordmark from "@/assets/ei-home-wordmark.png.asset.json";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
@@ -102,7 +103,20 @@ export function SiteHeader() {
 
       {/* 메인 헤더 */}
       <div className="mx-auto grid max-w-[1500px] grid-cols-[1fr_auto_1fr] items-center px-5 py-4 lg:px-8">
-        <div aria-hidden="true" />
+        <div className="flex items-center">
+          <Link
+            to="/"
+            aria-label="홈으로 이동"
+            className="inline-flex items-center transition-opacity hover:opacity-70"
+          >
+            <img
+              src={eiWordmark.url}
+              alt="Eiichi Ishino 홈"
+              className="h-7 w-auto object-contain sm:h-8 lg:h-9"
+            />
+          </Link>
+        </div>
+
 
         <nav className="hidden items-center gap-8 xl:flex">
           <Dropdown label="브랜드 스토리" items={brandMenu} />

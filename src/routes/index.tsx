@@ -163,7 +163,7 @@ function Home() {
         <DesktopHero />
         <MobileHero />
 
-        <section className="bg-card py-20">
+        <section className="bg-story-ivory py-20">
           <SectionHeading title="EI에 대하여" sub="About EI" />
           <div className="mx-auto mt-12 grid max-w-[1100px] items-start gap-10 px-4 md:grid-cols-2">
             <Link to="/about">
@@ -202,7 +202,7 @@ function Home() {
           </div>
         </section>
 
-        <section className="py-20">
+        <section className="bg-secondary/60 py-20">
           <SectionHeading title="JUNCO CLASSIC 시리즈" sub="JUNCO CLASSIC Series" />
           <div className="mx-auto mt-12 max-w-[1100px] space-y-16 px-4">
             {products.map((p, idx) => (
@@ -237,7 +237,7 @@ function Home() {
           </div>
         </section>
 
-        <section className="bg-secondary/60 py-16">
+        <section className="bg-story-ivory py-16">
           <div className="mx-auto max-w-[700px] px-4 text-center">
             <img
               src={howtoImg.url}

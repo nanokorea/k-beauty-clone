@@ -15,8 +15,8 @@ const topBarLinkClass =
 type MenuLink = { label: string; to: string; params?: Record<string, string> };
 
 const brandMenu: MenuLink[] = [
-  { label: "브랜드 스토리", to: "/brand-story" },
-  { label: "장인 이시노 에이이치 (石野栄一)", to: "/about" },
+  { label: "BRAND HISTORY", to: "/brand-story" },
+  { label: "EI STORY", to: "/about" },
 ];
 
 const guideMenu: MenuLink[] = [

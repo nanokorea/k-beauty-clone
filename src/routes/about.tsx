@@ -5,6 +5,14 @@ import frameTop from "@/assets/about-nr-t.gif.asset.json";
 import frameMid from "@/assets/about-nr-m.gif.asset.json";
 import frameEnd from "@/assets/about-nr-e.gif.asset.json";
 import nrsyIcon from "@/assets/nrsy-icon.gif.asset.json";
+import historyMaternity from "@/assets/history-maternity.jpg.asset.json";
+import historyRecollection from "@/assets/history-recollection.jpg.asset.json";
+import historyBaby from "@/assets/history-baby.jpg.asset.json";
+import historyMasha from "@/assets/history-masha.jpg.asset.json";
+import historyTalisa from "@/assets/history-talisa.jpg.asset.json";
+import historyJunoa from "@/assets/history-junoa.jpg.asset.json";
+import historyJunco from "@/assets/history-junco.jpg.asset.json";
+import historySdc from "@/assets/history-sdc.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -90,9 +98,181 @@ function About() {
               className="w-full"
             />
           </div>
+
+          <HistorySection />
         </div>
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+const productHistory = [
+  {
+    name: "JUNCO CLASSIC MATERNITY",
+    image: historyMaternity.url,
+    developed: "2015",
+    launched: "2016",
+    side: "left" as const,
+  },
+  {
+    name: "RECOLLECTION",
+    image: historyRecollection.url,
+    developed: "2014",
+    launched: "2015",
+    side: "right" as const,
+  },
+  {
+    name: "JUNCO CLASSIC BABY",
+    image: historyBaby.url,
+    developed: "2010",
+    launched: "2013",
+    side: "left" as const,
+  },
+  {
+    name: "PENELOPI MOON MASHA",
+    image: historyMasha.url,
+    developed: "2011",
+    launched: "2012",
+    side: "right" as const,
+  },
+  {
+    name: "PENELOPI MOON TALISA",
+    image: historyTalisa.url,
+    developed: "2009",
+    launched: "2010",
+    side: "left" as const,
+  },
+  {
+    name: "PENELOPI MOON JUNOA",
+    image: historyJunoa.url,
+    developed: "2009",
+    launched: "2010",
+    side: "right" as const,
+  },
+  {
+    name: "JUNCO CLASSIC SOAP",
+    image: historyJunco.url,
+    developed: "1994",
+    launched: "1995",
+    side: "left" as const,
+  },
+  {
+    name: "SDC BEAUTY SOAP",
+    image: historySdc.url,
+    developed: "1982",
+    launched: "1983",
+    side: "right" as const,
+  },
+];
+
+const corporateHistory = [
+  {
+    year: "1996",
+    era: "Heisei 8",
+    body: "주식회사 SDC(요코하마)에서 분리 독립하였습니다. 기초 화장품, 그중에서도 투명 수제 비누 생산에 있어 전통 제법을 새롭게 바꾸는 과감한 시도를 이어갔습니다. 끊임없는 연구로 독자적인 배합과 기술, 공정을 완성하였고, 이를 바탕으로 태어난 새로운 제품은 민감성 피부(피부염을 포함)를 가진 분들도 안심하고 쓸 수 있는 비누를 목표로 삼았습니다. 당사의 제품은 여러 의과대학 피부과 전문의들의 신뢰를 받았으며, 팩처럼 피부를 가꾸는 세안 비누로서 다수의 유명 화장품 브랜드로부터 수제 비누 제품의 개발과 생산을 의뢰받았습니다.",
+  },
+  {
+    year: "1987. 02",
+    era: "Showa 62",
+    body: "주식회사 SDC(요코하마시 나카구 노게초)와 합병하였습니다.",
+  },
+  {
+    year: "1972. 07",
+    era: "Showa 47",
+    body: "교에이 유화 주식회사를 설립하고 투명 비누의 제조·판매를 시작하였습니다.",
+  },
+];
+
+function HistorySection() {
+  return (
+    <section className="mt-24">
+      <div className="text-center">
+        <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
+          Eiichi Ishino
+        </div>
+        <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
+          HISTORY
+        </div>
+        <div className="mt-4 text-[13px] text-[#666]">브랜드 연혁</div>
+      </div>
+
+      {/* 제품 연혁 타임라인 */}
+      <div className="relative mx-auto mt-16 max-w-[922px]">
+        <div
+          className="absolute left-6 top-0 hidden h-full w-px bg-[#333] md:left-1/2 md:block"
+          aria-hidden="true"
+        />
+        <ul className="space-y-14 md:space-y-10">
+          {productHistory.map((item) => (
+            <li
+              key={item.name}
+              className={`relative md:flex md:items-center md:gap-10 ${
+                item.side === "right" ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              <span
+                className="absolute left-1/2 top-6 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-[#333] md:block"
+                aria-hidden="true"
+              />
+              <div
+                className={`md:w-1/2 ${
+                  item.side === "right" ? "md:pl-12 md:text-left" : "md:pr-12 md:text-right"
+                }`}
+              >
+                <h3 className="text-[19px] tracking-[0.06em] text-[#a98c48]">
+                  {item.name}
+                </h3>
+                <p className="mt-2 text-[14px] leading-[1.9] text-[#666]">
+                  {item.developed}년 연구·개발
+                  <br />
+                  {item.launched}년 판매 시작
+                </p>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className={`mt-4 w-full max-w-[290px] ${
+                    item.side === "right" ? "md:mr-auto" : "md:ml-auto"
+                  }`}
+                  loading="lazy"
+                />
+              </div>
+              <div className="hidden md:block md:w-1/2" />
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 회사 연혁 */}
+      <div className="mx-auto mt-24 max-w-[1000px] border border-[#e3d7bd] bg-[#fdf6e6] px-6 py-12 md:px-14">
+        <div className="relative">
+          <div
+            className="absolute left-[10px] top-2 hidden h-[calc(100%-1rem)] w-px bg-[#333] md:left-1/2 md:block"
+            aria-hidden="true"
+          />
+          <ul className="space-y-12">
+            {corporateHistory.map((item) => (
+              <li key={item.year} className="relative md:flex md:items-start md:gap-10">
+                <span
+                  className="absolute left-1/2 top-2 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-[#333] md:block"
+                  aria-hidden="true"
+                />
+                <div className="md:w-[38%] md:pr-10 md:text-right">
+                  <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#333]">
+                    {item.year}
+                  </div>
+                  <div className="mt-2 text-[12px] tracking-[0.16em] text-[#a98c48]">
+                    {item.era}
+                  </div>
+                </div>
+                <p className="mt-3 text-[14px] leading-[1.9] text-[#666] md:mt-0 md:w-[62%] md:pl-10">
+                  {item.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
   );
 }

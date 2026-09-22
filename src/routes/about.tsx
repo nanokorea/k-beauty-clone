@@ -198,32 +198,36 @@ function HistorySection() {
       </div>
 
       {/* 제품 연혁 타임라인 */}
-      <div className="relative mx-auto mt-16 max-w-[922px]">
+      <div className="relative mx-auto mt-16 max-w-[922px] px-4 md:px-0">
         <div
-          className="absolute left-6 top-0 hidden h-full w-px bg-[#333] md:left-1/2 md:block"
+          className="absolute left-1/2 top-3 hidden h-[calc(100%-1.5rem)] w-[2px] -translate-x-1/2 bg-[#2b2b2b] md:block"
           aria-hidden="true"
         />
-        <ul className="space-y-14 md:space-y-10">
-          {productHistory.map((item) => (
+        <ul className="space-y-16 md:space-y-0">
+          {productHistory.map((item, index) => (
             <li
               key={item.name}
-              className={`relative md:flex md:items-center md:gap-10 ${
-                item.side === "right" ? "md:flex-row-reverse" : ""
-              }`}
+              className={`relative md:flex ${
+                item.side === "right" ? "md:justify-end" : "md:justify-start"
+              } ${index === 0 ? "" : "md:-mt-10"}`}
             >
               <span
-                className="absolute left-1/2 top-6 hidden h-3 w-3 -translate-x-1/2 rounded-full bg-[#333] md:block"
+                className="absolute left-1/2 top-2 hidden h-[9px] w-[15px] -translate-x-1/2 rounded-full bg-[#2b2b2b] md:block"
                 aria-hidden="true"
               />
               <div
                 className={`md:w-1/2 ${
-                  item.side === "right" ? "md:pl-12 md:text-left" : "md:pr-12 md:text-right"
+                  item.side === "right" ? "md:pl-10 md:text-left" : "md:pr-10 md:text-right"
                 }`}
               >
-                <h3 className="text-[19px] tracking-[0.06em] text-[#a98c48]">
+                <h3 className="text-[21px] font-normal tracking-[0.04em] text-[#a98c48]">
                   {item.name}
                 </h3>
-                <p className="mt-2 text-[14px] leading-[1.9] text-[#666]">
+                <p
+                  className={`mt-2 text-[15px] leading-[1.8] text-[#555] ${
+                    item.side === "right" ? "md:text-left" : "md:text-right"
+                  }`}
+                >
                   {item.developed}년 연구·개발
                   <br />
                   {item.launched}년 판매 시작
@@ -231,13 +235,12 @@ function HistorySection() {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className={`mt-4 w-full max-w-[290px] ${
-                    item.side === "right" ? "md:mr-auto" : "md:ml-auto"
+                  className={`mt-5 w-full max-w-[320px] ${
+                    item.side === "right" ? "md:ml-auto" : "md:mr-auto"
                   }`}
                   loading="lazy"
                 />
               </div>
-              <div className="hidden md:block md:w-1/2" />
             </li>
           ))}
         </ul>

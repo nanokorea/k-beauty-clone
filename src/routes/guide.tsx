@@ -371,30 +371,3 @@ function GuidePage() {
     </div>
   );
 }
-
-function Bubble({
-  title,
-  sub,
-  tone,
-}: {
-  title: string;
-  sub: string;
-  tone: "orange" | "gold";
-}) {
-  return (
-    <div
-      className={`mx-auto flex size-[170px] flex-col items-center justify-center rounded-full border text-center ${
-        tone === "orange" ? "border-[#e08a3c]" : "border-[#a98c48]"
-      }`}
-    >
-      <p
-        className={`font-serif text-xl ${
-          tone === "orange" ? "text-[#e08a3c]" : "text-[#a98c48]"
-        }`}
-      >
-        {title}
-      </p>
-      <p className="mt-2 px-4 text-[12px] leading-6 text-foreground/80">{sub}</p>
-    </div>
-  );
-}

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ScrollHighlight } from "@/components/scroll-highlight";
 import frameTop from "@/assets/about-nr-t.gif.asset.json";
 import frameMid from "@/assets/about-nr-m.gif.asset.json";
 import frameEnd from "@/assets/about-nr-e.gif.asset.json";

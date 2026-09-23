@@ -94,6 +94,14 @@ function HowToWash() {
               그것이 이시노 에이이치(石野栄一)가 만든 거품 팩 미용비누입니다.
             </p>
           </div>
+            </div>
+            <img
+              src={bubbleFoam.url}
+              alt="풍성한 거품을 손에 올린 모습"
+              className="mx-auto w-full max-w-[360px] rounded-sm"
+              loading="lazy"
+            />
+          </div>
 
           <div className="mt-12 bg-story-ivory px-5 py-4 text-center text-[15px] font-semibold leading-7 text-ink">
             저희가 만든 비누는 1000여 종에 이르는 한방 식물 추출물 중에서 수십 종을 엄선해 배합하고 있습니다.

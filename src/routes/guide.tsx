@@ -110,21 +110,24 @@ function GuidePage() {
             EI 1 : 계면활성 처방
           </div>
 
-          <div className="mt-8 grid items-center gap-6 sm:grid-cols-3">
-            <Bubble title="수분과 결합" sub="피부의 수분을 붙잡아 줍니다" tone="orange" />
-            <ScrollHighlight className="rounded-full border border-[#c9b489] px-6 py-10 text-center">
-              <p className="font-serif text-lg text-ink">계면활성 처방</p>
-              <p className="mt-3 text-[13px] leading-7 text-foreground/85">
-                이시노 에이이치(石野栄一) 선생은 세안 비누의 원료를 연구하면서, 업계에 없던
-                독자적인 세정 성분인 '계면활성' 처방을 개발해 업계의 빈자리를 채웠습니다.
-              </p>
-            </ScrollHighlight>
-            <Bubble title="유분과 결합" sub="피부의 과한 유분을 흡수합니다" tone="gold" />
-          </div>
-
-          <p className="mt-8 text-center font-serif text-xl tracking-[0.15em] text-ink">
-            · 한층 산뜻하고 촉촉하게 ·
-          </p>
+          <ScrollHighlight className="mt-6 font-sans">
+            <h3 className="font-sans text-lg font-bold text-ink">계면활성 처방</h3>
+            <p className="mt-2 text-[14px] leading-7 text-foreground/85">
+              이시노 에이이치(石野栄一) 선생은 세안 비누의 원료를 연구하면서, 업계에 없던
+              독자적인 세정 성분인 '계면활성' 처방을 개발해 업계의 빈자리를 채웠습니다.
+            </p>
+            <div className="mt-4 grid gap-px border-y border-ink/15 sm:grid-cols-2">
+              <div className="py-3 sm:pr-4">
+                <p className="text-[14px] font-bold text-primary">수분과 결합</p>
+                <p className="text-[13px] leading-7 text-foreground/80">피부의 수분을 붙잡아 줍니다</p>
+              </div>
+              <div className="border-t border-ink/10 py-3 sm:border-l sm:border-t-0 sm:pl-4">
+                <p className="text-[14px] font-bold text-primary">유분과 결합</p>
+                <p className="text-[13px] leading-7 text-foreground/80">피부의 과한 유분을 흡수합니다</p>
+              </div>
+            </div>
+            <p className="mt-3 text-[14px] font-medium text-ink">한층 산뜻하고 촉촉하게</p>
+          </ScrollHighlight>
 
           {/* 거품의 3요소 + 세정 원리 4단계 */}
           <div className="mt-10 grid gap-8 sm:grid-cols-3">

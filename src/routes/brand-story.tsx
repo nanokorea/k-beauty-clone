@@ -108,7 +108,9 @@ function HeritageFirstGeneration() {
   return (
     <ScrollHighlight className="mx-auto max-w-[570px] border-t border-antique-gold/35 pt-28 lg:mx-0 lg:pt-36">
       <p className="text-[11px] font-medium uppercase text-primary">First Generation · 1930</p>
-      <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">제1대 | 창립과 기틀 (이시노 에이지)</h3>
+      <h3 className="mt-2 text-xl font-bold text-ink sm:text-2xl">
+        제1대 | 창립과 기틀 (이시노 에이지-石野 栄治)
+      </h3>
       <p className="mt-4 text-[15px] leading-7 text-foreground/80">
         1930년 상하이에서 전통 비누 제조 기술을 바탕으로 사업을 시작하였으며, 1940년 일본으로
         귀국하여 일본 사이타마현 코시가야시에서 가문의 제누기술 기틀을 마련 하였습니다.
@@ -223,7 +225,7 @@ function ThirdGenerationStory() {
           <h2 className="mt-3 text-2xl font-bold leading-9 text-ink sm:text-3xl">
             제3대 | 혁신과 세계화
             <br />
-            <span className="text-xl sm:text-2xl">(이시노 에이이치 가문 3대)</span>
+            <span className="text-xl sm:text-2xl">(타케시 이시노-石野 剛)</span>
           </h2>
           <div className="mt-7 h-px w-16 bg-antique-gold" />
           <p className="mt-7 text-[15px] leading-7 text-foreground/80 sm:text-base">

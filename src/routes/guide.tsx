@@ -107,7 +107,7 @@ function GuidePage() {
           </h2>
 
           <div className="mt-8 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
-            강점 1 : 계면활성 처방
+            EI 1 : 계면활성 처방
           </div>
 
           <div className="mt-8 grid items-center gap-6 sm:grid-cols-3">
@@ -168,7 +168,7 @@ function GuidePage() {
 
 
           <div className="mt-14 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
-            강점 2 : 틀 제조법(框錬製法)
+            EI 2 : 틀 제조법(框錬製法)
           </div>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-[160px_1fr]">
@@ -215,9 +215,9 @@ function GuidePage() {
             * 위 수치는 모두 이시노 선생 연구실에서 실제 측정한 데이터입니다.
           </p>
 
-          {/* 강점 3 : 귀한 미용 성분 */}
+          {/* EI 3 : 귀한 미용 성분 */}
           <div className="mt-16 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
-            강점 3 : 엄선한 귀한 미용 성분
+            EI 3 : 엄선한 귀한 미용 성분
           </div>
           <ScrollHighlight>
             <p className="mt-6 font-sans font-medium text-xl leading-[1.7] text-ink sm:text-2xl">
@@ -279,9 +279,9 @@ function GuidePage() {
             ))}
           </ul>
 
-          {/* 강점 4 : 순식물성 비누 베이스와 순수 */}
+          {/* EI 4 : 순식물성 비누 베이스와 순수 */}
           <div className="mt-16 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
-            강점 4 : 순식물성 비누 베이스와 의료용 순수
+            EI 4 : 순식물성 비누 베이스와 의료용 순수
           </div>
 
           <ScrollHighlight className="mt-6 space-y-2 font-sans font-medium text-xl text-ink sm:text-2xl">
@@ -317,9 +317,9 @@ function GuidePage() {
             loading="lazy"
           />
 
-          {/* 강점 5 : 삼효 합일 */}
+          {/* EI 5 : 삼효 합일 */}
           <div className="mt-16 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
-            강점 5 : 세 가지 효과를 하나로
+            EI 5 : 세 가지 효과를 하나로
           </div>
 
           <ScrollHighlight className="mt-6">

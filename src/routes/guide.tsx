@@ -2,11 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ScrollHighlight } from "@/components/scroll-highlight";
-import portrait from "@/assets/features-ei-portrait.jpg.asset.json";
 import soapsPhoto from "@/assets/features-ei-soaps-photo.jpg.asset.json";
-import cert1 from "@/assets/features-cert1.jpg.asset.json";
-import cert2 from "@/assets/features-cert2.jpg.asset.json";
-import cert3 from "@/assets/features-cert3.jpg.asset.json";
 
 export const Route = createFileRoute("/guide")({
   head: () => ({
@@ -51,11 +47,6 @@ const comparison = [
   },
 ];
 
-const certificates = [
-  { img: cert1.url, caption: "코시가야시 시장 표창장" },
-  { img: cert2.url, caption: "일본 적십자사 감사장" },
-  { img: cert3.url, caption: "코시가야시 시장 감사장" },
-];
 
 function GuidePage() {
   return (
@@ -67,33 +58,8 @@ function GuidePage() {
         </div>
 
         <div className="mx-auto max-w-[1000px] px-4 pb-20">
-          {/* 상단 액자 */}
-          <div className="relative mt-6 border border-[#e3d7bd] bg-story-ivory px-6 py-10 md:px-12">
-            <Corner className="left-3 top-3" />
-            <Corner className="right-3 top-3 rotate-90" />
-            <Corner className="bottom-3 right-3 rotate-180" />
-            <Corner className="bottom-3 left-3 -rotate-90" />
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-end">
-              <img
-                src={portrait.url}
-                alt="이시노 에이이치(石野栄一)"
-                className="w-[180px] shrink-0"
-              />
-              <ScrollHighlight className="text-center sm:text-left">
-                <p className="font-serif text-[34px] leading-none tracking-[0.1em] text-ink">
-                  石 野 栄 一
-                </p>
-                <p className="mt-3 text-[13px] tracking-[0.3em] text-primary">
-                  Eiichi Ishino
-                </p>
-                <p className="mt-6 text-[17px] font-semibold text-[#8b6d3a]">
-                  일본 수제비누의 아버지 — 이시노 에이이치(石野栄一) 선생
-                </p>
-              </ScrollHighlight>
-            </div>
-          </div>
-
           {/* 소개 본문 + 사진 */}
+
           <div className="mt-12 grid items-start gap-10 md:grid-cols-[1fr_300px]">
             <ScrollHighlight className="space-y-5 border-t border-[#ddd] pt-8 text-[15px] leading-7 text-foreground/85">
               <p>
@@ -191,19 +157,6 @@ function GuidePage() {
             </table>
           </div>
 
-          {/* 공익 활동 */}
-          <h2 className="mt-20 border-b border-[#c9b489] pb-3 text-2xl font-bold text-ink sm:text-3xl">
-            따뜻한 나눔, 사회 공헌
-          </h2>
-
-          <ul className="mt-10 grid grid-cols-1 items-end gap-10 sm:grid-cols-3">
-            {certificates.map((c) => (
-              <li key={c.caption} className="text-center">
-                <img src={c.img} alt={c.caption} className="mx-auto w-full" loading="lazy" />
-                <p className="mt-4 text-sm text-foreground/85">{c.caption}</p>
-              </li>
-            ))}
-          </ul>
         </div>
       </main>
       <SiteFooter />
@@ -235,14 +188,5 @@ function Bubble({
       </p>
       <p className="mt-2 px-4 text-[12px] leading-6 text-foreground/80">{sub}</p>
     </div>
-  );
-}
-
-function Corner({ className }: { className: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={`pointer-events-none absolute size-6 border-l border-t border-[#d8c49a] ${className}`}
-    />
   );
 }

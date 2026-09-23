@@ -47,11 +47,6 @@ const comparison = [
   },
 ];
 
-const certificates = [
-  { img: cert1.url, caption: "코시가야시 시장 표창장" },
-  { img: cert2.url, caption: "일본 적십자사 감사장" },
-  { img: cert3.url, caption: "코시가야시 시장 감사장" },
-];
 
 function GuidePage() {
   return (

@@ -65,44 +65,46 @@ function About() {
             />
           </div>
 
-          {/* 타이틀 (스티키) */}
-          <div className="sticky top-24 z-10 mt-[52px] bg-white/85 py-4 text-center backdrop-blur-sm">
-            <ScrollHighlight>
-              <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
-                Eiichi Ishino
-              </div>
-              <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
-                ABOUT
-              </div>
-              <div className="mt-4 text-[13px] text-[#666]">
-                Eiichi Ishino 소개
-              </div>
-            </ScrollHighlight>
-          </div>
-
-          {/* 본문 액자 */}
-          <div className="mx-auto mt-10 w-full max-w-[754px]">
-            <img src={frameTop.url} alt="" aria-hidden="true" className="w-full" />
-            <div
-              className="bg-repeat-y px-5 py-5 text-[14px] leading-[1.9] text-[#666]"
-              style={{
-                backgroundImage: `url(${frameMid.url})`,
-                backgroundSize: "100% auto",
-              }}
-            >
-              {paragraphs.map((text, index) => (
-                <ScrollHighlight key={text} delay={index % 3} className="group">
-                  <p className="mb-6 indent-[2em] text-[#a3a3a3] transition-colors duration-1000 group-[.opacity-100]:text-[#555]">
-                    {text}
-                  </p>
-                </ScrollHighlight>
-              ))}
+          <div className="relative">
+            {/* 타이틀 (스티키) */}
+            <div className="sticky top-[150px] z-10 mt-[52px] bg-white py-4 text-center">
+              <ScrollHighlight>
+                <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
+                  Eiichi Ishino
+                </div>
+                <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
+                  ABOUT
+                </div>
+                <div className="mt-4 text-[13px] text-[#666]">
+                  Eiichi Ishino 소개
+                </div>
+              </ScrollHighlight>
             </div>
-            <img
-              src={frameEnd.url}
-              alt="이시노 에이이치(石野栄一)"
-              className="w-full"
-            />
+
+            {/* 본문 액자 */}
+            <div className="mx-auto mt-10 w-full max-w-[754px]">
+              <img src={frameTop.url} alt="" aria-hidden="true" className="w-full" />
+              <div
+                className="bg-repeat-y px-5 py-5 text-[14px] leading-[1.9] text-[#666]"
+                style={{
+                  backgroundImage: `url(${frameMid.url})`,
+                  backgroundSize: "100% auto",
+                }}
+              >
+                {paragraphs.map((text, index) => (
+                  <ScrollHighlight key={text} delay={index % 3} className="group">
+                    <p className="mb-6 indent-[2em] text-[#a3a3a3] transition-colors duration-1000 group-[.opacity-100]:text-[#555]">
+                      {text}
+                    </p>
+                  </ScrollHighlight>
+                ))}
+              </div>
+              <img
+                src={frameEnd.url}
+                alt="이시노 에이이치(石野栄一)"
+                className="w-full"
+              />
+            </div>
           </div>
 
           <HistorySection />

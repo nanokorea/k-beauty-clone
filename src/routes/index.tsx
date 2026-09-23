@@ -7,8 +7,6 @@ import { SectionHeading } from "@/components/section-heading";
 import { ScrollHighlight } from "@/components/scroll-highlight";
 import { supabase } from "@/integrations/supabase/client";
 import { products } from "@/data/site";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
-import heroVideoPoster from "@/assets/hero-video-poster.jpg.asset.json";
 
 const desktopSlides = ["/pc-hero-1.jpg", "/pc-hero-2.jpg", "/pc-hero-3.jpg", "/pc-hero-4.jpg"];
 const mobileSlides = [

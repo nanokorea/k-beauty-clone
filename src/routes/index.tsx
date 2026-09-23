@@ -126,25 +126,6 @@ function MobileHero() {
   );
 }
 
-function VideoHero() {
-  return (
-    <section className="relative w-full overflow-hidden border-b border-antique-gold/35 bg-ink">
-      <div className="relative h-[68vh] min-h-[380px] w-full sm:h-[78vh] lg:h-[86vh]">
-        <video
-          className="absolute inset-0 size-full object-cover"
-          src={heroVideo.url}
-          poster={heroVideoPoster.url}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-        <div className="absolute inset-0 bg-ink/20" aria-hidden="true" />
-      </div>
-    </section>
-  );
-}
 
 
 function Home() {

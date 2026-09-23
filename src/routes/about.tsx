@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ScrollHighlight } from "@/components/scroll-highlight";
 import frameTop from "@/assets/about-nr-t.gif.asset.json";
 import frameMid from "@/assets/about-nr-m.gif.asset.json";
 import frameEnd from "@/assets/about-nr-e.gif.asset.json";
@@ -64,40 +65,46 @@ function About() {
             />
           </div>
 
-          {/* 타이틀 */}
-          <div className="mt-[52px] text-center">
-            <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
-              Eiichi Ishino
+          <div className="relative">
+            {/* 타이틀 (스티키) */}
+            <div className="sticky top-[150px] z-10 mt-[52px] bg-white py-4 text-center">
+              <ScrollHighlight>
+                <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
+                  Eiichi Ishino
+                </div>
+                <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
+                  ABOUT
+                </div>
+                <div className="mt-4 text-[13px] text-[#666]">
+                  Eiichi Ishino 소개
+                </div>
+              </ScrollHighlight>
             </div>
-            <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
-              ABOUT
-            </div>
-            <div className="mt-4 text-[13px] text-[#666]">
-              Eiichi Ishino 소개
-            </div>
-          </div>
 
-          {/* 본문 액자 */}
-          <div className="mx-auto mt-10 w-full max-w-[754px]">
-            <img src={frameTop.url} alt="" aria-hidden="true" className="w-full" />
-            <div
-              className="bg-repeat-y px-5 py-5 text-[14px] leading-[1.9] text-[#666]"
-              style={{
-                backgroundImage: `url(${frameMid.url})`,
-                backgroundSize: "100% auto",
-              }}
-            >
-              {paragraphs.map((text) => (
-                <p key={text} className="mb-6 indent-[2em] last:mb-0">
-                  {text}
-                </p>
-              ))}
+            {/* 본문 액자 */}
+            <div className="mx-auto mt-10 w-full max-w-[754px]">
+              <img src={frameTop.url} alt="" aria-hidden="true" className="w-full" />
+              <div
+                className="bg-repeat-y px-5 py-5 text-[14px] leading-[1.9] text-[#666]"
+                style={{
+                  backgroundImage: `url(${frameMid.url})`,
+                  backgroundSize: "100% auto",
+                }}
+              >
+                {paragraphs.map((text, index) => (
+                  <ScrollHighlight key={text} delay={index % 3} className="group">
+                    <p className="mb-6 indent-[2em] text-[#a3a3a3] transition-colors duration-1000 group-[.opacity-100]:text-[#555]">
+                      {text}
+                    </p>
+                  </ScrollHighlight>
+                ))}
+              </div>
+              <img
+                src={frameEnd.url}
+                alt="이시노 에이이치(石野栄一)"
+                className="w-full"
+              />
             </div>
-            <img
-              src={frameEnd.url}
-              alt="이시노 에이이치(石野栄一)"
-              className="w-full"
-            />
           </div>
 
           <HistorySection />
@@ -200,47 +207,51 @@ function HistorySection() {
         홈 &gt; 브랜드 연혁
       </div>
 
-      <div className="mt-14 text-center">
-        <div className="text-[40px] font-light leading-none tracking-[0.18em] text-[#333]">
-          HISTORY
-        </div>
-        <div className="mt-4 text-[13px] tracking-[0.1em] text-[#a98c48]">
-          브랜드 연혁
-        </div>
+      <div className="sticky top-[150px] z-10 mt-14 bg-white py-4 text-center">
+        <ScrollHighlight>
+          <div className="text-[40px] font-light leading-none tracking-[0.18em] text-[#333]">
+            HISTORY
+          </div>
+          <div className="mt-4 text-[13px] tracking-[0.1em] text-[#a98c48]">
+            브랜드 연혁
+          </div>
+        </ScrollHighlight>
       </div>
 
       {/* 제품 연혁 */}
       <div className="mx-auto mt-16 max-w-[922px]">
         <ul className="space-y-14">
-          {productHistory.map((item) => (
-            <li
-              key={item.name}
-              className={`flex flex-col gap-6 md:flex-row md:items-center md:gap-10 ${
-                item.side === "right" ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              <div className="md:w-1/2">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="mx-auto w-full max-w-[380px] object-contain"
-                  loading="lazy"
-                />
-              </div>
-              <div
-                className={`md:w-1/2 ${
-                  item.side === "right" ? "md:text-right" : "md:text-left"
+          {productHistory.map((item, index) => (
+            <li key={item.name}>
+              <ScrollHighlight
+                delay={index % 3}
+                className={`group flex flex-col gap-6 md:flex-row md:items-center md:gap-10 ${
+                  item.side === "right" ? "md:flex-row-reverse" : ""
                 }`}
               >
-                <h3 className="text-[21px] font-normal tracking-[0.04em] text-[#a98c48]">
-                  {item.name}
-                </h3>
-                <p className="mt-3 text-[15px] leading-[1.9] text-[#555]">
-                  {item.developed}년 연구·개발
-                  <br />
-                  {item.launched}년 판매 시작
-                </p>
-              </div>
+                <div className="md:w-1/2">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="mx-auto w-full max-w-[380px] object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  className={`md:w-1/2 ${
+                    item.side === "right" ? "md:text-right" : "md:text-left"
+                  }`}
+                >
+                  <h3 className="text-[21px] font-normal tracking-[0.04em] text-[#c9b489] transition-colors duration-1000 group-[.opacity-100]:text-[#a98c48]">
+                    {item.name}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-[1.9] text-[#9a9a9a] transition-colors duration-1000 group-[.opacity-100]:text-[#555]">
+                    {item.developed}년 연구·개발
+                    <br />
+                    {item.launched}년 판매 시작
+                  </p>
+                </div>
+              </ScrollHighlight>
             </li>
           ))}
         </ul>
@@ -254,27 +265,29 @@ function HistorySection() {
         <Corner className="bottom-3 left-3 -rotate-90" />
         <ul className="space-y-14">
           {corporateHistory.map((item, index) => (
-            <li
-              key={item.year}
-              className={`flex flex-col gap-4 md:flex-row md:items-start md:gap-10 ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              <div
-                className={`md:w-[34%] ${
-                  index % 2 === 1 ? "md:text-left" : "md:text-right"
+            <li key={item.year}>
+              <ScrollHighlight
+                delay={index % 3}
+                className={`group flex flex-col gap-4 md:flex-row md:items-start md:gap-10 ${
+                  index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#333]">
-                  {item.year}
+                <div
+                  className={`md:w-[34%] ${
+                    index % 2 === 1 ? "md:text-left" : "md:text-right"
+                  }`}
+                >
+                  <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#8d8d8d] transition-colors duration-1000 group-[.opacity-100]:text-[#333]">
+                    {item.year}
+                  </div>
+                  <div className="mt-2 text-[12px] tracking-[0.16em] text-[#c9b489] transition-colors duration-1000 group-[.opacity-100]:text-[#a98c48]">
+                    {item.era}
+                  </div>
                 </div>
-                <div className="mt-2 text-[12px] tracking-[0.16em] text-[#a98c48]">
-                  {item.era}
-                </div>
-              </div>
-              <p className="text-[14px] leading-[1.9] text-[#666] md:w-[66%]">
-                {item.body}
-              </p>
+                <p className="text-[14px] leading-[1.9] text-[#a3a3a3] transition-colors duration-1000 group-[.opacity-100]:text-[#666] md:w-[66%]">
+                  {item.body}
+                </p>
+              </ScrollHighlight>
             </li>
           ))}
         </ul>

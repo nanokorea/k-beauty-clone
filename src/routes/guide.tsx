@@ -13,7 +13,6 @@ import ing3 from "@/assets/feat-ing3.jpg.asset.json";
 import ing4 from "@/assets/feat-ing4.jpg.asset.json";
 import ing5 from "@/assets/feat-ing5.jpg.asset.json";
 import pureWater from "@/assets/feat-pure.jpg.asset.json";
-import plantsImg from "@/assets/feat-plants.jpg.asset.json";
 import beforeImg from "@/assets/feat-before.jpg.asset.json";
 import afterImg from "@/assets/feat-after.jpg.asset.json";
 import soapImg from "@/assets/feat-soap.jpg.asset.json";
@@ -317,12 +316,6 @@ function GuidePage() {
             className="mx-auto mt-8 w-full max-w-[560px]"
             loading="lazy"
           />
-          <img
-            src={plantsImg.url}
-            alt="순식물성 원료와 맑은 물"
-            className="mx-auto mt-8 w-full"
-            loading="lazy"
-          />
 
           {/* 강점 5 : 삼효 합일 */}
           <div className="mt-16 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
@@ -330,7 +323,6 @@ function GuidePage() {
           </div>
 
           <ScrollHighlight className="mt-6">
-            <h3 className="font-serif text-2xl text-ink">삼효 합일(三效合一)</h3>
             <p className="mt-3 text-[15px] leading-7 text-foreground/85">
               이시노 에이이치(石野栄一) 선생이 세운 Eiichi Ishino 브랜드의 모든 수제비누에는 새로운
               역할이 담겨 있습니다. 효과적인 세안, 깊은 피부 관리, 오래가는 아름다움을 하나로 모아

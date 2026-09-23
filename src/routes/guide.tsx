@@ -8,9 +8,9 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/guide")({
   head: () => ({
     meta: [
-      { title: "제품 활용 가이드 | JUNCO CLASSIC 한국" },
+      { title: "전체 EI soaps는? | JUNCO CLASSIC 한국" },
       { name: "description", content: "JUNCO CLASSIC 비누를 200% 활용하는 방법과 관리 팁을 소개합니다." },
-      { property: "og:title", content: "제품 활용 가이드 | JUNCO CLASSIC 한국" },
+      { property: "og:title", content: "전체 EI soaps는? | JUNCO CLASSIC 한국" },
       { property: "og:description", content: "비누 활용법과 관리 팁 모음." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -38,7 +38,7 @@ function GuidePage() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="mx-auto max-w-[900px] px-4 py-16">
-        <SectionHeading title="제품 활용 가이드" sub="GUIDE" />
+        <SectionHeading title="전체 EI soaps는?" sub="GUIDE" />
         {isLoading ? (
           <p className="mt-12 text-center text-sm text-muted-foreground">불러오는 중…</p>
         ) : (

@@ -2,11 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ScrollHighlight } from "@/components/scroll-highlight";
-import portrait from "@/assets/features-ei-portrait.jpg.asset.json";
 import soapsPhoto from "@/assets/features-ei-soaps-photo.jpg.asset.json";
-import cert1 from "@/assets/features-cert1.jpg.asset.json";
-import cert2 from "@/assets/features-cert2.jpg.asset.json";
-import cert3 from "@/assets/features-cert3.jpg.asset.json";
 
 export const Route = createFileRoute("/guide")({
   head: () => ({

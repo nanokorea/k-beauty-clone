@@ -21,8 +21,8 @@ const brandMenu: MenuLink[] = [
 ];
 
 const guideMenu: MenuLink[] = [
+  { label: "EI soaps는?", to: "/guide" },
   { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
-  { label: "전체 EI soaps는?", to: "/guide" },
 ];
 
 const supportMenu: MenuLink[] = [

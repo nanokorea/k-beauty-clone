@@ -91,8 +91,8 @@ function About() {
               }}
             >
               {paragraphs.map((text, index) => (
-                <ScrollHighlight key={text} delay={index % 3}>
-                  <p className="mb-6 indent-[2em] text-[#8f8f8f] transition-colors duration-1000 [.opacity-100_&]:text-[#4a4a4a]">
+                <ScrollHighlight key={text} delay={index % 3} className="group">
+                  <p className="mb-6 indent-[2em] text-[#a3a3a3] transition-colors duration-1000 group-[.opacity-100]:text-[#555]">
                     {text}
                   </p>
                 </ScrollHighlight>

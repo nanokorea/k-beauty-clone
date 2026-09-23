@@ -10,6 +10,15 @@ import { products } from "@/data/site";
 import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import heroVideoPoster from "@/assets/hero-video-poster.jpg.asset.json";
 
+const desktopSlides = ["/pc-hero-1.jpg", "/pc-hero-2.jpg", "/pc-hero-3.jpg", "/pc-hero-4.jpg"];
+const mobileSlides = [
+  "/mobile-hero-v2-1.jpg",
+  "/mobile-hero-v2-2.jpg",
+  "/mobile-hero-v2-3.jpg",
+  "/mobile-hero-v2-4.jpg",
+];
+
+
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import howtoImg from "@/assets/howto-v2.png.asset.json";

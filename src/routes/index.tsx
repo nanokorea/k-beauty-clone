@@ -46,6 +46,86 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+function DesktopHero() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => {
+      setI((v) => (v + 1) % desktopSlides.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <section className="relative hidden overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:block">
+      <div className="relative aspect-[1600/720] w-full">
+        {desktopSlides.map((src, idx) => (
+          <img
+            key={src}
+            src={src}
+            alt={`JUNCO CLASSIC 배너 ${idx + 1}`}
+            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
+              idx === i ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
+      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
+        {desktopSlides.map((src, idx) => (
+          <button
+            key={src}
+            type="button"
+            aria-label={`슬라이드 ${idx + 1}`}
+            onClick={() => setI(idx)}
+            className={`h-1.5 w-10 rounded-full border border-ink/15 transition-colors ${
+              idx === i ? "bg-oxide" : "bg-background/85"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function MobileHero() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => {
+      setI((v) => (v + 1) % mobileSlides.length);
+    }, 5000);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:hidden">
+      <div className="relative mx-auto aspect-[4/5] w-full">
+        {mobileSlides.map((src, idx) => (
+          <img
+            key={src}
+            src={src}
+            alt={`JUNCO CLASSIC 모바일 배너 ${idx + 1}`}
+            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
+              idx === i ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        ))}
+      </div>
+      <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
+        {mobileSlides.map((src, idx) => (
+          <button
+            key={src}
+            type="button"
+            aria-label={`슬라이드 ${idx + 1}`}
+            onClick={() => setI(idx)}
+            className={`h-1.5 w-8 rounded-full border border-ink/15 transition-colors ${
+              idx === i ? "bg-oxide" : "bg-background/85"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function VideoHero() {
   return (
     <section className="relative w-full overflow-hidden border-b border-antique-gold/35 bg-ink">

@@ -7,19 +7,9 @@ import { SectionHeading } from "@/components/section-heading";
 import { ScrollHighlight } from "@/components/scroll-highlight";
 import { supabase } from "@/integrations/supabase/client";
 import { products } from "@/data/site";
-// PC/모바일 히어로는 public 폴더의 최적화 배너 이미지를 사용합니다
-const desktopSlides = [
-  "/pc-hero-1.jpg",
-  "/pc-hero-2.jpg",
-  "/pc-hero-3.jpg",
-  "/pc-hero-4.jpg",
-];
-const mobileSlides = [
-  "/mobile-hero-v2-1.jpg",
-  "/mobile-hero-v2-2.jpg",
-  "/mobile-hero-v2-3.jpg",
-  "/mobile-hero-v2-4.jpg",
-];
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
+import heroVideoPoster from "@/assets/hero-video-poster.jpg.asset.json";
+
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import howtoImg from "@/assets/howto-v2.png.asset.json";

@@ -102,6 +102,31 @@ function GuidePage() {
             />
           </div>
 
+          {/* 최고급 수제비누의 강점 */}
+          <h2 className="mt-16 border-b border-[#c9b489] pb-3 text-2xl font-bold text-ink sm:text-3xl">
+            최고급 수제비누만의 특별한 강점
+          </h2>
+
+          <div className="mt-8 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
+            강점 1 : 계면활성 처방
+          </div>
+
+          <div className="mt-8 grid items-center gap-6 sm:grid-cols-3">
+            <Bubble title="수분과 결합" sub="피부의 수분을 붙잡아 줍니다" tone="orange" />
+            <ScrollHighlight className="rounded-full border border-[#c9b489] px-6 py-10 text-center">
+              <p className="font-serif text-lg text-ink">계면활성 처방</p>
+              <p className="mt-3 text-[13px] leading-7 text-foreground/85">
+                이시노 에이이치(石野栄一) 선생은 세안 비누의 원료를 연구하면서, 업계에 없던
+                독자적인 세정 성분인 '계면활성' 처방을 개발해 업계의 빈자리를 채웠습니다.
+              </p>
+            </ScrollHighlight>
+            <Bubble title="유분과 결합" sub="피부의 과한 유분을 흡수합니다" tone="gold" />
+          </div>
+
+          <p className="mt-8 text-center font-serif text-xl tracking-[0.15em] text-ink">
+            · 한층 산뜻하고 촉촉하게 ·
+          </p>
+
           {/* 거품의 3요소 + 세정 원리 4단계 */}
           <div className="mt-10 grid gap-8 sm:grid-cols-3">
             {[
@@ -142,31 +167,6 @@ function GuidePage() {
             ))}
           </div>
 
-
-          {/* 최고급 수제비누의 강점 */}
-          <h2 className="mt-16 border-b border-[#c9b489] pb-3 text-2xl font-bold text-ink sm:text-3xl">
-            최고급 수제비누만의 특별한 강점
-          </h2>
-
-          <div className="mt-8 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
-            강점 1 : 계면활성 처방
-          </div>
-
-          <div className="mt-8 grid items-center gap-6 sm:grid-cols-3">
-            <Bubble title="수분과 결합" sub="피부의 수분을 붙잡아 줍니다" tone="orange" />
-            <ScrollHighlight className="rounded-full border border-[#c9b489] px-6 py-10 text-center">
-              <p className="font-serif text-lg text-ink">계면활성 처방</p>
-              <p className="mt-3 text-[13px] leading-7 text-foreground/85">
-                이시노 에이이치(石野栄一) 선생은 세안 비누의 원료를 연구하면서, 업계에 없던
-                독자적인 세정 성분인 '계면활성' 처방을 개발해 업계의 빈자리를 채웠습니다.
-              </p>
-            </ScrollHighlight>
-            <Bubble title="유분과 결합" sub="피부의 과한 유분을 흡수합니다" tone="gold" />
-          </div>
-
-          <p className="mt-8 text-center font-serif text-xl tracking-[0.15em] text-ink">
-            · 한층 산뜻하고 촉촉하게 ·
-          </p>
 
           <div className="mt-14 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">
             강점 2 : 틀 제조법(框錬製法)

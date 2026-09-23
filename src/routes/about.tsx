@@ -207,7 +207,7 @@ function HistorySection() {
         홈 &gt; 브랜드 연혁
       </div>
 
-      <div className="sticky top-24 z-10 mt-14 bg-white/85 py-4 text-center backdrop-blur-sm">
+      <div className="sticky top-[150px] z-10 mt-14 bg-white py-4 text-center">
         <ScrollHighlight>
           <div className="text-[40px] font-light leading-none tracking-[0.18em] text-[#333]">
             HISTORY

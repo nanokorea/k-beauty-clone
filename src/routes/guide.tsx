@@ -3,6 +3,20 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ScrollHighlight } from "@/components/scroll-highlight";
 import soapsPhoto from "@/assets/features-ei-soaps-photo.jpg.asset.json";
+import step1 from "@/assets/feat-step1.jpg.asset.json";
+import step2 from "@/assets/feat-step2.jpg.asset.json";
+import step3 from "@/assets/feat-step3.jpg.asset.json";
+import step4 from "@/assets/feat-step4.jpg.asset.json";
+import ing1 from "@/assets/feat-ing1.jpg.asset.json";
+import ing2 from "@/assets/feat-ing2.jpg.asset.json";
+import ing3 from "@/assets/feat-ing3.jpg.asset.json";
+import ing4 from "@/assets/feat-ing4.jpg.asset.json";
+import ing5 from "@/assets/feat-ing5.jpg.asset.json";
+import pureWater from "@/assets/feat-pure.jpg.asset.json";
+import plantsImg from "@/assets/feat-plants.jpg.asset.json";
+import beforeImg from "@/assets/feat-before.jpg.asset.json";
+import afterImg from "@/assets/feat-after.jpg.asset.json";
+import soapImg from "@/assets/feat-soap.jpg.asset.json";
 
 export const Route = createFileRoute("/guide")({
   head: () => ({

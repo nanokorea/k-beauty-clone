@@ -221,7 +221,7 @@ function GuidePage() {
             강점 3 : 엄선한 귀한 미용 성분
           </div>
           <ScrollHighlight>
-            <p className="mt-6 font-serif text-xl leading-[1.7] text-ink sm:text-2xl">
+            <p className="mt-6 font-sans font-medium text-xl leading-[1.7] text-ink sm:text-2xl">
               값비싼 미용 성분을 아낌없이 담아, 30여 종 식물 정수로 거품망에서 피어나는
               거품 한 알 한 알이 매우 귀합니다.
             </p>
@@ -285,7 +285,7 @@ function GuidePage() {
             강점 4 : 순식물성 비누 베이스와 의료용 순수
           </div>
 
-          <ScrollHighlight className="mt-6 space-y-2 font-serif text-xl text-ink sm:text-2xl">
+          <ScrollHighlight className="mt-6 space-y-2 font-sans font-medium text-xl text-ink sm:text-2xl">
             <p>· 피부를 돌보는 순식물성 비누 베이스</p>
             <p>· 의료 투석 등급의 고품질 순수</p>
           </ScrollHighlight>
@@ -351,7 +351,7 @@ function GuidePage() {
             ))}
           </div>
 
-          <p className="mt-8 text-center font-serif text-xl leading-[1.7] text-ink sm:text-2xl">
+          <p className="mt-8 text-center font-sans font-medium text-xl leading-[1.7] text-ink sm:text-2xl">
             클렌징 + 세안 + 마스크 삼합일, 비누 하나로 세 가지 데일리 케어를 끝냅니다.
           </p>
           <p className="mt-3 text-center text-[14px] text-foreground/85">

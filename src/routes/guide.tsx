@@ -67,33 +67,8 @@ function GuidePage() {
         </div>
 
         <div className="mx-auto max-w-[1000px] px-4 pb-20">
-          {/* 상단 액자 */}
-          <div className="relative mt-6 border border-[#e3d7bd] bg-story-ivory px-6 py-10 md:px-12">
-            <Corner className="left-3 top-3" />
-            <Corner className="right-3 top-3 rotate-90" />
-            <Corner className="bottom-3 right-3 rotate-180" />
-            <Corner className="bottom-3 left-3 -rotate-90" />
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-end">
-              <img
-                src={portrait.url}
-                alt="이시노 에이이치(石野栄一)"
-                className="w-[180px] shrink-0"
-              />
-              <ScrollHighlight className="text-center sm:text-left">
-                <p className="font-serif text-[34px] leading-none tracking-[0.1em] text-ink">
-                  石 野 栄 一
-                </p>
-                <p className="mt-3 text-[13px] tracking-[0.3em] text-primary">
-                  Eiichi Ishino
-                </p>
-                <p className="mt-6 text-[17px] font-semibold text-[#8b6d3a]">
-                  일본 수제비누의 아버지 — 이시노 에이이치(石野栄一) 선생
-                </p>
-              </ScrollHighlight>
-            </div>
-          </div>
-
           {/* 소개 본문 + 사진 */}
+
           <div className="mt-12 grid items-start gap-10 md:grid-cols-[1fr_300px]">
             <ScrollHighlight className="space-y-5 border-t border-[#ddd] pt-8 text-[15px] leading-7 text-foreground/85">
               <p>

@@ -78,8 +78,7 @@ function Home() {
     <div className="min-h-screen">
       <SiteHeader />
       <main>
-        <DesktopHero />
-        <MobileHero />
+        <VideoHero />
 
         <section className="bg-story-ivory py-20">
           <SectionHeading title="EI에 대하여" sub="About EI" />

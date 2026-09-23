@@ -14,6 +14,7 @@ import herb10 from "@/assets/sy-l10.gif.asset.json";
 import stepPic1 from "@/assets/sy-spic1.jpg.asset.json";
 import stepPic2 from "@/assets/sy-spic2.jpg.asset.json";
 import stepPic3 from "@/assets/sy-spic3.jpg.asset.json";
+import bubbleFoam from "@/assets/bubble-foam.gif.asset.json";
 
 export const Route = createFileRoute("/how-to-wash")({
   head: () => ({
@@ -71,15 +72,17 @@ function HowToWash() {
             올바른 한방·거품 팩 세안법
           </h1>
 
-          <div className="mt-10 text-center text-[17px] leading-8 text-primary sm:text-lg">
+          <div className="mt-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_360px]">
+            <div className="mx-auto w-full max-w-[860px] md:mx-0">
+          <div className="text-left text-[17px] leading-7 text-primary sm:text-lg">
             오늘부터는 세안을 하면서 스킨케어를.
             <br />
-            한방 추출물을 배합한 최상의 거품을 두르는 한때가
+            한방 추출물을 배합한 최상의 거품이
             <br />
             당신을 더욱 아름다운 피부로 이끕니다.
           </div>
 
-          <div className="mx-auto mt-10 max-w-[860px] text-[15px] leading-7 text-foreground/85">
+          <div className="mt-8 text-[15px] leading-7 text-foreground/85">
             <p>
               촘촘한 거품을 피부에 올리고 몇 분간 팩을 하기만 하면 됩니다.
               <br />
@@ -91,6 +94,14 @@ function HowToWash() {
               <br />
               그것이 이시노 에이이치(石野栄一)가 만든 거품 팩 미용비누입니다.
             </p>
+          </div>
+            </div>
+            <img
+              src={bubbleFoam.url}
+              alt="풍성한 거품을 손에 올린 모습"
+              className="mx-auto w-full max-w-[360px] rounded-sm"
+              loading="lazy"
+            />
           </div>
 
           <div className="mt-12 bg-story-ivory px-5 py-4 text-center text-[15px] font-semibold leading-7 text-ink">

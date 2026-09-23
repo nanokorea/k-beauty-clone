@@ -7,8 +7,6 @@ import { SectionHeading } from "@/components/section-heading";
 import { ScrollHighlight } from "@/components/scroll-highlight";
 import { supabase } from "@/integrations/supabase/client";
 import { products } from "@/data/site";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
-import heroVideoPoster from "@/assets/hero-video-poster.jpg.asset.json";
 
 const desktopSlides = ["/pc-hero-1.jpg", "/pc-hero-2.jpg", "/pc-hero-3.jpg", "/pc-hero-4.jpg"];
 const mobileSlides = [
@@ -126,25 +124,6 @@ function MobileHero() {
   );
 }
 
-function VideoHero() {
-  return (
-    <section className="relative w-full overflow-hidden border-b border-antique-gold/35 bg-ink">
-      <div className="relative h-[68vh] min-h-[380px] w-full sm:h-[78vh] lg:h-[86vh]">
-        <video
-          className="absolute inset-0 size-full object-cover"
-          src={heroVideo.url}
-          poster={heroVideoPoster.url}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-        <div className="absolute inset-0 bg-ink/20" aria-hidden="true" />
-      </div>
-    </section>
-  );
-}
 
 
 function Home() {
@@ -169,7 +148,6 @@ function Home() {
       <main>
         <DesktopHero />
         <MobileHero />
-        <VideoHero />
 
         <section className="bg-story-ivory py-20">
           <SectionHeading title="EI에 대하여" sub="About EI" />

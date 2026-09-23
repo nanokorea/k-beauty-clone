@@ -102,6 +102,47 @@ function GuidePage() {
             />
           </div>
 
+          {/* 거품의 3요소 + 세정 원리 4단계 */}
+          <div className="mt-10 grid gap-8 sm:grid-cols-3">
+            {[
+              { t: "섬세함", d: "섬세한 거품일수록 흡착력이 강합니다" },
+              { t: "탄력", d: "마찰로 인한 각질층 손상을 막아 줍니다" },
+              { t: "농도", d: "알맞은 농도가 흡착력을 높여 줍니다" },
+            ].map((f) => (
+              <ScrollHighlight key={f.t} className="text-center">
+                <p className="border-b border-[#a98c48] pb-2 text-lg font-bold text-ink">{f.t}</p>
+                <p className="mt-3 text-[14px] leading-7 text-foreground/85">{f.d}</p>
+              </ScrollHighlight>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                img: step1.url,
+                d: "지름 0.001mm의 촘촘한 거품이 새롭게 개발한 계면활성 성분과 영양·미용·보습 성분을 감싸 모공 깊숙이 스며듭니다.",
+              },
+              {
+                img: step2.url,
+                d: "계면활성 성분이 모공 속 노폐물과 피지를 분해해 흡착하고, 동시에 거품 속 영양·미용 성분이 피부 깊은 층까지 전달됩니다.",
+              },
+              {
+                img: step3.url,
+                d: "노폐물과 피지가 흡착되어 배출되는 동시에 보습 성분이 수분을 잡아 오래 촉촉함을 유지합니다.",
+              },
+              {
+                img: step4.url,
+                d: "이렇게 세정·영양 케어·장시간 보습이 하나로 이어지는 이시노 선생의 피부 미용 철학이 완성됩니다.",
+              },
+            ].map((s, i) => (
+              <ScrollHighlight key={i} delay={i % 3}>
+                <img src={s.img} alt={`세정 원리 ${i + 1}단계`} className="w-full" loading="lazy" />
+                <p className="mt-3 text-[13px] leading-7 text-foreground/85">{s.d}</p>
+              </ScrollHighlight>
+            ))}
+          </div>
+
+
           {/* 최고급 수제비누의 강점 */}
           <h2 className="mt-16 border-b border-[#c9b489] pb-3 text-2xl font-bold text-ink sm:text-3xl">
             최고급 수제비누만의 특별한 강점

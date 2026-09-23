@@ -191,19 +191,6 @@ function GuidePage() {
             </table>
           </div>
 
-          {/* 공익 활동 */}
-          <h2 className="mt-20 border-b border-[#c9b489] pb-3 text-2xl font-bold text-ink sm:text-3xl">
-            따뜻한 나눔, 사회 공헌
-          </h2>
-
-          <ul className="mt-10 grid grid-cols-1 items-end gap-10 sm:grid-cols-3">
-            {certificates.map((c) => (
-              <li key={c.caption} className="text-center">
-                <img src={c.img} alt={c.caption} className="mx-auto w-full" loading="lazy" />
-                <p className="mt-4 text-sm text-foreground/85">{c.caption}</p>
-              </li>
-            ))}
-          </ul>
         </div>
       </main>
       <SiteFooter />

@@ -14,6 +14,7 @@ import herb10 from "@/assets/sy-l10.gif.asset.json";
 import stepPic1 from "@/assets/sy-spic1.jpg.asset.json";
 import stepPic2 from "@/assets/sy-spic2.jpg.asset.json";
 import stepPic3 from "@/assets/sy-spic3.jpg.asset.json";
+import bubbleFoam from "@/assets/bubble-foam.gif.asset.json";
 
 export const Route = createFileRoute("/how-to-wash")({
   head: () => ({

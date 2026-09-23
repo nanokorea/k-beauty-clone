@@ -65,17 +65,19 @@ function About() {
             />
           </div>
 
-          {/* 타이틀 */}
-          <div className="mt-[52px] text-center">
-            <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
-              Eiichi Ishino
-            </div>
-            <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
-              ABOUT
-            </div>
-            <div className="mt-4 text-[13px] text-[#666]">
-              Eiichi Ishino 소개
-            </div>
+          {/* 타이틀 (스티키) */}
+          <div className="sticky top-24 z-10 mt-[52px] bg-white/85 py-4 text-center backdrop-blur-sm">
+            <ScrollHighlight>
+              <div className="font-serif text-[34px] leading-none tracking-[0.12em] text-[#333]">
+                Eiichi Ishino
+              </div>
+              <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
+                ABOUT
+              </div>
+              <div className="mt-4 text-[13px] text-[#666]">
+                Eiichi Ishino 소개
+              </div>
+            </ScrollHighlight>
           </div>
 
           {/* 본문 액자 */}
@@ -88,10 +90,12 @@ function About() {
                 backgroundSize: "100% auto",
               }}
             >
-              {paragraphs.map((text) => (
-                <p key={text} className="mb-6 indent-[2em] last:mb-0">
-                  {text}
-                </p>
+              {paragraphs.map((text, index) => (
+                <ScrollHighlight key={text} delay={index % 3}>
+                  <p className="mb-6 indent-[2em] text-[#8f8f8f] transition-colors duration-1000 [.opacity-100_&]:text-[#4a4a4a]">
+                    {text}
+                  </p>
+                </ScrollHighlight>
               ))}
             </div>
             <img

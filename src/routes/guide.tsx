@@ -171,10 +171,10 @@ function GuidePage() {
             EI 2 : 틀 제조법(框錬製法)
           </div>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-[160px_1fr]">
-            <h3 className="font-serif text-2xl text-ink">틀 제조법</h3>
+          <div className="mt-6">
+            <h3 className="font-sans text-lg font-bold text-ink">틀 제조법</h3>
             <ScrollHighlight>
-              <p className="text-[15px] leading-7 text-foreground/85">
+              <p className="mt-2 font-sans text-[14px] leading-7 text-foreground/85">
                 이시노 에이이치(石野栄一) 선생은 수제비누의 '틀 제조법(框錬製法)'이라는
                 시대를 앞서간 생산 공정을 독자적으로 만들어 냈습니다. 이 공법은 일반 세안
                 비누의 영양 성분이 적고 효과가 단조로웠던 한계를 해결하는 동시에, 세안과
@@ -184,27 +184,21 @@ function GuidePage() {
             </ScrollHighlight>
           </div>
 
-          <div className="mt-10 overflow-x-auto">
-            <table className="w-full min-w-[560px] text-center text-[14px]">
+          <div className="mt-6 overflow-x-auto">
+            <table className="w-full min-w-[520px] border-t border-ink/30 font-sans text-[13px]">
               <thead>
-                <tr>
-                  <th className="w-[26%]" />
-                  <th className="bg-[#fdf6e6] px-4 py-4 font-serif text-lg tracking-[0.2em] text-ink">
-                    틀 제조법
-                  </th>
-                  <th className="px-4 py-4 font-serif text-lg tracking-[0.2em] text-ink">
-                    기계 제조법
-                  </th>
+                <tr className="border-b border-ink/15 text-left">
+                  <th className="w-[22%] py-2 font-medium text-muted-foreground">구분</th>
+                  <th className="py-2 font-bold text-primary">틀 제조법</th>
+                  <th className="py-2 font-medium text-muted-foreground">기계 제조법</th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row) => (
-                  <tr key={row.label}>
-                    <td className="py-4 text-left text-[15px] text-ink">· {row.label}</td>
-                    <td className="bg-[#fdf6e6] px-4 py-4 leading-7 text-foreground/85">
-                      {row.frame}
-                    </td>
-                    <td className="px-4 py-4 leading-7 text-foreground/85">{row.machine}</td>
+                  <tr key={row.label} className="border-b border-ink/10">
+                    <td className="py-2 pr-3 text-ink">{row.label}</td>
+                    <td className="py-2 pr-3 leading-7 text-foreground/90">{row.frame}</td>
+                    <td className="py-2 leading-7 text-muted-foreground">{row.machine}</td>
                   </tr>
                 ))}
               </tbody>

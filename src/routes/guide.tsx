@@ -103,7 +103,7 @@ function GuidePage() {
 
           {/* 최고급 수제비누의 강점 */}
           <h2 className="mt-16 border-b border-[#c9b489] pb-3 text-2xl font-bold text-ink sm:text-3xl">
-            최고급 수제비누만의 특별한 강점
+            EI 미용비누는 다릅니다.
           </h2>
 
           <div className="mt-8 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">

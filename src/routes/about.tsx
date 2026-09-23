@@ -263,27 +263,29 @@ function HistorySection() {
         <Corner className="bottom-3 left-3 -rotate-90" />
         <ul className="space-y-14">
           {corporateHistory.map((item, index) => (
-            <li
-              key={item.year}
-              className={`flex flex-col gap-4 md:flex-row md:items-start md:gap-10 ${
-                index % 2 === 1 ? "md:flex-row-reverse" : ""
-              }`}
-            >
-              <div
-                className={`md:w-[34%] ${
-                  index % 2 === 1 ? "md:text-left" : "md:text-right"
+            <li key={item.year}>
+              <ScrollHighlight
+                delay={index % 3}
+                className={`group flex flex-col gap-4 md:flex-row md:items-start md:gap-10 ${
+                  index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#333]">
-                  {item.year}
+                <div
+                  className={`md:w-[34%] ${
+                    index % 2 === 1 ? "md:text-left" : "md:text-right"
+                  }`}
+                >
+                  <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#8d8d8d] transition-colors duration-1000 group-[.opacity-100]:text-[#333]">
+                    {item.year}
+                  </div>
+                  <div className="mt-2 text-[12px] tracking-[0.16em] text-[#c9b489] transition-colors duration-1000 group-[.opacity-100]:text-[#a98c48]">
+                    {item.era}
+                  </div>
                 </div>
-                <div className="mt-2 text-[12px] tracking-[0.16em] text-[#a98c48]">
-                  {item.era}
-                </div>
-              </div>
-              <p className="text-[14px] leading-[1.9] text-[#666] md:w-[66%]">
-                {item.body}
-              </p>
+                <p className="text-[14px] leading-[1.9] text-[#a3a3a3] transition-colors duration-1000 group-[.opacity-100]:text-[#666] md:w-[66%]">
+                  {item.body}
+                </p>
+              </ScrollHighlight>
             </li>
           ))}
         </ul>

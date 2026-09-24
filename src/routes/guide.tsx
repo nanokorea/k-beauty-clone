@@ -40,8 +40,8 @@ export const Route = createFileRoute("/guide")({
 
 const comparison = [
   { label: "제조 방식", frame: "전 천연 숙성 제조", machine: "기계 제조" },
-  { label: "기본 원료", frame: "75% (함유 비율)", machine: "98% (함유 비율)" },
-  { label: "영양 정수", frame: "25% (함유 비율)", machine: "2% (함유 비율)" },
+  { label: "기본 원료", frame: "70% (함유 비율)", machine: "98% (함유 비율)" },
+  { label: "영양 정수", frame: "30% (함유 비율)", machine: "2% (함유 비율)" },
   {
     label: "생산 과정",
     frame: "부드러운 가열 · 자연 냉각 · 자연 건조",
@@ -218,8 +218,12 @@ function GuidePage() {
           </div>
           <ScrollHighlight>
             <p className="mt-6 font-sans font-medium text-xl leading-[1.7] text-ink sm:text-2xl">
-              값비싼 미용 성분을 아낌없이 담아, 30여 종 식물 정수로 거품망에서 피어나는
-              거품 한 알 한 알이 매우 귀합니다.
+              성분이 다릅니다.
+            </p>
+            <p className="mt-2 font-sans text-[14px] leading-7 text-foreground/85">
+              EI의 모든 제품은 각 제품의 특성에 맞는 귀한 성분으로 이루어져 있습니다. 성분의
+              내용과 함량은 까다로운 일본 식품분석센터의 인증서를 모두 획득하였으며, 중국
+              국가식품약품감독관리국의 인증서도 획득하였습니다.
             </p>
           </ScrollHighlight>
 
@@ -281,9 +285,8 @@ function GuidePage() {
             EI 4 : 순식물성 비누 베이스와 의료용 순수
           </div>
 
-          <ScrollHighlight className="mt-6 space-y-2 font-sans font-medium text-xl text-ink sm:text-2xl">
-            <p>· 피부를 돌보는 순식물성 비누 베이스</p>
-            <p>· 의료 투석 등급의 고품질 순수</p>
+          <ScrollHighlight className="mt-6 font-sans font-medium text-xl text-ink sm:text-2xl">
+            <p>물이 다릅니다.</p>
           </ScrollHighlight>
 
           <ScrollHighlight className="mt-8 space-y-5 text-[15px] leading-7 text-foreground/85">

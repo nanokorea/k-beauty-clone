@@ -20,13 +20,13 @@ import soapImg from "@/assets/feat-soap.jpg.asset.json";
 export const Route = createFileRoute("/guide")({
   head: () => ({
     meta: [
-      { title: "EI soap는? | JUNCO CLASSIC 한국" },
+      { title: "EI 미용비누는? | JUNCO CLASSIC 한국" },
       {
         name: "description",
         content:
           "일본 수제비누의 아버지 이시노 에이이치(石野栄一)가 만든 최고급 수제비누의 특징 — 계면활성 처방과 틀 제조법(框錬製法)을 소개합니다.",
       },
-      { property: "og:title", content: "EI soap는? | JUNCO CLASSIC 한국" },
+      { property: "og:title", content: "EI 미용비누는? | JUNCO CLASSIC 한국" },
       {
         property: "og:description",
         content: "최고급 수제비누의 특징: 계면활성 처방과 틀 제조법.",
@@ -67,7 +67,7 @@ function GuidePage() {
       <SiteHeader />
       <main>
         <div className="mx-auto max-w-[1000px] px-4 pt-8 text-xs text-muted-foreground">
-          홈 &gt; EI soap는?
+          홈 &gt; EI 미용비누는?
         </div>
 
         <div className="mx-auto max-w-[1000px] px-4 pb-20">
@@ -111,7 +111,7 @@ function GuidePage() {
           </div>
 
           <ScrollHighlight className="mt-6 font-sans">
-            <h3 className="font-sans text-lg font-bold text-ink">계면활성 처방</h3>
+            <h3 className="font-sans text-lg font-bold text-ink">계면활성 처방 – 거품의 입자가 다릅니다.</h3>
             <p className="mt-2 text-[14px] leading-7 text-foreground/85">
               이시노 에이이치(石野栄一) 선생은 세안 비누의 원료를 연구하면서, 업계에 없던
               독자적인 세정 성분인 '계면활성' 처방을 개발해 업계의 빈자리를 채웠습니다.
@@ -126,7 +126,6 @@ function GuidePage() {
                 <p className="text-[13px] leading-7 text-foreground/80">피부의 과한 유분을 흡수합니다</p>
               </div>
             </div>
-            <p className="mt-3 text-[14px] font-medium text-ink">한층 산뜻하고 촉촉하게</p>
           </ScrollHighlight>
 
           {/* 거품의 3요소 + 세정 원리 4단계 */}
@@ -175,11 +174,12 @@ function GuidePage() {
           </div>
 
           <div className="mt-6">
-            <h3 className="font-sans text-lg font-bold text-ink">틀 제조법</h3>
+            <h3 className="font-sans text-lg font-bold text-ink">틀 제조법 – 비누 한 조각을 만들기 위해 90일 숙성 과정을 거칩니다.</h3>
             <ScrollHighlight>
               <p className="mt-2 font-sans text-[14px] leading-7 text-foreground/85">
                 이시노 에이이치(石野栄一) 선생은 수제비누의 '틀 제조법(框錬製法)'이라는
-                시대를 앞서간 생산 공정을 독자적으로 만들어 냈습니다. 이 공법은 일반 세안
+                시대를 앞서간 생산 공정을 독자적으로 만들어 냈습니다. 비누 한 조각을 만들기 위해 90일간의 자연 숙성 과정을 통해 원래의
+                영양 성분을 농축·보존하는 방식으로, 이 공법은 일반 세안
                 비누의 영양 성분이 적고 효과가 단조로웠던 한계를 해결하는 동시에, 세안과
                 피부 관리, 오래가는 아름다움을 하나로 아울렀습니다. 틀 제조법으로 만든 JUNCO
                 CLASSIC은 보기에도 맑고 투명하며 부드럽습니다.

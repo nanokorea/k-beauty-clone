@@ -54,7 +54,7 @@ export function SiteFooter() {
             links={[
               { label: "BRAND HISTORY", to: "/brand-story" },
               { label: "EI STORY", to: "/about" },
-              { label: "EI soap는?", to: "/guide" },
+              { label: "EI 미용비누는?", to: "/guide" },
               { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
             ]}
           />

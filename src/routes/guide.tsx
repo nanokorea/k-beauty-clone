@@ -12,7 +12,7 @@ import ing2 from "@/assets/feat-ing2.jpg.asset.json";
 import ing3 from "@/assets/feat-ing3.jpg.asset.json";
 import ing4 from "@/assets/feat-ing4.jpg.asset.json";
 import ing5 from "@/assets/feat-ing5.jpg.asset.json";
-import pureWater from "@/assets/feat-pure.jpg.asset.json";
+import pureWater from "@/assets/feat-pure-ko.png.asset.json";
 import beforeImg from "@/assets/feat-before.jpg.asset.json";
 import afterImg from "@/assets/feat-after.jpg.asset.json";
 import soapImg from "@/assets/feat-soap.jpg.asset.json";
@@ -313,7 +313,7 @@ function GuidePage() {
           <img
             src={pureWater.url}
             alt="역삼투압 정수 과정"
-            className="mx-auto mt-8 w-full max-w-[560px]"
+            className="mx-auto mt-8 w-full max-w-[820px]"
             loading="lazy"
           />
 

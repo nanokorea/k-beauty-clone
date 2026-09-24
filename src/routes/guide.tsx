@@ -189,9 +189,27 @@ function GuidePage() {
             </ScrollHighlight>
           </div>
 
-          <div className="mx-auto mt-8 flex max-w-[720px] flex-col gap-6">
-            <img src={dry1.url} alt="틀 제조법 자연 건조 과정 1" className="w-full" loading="lazy" />
-            <img src={dry2.url} alt="틀 제조법 자연 건조 과정 2" className="w-full" loading="lazy" />
+          <div className="mt-6 grid items-start gap-6 md:grid-cols-[1fr_220px]">
+            <table className="w-full border-t border-ink/30 font-sans text-[13px]">
+              <thead>
+                <tr className="border-b border-ink/15 text-left">
+                  <th className="w-[26%] py-2 font-medium text-muted-foreground">구분</th>
+                  <th className="py-2 font-bold text-primary">틀 제조법</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.map((row) => (
+                  <tr key={row.label} className="border-b border-ink/10">
+                    <td className="py-2 pr-3 text-ink">{row.label}</td>
+                    <td className="py-2 leading-7 text-foreground/90">{row.frame}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="mx-auto flex w-full max-w-[220px] flex-col gap-3">
+              <img src={dry1.url} alt="틀 제조법 자연 건조 과정 1" className="w-full" loading="lazy" />
+              <img src={dry2.url} alt="틀 제조법 자연 건조 과정 2" className="w-full" loading="lazy" />
+            </div>
           </div>
 
           {/* EI 3 : 귀한 미용 성분 */}

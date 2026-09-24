@@ -180,8 +180,8 @@ function GuidePage() {
             <ScrollHighlight>
               <p className="mt-2 font-sans text-[14px] leading-7 text-foreground/85">
                 이시노 에이이치(石野栄一) 선생은 수제비누의 '틀 제조법(框錬製法)'이라는
-                시대를 앞서간 생산 공정을 독자적으로 만들어 냈습니다. 비누 한 조각을 만들기 위해 90일간의 자연 숙성 과정을 통해 원래의
-                영양 성분을 농축·보존하는 방식으로, 이 공법은 일반 세안
+                시대를 앞서간 생산 공정을 독자적으로 만들어 냈습니다. 비누 한 조각을 만들기 위해 90일간의 자연 숙성 과정을 거치면 비누 조각의 크기는 반으로 줄어들지만
+                영양 성분은 농축·보존하는 방식으로, 이 공법은 일반 세안
                 비누의 영양 성분이 적고 효과가 단조로웠던 한계를 해결하는 동시에, 세안과
                 피부 관리, 오래가는 아름다움을 하나로 아울렀습니다. 틀 제조법으로 만든 JUNCO
                 CLASSIC은 보기에도 맑고 투명하며 부드럽습니다.
@@ -344,10 +344,7 @@ function GuidePage() {
           </div>
 
           <p className="mt-8 text-center font-sans font-medium text-xl leading-[1.7] text-ink sm:text-2xl">
-            클렌징 + 세안 + 마스크 삼합일, 비누 하나로 세 가지 데일리 케어를 끝냅니다.
-          </p>
-          <p className="mt-3 text-center text-[14px] text-foreground/85">
-            EI 수제비누 10g = 아침·저녁 세안 10일 + 미용 클렌징 마스크 20여 회
+            클렌징 + 세안 + 마스크, 비누 하나로 세 가지 데일리 케어를 끝냅니다.
           </p>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2">

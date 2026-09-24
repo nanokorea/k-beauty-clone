@@ -16,6 +16,8 @@ import pureWater from "@/assets/feat-pure.jpg.asset.json";
 import beforeImg from "@/assets/feat-before.jpg.asset.json";
 import afterImg from "@/assets/feat-after.jpg.asset.json";
 import soapImg from "@/assets/feat-soap.jpg.asset.json";
+import dry1 from "@/assets/feat-dry1.jpg.asset.json";
+import dry2 from "@/assets/feat-dry2.jpg.asset.json";
 
 export const Route = createFileRoute("/guide")({
   head: () => ({
@@ -187,30 +189,10 @@ function GuidePage() {
             </ScrollHighlight>
           </div>
 
-          <div className="mt-6 overflow-x-auto">
-            <table className="w-full min-w-[520px] border-t border-ink/30 font-sans text-[13px]">
-              <thead>
-                <tr className="border-b border-ink/15 text-left">
-                  <th className="w-[22%] py-2 font-medium text-muted-foreground">구분</th>
-                  <th className="py-2 font-bold text-primary">틀 제조법</th>
-                  <th className="py-2 font-medium text-muted-foreground">기계 제조법</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.map((row) => (
-                  <tr key={row.label} className="border-b border-ink/10">
-                    <td className="py-2 pr-3 text-ink">{row.label}</td>
-                    <td className="py-2 pr-3 leading-7 text-foreground/90">{row.frame}</td>
-                    <td className="py-2 leading-7 text-muted-foreground">{row.machine}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mx-auto mt-8 flex max-w-[720px] flex-col gap-6">
+            <img src={dry1.url} alt="틀 제조법 자연 건조 과정 1" className="w-full" loading="lazy" />
+            <img src={dry2.url} alt="틀 제조법 자연 건조 과정 2" className="w-full" loading="lazy" />
           </div>
-
-          <p className="mt-3 text-right text-[12px] text-muted-foreground">
-            * 위 수치는 모두 이시노 선생 연구실에서 실제 측정한 데이터입니다.
-          </p>
 
           {/* EI 3 : 귀한 미용 성분 */}
           <div className="mt-16 inline-block bg-[#a98c48] px-4 py-1.5 text-sm font-semibold text-white">

@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { products } from "@/data/site";
+import { juncoIngredients } from "@/data/junco-ingredients";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -42,14 +43,12 @@ function ProductPage() {
             {product.body.map((line) => (
               <p key={line}>{line}</p>
             ))}
-            <a
-              href="https://juncoclassic.cart.fc2.com/?ca=all"
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to="/shop"
               className="mt-4 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
             >
-              온라인 스토어에서 구매
-            </a>
+              스토어 바로가기
+            </Link>
           </div>
         </div>
 
@@ -59,6 +58,35 @@ function ProductPage() {
               <img key={src} src={src} alt={`${product.name} 상세 이미지`} className="w-full rounded-sm" loading="lazy" />
             ))}
           </div>
+        ) : null}
+
+        {product.slug === "junco-classic" ? (
+          <section className="mx-auto mt-20 max-w-[1000px] px-4">
+            <p className="text-center text-[11px] tracking-[0.3em] text-muted-foreground">FULL INGREDIENT LIST</p>
+            <h3 className="mt-2 text-center text-xl font-semibold text-foreground">JUNCO CLASSIC 전성분</h3>
+            <div className="mt-8 overflow-x-auto">
+              <table className="w-full min-w-[640px] border-t-2 border-foreground text-left text-[13px] leading-7">
+                <thead>
+                  <tr className="border-b border-border text-foreground">
+                    <th className="w-12 py-3 pl-2 font-semibold">No.</th>
+                    <th className="py-3 font-semibold">Ingredient (INCI / 한글)</th>
+                    <th className="py-3 font-semibold">Origin / Source</th>
+                    <th className="py-3 font-semibold">Key Benefits</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {juncoIngredients.map(([name, origin, benefit], i) => (
+                    <tr key={name} className="border-b border-border/60 even:bg-secondary/40">
+                      <td className="py-2 pl-2 text-muted-foreground">{i + 1}</td>
+                      <td className="py-2 pr-3 font-medium text-foreground">{name}</td>
+                      <td className="py-2 pr-3 text-foreground/80">{origin}</td>
+                      <td className="py-2 text-primary">{benefit}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
         ) : null}
 
 

@@ -211,10 +211,6 @@ function ProductPage() {
                   <p className="mt-3 text-[15px] leading-7 text-foreground/85">{product.features}</p>
                 </div>
               ) : null}
-
-              <p className="mt-8 text-xs text-muted-foreground">
-                발매원 · 연락처 : 주식회사 이시브랜드 (株式会社 イーシーブランド)
-              </p>
             </section>
 
             {related && related.length > 0 ? (

@@ -43,12 +43,22 @@ function ProductPage() {
             {product.body.map((line) => (
               <p key={line}>{line}</p>
             ))}
-            <Link
-              to="/shop"
-              className="mt-4 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              스토어 바로가기
-            </Link>
+            {product.slug === "junco-classic" ? (
+              <Link
+                to="/shop/$slug"
+                params={{ slug: "junco-classic-100g" }}
+                className="mt-4 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                바로 구매하기
+              </Link>
+            ) : (
+              <Link
+                to="/shop"
+                className="mt-4 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                스토어 바로가기
+              </Link>
+            )}
           </div>
         </div>
 

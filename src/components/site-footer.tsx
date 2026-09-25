@@ -47,6 +47,12 @@ export function SiteFooter() {
               <br />
               Shaping beauty with you!
             </p>
+            <p className="mt-4 text-sm font-medium text-muted-foreground">
+              고객센터{" "}
+              <a href="tel:070-4517-0773" className="font-semibold text-primary">
+                070-4517-0773
+              </a>
+            </p>
           </div>
 
           <FooterColumn title="STORE" links={shopLinks} />
@@ -91,16 +97,6 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-8">
-          <p className="text-sm font-medium text-muted-foreground">고객센터</p>
-          <a
-            href={`tel:${contact.phone}`}
-            className="mt-2 inline-block text-2xl font-semibold text-primary"
-          >
-            {contact.phone}
-          </a>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{contact.hours}</p>
-        </div>
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} EIICHI ISHINO / JUNCO CLASSIC. All rights reserved.

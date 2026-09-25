@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
+import onlineStoreMark from "@/assets/online-store-mark.jpg.asset.json";
 import { contact, products } from "@/data/site";
 
 type FooterLink = { label: string; to: string; params?: Record<string, string> };
@@ -66,15 +67,28 @@ export function SiteFooter() {
               { label: "1:1 문의", to: "/contact" },
             ]}
           />
-          <FooterColumn
-            title="MY"
-            links={[
-              { label: "마이페이지", to: "/mypage" },
-              { label: "주문내역", to: "/orders" },
-              { label: "장바구니", to: "/cart" },
-              { label: "로그인 · 회원가입", to: "/auth" },
-            ]}
-          />
+          <div>
+            <FooterColumn
+              title="MY"
+              links={[
+                { label: "마이페이지", to: "/mypage" },
+                { label: "주문내역", to: "/orders" },
+                { label: "장바구니", to: "/cart" },
+                { label: "로그인 · 회원가입", to: "/auth" },
+              ]}
+            />
+            <Link
+              to="/shop"
+              aria-label="온라인 스토어로 이동"
+              className="mt-4 inline-block transition-opacity hover:opacity-85"
+            >
+              <img
+                src={onlineStoreMark.url}
+                alt="EI JUNCO CLASSIC ONLINE STORE"
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
+          </div>
         </div>
 
         <div className="mt-12 border-t border-border pt-8">

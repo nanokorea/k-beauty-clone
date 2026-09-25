@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ChevronDown, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import eiHomeLogo from "@/assets/ei-eiichi-ishino-logo.jpg.asset.json";
 import eiWordmark from "@/assets/ei-home-wordmark.png.asset.json";
+import onlineStoreMark from "@/assets/online-store-mark.jpg.asset.json";
 import { products } from "@/data/site";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/use-auth";
@@ -90,13 +91,23 @@ export function SiteHeader() {
               className="h-10 w-auto max-w-24 object-contain sm:h-12 sm:max-w-28"
             />
           </Link>
-          <div className="flex items-center justify-end gap-4">
+          <div className="flex items-center justify-end gap-6">
             {isAdmin ? (
               <Link to="/admin" className={`${topBarLinkClass} hover:text-porcelain`}>
                 관리자
               </Link>
             ) : null}
-            <span className={topBarLinkClass}>EI 공식몰</span>
+            <Link
+              to="/shop"
+              aria-label="온라인 스토어로 이동"
+              className="inline-flex transition-opacity hover:opacity-85"
+            >
+              <img
+                src={onlineStoreMark.url}
+                alt="EI JUNCO CLASSIC ONLINE STORE"
+                className="h-8 w-auto object-contain sm:h-10"
+              />
+            </Link>
           </div>
         </div>
       </div>

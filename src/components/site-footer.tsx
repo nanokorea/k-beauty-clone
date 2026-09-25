@@ -85,7 +85,7 @@ export function SiteFooter() {
               <img
                 src={onlineStoreMark.url}
                 alt="EI JUNCO CLASSIC ONLINE STORE"
-                className="h-12 w-auto object-contain"
+                className="h-[72px] w-auto object-contain"
               />
             </Link>
           </div>

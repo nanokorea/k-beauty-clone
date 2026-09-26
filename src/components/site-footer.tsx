@@ -92,11 +92,11 @@ export function SiteFooter() {
         <div className="md:pl-8">
           <Title>SNS</Title>
           <div className="mt-4 flex gap-2">
-            {sns.map(({ label, href, Icon }) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
+            {sns.map(({ label, Icon }) => (
+              <span key={label} role="img" aria-label={label}
                 className="flex size-14 items-center justify-center rounded-full bg-muted text-background transition-colors hover:bg-primary">
                 <Icon />
-              </a>
+              </span>
             ))}
           </div>
         </div>

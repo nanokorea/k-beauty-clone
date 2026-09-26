@@ -10,13 +10,13 @@ import { contact } from "@/data/site";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "1:1 견적 문의 | JUNCO CLASSIC 한국" },
+      { title: "문의하기 | JUNCO CLASSIC 한국" },
       {
         name: "description",
-        content: "JUNCO CLASSIC 제품 구매 및 유통 견적 문의는 문의 폼 또는 전화로 연락해 주세요.",
+        content: "JUNCO CLASSIC 제품 구매 및 유통 문의는 문의 폼 또는 전화로 연락해 주세요.",
       },
-      { property: "og:title", content: "1:1 견적 문의 | JUNCO CLASSIC 한국" },
-      { property: "og:description", content: "제품 및 유통 견적 문의 안내." },
+      { property: "og:title", content: "문의하기 | JUNCO CLASSIC 한국" },
+      { property: "og:description", content: "제품 및 유통 문의 안내." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -59,7 +59,7 @@ function Contact() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="py-16">
-        <SectionHeading title="1:1 견적 문의" sub="Contact" />
+        <SectionHeading title="문의하기" sub="Contact" />
         <div className="mx-auto mt-12 max-w-[720px] px-4">
           <div className="rounded-sm border border-border bg-card p-6 text-center">
             <p className="text-3xl font-semibold text-primary">{contact.phone}</p>

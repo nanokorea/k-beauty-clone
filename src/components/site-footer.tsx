@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
 import { products } from "@/data/site";
 import onlineStoreMark from "@/assets/online-store-mark.jpg.asset.json";
@@ -51,61 +53,88 @@ const sns = [
 
 type NavLink = { label: string; to: string; params?: Record<string, string> };
 
-function NavColumn({ title, links }: { title: string; links: NavLink[] }) {
-  return (
-    <div>
-      <p className="text-[11px] font-semibold tracking-[0.2em] text-oxide">{title}</p>
-      <ul className="mt-3 space-y-2 text-sm">
-        {links.map((l) => (
-          <li key={`${l.to}-${l.label}`}>
-            <Link to={l.to} params={l.params as never} className="transition-colors hover:text-primary">
-              {l.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export function SiteFooter() {
-  const shopLinks: NavLink[] = [
-    { label: "전체 상품", to: "/shop" },
-    ...products.slice(0, 4).map((p) => ({ label: p.name, to: "/products/$slug", params: { slug: p.slug } })),
+  const [open, setOpen] = useState<string | null>(null);
+  const groups: { title: string; links: NavLink[] }[] = [
+    {
+      title: "STORE",
+      links: [
+        { label: "전체 상품", to: "/shop" },
+        ...products.slice(0, 4).map((p) => ({ label: p.name, to: "/products/$slug", params: { slug: p.slug } })),
+      ],
+    },
+    {
+      title: "브랜드",
+      links: [
+        { label: "BRAND HISTORY", to: "/brand-story" },
+        { label: "EI STORY", to: "/about" },
+        { label: "EI 미용비누는?", to: "/guide" },
+        { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
+      ],
+    },
+    {
+      title: "고객센터",
+      links: [
+        { label: "공지사항", to: "/news" },
+        { label: "자주 묻는 질문", to: "/faq" },
+        { label: "문의하기", to: "/contact" },
+      ],
+    },
+    {
+      title: "MY",
+      links: [
+        { label: "마이페이지", to: "/mypage" },
+        { label: "주문내역", to: "/orders" },
+        { label: "장바구니", to: "/cart" },
+        { label: "로그인 · 회원가입", to: "/auth" },
+      ],
+    },
   ];
+  const current = groups.find((g) => g.title === open);
   return (
     <footer className="mt-24 border-t border-border bg-background text-muted-foreground">
       <div className="bg-secondary/60">
-        <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 md:grid-cols-[1.2fr_repeat(4,1fr)]">
-          <div>
+        <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-10 md:flex-row md:items-center md:justify-between">
+          <div className="flex items-center gap-4">
             <Link to="/" aria-label="홈으로">
               <img src={eiMark.url} alt="EI" className="h-14 w-14 rounded-sm object-cover" />
             </Link>
-            <p className="mt-4 text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed">
               EI · JUNCO CLASSIC 한국 공식 스토어
               <br />
               Shaping beauty with you!
             </p>
           </div>
-          <NavColumn title="STORE" links={shopLinks} />
-          <NavColumn title="브랜드" links={[
-            { label: "BRAND HISTORY", to: "/brand-story" },
-            { label: "EI STORY", to: "/about" },
-            { label: "EI 미용비누는?", to: "/guide" },
-            { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
-          ]} />
-          <NavColumn title="고객센터" links={[
-            { label: "공지사항", to: "/news" },
-            { label: "자주 묻는 질문", to: "/faq" },
-            { label: "문의하기", to: "/contact" },
-          ]} />
-          <NavColumn title="MY" links={[
-            { label: "마이페이지", to: "/mypage" },
-            { label: "주문내역", to: "/orders" },
-            { label: "장바구니", to: "/cart" },
-            { label: "로그인 · 회원가입", to: "/auth" },
-          ]} />
+          <nav className="flex flex-wrap gap-x-8 gap-y-2">
+            {groups.map((g) => (
+              <button
+                key={g.title}
+                type="button"
+                aria-expanded={open === g.title}
+                onClick={() => setOpen(open === g.title ? null : g.title)}
+                className={`inline-flex items-center gap-1 text-[13px] font-semibold tracking-[0.15em] transition-colors hover:text-oxide ${
+                  open === g.title ? "text-oxide" : "text-foreground/70"
+                }`}
+              >
+                {g.title}
+                <ChevronDown className={`size-3.5 transition-transform ${open === g.title ? "rotate-180" : ""}`} />
+              </button>
+            ))}
+          </nav>
         </div>
+        {current && (
+          <div className="border-t border-border">
+            <ul className="mx-auto flex max-w-[1200px] flex-wrap justify-end gap-x-6 gap-y-2 px-4 py-4 text-sm">
+              {current.links.map((l) => (
+                <li key={`${l.to}-${l.label}`}>
+                  <Link to={l.to} params={l.params as never} className="transition-colors hover:text-primary">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
       <div className="border-t border-border">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 md:grid-cols-4 md:gap-0 md:divide-x md:divide-border">

@@ -20,7 +20,9 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GuideRouteImport } from './routes/guide'
 import { Route as HowToWashRouteImport } from './routes/how-to-wash'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedCheckoutRouteImport } from './routes/_authenticated/checkout'
 import { Route as AuthenticatedMypageRouteImport } from './routes/_authenticated/mypage'
@@ -83,9 +85,19 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
@@ -135,7 +147,9 @@ export interface FileRoutesByFullPath {
   '/guide': typeof GuideRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRouteWithChildren
+  '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/checkout': typeof AuthenticatedCheckoutRoute
   '/mypage': typeof AuthenticatedMypageRoute
@@ -155,6 +169,8 @@ export interface FileRoutesByTo {
   '/guide': typeof GuideRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/checkout': typeof AuthenticatedCheckoutRoute
   '/mypage': typeof AuthenticatedMypageRoute
@@ -176,7 +192,9 @@ export interface FileRoutesById {
   '/guide': typeof GuideRoute
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRouteWithChildren
+  '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/checkout': typeof AuthenticatedCheckoutRoute
   '/_authenticated/mypage': typeof AuthenticatedMypageRoute
@@ -198,7 +216,9 @@ export interface FileRouteTypes {
     | '/guide'
     | '/how-to-wash'
     | '/news'
+    | '/privacy'
     | '/shop'
+    | '/terms'
     | '/admin'
     | '/checkout'
     | '/mypage'
@@ -218,6 +238,8 @@ export interface FileRouteTypes {
     | '/guide'
     | '/how-to-wash'
     | '/news'
+    | '/privacy'
+    | '/terms'
     | '/admin'
     | '/checkout'
     | '/mypage'
@@ -238,7 +260,9 @@ export interface FileRouteTypes {
     | '/guide'
     | '/how-to-wash'
     | '/news'
+    | '/privacy'
     | '/shop'
+    | '/terms'
     | '/_authenticated/admin'
     | '/_authenticated/checkout'
     | '/_authenticated/mypage'
@@ -260,7 +284,9 @@ export interface RootRouteChildren {
   GuideRoute: typeof GuideRoute
   HowToWashRoute: typeof HowToWashRoute
   NewsRoute: typeof NewsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ShopRoute: typeof ShopRouteWithChildren
+  TermsRoute: typeof TermsRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
 }
 
@@ -343,11 +369,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin': {
@@ -443,7 +483,9 @@ const rootRouteChildren: RootRouteChildren = {
   GuideRoute: GuideRoute,
   HowToWashRoute: HowToWashRoute,
   NewsRoute: NewsRoute,
+  PrivacyRoute: PrivacyRoute,
   ShopRoute: ShopRouteWithChildren,
+  TermsRoute: TermsRoute,
   ProductsSlugRoute: ProductsSlugRoute,
 }
 export const routeTree = rootRouteImport

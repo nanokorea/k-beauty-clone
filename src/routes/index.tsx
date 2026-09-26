@@ -187,13 +187,13 @@ function Home() {
           </div>
         </section>
 
-        <section className="bg-background py-20">
+        <section className="bg-background pt-20">
           <SectionHeading title="JUNCO CLASSIC 시리즈" sub="JUNCO CLASSIC Series" />
-          <div className="mx-auto mt-12 max-w-[1100px] space-y-16 px-4">
+          <div className="mt-12">
             {products.map((p, idx) => (
+              <div key={p.slug} className={idx % 2 === 0 ? "bg-background py-12" : "bg-story-ivory py-12"}>
               <div
-                key={p.slug}
-                className={`grid items-center gap-8 md:grid-cols-2 ${
+                className={`mx-auto grid max-w-[1100px] items-center gap-8 px-4 md:grid-cols-2 ${
                   idx % 2 === 1 ? "md:[&>a]:order-2" : ""
                 }`}
               >
@@ -218,50 +218,8 @@ function Home() {
                   </Link>
                 </ScrollHighlight>
               </div>
+              </div>
             ))}
-          </div>
-        </section>
-
-        <section className="bg-story-ivory py-20">
-          <SectionHeading title="공지사항" sub="NOTICE" />
-          <div className="mx-auto mt-10 max-w-[900px] px-4">
-            {noticesLoading ? (
-              <p className="py-10 text-center text-sm text-muted-foreground">불러오는 중…</p>
-            ) : (notices ?? []).length === 0 ? (
-              <p className="py-10 text-center text-sm text-muted-foreground">등록된 공지가 없습니다.</p>
-            ) : (
-              <ul className="divide-y divide-border border-y border-border">
-                {(notices ?? []).map((n) => (
-                  <li key={n.id}>
-                    <Link to="/news" className="flex gap-5 py-6 transition-colors hover:bg-secondary/40">
-                      <img
-                        src={n.image_url ?? eiMark.url}
-                        alt={n.image_url ? n.title : ""}
-                        className="size-20 shrink-0 object-cover"
-                        loading="lazy"
-                      />
-                      <div>
-                        <p className="text-xs tracking-wide text-muted-foreground">
-                          {new Date(n.created_at).toLocaleDateString("ko-KR")}
-                        </p>
-                        <h3 className="mt-2 text-base font-semibold text-foreground">{n.title}</h3>
-                        <p className="mt-2 line-clamp-2 text-sm leading-7 text-foreground/85">
-                          {n.excerpt || n.content}
-                        </p>
-                      </div>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
-            <div className="mt-8 text-center">
-              <Link
-                to="/news"
-                className="inline-flex items-center rounded-sm border border-primary px-8 py-3 text-sm text-primary transition-colors hover:bg-secondary"
-              >
-                공지사항 전체 보기
-              </Link>
-            </div>
           </div>
         </section>
 

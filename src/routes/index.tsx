@@ -1,11 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { ScrollHighlight } from "@/components/scroll-highlight";
-import { supabase } from "@/integrations/supabase/client";
 import { products } from "@/data/site";
 
 const desktopSlides = ["/pc-hero-1.jpg", "/pc-hero-2.jpg", "/pc-hero-3.jpg", "/pc-hero-4.jpg"];
@@ -20,7 +18,6 @@ const mobileSlides = [
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
-import eiMark from "@/assets/ei-mark.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -126,21 +123,6 @@ function MobileHero() {
 
 
 function Home() {
-  const { data: notices, isLoading: noticesLoading } = useQuery({
-    queryKey: ["posts", "notice", "home"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("posts")
-        .select("*")
-        .eq("category", "notice")
-        .eq("published", true)
-        .order("created_at", { ascending: false })
-        .limit(3);
-      if (error) throw error;
-      return data;
-    },
-  });
-
   return (
     <div className="min-h-screen">
       <SiteHeader />

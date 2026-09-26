@@ -66,7 +66,7 @@ function AdminPage() {
           {[
             { key: "products", label: "상품 관리" },
             { key: "orders", label: "주문 관리" },
-            { key: "inquiries", label: "견적 문의" },
+            { key: "inquiries", label: "문의하기" },
             { key: "posts", label: "공지 · 가이드" },
             { key: "members", label: "회원 관리" },
           ].map((t) => (

@@ -70,7 +70,7 @@ export function SiteFooter() {
             links={[
               { label: "공지사항", to: "/news" },
               { label: "자주 묻는 질문", to: "/faq" },
-              { label: "1:1 문의", to: "/contact" },
+              { label: "문의하기", to: "/contact" },
             ]}
           />
           <div>

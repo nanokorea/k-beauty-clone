@@ -29,7 +29,7 @@ const guideMenu: MenuLink[] = [
 const supportMenu: MenuLink[] = [
   { label: "공지사항", to: "/news" },
   { label: "자주 묻는 질문", to: "/faq" },
-  { label: "1:1 문의", to: "/contact" },
+  { label: "문의하기", to: "/contact" },
 ];
 
 function Dropdown({ label, items }: { label: string; items: MenuLink[] }) {

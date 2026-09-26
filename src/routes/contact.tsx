@@ -116,7 +116,7 @@ function Contact() {
                   className={fieldClass}
                   value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  placeholder="예: 도매 견적 문의"
+                  placeholder="예: 도매 문의"
                 />
               </label>
               <label className="block text-sm font-medium">

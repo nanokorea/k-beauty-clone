@@ -19,7 +19,6 @@ const mobileSlides = [
 
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
-import howtoImg from "@/assets/howto-v2.png.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
 
@@ -188,7 +187,7 @@ function Home() {
           </div>
         </section>
 
-        <section className="bg-secondary/60 py-20">
+        <section className="bg-background py-20">
           <SectionHeading title="JUNCO CLASSIC 시리즈" sub="JUNCO CLASSIC Series" />
           <div className="mx-auto mt-12 max-w-[1100px] space-y-16 px-4">
             {products.map((p, idx) => (
@@ -223,25 +222,7 @@ function Home() {
           </div>
         </section>
 
-        <section className="bg-story-ivory py-16">
-          <div className="mx-auto max-w-[700px] px-4 text-center">
-            <img
-              src={howtoImg.url}
-              alt="올바른 거품 팩 세안법"
-              className="mx-auto w-full rounded-sm"
-              loading="lazy"
-            />
-            <p className="mt-6 text-lg font-semibold">올바른 거품 팩 세안법</p>
-            <Link
-              to="/how-to-wash"
-              className="mt-5 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              자세히 보기
-            </Link>
-          </div>
-        </section>
-
-        <section className="py-20">
+        <section className="bg-story-ivory py-20">
           <SectionHeading title="공지사항" sub="NOTICE" />
           <div className="mx-auto mt-10 max-w-[900px] px-4">
             {noticesLoading ? (

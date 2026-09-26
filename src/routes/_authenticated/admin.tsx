@@ -98,6 +98,84 @@ function AdminPage() {
   );
 }
 
+type ProductForm = {
+  slug: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  price: number;
+  image_url: string;
+  stock: number;
+};
+
+const emptyProduct: ProductForm = {
+  slug: "",
+  name: "",
+  subtitle: "",
+  description: "",
+  price: 0,
+  image_url: "",
+  stock: 100,
+};
+
+async function uploadProductImage(file: File) {
+  const ext = file.name.split(".").pop() || "jpg";
+  const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+  const { error } = await supabase.storage.from("product-images").upload(path, file, {
+    contentType: file.type,
+  });
+  if (error) throw error;
+  const { data: signed, error: sErr } = await supabase.storage
+    .from("product-images")
+    .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+  if (sErr) throw sErr;
+  return signed.signedUrl;
+}
+
+function ImageField({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (url: string) => void;
+}) {
+  const [uploading, setUploading] = useState(false);
+  return (
+    <div className="flex items-center gap-2 sm:col-span-2">
+      <label className="shrink-0 cursor-pointer rounded-sm border border-input bg-secondary px-3 py-2 text-sm hover:bg-muted">
+        {uploading ? "올리는 중…" : "사진 파일 올리기"}
+        <input
+          type="file"
+          accept="image/*"
+          className="hidden"
+          disabled={uploading}
+          onChange={async (e) => {
+            const file = e.target.files?.[0];
+            e.target.value = "";
+            if (!file) return;
+            setUploading(true);
+            try {
+              onChange(await uploadProductImage(file));
+              toast.success("사진을 올렸습니다.");
+            } catch (err) {
+              toast.error((err as Error).message);
+            } finally {
+              setUploading(false);
+            }
+          }}
+        />
+      </label>
+      {value ? <img src={value} alt="" className="size-10 object-cover" /> : null}
+      <input
+        className={fieldClass}
+        placeholder="또는 사진 주소(URL)"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
+  );
+}
+
 function ProductsAdmin() {
   const qc = useQueryClient();
   const { data } = useQuery({
@@ -108,16 +186,9 @@ function ProductsAdmin() {
       return data;
     },
   });
-  const [form, setForm] = useState({
-    slug: "",
-    name: "",
-    subtitle: "",
-    description: "",
-    price: 0,
-    image_url: "",
-    stock: 100,
-  });
-  const [uploading, setUploading] = useState(false);
+  const [form, setForm] = useState<ProductForm>(emptyProduct);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editForm, setEditForm] = useState<ProductForm>(emptyProduct);
 
   const create = useMutation({
     mutationFn: async () => {
@@ -126,14 +197,14 @@ function ProductsAdmin() {
     },
     onSuccess: () => {
       toast.success("상품을 등록했습니다.");
-      setForm({ slug: "", name: "", subtitle: "", description: "", price: 0, image_url: "", stock: 100 });
+      setForm(emptyProduct);
       qc.invalidateQueries({ queryKey: ["admin-products"] });
     },
     onError: (e: Error) => toast.error(e.message),
   });
 
   const update = useMutation({
-    mutationFn: async (payload: { id: string; values: { price?: number; is_active?: boolean } }) => {
+    mutationFn: async (payload: { id: string; values: Partial<ProductForm> & { is_active?: boolean } }) => {
       const { error } = await supabase.from("products").update(payload.values).eq("id", payload.id);
       if (error) throw error;
     },
@@ -141,6 +212,7 @@ function ProductsAdmin() {
       toast.success("수정했습니다.");
       qc.invalidateQueries({ queryKey: ["admin-products"] });
     },
+    onError: (e: Error) => toast.error(e.message),
   });
 
   const remove = useMutation({
@@ -152,6 +224,7 @@ function ProductsAdmin() {
       toast.success("삭제했습니다.");
       qc.invalidateQueries({ queryKey: ["admin-products"] });
     },
+    onError: (e: Error) => toast.error(e.message),
   });
 
   return (
@@ -167,41 +240,7 @@ function ProductsAdmin() {
         <input required className={fieldClass} placeholder="상품명" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
         <input className={fieldClass} placeholder="부제" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
         <input className={fieldClass} type="number" placeholder="가격" value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
-        <div className="flex items-center gap-2">
-          <label className="shrink-0 cursor-pointer rounded-sm border border-input bg-secondary px-3 py-2 text-sm hover:bg-muted">
-            {uploading ? "올리는 중…" : "사진 파일 올리기"}
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              disabled={uploading}
-              onChange={async (e) => {
-                const file = e.target.files?.[0];
-                e.target.value = "";
-                if (!file) return;
-                setUploading(true);
-                try {
-                  const ext = file.name.split(".").pop() || "jpg";
-                  const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-                  const { error } = await supabase.storage.from("product-images").upload(path, file, { contentType: file.type });
-                  if (error) throw error;
-                  const { data: signed, error: sErr } = await supabase.storage
-                    .from("product-images")
-                    .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
-                  if (sErr) throw sErr;
-                  setForm((f) => ({ ...f, image_url: signed.signedUrl }));
-                  toast.success("사진을 올렸습니다.");
-                } catch (err) {
-                  toast.error((err as Error).message);
-                } finally {
-                  setUploading(false);
-                }
-              }}
-            />
-          </label>
-          {form.image_url ? <img src={form.image_url} alt="" className="size-10 object-cover" /> : null}
-          <input className={fieldClass} placeholder="또는 사진 주소(URL)" value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} />
-        </div>
+        <ImageField value={form.image_url} onChange={(url) => setForm((f) => ({ ...f, image_url: url }))} />
         <input className={fieldClass} type="number" placeholder="재고" value={form.stock} onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })} />
         <textarea className={`${fieldClass} sm:col-span-2`} rows={3} placeholder="상품 설명" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
         <button className="rounded-sm bg-primary px-6 py-2 text-sm text-primary-foreground sm:col-span-2">
@@ -211,35 +250,85 @@ function ProductsAdmin() {
 
       <ul className="space-y-3">
         {(data ?? []).map((p) => (
-          <li key={p.id} className="flex flex-wrap items-center gap-3 border border-border bg-card p-4">
-            {p.image_url ? <img src={p.image_url} alt={p.name} className="size-14 object-cover" /> : null}
-            <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium">{p.name}</p>
-              <p className="text-xs text-muted-foreground">{p.slug}</p>
+          <li key={p.id} className="border border-border bg-card p-4">
+            <div className="flex flex-wrap items-center gap-3">
+              {p.image_url ? <img src={p.image_url} alt={p.name} className="size-14 object-cover" /> : null}
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium">
+                  {p.name}
+                  {!p.is_active ? <span className="ml-2 text-xs text-muted-foreground">(숨김)</span> : null}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {p.slug} · {formatPrice(p.price)} · 재고 {p.stock}
+                </p>
+              </div>
+              <label className="flex items-center gap-1 text-xs">
+                <input
+                  type="checkbox"
+                  checked={p.is_active}
+                  onChange={(e) => update.mutate({ id: p.id, values: { is_active: e.target.checked } })}
+                />
+                노출
+              </label>
+              <button
+                type="button"
+                className="rounded-sm border border-border px-3 py-1 text-xs hover:bg-secondary"
+                onClick={() => {
+                  if (editingId === p.id) {
+                    setEditingId(null);
+                    return;
+                  }
+                  setEditingId(p.id);
+                  setEditForm({
+                    slug: p.slug ?? "",
+                    name: p.name ?? "",
+                    subtitle: p.subtitle ?? "",
+                    description: p.description ?? "",
+                    price: p.price ?? 0,
+                    image_url: p.image_url ?? "",
+                    stock: p.stock ?? 0,
+                  });
+                }}
+              >
+                {editingId === p.id ? "닫기" : "수정"}
+              </button>
+              <button
+                type="button"
+                className="text-xs text-destructive underline"
+                onClick={() => {
+                  if (confirm("이 상품을 삭제할까요?")) remove.mutate(p.id);
+                }}
+              >
+                삭제
+              </button>
             </div>
-            <input
-              className="w-28 rounded-sm border border-input px-2 py-1 text-sm"
-              type="number"
-              defaultValue={p.price}
-              onBlur={(e) => update.mutate({ id: p.id, values: { price: Number(e.target.value) } })}
-            />
-            <label className="flex items-center gap-1 text-xs">
-              <input
-                type="checkbox"
-                defaultChecked={p.is_active}
-                onChange={(e) => update.mutate({ id: p.id, values: { is_active: e.target.checked } })}
-              />
-              노출
-            </label>
-            <button
-              type="button"
-              className="text-xs text-destructive underline"
-              onClick={() => {
-                if (confirm("이 상품을 삭제할까요?")) remove.mutate(p.id);
-              }}
-            >
-              삭제
-            </button>
+
+            {editingId === p.id ? (
+              <form
+                className="mt-4 grid gap-3 border-t border-border pt-4 sm:grid-cols-2"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  update.mutate(
+                    { id: p.id, values: editForm },
+                    { onSuccess: () => setEditingId(null) },
+                  );
+                }}
+              >
+                <input required className={fieldClass} placeholder="주소용 이름" value={editForm.slug} onChange={(e) => setEditForm({ ...editForm, slug: e.target.value })} />
+                <input required className={fieldClass} placeholder="상품명" value={editForm.name} onChange={(e) => setEditForm({ ...editForm, name: e.target.value })} />
+                <input className={fieldClass} placeholder="부제" value={editForm.subtitle} onChange={(e) => setEditForm({ ...editForm, subtitle: e.target.value })} />
+                <input className={fieldClass} type="number" placeholder="가격" value={editForm.price} onChange={(e) => setEditForm({ ...editForm, price: Number(e.target.value) })} />
+                <ImageField value={editForm.image_url} onChange={(url) => setEditForm((f) => ({ ...f, image_url: url }))} />
+                <input className={fieldClass} type="number" placeholder="재고" value={editForm.stock} onChange={(e) => setEditForm({ ...editForm, stock: Number(e.target.value) })} />
+                <textarea className={`${fieldClass} sm:col-span-2`} rows={3} placeholder="상품 설명" value={editForm.description} onChange={(e) => setEditForm({ ...editForm, description: e.target.value })} />
+                <div className="flex gap-2 sm:col-span-2">
+                  <button className="rounded-sm bg-primary px-6 py-2 text-sm text-primary-foreground">저장</button>
+                  <button type="button" className="rounded-sm border border-border px-6 py-2 text-sm" onClick={() => setEditingId(null)}>
+                    취소
+                  </button>
+                </div>
+              </form>
+            ) : null}
           </li>
         ))}
       </ul>

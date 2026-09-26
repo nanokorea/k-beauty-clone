@@ -117,6 +117,7 @@ function ProductsAdmin() {
     image_url: "",
     stock: 100,
   });
+  const [uploading, setUploading] = useState(false);
 
   const create = useMutation({
     mutationFn: async () => {
@@ -166,7 +167,41 @@ function ProductsAdmin() {
         <input required className={fieldClass} placeholder="상품명" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
         <input className={fieldClass} placeholder="부제" value={form.subtitle} onChange={(e) => setForm({ ...form, subtitle: e.target.value })} />
         <input className={fieldClass} type="number" placeholder="가격" value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
-        <input className={fieldClass} placeholder="사진 주소(URL)" value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} />
+        <div className="flex items-center gap-2">
+          <label className="shrink-0 cursor-pointer rounded-sm border border-input bg-secondary px-3 py-2 text-sm hover:bg-muted">
+            {uploading ? "올리는 중…" : "사진 파일 올리기"}
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              disabled={uploading}
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                e.target.value = "";
+                if (!file) return;
+                setUploading(true);
+                try {
+                  const ext = file.name.split(".").pop() || "jpg";
+                  const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+                  const { error } = await supabase.storage.from("product-images").upload(path, file, { contentType: file.type });
+                  if (error) throw error;
+                  const { data: signed, error: sErr } = await supabase.storage
+                    .from("product-images")
+                    .createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+                  if (sErr) throw sErr;
+                  setForm((f) => ({ ...f, image_url: signed.signedUrl }));
+                  toast.success("사진을 올렸습니다.");
+                } catch (err) {
+                  toast.error((err as Error).message);
+                } finally {
+                  setUploading(false);
+                }
+              }}
+            />
+          </label>
+          {form.image_url ? <img src={form.image_url} alt="" className="size-10 object-cover" /> : null}
+          <input className={fieldClass} placeholder="또는 사진 주소(URL)" value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} />
+        </div>
         <input className={fieldClass} type="number" placeholder="재고" value={form.stock} onChange={(e) => setForm({ ...form, stock: Number(e.target.value) })} />
         <textarea className={`${fieldClass} sm:col-span-2`} rows={3} placeholder="상품 설명" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
         <button className="rounded-sm bg-primary px-6 py-2 text-sm text-primary-foreground sm:col-span-2">

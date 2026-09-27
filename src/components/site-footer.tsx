@@ -13,7 +13,7 @@ const company = {
   mailOrderNo: "2026-경기화성-0000호",
   address: "경기도 화성시 마도면 마도공단로 202 1F",
   phone: "070-4517-0773",
-  email: "info@EIsoap.com",
+  email: "contact@Eisoap.com",
   privacyOfficer: "송인재",
   bank: "기업은행 000-000000-00-000",
 };
@@ -206,7 +206,10 @@ export function SiteFooter() {
           </p>
           <p>
             ADDRESS : {company.address} <span className="mx-2">|</span> CS CENTER : {company.phone}
-            <span className="mx-2">|</span> EMAIL : {company.email}
+            <span className="mx-2">|</span> EMAIL :{" "}
+            <a href={`mailto:${company.email}`} className="font-semibold text-foreground/80 hover:text-primary">
+              {company.email}
+            </a>
           </p>
           <p>
             개인정보관리책임자 : {company.privacyOfficer}

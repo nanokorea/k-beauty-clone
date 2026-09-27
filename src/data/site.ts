@@ -16,7 +16,10 @@ export type Product = {
   body: string[];
   /** 상세 페이지 하단에 추가로 보여줄 이미지 */
   detailImages?: string[];
+  /** "바로 구매하기" 외부 스토어 링크 */
+  buyUrl?: string;
 };
+
 
 
 export const products: Product[] = [
@@ -38,6 +41,7 @@ export const products: Product[] = [
     name: "JUNCO CLASSIC Clear Kakitannin",
     sub: "클리어 카키타닌",
     image: productKakitannin.url,
+    buyUrl: "https://eisoap.com/shop/JUNCO%20CLASSIC%20Clear%20Kakitannin",
     summary:
       "\"자연에서 찾은 개운함! 일본 전통 장인의 손길로 만든 감탄닌(Persimmon) 프리미엄 보디 비누\" 감에 들어있는 '탄닌' 성분은 땀냄새, 체취, 불쾌한 냄새를 싹 잡아주고 피부 노폐물을 깔끔하게 씻어내 주는 데 매우 효과적입니다.",
     body: [
@@ -51,6 +55,7 @@ export const products: Product[] = [
     name: "JUNCO CLASSIC Pure Collagen",
     sub: "준코 클래식 퓨어 콜라겐",
     image: productPureCollagen.url,
+    buyUrl: "https://eisoap.com/shop/JUNCO%20CLASSIC%20Pure%20Collagen",
     detailImages: [pureCollagenDetail.url],
     summary:
       "비누 1개(100g)당 가수분해 콜라겐 5,000mg과 코엔자임 Q10을 담아, 세안 후에도 당김 없이 촉촉함을 지켜주는 고보습 세안비누입니다.",
@@ -65,8 +70,9 @@ export const products: Product[] = [
   {
     slug: "junco-classic-maternity",
     name: "JUNCO CLASSIC MATERNITY",
-    sub: "준코 클래식 마더스 조이",
+    sub: "준코 클래식 마터니티",
     image: productMaternity.url,
+    buyUrl: "https://eisoap.com/shop/junco-classic-maternity-115g",
     summary:
       "민감성 피부나 피부가 약한 분을 위해 개발한 무자극 고급 비누입니다.",
     body: [
@@ -80,6 +86,7 @@ export const products: Product[] = [
     name: "JUNCO CLASSIC BABY",
     sub: "준코 클래식 베이비",
     image: productBaby.url,
+    buyUrl: "https://eisoap.com/shop/junco-classic-baby-100g",
     summary:
       "아기와 피부가 약한 분을 위해 개발한 무자극 투명 비누입니다.",
     body: [
@@ -92,6 +99,7 @@ export const products: Product[] = [
     name: "JUNCO CLASSIC RECOLLECTION",
     sub: "준코 클래식 리컬렉션",
     image: productRecollection.url,
+    buyUrl: "https://eisoap.com/shop/recollection-100g",
     summary:
       "70년 전 고급 투명비누의 그 시절 은은하고 달콤한 향이 감도는 순천연 한방 식물 고급 투명 세안비누입니다.",
     body: [

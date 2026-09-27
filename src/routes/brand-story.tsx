@@ -155,7 +155,7 @@ function HeritageSecondGeneration({ className = "" }: { className?: string }) {
         제2대 | 기술 완성과 발전 EI 브랜드의 시작 (이시노 에이이치, 石野栄一)
       </h3>
       <p className="mt-4 text-[15px] leading-7 text-foreground/80">
-        1973년 주식회사 SDC(에스디씨)를 설립하여 50년 이상 비누 외길을 걸어왔으며, 설립 이후 비누의 기획, 제조, 판매를
+        1972년 주식회사 SDC(에스디씨)를 설립하여 50년 이상 비누 외길을 걸어왔으며, 설립 이후 비누의 기획, 제조, 판매를
         전개해 온 전문 기업입니다.
         <br />
         타사 브랜드의 제품을 개발·생산해 주는 OEM(주문자 위탁 생산) 방식을 중심으로 성장해 왔습니다.

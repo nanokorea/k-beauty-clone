@@ -179,12 +179,19 @@ export function SiteFooter() {
         <div className="md:pl-8">
           <Title>SNS</Title>
           <div className="mt-4 flex gap-2">
-            {sns.map(({ label, Icon }) => (
-              <span key={label} role="img" aria-label={label}
-                className="flex size-14 items-center justify-center rounded-full bg-muted text-background transition-colors ">
-                <Icon />
-              </span>
-            ))}
+            {sns.map(({ label, Icon }) =>
+              label === "Instagram" ? (
+                <a key={label} href="https://www.instagram.com/eisoapkorea/" target="_blank" rel="noopener noreferrer" aria-label="EI 인스타그램"
+                  className="flex size-14 items-center justify-center rounded-full bg-muted text-background transition-opacity hover:opacity-80">
+                  <Icon />
+                </a>
+              ) : (
+                <span key={label} role="img" aria-label={label}
+                  className="flex size-14 items-center justify-center rounded-full bg-muted text-background">
+                  <Icon />
+                </span>
+              ),
+            )}
           </div>
         </div>
       </div>

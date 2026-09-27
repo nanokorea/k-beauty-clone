@@ -86,6 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "JUNCO CLASSIC 한국 공식몰" },
       { property: "og:description", content: "일본 수제 세안비누 JUNCO CLASSIC 한국 공식 온라인 스토어" },
       { property: "og:type", content: "website" },
+      { name: "naver-site-verification", content: "1d56953543857f83b24aeb44c395003067544c04" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
     ],

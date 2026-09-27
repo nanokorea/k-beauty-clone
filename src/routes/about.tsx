@@ -17,6 +17,7 @@ import historySdc from "@/assets/history-sdc.jpg.asset.json";
 import historyBanner from "@/assets/history-banner.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "브랜드 소개 | EI 이시노 에이이치" },

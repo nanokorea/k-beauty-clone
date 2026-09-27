@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/faq")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "자주 묻는 질문 | JUNCO CLASSIC 한국" },

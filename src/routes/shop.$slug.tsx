@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { formatPrice, useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/shop/$slug")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "상품 상세 | EI ONLINE STORE" },

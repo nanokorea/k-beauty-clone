@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { formatPrice } from "@/lib/cart";
 
 export const Route = createFileRoute("/shop/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "EI ONLINE STORE | JUNCO CLASSIC 한국" },

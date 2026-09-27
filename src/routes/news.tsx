@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/news")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "공지사항 — EI 한국" },

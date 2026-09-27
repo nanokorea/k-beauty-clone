@@ -41,6 +41,7 @@ import { TERMS_OF_SERVICE } from "@/data/terms";
 import { checkUsername, signInWithUsername } from "@/lib/account.functions";
 
 export const Route = createFileRoute("/auth")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "로그인 · 회원가입 | JUNCO CLASSIC 한국" },
@@ -49,6 +50,7 @@ export const Route = createFileRoute("/auth")({
       { property: "og:description", content: "아이디 회원 로그인 및 약관 동의 회원가입." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: AuthPage,

@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/_authenticated/mypage")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "마이페이지 | JUNCO CLASSIC 한국" },
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/_authenticated/mypage")({
       { property: "og:description", content: "회원 정보 및 배송지 수정." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: MyPage,

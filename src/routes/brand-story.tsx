@@ -14,6 +14,7 @@ import thirdGenerationImage from "@/assets/brand-third-generation.jpg.asset.json
 import soapsImage from "@/assets/brand-soaps.jpg.asset.json";
 
 export const Route = createFileRoute("/brand-story")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Brand Story | EI JUNCO CLASSIC 한국" },

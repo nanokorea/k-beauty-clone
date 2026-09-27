@@ -76,19 +76,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "JUNCO CLASSIC 한국 공식몰" },
-      { name: "description", content: "일본 수제 세안비누 JUNCO CLASSIC 한국 공식 온라인 스토어" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "JUNCO CLASSIC 한국 공식몰" },
-      { property: "og:description", content: "일본 수제 세안비누 JUNCO CLASSIC 한국 공식 온라인 스토어" },
+      { title: "수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
+      { name: "description", content: "일본 제일의 비누 장인이 만든 미용비누 JUNCO 시리즈. 수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
+      { property: "og:title", content: "수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
+      { property: "og:description", content: "일본 제일의 비누 장인이 만든 미용비누 JUNCO 시리즈. 수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
       { property: "og:type", content: "website" },
       { name: "naver-site-verification", content: "1d56953543857f83b24aeb44c395003067544c04" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

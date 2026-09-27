@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Every route declares `staticData.sitemap`; the sitemap includes public content and excludes account, checkout, cart, auth, and admin pages so crawlers only discover indexable pages.

@@ -20,6 +20,7 @@ import dry1 from "@/assets/feat-dry1.jpg.asset.json";
 import dry2 from "@/assets/feat-dry2.jpg.asset.json";
 
 export const Route = createFileRoute("/guide")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "EI 미용비누는? | JUNCO CLASSIC 한국" },

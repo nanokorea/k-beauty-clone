@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { formatPrice, useCart } from "@/lib/cart";
 
 export const Route = createFileRoute("/cart")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "장바구니 | JUNCO CLASSIC 한국" },
@@ -13,6 +14,7 @@ export const Route = createFileRoute("/cart")({
       { property: "og:description", content: "장바구니 상품 확인 및 주문." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: CartPage,

@@ -6,6 +6,7 @@ import { products } from "@/data/site";
 import { juncoIngredients } from "@/data/junco-ingredients";
 
 export const Route = createFileRoute("/products/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const product = products.find((p) => p.slug === params.slug);
     if (!product) throw notFound();

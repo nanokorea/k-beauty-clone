@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { formatPrice } from "@/lib/cart";
 
 export const Route = createFileRoute("/_authenticated/admin")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "관리자 | JUNCO CLASSIC 한국" },
@@ -18,6 +19,7 @@ export const Route = createFileRoute("/_authenticated/admin")({
       { property: "og:description", content: "상품·주문·문의·게시판 관리." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: AdminPage,

@@ -17,6 +17,7 @@ import stepPic3 from "@/assets/sy-spic3.jpg.asset.json";
 import bubbleFoam from "@/assets/bubble-foam.gif.asset.json";
 
 export const Route = createFileRoute("/how-to-wash")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "올바른 한방·거품 팩 세안법 | EI JUNCO CLASSIC 한국" },

@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { formatPrice } from "@/lib/cart";
 
 export const Route = createFileRoute("/_authenticated/orders")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "주문 내역 | JUNCO CLASSIC 한국" },
@@ -15,6 +16,7 @@ export const Route = createFileRoute("/_authenticated/orders")({
       { property: "og:description", content: "주문 및 배송 상태 확인." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: OrdersPage,

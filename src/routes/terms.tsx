@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { TERMS_OF_SERVICE } from "@/data/terms";
 
 export const Route = createFileRoute("/terms")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "이용약관 — EI 공식몰" },

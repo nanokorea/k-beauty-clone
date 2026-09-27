@@ -20,22 +20,24 @@ import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "EI JUNCO CLASSIC 한국 공식 | 일본 미용비누" },
+      { title: "수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
       {
         name: "description",
-        content:
-          "일본 제일의 비누 장인 이시노 에이이치(石野栄一)가 만든 미용비누 JUNCO CLASSIC. 한방 식물 추출물과 콜라겐을 담은 고급 세안 비누 한국 공식 사이트.",
+        content: "일본 제일의 비누 장인이 만든 미용비누 JUNCO 시리즈. 수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누",
       },
-      { property: "og:title", content: "EI JUNCO CLASSIC 한국 공식" },
+      { property: "og:title", content: "수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
       {
         property: "og:description",
-        content: "한방 식물 추출물과 미용 성분을 담은 일본 고급 세안 미용비누.",
+        content: "일본 제일의 비누 장인이 만든 미용비누 JUNCO 시리즈. 수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://eisoap.com/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://eisoap.com/" }],
   }),
   component: Home,
 });

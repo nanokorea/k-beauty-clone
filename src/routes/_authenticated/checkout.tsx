@@ -9,6 +9,7 @@ import { formatPrice, useCart } from "@/lib/cart";
 import { contact } from "@/data/site";
 
 export const Route = createFileRoute("/_authenticated/checkout")({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { title: "주문서 작성 | JUNCO CLASSIC 한국" },
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/_authenticated/checkout")({
       { property: "og:description", content: "배송지 입력 및 결제 방법 선택." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: CheckoutPage,

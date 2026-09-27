@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { contact } from "@/data/site";
 
 export const Route = createFileRoute("/contact")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "문의하기 | JUNCO CLASSIC 한국" },

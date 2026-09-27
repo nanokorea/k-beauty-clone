@@ -43,7 +43,14 @@ function ProductPage() {
             {product.body.map((line) => (
               <p key={line}>{line}</p>
             ))}
-            {product.slug === "junco-classic" ? (
+            {product.buyUrl ? (
+              <a
+                href={product.buyUrl}
+                className="mt-4 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                바로 구매하기
+              </a>
+            ) : product.slug === "junco-classic" ? (
               <Link
                 to="/shop/$slug"
                 params={{ slug: "junco-classic-100g" }}

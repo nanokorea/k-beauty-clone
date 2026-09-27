@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import eiMark from "@/assets/ei-mark.jpg.asset.json";
 import { products } from "@/data/site";
 import onlineStoreMark from "@/assets/online-store-mark.jpg.asset.json";
+import instagramMark from "@/assets/instagram-mark.jpg.asset.json";
 
 const company = {
   name: "주식회사 SILION",
@@ -182,8 +183,8 @@ export function SiteFooter() {
             {sns.map(({ label, Icon }) =>
               label === "Instagram" ? (
                 <a key={label} href="https://www.instagram.com/eisoapkorea/" target="_blank" rel="noopener noreferrer" aria-label="EI 인스타그램"
-                  className="flex size-14 items-center justify-center rounded-full bg-muted text-background transition-opacity hover:opacity-80">
-                  <Icon />
+                  className="block size-14 overflow-hidden rounded-full transition-opacity hover:opacity-80">
+                  <img src={instagramMark.url} alt="Instagram" className="size-full object-cover" />
                 </a>
               ) : (
                 <span key={label} role="img" aria-label={label}

@@ -135,6 +135,8 @@ export type Database = {
           payment_method: string
           payment_status: string
           phone: string
+          points_earned: number
+          points_used: number
           postcode: string | null
           status: string
           total_amount: number
@@ -153,6 +155,8 @@ export type Database = {
           payment_method?: string
           payment_status?: string
           phone: string
+          points_earned?: number
+          points_used?: number
           postcode?: string | null
           status?: string
           total_amount?: number
@@ -171,6 +175,8 @@ export type Database = {
           payment_method?: string
           payment_status?: string
           phone?: string
+          points_earned?: number
+          points_used?: number
           postcode?: string | null
           status?: string
           total_amount?: number
@@ -178,6 +184,41 @@ export type Database = {
           user_id?: string | null
         }
         Relationships: []
+      }
+      point_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          order_id: string | null
+          reason: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          order_id?: string | null
+          reason: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          order_id?: string | null
+          reason?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "point_transactions_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       posts: {
         Row: {

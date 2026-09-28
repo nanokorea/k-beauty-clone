@@ -7,8 +7,8 @@ import {
   Head,
   Heading,
   Html,
-  Link,
   Preview,
+  Section,
   Text,
 } from '@react-email/components'
 
@@ -19,39 +19,33 @@ interface SignupEmailProps {
   confirmationUrl: string
 }
 
-export const SignupEmail = ({
-  siteName,
-  siteUrl,
-  recipient,
-  confirmationUrl,
-}: SignupEmailProps) => (
-  <Html lang="en" dir="ltr">
-    <Head>
-      <style>{darkModeCss}</style>
-    </Head>
-    <Preview>Confirm your email for {siteName}</Preview>
+export const SignupEmail = ({ confirmationUrl }: SignupEmailProps) => (
+  <Html lang="ko" dir="ltr">
+    <Head />
+    <Preview>Ei 미용비누 회원가입을 환영합니다! 이메일 인증을 완료해 주세요.</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Confirm your email</Heading>
+        <Text style={brand}>Ei 미용비누</Text>
+        <Heading style={h1}>회원가입을 환영합니다!</Heading>
         <Text style={text}>
-          Thanks for signing up for{' '}
-          <Link href={siteUrl} style={link}>
-            <strong>{siteName}</strong>
-          </Link>
-          !
+          안녕하세요! Ei 미용비누에 오신 것을 진심으로 환영합니다.
         </Text>
         <Text style={text}>
-          Please confirm your email address (
-          <Link href={`mailto:${recipient}`} style={link}>
-            {recipient}
-          </Link>
-          ) by clicking the button below:
+          회원가입을 안전하게 완료하고 Ei 미용비누의 다양한 혜택과 소식을 받아보시려면,
+          아래 버튼을 눌러 이메일 주소를 인증해 주세요.
         </Text>
-        <Button className="dm-btn" style={button} href={confirmationUrl}>
-          Verify Email
-        </Button>
-        <Text style={footer}>
-          If you didn't create an account, you can safely ignore this email.
+        <Section style={{ textAlign: 'center', margin: '8px 0 32px' }}>
+          <Button style={button} href={confirmationUrl}>
+            이메일 주소 인증하기
+          </Button>
+        </Section>
+        <Text style={note}>• 본인이 요청하지 않은 가입이라면 이 메일을 무시하셔도 됩니다.</Text>
+        <Text style={note}>• 문의사항이 있으시면 언제든지 고객센터로 연락해 주세요.</Text>
+        <Text style={note}>• 070-4517-0773</Text>
+        <Text style={sign}>
+          감사합니다.
+          <br />
+          Ei 미용비누 드림
         </Text>
       </Container>
     </Body>
@@ -60,36 +54,18 @@ export const SignupEmail = ({
 
 export default SignupEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
-}
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
-const link = { color: 'inherit', textDecoration: 'underline' }
+const main = { backgroundColor: '#ffffff', fontFamily: "'Noto Sans KR', Arial, sans-serif" }
+const container = { padding: '32px 28px', maxWidth: '560px' }
+const brand = { fontSize: '13px', letterSpacing: '0.2em', color: '#9a5b3c', margin: '0 0 16px' }
+const h1 = { fontSize: '22px', fontWeight: 'bold' as const, color: '#1f1a17', margin: '0 0 24px' }
+const text = { fontSize: '14px', color: '#3d3733', lineHeight: '1.8', margin: '0 0 18px' }
 const button = {
-  backgroundColor: '#000000',
+  backgroundColor: '#1f1a17',
   color: '#ffffff',
   fontSize: '14px',
-  border: '1px solid #000000',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  borderRadius: '2px',
+  padding: '14px 28px',
   textDecoration: 'none',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
-// Rendered as a text child, which React may HTML-escape: keep this CSS free of >, &, and quotes.
-const darkModeCss = `
-  @media (prefers-color-scheme: dark) {
-    .dm-btn { background-color: #ffffff !important; color: #000000 !important; }
-  }
-  [data-ogsc] .dm-btn { background-color: #ffffff !important; color: #000000 !important; }
-  [data-ogsb] .dm-btn { background-color: #ffffff !important; color: #000000 !important; }
-`
+const note = { fontSize: '12px', color: '#77706a', lineHeight: '1.6', margin: '0 0 6px' }
+const sign = { fontSize: '14px', color: '#3d3733', lineHeight: '1.8', margin: '28px 0 0' }

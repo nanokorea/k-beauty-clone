@@ -44,12 +44,12 @@ function ResetPasswordPage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pw.length < 6) return toast.error("비밀번호는 6자 이상 입력해 주세요.");
-    if (pw !== pw2) return toast.error("비밀번호가 일치하지 않습니다.");
+    if (pw.length < 6) { toast.error("비밀번호는 6자 이상 입력해 주세요."); return; }
+    if (pw !== pw2) { toast.error("비밀번호가 일치하지 않습니다."); return; }
     setBusy(true);
     const { error } = await supabase.auth.updateUser({ password: pw });
     setBusy(false);
-    if (error) return toast.error("비밀번호를 변경하지 못했습니다. 링크를 다시 요청해 주세요.");
+    if (error) { toast.error("비밀번호를 변경하지 못했습니다. 링크를 다시 요청해 주세요."); return; }
     toast.success("비밀번호가 변경되었습니다.");
     navigate({ to: "/mypage" });
   };

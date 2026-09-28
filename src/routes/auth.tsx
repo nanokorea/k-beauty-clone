@@ -211,7 +211,7 @@ function SignupForm() {
   });
   const [busy, setBusy] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
-  const [usernameStatus, setUsernameStatus] = useState<"idle" | "checking" | "available" | "unavailable">("idle");
+  const [usernameStatus, setUsernameStatus] = useState<"idle" | "checking" | "available" | "unavailable" | "invalid">("idle");
 
   const detailRef = useRef<HTMLInputElement>(null);
 
@@ -221,13 +221,17 @@ function SignupForm() {
   };
 
   const checkUsernameAvailability = async () => {
+    if (!/^[a-zA-Z0-9_]{4,20}$/.test(form.username.trim())) {
+      setUsernameStatus("invalid");
+      return;
+    }
     setUsernameStatus("checking");
     try {
       const { available } = await verifyUsername({ data: { username: form.username } });
       setUsernameStatus(available ? "available" : "unavailable");
     } catch (err) {
       setUsernameStatus("idle");
-      toast.error(err instanceof Error ? err.message : "아이디를 확인하지 못했습니다.");
+      toast.error("아이디를 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.");
     }
   };
 
@@ -343,6 +347,9 @@ function SignupForm() {
             </div>
             {usernameStatus === "available" ? <p className="mt-1 text-xs text-primary">사용 가능한 아이디입니다.</p> : null}
             {usernameStatus === "unavailable" ? <p className="mt-1 text-xs text-destructive">이미 사용 중인 아이디입니다.</p> : null}
+            {usernameStatus === "invalid" || (usernameStatus === "idle" && form.username.length > 0 && !/^[a-zA-Z0-9_]{4,20}$/.test(form.username)) ? (
+              <p className="mt-1 text-xs text-destructive">아이디는 영문, 숫자, 밑줄로 4~20자 입력해 주세요.</p>
+            ) : null}
           </div>
         </div>
         <div className={rowClass}>

@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useServerFn } from "@tanstack/react-start";
 import { deleteMyAccount } from "@/lib/account.functions";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated/mypage")({
   staticData: { sitemap: false },
@@ -41,7 +42,10 @@ function MyPage() {
     address2: "",
   });
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [busy, setBusy] = useState(false);
+  const [passwordBusy, setPasswordBusy] = useState(false);
+  const [passwords, setPasswords] = useState({ current: "", next: "", confirm: "" });
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
@@ -53,6 +57,7 @@ function MyPage() {
         .eq("id", data.user.id)
         .maybeSingle();
       if (profile) {
+        setUsername(profile.username ?? "");
         setForm({
           full_name: profile.full_name ?? "",
           phone: profile.phone ?? "",
@@ -75,6 +80,31 @@ function MyPage() {
     setBusy(false);
     if (error) toast.error("저장에 실패했습니다.");
     else toast.success("회원 정보를 저장했습니다.");
+  };
+
+  const changePassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwords.next.length < 6) {
+      toast.error("새 비밀번호는 6자 이상 입력해 주세요.");
+      return;
+    }
+    if (passwords.next !== passwords.confirm) {
+      toast.error("새 비밀번호가 일치하지 않습니다.");
+      return;
+    }
+    setPasswordBusy(true);
+    try {
+      const { error: verifyError } = await supabase.auth.signInWithPassword({ email, password: passwords.current });
+      if (verifyError) throw new Error("현재 비밀번호가 올바르지 않습니다.");
+      const { error } = await supabase.auth.updateUser({ password: passwords.next, current_password: passwords.current });
+      if (error) throw error;
+      setPasswords({ current: "", next: "", confirm: "" });
+      toast.success("비밀번호를 변경했습니다.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "비밀번호 변경에 실패했습니다.");
+    } finally {
+      setPasswordBusy(false);
+    }
   };
 
   const removeAccount = useServerFn(deleteMyAccount);
@@ -112,6 +142,9 @@ function MyPage() {
           >
             주문 내역
           </Link>
+          <Link to="/contact" className="rounded-sm border border-border px-5 py-2.5 text-sm transition-colors hover:bg-secondary">
+            1:1 문의하기
+          </Link>
           {isAdmin ? (
             <Link
               to="/admin"
@@ -130,7 +163,10 @@ function MyPage() {
         </div>
 
         <form className="mt-10 space-y-5" onSubmit={save}>
-          <p className="text-sm text-muted-foreground">이메일: {email}</p>
+          <div className="space-y-1 text-sm text-muted-foreground">
+            <p>아이디: {username || "확인 중"}</p>
+            <p>이메일: {email}</p>
+          </div>
           <label className="block text-sm font-medium">
             이름
             <input
@@ -178,6 +214,20 @@ function MyPage() {
           >
             정보 변경 저장
           </button>
+        </form>
+        <form className="mt-16 space-y-5 border-t border-border pt-8" onSubmit={changePassword}>
+          <h2 className="text-sm font-semibold">비밀번호 변경</h2>
+          <label className="block text-sm font-medium">현재 비밀번호
+            <input required type="password" autoComplete="current-password" className={fieldClass} value={passwords.current} onChange={(e) => setPasswords({ ...passwords, current: e.target.value })} />
+          </label>
+          <label className="block text-sm font-medium">새 비밀번호
+            <input required type="password" autoComplete="new-password" className={fieldClass} value={passwords.next} onChange={(e) => setPasswords({ ...passwords, next: e.target.value })} />
+            <span className="mt-1 block text-xs text-muted-foreground">6자 이상 입력해 주세요.</span>
+          </label>
+          <label className="block text-sm font-medium">새 비밀번호 확인
+            <input required type="password" autoComplete="new-password" className={fieldClass} value={passwords.confirm} onChange={(e) => setPasswords({ ...passwords, confirm: e.target.value })} />
+          </label>
+          <Button type="submit" disabled={passwordBusy} className="h-auto w-full rounded-sm px-8 py-3">{passwordBusy ? "변경 중" : "비밀번호 변경"}</Button>
         </form>
         <div className="mt-16 border-t border-border pt-8">
           <h2 className="text-sm font-semibold">회원 탈퇴</h2>

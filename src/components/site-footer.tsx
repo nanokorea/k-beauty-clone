@@ -78,7 +78,7 @@ export function SiteFooter() {
       links: [
         { label: "공지사항", to: "/news" },
         { label: "자주 묻는 질문", to: "/faq" },
-        { label: "문의하기", to: "/contact" },
+        { label: "1:1 문의하기", to: "/contact" },
       ],
     },
     {
@@ -166,7 +166,7 @@ export function SiteFooter() {
             {[
               { label: "공지사항", to: "/news" },
               { label: "FAQ", to: "/faq" },
-              { label: "문의하기", to: "/contact" },
+              { label: "1:1 문의하기", to: "/contact" },
             ].map((l) => (
               <Link key={l.to} to={l.to} className="border border-border px-4 py-2 text-sm transition-colors hover:border-primary hover:text-primary">
                 {l.label}

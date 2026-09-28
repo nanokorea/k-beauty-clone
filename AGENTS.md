@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Every route declares `staticData.sitemap`; the sitemap includes public content and excludes account, checkout, cart, auth, and admin pages so crawlers only discover indexable pages.
+- Account password changes reauthenticate with the current password before updating it, preventing unauthorized changes from an unattended session.

@@ -5,6 +5,7 @@ import eiMark from "@/assets/ei-mark.jpg.asset.json";
 import { products } from "@/data/site";
 import onlineStoreMark from "@/assets/online-store-mark.jpg.asset.json";
 import instagramMark from "@/assets/instagram-mark.jpg.asset.json";
+import kakaoChannelMark from "@/assets/kakao-channel.jpg.asset.json";
 
 const company = {
   name: "주식회사 SILION",

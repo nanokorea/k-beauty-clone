@@ -4,11 +4,14 @@ import { toast } from "sonner";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
+import { useServerFn } from "@tanstack/react-start";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
+import { placeOrder } from "@/lib/orders.functions";
 import { formatPrice, useCart } from "@/lib/cart";
 import { contact } from "@/data/site";
 
-export const Route = createFileRoute("/_authenticated/checkout")({
+export const Route = createFileRoute("/checkout")({
   staticData: { sitemap: false },
   head: () => ({
     meta: [
@@ -43,7 +46,26 @@ function CheckoutPage() {
   });
   const [method, setMethod] = useState<Method>("bank");
   const [busy, setBusy] = useState(false);
-  const [done, setDone] = useState<{ orderNo: string; method: Method } | null>(null);
+  const [done, setDone] = useState<{ orderNo: string; method: Method; total: number; guest: boolean } | null>(null);
+  const { userId, loading } = useAuth();
+  const [guest, setGuest] = useState(false);
+  const [balance, setBalance] = useState(0);
+  const [usePoints, setUsePoints] = useState(0);
+  const submitOrder = useServerFn(placeOrder);
+  const pointsApplied = Math.min(usePoints, balance, total);
+  const payable = total - pointsApplied;
+
+  useEffect(() => {
+    if (!userId) {
+      setBalance(0);
+      return;
+    }
+    supabase
+      .from("point_transactions")
+      .select("amount")
+      .eq("user_id", userId)
+      .then(({ data }) => setBalance((data ?? []).reduce((s, t) => s + t.amount, 0)));
+  }, [userId]);
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
@@ -59,8 +81,8 @@ function CheckoutPage() {
         phone: profile?.phone ?? f.phone,
         email: profile?.email ?? data.user.email ?? f.email,
         postcode: profile?.postcode ?? f.postcode,
-        address: profile?.address ?? f.address,
-        address_detail: profile?.address_detail ?? f.address_detail,
+        address: profile?.address1 ?? profile?.address ?? f.address,
+        address_detail: profile?.address2 ?? profile?.address_detail ?? f.address_detail,
       }));
     });
   }, []);
@@ -70,41 +92,16 @@ function CheckoutPage() {
     if (items.length === 0) return;
     setBusy(true);
     try {
-      const { data: userData } = await supabase.auth.getUser();
-      const userId = userData.user?.id;
-      if (!userId) throw new Error("로그인이 필요합니다.");
-
-      const { data: order, error } = await supabase
-        .from("orders")
-        .insert({
-          user_id: userId,
-          orderer_name: form.orderer_name,
-          phone: form.phone,
-          email: form.email,
-          postcode: form.postcode,
-          address: form.address,
-          address_detail: form.address_detail,
-          memo: form.memo,
+      const result = await submitOrder({
+        data: {
+          ...form,
           payment_method: method,
-          total_amount: total,
-        })
-        .select()
-        .single();
-      if (error) throw error;
-
-      const { error: itemsError } = await supabase.from("order_items").insert(
-        items.map((i) => ({
-          order_id: order.id,
-          product_id: i.productId,
-          product_name: i.name,
-          unit_price: i.price,
-          quantity: i.quantity,
-        })),
-      );
-      if (itemsError) throw itemsError;
-
+          points: pointsApplied,
+          items: items.map((i) => ({ productId: i.productId, quantity: i.quantity })),
+        },
+      });
       clear();
-      setDone({ orderNo: order.order_no, method });
+      setDone({ orderNo: result.orderNo, method, total: result.total, guest: result.guest });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "주문 처리 중 오류가 발생했습니다.");
     } finally {
@@ -143,9 +140,16 @@ function CheckoutPage() {
                 </p>
               </div>
             )}
-            <Link to="/orders" className="mt-6 inline-block text-sm text-primary underline">
-              내 주문 내역 보기
-            </Link>
+            <p className="mt-4">결제 금액 <strong>{formatPrice(done.total)}</strong></p>
+            {done.guest ? (
+              <p className="mt-4 text-muted-foreground">
+                비회원 주문입니다. 주문번호를 꼭 보관해 주세요. 주문 확인·변경은 고객센터 {contact.phone}로 문의해 주세요.
+              </p>
+            ) : (
+              <Link to="/orders" className="mt-6 inline-block text-sm text-primary underline">
+                내 주문 내역 보기
+              </Link>
+            )}
           </div>
         </main>
         <SiteFooter />
@@ -159,7 +163,26 @@ function CheckoutPage() {
       <main className="mx-auto max-w-[720px] px-4 py-16">
         <SectionHeading title="주문서 작성" sub="CHECKOUT" />
 
-        {items.length === 0 ? (
+        {!loading && !userId && !guest && items.length > 0 ? (
+          <div className="mx-auto mt-12 max-w-[420px] space-y-3 text-center">
+            <p className="text-sm text-muted-foreground">
+              회원으로 주문하시면 가입 축하 5,000포인트와 구매 금액의 5% 적립 혜택을 받으실 수 있습니다.
+            </p>
+            <Link
+              to="/auth"
+              className="block rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              회원 로그인 / 회원가입
+            </Link>
+            <button
+              type="button"
+              onClick={() => setGuest(true)}
+              className="block w-full rounded-sm border border-border px-8 py-3 text-sm transition-colors hover:bg-secondary"
+            >
+              비회원으로 구매하기
+            </button>
+          </div>
+        ) : items.length === 0 ? (
           <div className="mt-12 text-center">
             <p className="text-sm text-muted-foreground">장바구니가 비어 있습니다.</p>
             <Link to="/shop" className="mt-4 inline-block text-sm text-primary underline">
@@ -178,9 +201,48 @@ function CheckoutPage() {
                 </li>
               ))}
             </ul>
+            <div className="flex justify-between text-sm">
+              <span>상품 금액</span>
+              <span>{formatPrice(total)}</span>
+            </div>
+            {userId ? (
+              <div className="rounded-sm border border-border bg-secondary/40 p-4 text-sm">
+                <div className="flex items-center justify-between">
+                  <span className="font-medium">포인트 사용</span>
+                  <span className="text-muted-foreground">보유 {balance.toLocaleString("ko-KR")}P</span>
+                </div>
+                <div className="mt-2 flex gap-2">
+                  <input
+                    type="number"
+                    min={0}
+                    max={Math.min(balance, total)}
+                    className={`${fieldClass} mt-0`}
+                    value={usePoints || ""}
+                    onChange={(e) => setUsePoints(Math.max(0, Math.floor(Number(e.target.value) || 0)))}
+                    placeholder="사용할 포인트"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setUsePoints(Math.min(balance, total))}
+                    className="shrink-0 rounded-sm border border-border px-4 text-sm hover:bg-secondary"
+                  >
+                    전액 사용
+                  </button>
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">배송 완료 시 결제 금액의 5%가 포인트로 적립됩니다.</p>
+              </div>
+            ) : (
+              <p className="text-xs text-muted-foreground">비회원 주문입니다. 주문 안내를 받을 이메일을 꼭 입력해 주세요.</p>
+            )}
+            {pointsApplied > 0 ? (
+              <div className="flex justify-between text-sm">
+                <span>포인트 할인</span>
+                <span>-{formatPrice(pointsApplied)}</span>
+              </div>
+            ) : null}
             <div className="flex justify-between text-base font-semibold">
               <span>총 결제 금액</span>
-              <span className="text-primary">{formatPrice(total)}</span>
+              <span className="text-primary">{formatPrice(payable)}</span>
             </div>
 
             <label className="block text-sm font-medium">
@@ -206,6 +268,7 @@ function CheckoutPage() {
               이메일
               <input
                 type="email"
+                required={!userId}
                 className={fieldClass}
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -270,7 +333,7 @@ function CheckoutPage() {
               disabled={busy}
               className="w-full rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {formatPrice(total)} 결제하기
+              {formatPrice(payable)} 결제하기
             </button>
           </form>
         )}

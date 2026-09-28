@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 export type CartItem = {
   productId: string;
@@ -27,7 +28,18 @@ type CartContextValue = {
   clear: () => void;
 };
 
-const CartContext = createContext<CartContextValue | null>(null);
+// Keep one context instance across hot reloads so the provider and consumers always match.
+const g = globalThis as { __eiCartContext?: React.Context<CartContextValue | null> };
+const CartContext = (g.__eiCartContext ??= createContext<CartContextValue | null>(null));
+const EMPTY_CART: CartContextValue = {
+  items: [],
+  count: 0,
+  total: 0,
+  add: () => {},
+  setQuantity: () => {},
+  remove: () => {},
+  clear: () => {},
+};
 const STORAGE_KEY = "ei-cart-v1";
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -48,6 +60,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (!hydrated) return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items, hydrated]);
+
+  // Empty the cart when the member signs out or withdraws.
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_OUT") {
+        window.localStorage.removeItem(STORAGE_KEY);
+        setItems([]);
+      }
+    });
+    return () => data.subscription.unsubscribe();
+  }, []);
 
   const add = useCallback((item: Omit<CartItem, "quantity">, quantity = 1) => {
     setItems((prev) => {
@@ -92,8 +115,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
 export function useCart() {
   const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used inside CartProvider");
-  return ctx;
+  return ctx ?? EMPTY_CART;
 }
 
 export function formatPrice(value: number) {

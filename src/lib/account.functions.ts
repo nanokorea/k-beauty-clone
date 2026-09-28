@@ -11,17 +11,20 @@ const usernameSchema = z
 
 export const checkUsername = createServerFn({ method: "POST" })
   .inputValidator((data: { username: string }) =>
-    z.object({ username: usernameSchema }).parse(data),
+    z.object({ username: z.string().max(100) }).parse(data),
   )
   .handler(async ({ data }) => {
+    const parsed = usernameSchema.safeParse(data.username);
+    if (!parsed.success) return { available: false, valid: false };
+
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: row, error } = await supabaseAdmin
       .from("profiles")
       .select("id")
-      .ilike("username", data.username)
+      .ilike("username", parsed.data)
       .maybeSingle();
     if (error) throw new Error("아이디 확인 중 오류가 발생했습니다.");
-    return { available: !row };
+    return { available: !row, valid: true };
   });
 
 export const signInWithUsername = createServerFn({ method: "POST" })

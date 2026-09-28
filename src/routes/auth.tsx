@@ -227,8 +227,12 @@ function SignupForm() {
     }
     setUsernameStatus("checking");
     try {
-      const { available } = await verifyUsername({ data: { username: form.username } });
-      setUsernameStatus(available ? "available" : "unavailable");
+      const result = await verifyUsername({ data: { username: form.username } });
+      if (!result.valid) {
+        setUsernameStatus("invalid");
+        return;
+      }
+      setUsernameStatus(result.available ? "available" : "unavailable");
     } catch (err) {
       setUsernameStatus("idle");
       toast.error("아이디를 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.");

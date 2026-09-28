@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 export type CartItem = {
   productId: string;
@@ -48,6 +49,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (!hydrated) return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items, hydrated]);
+
+  // Empty the cart when the member signs out or withdraws.
+  useEffect(() => {
+    const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_OUT") {
+        window.localStorage.removeItem(STORAGE_KEY);
+        setItems([]);
+      }
+    });
+    return () => data.subscription.unsubscribe();
+  }, []);
 
   const add = useCallback((item: Omit<CartItem, "quantity">, quantity = 1) => {
     setItems((prev) => {

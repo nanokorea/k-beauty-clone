@@ -15,6 +15,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BrandStoryRouteImport } from './routes/brand-story'
 import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GuideRouteImport } from './routes/guide'
@@ -26,7 +27,6 @@ import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
-import { Route as AuthenticatedCheckoutRouteImport } from './routes/_authenticated/checkout'
 import { Route as AuthenticatedMypageRouteImport } from './routes/_authenticated/mypage'
 import { Route as AuthenticatedOrdersRouteImport } from './routes/_authenticated/orders'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
@@ -62,6 +62,11 @@ const BrandStoryRoute = BrandStoryRouteImport.update({
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -119,11 +124,6 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const AuthenticatedCheckoutRoute = AuthenticatedCheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedMypageRoute = AuthenticatedMypageRouteImport.update({
   id: '/mypage',
   path: '/mypage',
@@ -166,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/brand-story': typeof BrandStoryRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/guide': typeof GuideRoute
@@ -177,7 +178,6 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
-  '/checkout': typeof AuthenticatedCheckoutRoute
   '/mypage': typeof AuthenticatedMypageRoute
   '/orders': typeof AuthenticatedOrdersRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -192,6 +192,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/brand-story': typeof BrandStoryRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/guide': typeof GuideRoute
@@ -202,7 +203,6 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
-  '/checkout': typeof AuthenticatedCheckoutRoute
   '/mypage': typeof AuthenticatedMypageRoute
   '/orders': typeof AuthenticatedOrdersRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -219,6 +219,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/brand-story': typeof BrandStoryRoute
   '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
   '/guide': typeof GuideRoute
@@ -230,7 +231,6 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
-  '/_authenticated/checkout': typeof AuthenticatedCheckoutRoute
   '/_authenticated/mypage': typeof AuthenticatedMypageRoute
   '/_authenticated/orders': typeof AuthenticatedOrdersRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -247,6 +247,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/brand-story'
     | '/cart'
+    | '/checkout'
     | '/contact'
     | '/faq'
     | '/guide'
@@ -258,7 +259,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/admin'
-    | '/checkout'
     | '/mypage'
     | '/orders'
     | '/products/$slug'
@@ -273,6 +273,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/brand-story'
     | '/cart'
+    | '/checkout'
     | '/contact'
     | '/faq'
     | '/guide'
@@ -283,7 +284,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/admin'
-    | '/checkout'
     | '/mypage'
     | '/orders'
     | '/products/$slug'
@@ -299,6 +299,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/brand-story'
     | '/cart'
+    | '/checkout'
     | '/contact'
     | '/faq'
     | '/guide'
@@ -310,7 +311,6 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/terms'
     | '/_authenticated/admin'
-    | '/_authenticated/checkout'
     | '/_authenticated/mypage'
     | '/_authenticated/orders'
     | '/products/$slug'
@@ -327,6 +327,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BrandStoryRoute: typeof BrandStoryRoute
   CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
   GuideRoute: typeof GuideRoute
@@ -384,6 +385,13 @@ declare module '@tanstack/react-router' {
       path: '/cart'
       fullPath: '/cart'
       preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -463,13 +471,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/checkout': {
-      id: '/_authenticated/checkout'
-      path: '/checkout'
-      fullPath: '/checkout'
-      preLoaderRoute: typeof AuthenticatedCheckoutRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/mypage': {
       id: '/_authenticated/mypage'
       path: '/mypage'
@@ -524,14 +525,12 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
-  AuthenticatedCheckoutRoute: typeof AuthenticatedCheckoutRoute
   AuthenticatedMypageRoute: typeof AuthenticatedMypageRoute
   AuthenticatedOrdersRoute: typeof AuthenticatedOrdersRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminRoute: AuthenticatedAdminRoute,
-  AuthenticatedCheckoutRoute: AuthenticatedCheckoutRoute,
   AuthenticatedMypageRoute: AuthenticatedMypageRoute,
   AuthenticatedOrdersRoute: AuthenticatedOrdersRoute,
 }
@@ -558,6 +557,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BrandStoryRoute: BrandStoryRoute,
   CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
   GuideRoute: GuideRoute,

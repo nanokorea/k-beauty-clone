@@ -18,7 +18,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 // Configuration
-const SITE_NAME = "Sakura Soap Studio"
+const SITE_NAME = "Eisoap"
 const ROOT_DOMAIN = "eisoap.com"
 
 // Sample data for preview mode ONLY (not used in actual email sending).

@@ -162,6 +162,8 @@ function MyPage() {
           </button>
         </div>
 
+        <PointsPanel />
+
         <form className="mt-10 space-y-5" onSubmit={save}>
           <div className="space-y-1 text-sm text-muted-foreground">
             <p>아이디: {username || "확인 중"}</p>
@@ -237,5 +239,45 @@ function MyPage() {
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+function PointsPanel() {
+  const [rows, setRows] = useState<{ id: string; amount: number; reason: string; created_at: string }[]>([]);
+  useEffect(() => {
+    supabase.auth.getUser().then(async ({ data }) => {
+      if (!data.user) return;
+      const { data: tx } = await supabase
+        .from("point_transactions")
+        .select("id, amount, reason, created_at")
+        .eq("user_id", data.user.id)
+        .order("created_at", { ascending: false });
+      setRows(tx ?? []);
+    });
+  }, []);
+  const balance = rows.reduce((s, r) => s + r.amount, 0);
+  return (
+    <section className="mt-10 rounded-sm border border-primary/40 bg-secondary/40 p-5">
+      <div className="flex items-center justify-between">
+        <h2 className="text-sm font-semibold">보유 포인트</h2>
+        <p className="text-xl font-semibold text-primary">{balance.toLocaleString("ko-KR")}P</p>
+      </div>
+      <p className="mt-1 text-xs text-muted-foreground">결제 시 1P = 1원으로 사용할 수 있으며, 배송 완료 시 결제 금액의 5%가 적립됩니다.</p>
+      {rows.length > 0 ? (
+        <ul className="mt-4 max-h-48 divide-y divide-border overflow-auto text-xs">
+          {rows.map((r) => (
+            <li key={r.id} className="flex justify-between py-2">
+              <span>
+                {r.reason} <span className="text-muted-foreground">· {new Date(r.created_at).toLocaleDateString("ko-KR")}</span>
+              </span>
+              <span className={r.amount < 0 ? "text-destructive" : "text-primary"}>
+                {r.amount > 0 ? "+" : ""}
+                {r.amount.toLocaleString("ko-KR")}P
+              </span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </section>
   );
 }

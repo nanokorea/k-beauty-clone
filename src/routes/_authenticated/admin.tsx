@@ -403,6 +403,8 @@ function OrdersAdmin() {
             ))}
           </ul>
           <p className="mt-3 text-right text-sm font-semibold text-primary">
+            {o.points_used > 0 ? `포인트 ${o.points_used.toLocaleString("ko-KR")}P 사용 · ` : ""}
+            {o.user_id ? "" : "비회원 · "}
             {formatPrice(o.total_amount)} · {o.payment_method === "bank" ? "무통장" : o.payment_method === "card" ? "카드" : "카카오페이"}
           </p>
         </li>
@@ -466,32 +468,89 @@ function InquiriesAdmin() {
 }
 
 function MembersAdmin() {
+  const qc = useQueryClient();
   const { data } = useQuery({
     queryKey: ["admin-members"],
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("id, username, full_name, email, phone, created_at, marketing_agreed_at")
-        .order("created_at", { ascending: false });
+      const [{ data, error }, { data: tx, error: txErr }] = await Promise.all([
+        supabase
+          .from("profiles")
+          .select("id, username, full_name, email, phone, created_at, marketing_agreed_at")
+          .order("created_at", { ascending: false }),
+        supabase.from("point_transactions").select("user_id, amount"),
+      ]);
       if (error) throw error;
-      return data;
+      if (txErr) throw txErr;
+      const sums = new Map<string, number>();
+      (tx ?? []).forEach((t) => sums.set(t.user_id, (sums.get(t.user_id) ?? 0) + t.amount));
+      return data.map((m) => ({ ...m, points: sums.get(m.id) ?? 0 }));
     },
+  });
+  const [grant, setGrant] = useState<Record<string, { amount: string; reason: string }>>({});
+
+  const give = useMutation({
+    mutationFn: async (payload: { userId: string; amount: number; reason: string }) => {
+      const { error } = await supabase.from("point_transactions").insert({
+        user_id: payload.userId,
+        amount: payload.amount,
+        reason: payload.reason || (payload.amount > 0 ? "관리자 지급" : "관리자 차감"),
+      });
+      if (error) throw error;
+    },
+    onSuccess: (_d, v) => {
+      toast.success("포인트를 반영했습니다.");
+      setGrant((g) => ({ ...g, [v.userId]: { amount: "", reason: "" } }));
+      qc.invalidateQueries({ queryKey: ["admin-members"] });
+    },
+    onError: () => toast.error("포인트 반영에 실패했습니다."),
   });
 
   return (
     <ul className="space-y-3">
-      {(data ?? []).map((m) => (
-        <li key={m.id} className="flex flex-wrap items-center gap-3 border border-border bg-card p-4 text-sm">
-          <span className="font-medium">{m.username ?? "-"}</span>
-          <span>{m.full_name ?? "-"}</span>
-          <span className="text-muted-foreground">{m.email}</span>
-          <span className="text-muted-foreground">{m.phone ?? "-"}</span>
-          <span className="ml-auto text-xs text-muted-foreground">
-            {new Date(m.created_at).toLocaleDateString("ko-KR")}
-            {m.marketing_agreed_at ? " · 마케팅 동의" : ""}
-          </span>
-        </li>
-      ))}
+      {(data ?? []).map((m) => {
+        const g = grant[m.id] ?? { amount: "", reason: "" };
+        return (
+          <li key={m.id} className="border border-border bg-card p-4 text-sm">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="font-medium">{m.username ?? "-"}</span>
+              <span>{m.full_name ?? "-"}</span>
+              <span className="text-muted-foreground">{m.email}</span>
+              <span className="text-muted-foreground">{m.phone ?? "-"}</span>
+              <span className="font-semibold text-primary">{m.points.toLocaleString("ko-KR")}P</span>
+              <span className="ml-auto text-xs text-muted-foreground">
+                {new Date(m.created_at).toLocaleDateString("ko-KR")}
+                {m.marketing_agreed_at ? " · 마케팅 동의" : ""}
+              </span>
+            </div>
+            <form
+              className="mt-3 flex flex-wrap gap-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const amount = Math.trunc(Number(g.amount));
+                if (!amount) return toast.error("포인트를 입력해 주세요. (차감은 -1000처럼 입력)");
+                give.mutate({ userId: m.id, amount, reason: g.reason.trim() });
+              }}
+            >
+              <input
+                type="number"
+                className="w-32 rounded-sm border border-input px-2 py-1 text-xs"
+                placeholder="예: 3000 / -1000"
+                value={g.amount}
+                onChange={(e) => setGrant({ ...grant, [m.id]: { ...g, amount: e.target.value } })}
+              />
+              <input
+                className="min-w-40 flex-1 rounded-sm border border-input px-2 py-1 text-xs"
+                placeholder="사유 (예: 이벤트 지급)"
+                value={g.reason}
+                onChange={(e) => setGrant({ ...grant, [m.id]: { ...g, reason: e.target.value } })}
+              />
+              <button type="submit" disabled={give.isPending} className="rounded-sm border border-primary px-3 py-1 text-xs text-primary hover:bg-secondary">
+                포인트 반영
+              </button>
+            </form>
+          </li>
+        );
+      })}
     </ul>
   );
 }

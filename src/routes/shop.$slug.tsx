@@ -189,7 +189,7 @@ function ProductPage() {
                       type="button"
                       onClick={() => {
                         addToCart();
-                        navigate({ to: "/cart" });
+                        navigate({ to: "/checkout" });
                       }}
                       className="rounded-sm bg-primary px-6 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
                     >

@@ -347,34 +347,38 @@ function SignupForm() {
         </div>
         <div className={rowClass}>
           <span className={labelClass}>비밀번호</span>
-          <input
-            required
-            type="password"
-            className={inputClass}
-            value={form.password}
-            onChange={set("password")}
-            placeholder="비밀번호"
-            autoComplete="new-password"
-          />
-          <p className={`w-full text-xs sm:pl-40 ${form.password.length > 0 && !passwordAvailable ? "text-destructive" : "text-muted-foreground"}`}>
-            {form.password.length === 0 ? "6자 이상 입력해 주세요." : passwordAvailable ? "사용 가능한 비밀번호입니다." : "비밀번호는 6자 이상이어야 합니다."}
-          </p>
+          <div className="w-full">
+            <input
+              required
+              type="password"
+              className={inputClass}
+              value={form.password}
+              onChange={set("password")}
+              placeholder="비밀번호"
+              autoComplete="new-password"
+            />
+            <p className={`mt-1 text-xs ${form.password.length > 0 && !passwordAvailable ? "text-destructive" : "text-muted-foreground"}`}>
+              {form.password.length === 0 ? "6자 이상 입력해 주세요." : passwordAvailable ? "사용 가능한 비밀번호입니다." : "비밀번호는 6자 이상이어야 합니다."}
+            </p>
+          </div>
         </div>
         <div className={rowClass}>
           <span className={labelClass}>비밀번호 확인</span>
-          <input
-            required
-            type="password"
-            className={inputClass}
-            value={form.password2}
-            onChange={set("password2")}
-            autoComplete="new-password"
-          />
-          {form.password2.length > 0 ? (
-            <p className={`w-full text-xs sm:pl-40 ${passwordsMatch ? "text-primary" : "text-destructive"}`}>
-              {passwordsMatch ? "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."}
-            </p>
-          ) : null}
+          <div className="w-full">
+            <input
+              required
+              type="password"
+              className={inputClass}
+              value={form.password2}
+              onChange={set("password2")}
+              autoComplete="new-password"
+            />
+            {form.password2.length > 0 ? (
+              <p className={`mt-1 text-xs ${passwordsMatch ? "text-primary" : "text-destructive"}`}>
+                {passwordsMatch ? "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."}
+              </p>
+            ) : null}
+          </div>
         </div>
         <div className={rowClass}>
           <span className={labelClass}>이메일</span>

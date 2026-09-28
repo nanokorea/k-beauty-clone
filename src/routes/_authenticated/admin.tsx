@@ -469,14 +469,16 @@ function InquiriesAdmin() {
 
 function MembersAdmin() {
   const qc = useQueryClient();
+  const deleteMember = useServerFn(adminDeleteMember);
+  const [search, setSearch] = useState("");
   const { data } = useQuery({
     queryKey: ["admin-members"],
     queryFn: async () => {
       const [{ data, error }, { data: tx, error: txErr }] = await Promise.all([
         supabase
           .from("profiles")
-          .select("id, username, full_name, email, phone, created_at, marketing_agreed_at")
-          .order("created_at", { ascending: false }),
+          .select("id, member_no, username, full_name, email, phone, created_at, marketing_agreed_at")
+          .order("member_no", { ascending: true }),
         supabase.from("point_transactions").select("user_id, amount"),
       ]);
       if (error) throw error;
@@ -487,6 +489,15 @@ function MembersAdmin() {
     },
   });
   const [grant, setGrant] = useState<Record<string, { amount: string; reason: string }>>({});
+
+  const removeMember = useMutation({
+    mutationFn: async (userId: string) => deleteMember({ data: { userId } }),
+    onSuccess: () => {
+      toast.success("회원을 삭제했습니다.");
+      qc.invalidateQueries({ queryKey: ["admin-members"] });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
 
   const give = useMutation({
     mutationFn: async (payload: { userId: string; amount: number; reason: string }) => {
@@ -505,18 +516,35 @@ function MembersAdmin() {
     onError: () => toast.error("포인트 반영에 실패했습니다."),
   });
 
+  const list = (data ?? []).filter((m) =>
+    matches(search, [m.member_no, m.username, m.full_name, m.email, m.phone]),
+  );
+
   return (
+    <div className="space-y-4">
+    <SearchBox value={search} onChange={setSearch} placeholder="회원번호, 아이디, 이름, 이메일, 연락처로 검색" count={list.length} />
     <ul className="space-y-3">
-      {(data ?? []).map((m) => {
+      {list.map((m) => {
         const g = grant[m.id] ?? { amount: "", reason: "" };
         return (
           <li key={m.id} className="border border-border bg-card p-4 text-sm">
             <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-sm bg-secondary px-2 py-0.5 text-xs text-primary">No. {m.member_no ?? "-"}</span>
               <span className="font-medium">{m.username ?? "-"}</span>
               <span>{m.full_name ?? "-"}</span>
               <span className="text-muted-foreground">{m.email}</span>
               <span className="text-muted-foreground">{m.phone ?? "-"}</span>
               <span className="font-semibold text-primary">{m.points.toLocaleString("ko-KR")}P</span>
+              <button
+                type="button"
+                className="text-xs text-destructive underline"
+                disabled={removeMember.isPending}
+                onClick={() => {
+                  if (confirm(`${m.username ?? m.email} 회원을 삭제할까요? 되돌릴 수 없습니다.`)) removeMember.mutate(m.id);
+                }}
+              >
+                회원 삭제
+              </button>
               <span className="ml-auto text-xs text-muted-foreground">
                 {new Date(m.created_at).toLocaleDateString("ko-KR")}
                 {m.marketing_agreed_at ? " · 마케팅 동의" : ""}

@@ -172,19 +172,20 @@ export function SiteFooter() {
         <div className="md:pl-8">
           <Title>SNS</Title>
           <div className="mt-4 flex gap-2">
-            {sns.map(({ label, Icon }) =>
-              label === "Instagram" ? (
-                <a key={label} href="https://www.instagram.com/eisoapkorea/" target="_blank" rel="noopener noreferrer" aria-label="EI 인스타그램"
-                  className="block size-14 overflow-hidden rounded-full transition-opacity hover:opacity-80">
-                  <img src={instagramMark.url} alt="Instagram" className="size-full object-cover" />
-                </a>
-              ) : (
-                <span key={label} role="img" aria-label={label}
-                  className="flex size-14 items-center justify-center rounded-full bg-muted text-background">
-                  <Icon />
-                </span>
-              ),
-            )}
+            <a href="https://www.instagram.com/eisoapkorea/" target="_blank" rel="noopener noreferrer" aria-label="EI 인스타그램"
+              className="block size-14 overflow-hidden rounded-full transition-opacity hover:opacity-80">
+              <img src={instagramMark.url} alt="Instagram" className="size-full object-cover" />
+            </a>
+            <a href="http://pf.kakao.com/_xfxlMxiX/chat" target="_blank" rel="noopener noreferrer" aria-label="EI 카카오 채널"
+              className="block size-14 overflow-hidden rounded-full transition-opacity hover:opacity-80">
+              <img src={kakaoChannelMark.url} alt="카카오 채널" className="size-full object-cover" />
+            </a>
+            {sns.map(({ label, Icon }) => (
+              <span key={label} role="img" aria-label={label}
+                className="flex size-14 items-center justify-center rounded-full bg-muted text-background">
+                <Icon />
+              </span>
+            ))}
           </div>
         </div>
       </div>

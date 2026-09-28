@@ -527,7 +527,10 @@ function MembersAdmin() {
               onSubmit={(e) => {
                 e.preventDefault();
                 const amount = Math.trunc(Number(g.amount));
-                if (!amount) return toast.error("포인트를 입력해 주세요. (차감은 -1000처럼 입력)");
+                if (!amount) {
+                  toast.error("포인트를 입력해 주세요. (차감은 -1000처럼 입력)");
+                  return;
+                }
                 give.mutate({ userId: m.id, amount, reason: g.reason.trim() });
               }}
             >

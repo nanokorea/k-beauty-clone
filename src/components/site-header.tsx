@@ -234,6 +234,7 @@ export function SiteHeader() {
               title="MY"
               items={[
                 { label: "마이페이지", to: "/mypage" },
+                { label: "회원정보 변경", to: "/mypage" },
                 { label: "주문내역", to: "/orders" },
                 { label: "장바구니", to: "/cart" },
               ]}

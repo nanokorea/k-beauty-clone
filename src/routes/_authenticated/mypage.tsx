@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { useServerFn } from "@tanstack/react-start";
+import { deleteMyAccount } from "@/lib/account.functions";
 
 export const Route = createFileRoute("/_authenticated/mypage")({
   staticData: { sitemap: false },
@@ -35,8 +37,8 @@ function MyPage() {
     full_name: "",
     phone: "",
     postcode: "",
-    address: "",
-    address_detail: "",
+    address1: "",
+    address2: "",
   });
   const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
@@ -55,8 +57,8 @@ function MyPage() {
           full_name: profile.full_name ?? "",
           phone: profile.phone ?? "",
           postcode: profile.postcode ?? "",
-          address: profile.address ?? "",
-          address_detail: profile.address_detail ?? "",
+          address1: profile.address1 ?? profile.address ?? "",
+          address2: profile.address2 ?? profile.address_detail ?? "",
         });
       }
     });
@@ -69,10 +71,25 @@ function MyPage() {
     if (!data.user) return;
     const { error } = await supabase
       .from("profiles")
-      .upsert({ id: data.user.id, email: data.user.email ?? null, ...form });
+      .upsert({ id: data.user.id, email: data.user.email ?? null, ...form, address: form.address1, address_detail: form.address2 });
     setBusy(false);
     if (error) toast.error("저장에 실패했습니다.");
     else toast.success("회원 정보를 저장했습니다.");
+  };
+
+  const removeAccount = useServerFn(deleteMyAccount);
+  const withdraw = async () => {
+    if (!window.confirm("정말 회원 탈퇴하시겠습니까? 탈퇴 후에는 회원 정보가 삭제되며 복구할 수 없습니다.")) return;
+    try {
+      await removeAccount();
+      await queryClient.cancelQueries();
+      queryClient.clear();
+      await supabase.auth.signOut();
+      toast.success("회원 탈퇴가 완료되었습니다.");
+      navigate({ to: "/", replace: true });
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "회원 탈퇴에 실패했습니다.");
+    }
   };
 
   const signOut = async () => {
@@ -86,7 +103,7 @@ function MyPage() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="mx-auto max-w-[640px] px-4 py-16">
-        <SectionHeading title="마이페이지" sub="MY PAGE" />
+        <SectionHeading title="마이페이지 · 정보 변경" sub="MY PAGE" />
 
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
@@ -142,16 +159,16 @@ function MyPage() {
             주소
             <input
               className={fieldClass}
-              value={form.address}
-              onChange={(e) => setForm({ ...form, address: e.target.value })}
+              value={form.address1}
+              onChange={(e) => setForm({ ...form, address1: e.target.value })}
             />
           </label>
           <label className="block text-sm font-medium">
             상세주소
             <input
               className={fieldClass}
-              value={form.address_detail}
-              onChange={(e) => setForm({ ...form, address_detail: e.target.value })}
+              value={form.address2}
+              onChange={(e) => setForm({ ...form, address2: e.target.value })}
             />
           </label>
           <button
@@ -159,9 +176,14 @@ function MyPage() {
             disabled={busy}
             className="w-full rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
           >
-            저장하기
+            정보 변경 저장
           </button>
         </form>
+        <div className="mt-16 border-t border-border pt-8">
+          <h2 className="text-sm font-semibold">회원 탈퇴</h2>
+          <p className="mt-2 text-xs leading-6 text-muted-foreground">탈퇴 시 회원 정보는 즉시 삭제되며, 주문 내역은 관련 법령에 따라 보관될 수 있습니다.</p>
+          <button type="button" onClick={withdraw} className="mt-4 rounded-sm border border-destructive px-5 py-2.5 text-sm text-destructive transition-colors hover:bg-destructive/10">회원 탈퇴하기</button>
+        </div>
       </main>
       <SiteFooter />
     </div>

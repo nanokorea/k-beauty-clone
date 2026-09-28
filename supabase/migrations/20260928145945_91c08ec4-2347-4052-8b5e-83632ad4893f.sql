@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.handle_order_points() FROM PUBLIC, anon, authenticated;

@@ -134,6 +134,7 @@ function MobileHero() {
           />
         ))}
       </div>
+      <HeroLinks positionClass="left-1/2 top-[80%]" />
     </section>
   );
 }

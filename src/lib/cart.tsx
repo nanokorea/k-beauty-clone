@@ -28,7 +28,18 @@ type CartContextValue = {
   clear: () => void;
 };
 
-const CartContext = createContext<CartContextValue | null>(null);
+// Keep one context instance across hot reloads so the provider and consumers always match.
+const g = globalThis as { __eiCartContext?: React.Context<CartContextValue | null> };
+const CartContext = (g.__eiCartContext ??= createContext<CartContextValue | null>(null));
+const EMPTY_CART: CartContextValue = {
+  items: [],
+  count: 0,
+  total: 0,
+  add: () => {},
+  setQuantity: () => {},
+  remove: () => {},
+  clear: () => {},
+};
 const STORAGE_KEY = "ei-cart-v1";
 
 export function CartProvider({ children }: { children: ReactNode }) {
@@ -104,8 +115,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
 export function useCart() {
   const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used inside CartProvider");
-  return ctx;
+  return ctx ?? EMPTY_CART;
 }
 
 export function formatPrice(value: number) {

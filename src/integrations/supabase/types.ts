@@ -336,6 +336,7 @@ export type Database = {
           full_name: string | null
           id: string
           marketing_agreed_at: string | null
+          member_no: number | null
           phone: string | null
           postcode: string | null
           privacy_agreed_at: string | null
@@ -356,6 +357,7 @@ export type Database = {
           full_name?: string | null
           id: string
           marketing_agreed_at?: string | null
+          member_no?: number | null
           phone?: string | null
           postcode?: string | null
           privacy_agreed_at?: string | null
@@ -376,6 +378,7 @@ export type Database = {
           full_name?: string | null
           id?: string
           marketing_agreed_at?: string | null
+          member_no?: number | null
           phone?: string | null
           postcode?: string | null
           privacy_agreed_at?: string | null

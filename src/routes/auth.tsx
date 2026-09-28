@@ -174,6 +174,51 @@ function LoginForm() {
       >
         구글 계정으로 계속하기
       </button>
+      <ForgotPassword />
+    </div>
+  );
+}
+
+function ForgotPassword() {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const send = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setBusy(false);
+    if (error) {
+      toast.error("메일을 보내지 못했습니다. 잠시 후 다시 시도해 주세요.");
+      return;
+    }
+    setSent(true);
+  };
+
+  return (
+    <div className="mt-8 rounded-sm border border-border bg-secondary/40 p-5 text-sm leading-7">
+      <p className="font-semibold">아이디 · 비밀번호를 잊으셨나요?</p>
+      <ul className="mt-2 list-disc pl-5 text-muted-foreground">
+        <li>아이디를 잊으셨다면 가입할 때 사용한 <b>이메일 주소</b>로도 로그인할 수 있습니다.</li>
+        <li>비밀번호를 잊으셨다면 가입할 때 사용한 이메일로 재설정 링크를 받아 새 비밀번호로 바꿀 수 있습니다.</li>
+        <li>이메일이 기억나지 않으시면 고객센터 <a href="tel:070-4517-0773" className="underline">070-4517-0773</a> 또는 <a href="mailto:contact@Eisoap.com" className="underline">contact@Eisoap.com</a>으로 연락해 주세요.</li>
+      </ul>
+      {sent ? (
+        <p className="mt-3 text-primary">입력하신 이메일로 비밀번호 재설정 메일을 보냈습니다. 메일의 링크를 눌러 새 비밀번호를 설정해 주세요.</p>
+      ) : open ? (
+        <form onSubmit={send} className="mt-3 flex gap-2">
+          <input required type="email" className={inputClass} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="가입한 이메일 주소" />
+          <Button type="submit" disabled={busy} className="h-auto shrink-0 rounded-sm">{busy ? "전송 중" : "메일 받기"}</Button>
+        </form>
+      ) : (
+        <button type="button" onClick={() => setOpen(true)} className="mt-3 underline">
+          이메일로 비밀번호 재설정하기
+        </button>
+      )}
     </div>
   );
 }

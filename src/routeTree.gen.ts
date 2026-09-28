@@ -21,6 +21,7 @@ import { Route as GuideRouteImport } from './routes/guide'
 import { Route as HowToWashRouteImport } from './routes/how-to-wash'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -91,6 +92,11 @@ const NewsRoute = NewsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
   '/privacy': typeof PrivacyRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/shop': typeof ShopRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
   '/privacy': typeof PrivacyRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -217,6 +225,7 @@ export interface FileRoutesById {
   '/how-to-wash': typeof HowToWashRoute
   '/news': typeof NewsRoute
   '/privacy': typeof PrivacyRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/shop': typeof ShopRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -244,6 +253,7 @@ export interface FileRouteTypes {
     | '/how-to-wash'
     | '/news'
     | '/privacy'
+    | '/reset-password'
     | '/shop'
     | '/sitemap.xml'
     | '/terms'
@@ -269,6 +279,7 @@ export interface FileRouteTypes {
     | '/how-to-wash'
     | '/news'
     | '/privacy'
+    | '/reset-password'
     | '/sitemap.xml'
     | '/terms'
     | '/admin'
@@ -294,6 +305,7 @@ export interface FileRouteTypes {
     | '/how-to-wash'
     | '/news'
     | '/privacy'
+    | '/reset-password'
     | '/shop'
     | '/sitemap.xml'
     | '/terms'
@@ -321,6 +333,7 @@ export interface RootRouteChildren {
   HowToWashRoute: typeof HowToWashRoute
   NewsRoute: typeof NewsRoute
   PrivacyRoute: typeof PrivacyRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   ShopRoute: typeof ShopRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
@@ -413,6 +426,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -544,6 +564,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowToWashRoute: HowToWashRoute,
   NewsRoute: NewsRoute,
   PrivacyRoute: PrivacyRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   ShopRoute: ShopRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,

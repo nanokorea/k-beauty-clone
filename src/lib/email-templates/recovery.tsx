@@ -20,24 +20,24 @@ export const RecoveryEmail = ({
   siteName,
   confirmationUrl,
 }: RecoveryEmailProps) => (
-  <Html lang="en" dir="ltr">
+  <Html lang="ko" dir="ltr">
     <Head>
       <style>{darkModeCss}</style>
     </Head>
-    <Preview>Reset your password for {siteName}</Preview>
+    <Preview>{siteName} 비밀번호 재설정 안내</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Reset your password</Heading>
+        <Heading style={h1}>비밀번호 재설정 안내</Heading>
         <Text style={text}>
-          We received a request to reset your password for {siteName}. Click
-          the button below to choose a new password.
+          안녕하세요, {siteName}입니다. 비밀번호 재설정 요청을 받았습니다.
+          아래 버튼을 눌러 새 비밀번호를 설정해 주세요.
         </Text>
         <Button className="dm-btn" style={button} href={confirmationUrl}>
-          Reset Password
+          새 비밀번호 설정하기
         </Button>
         <Text style={footer}>
-          If you didn't request a password reset, you can safely ignore this
-          email. Your password will not be changed.
+          본인이 요청하지 않았다면 이 메일을 무시하셔도 되며, 비밀번호는 변경되지 않습니다.
+          문의: 070-4517-0773 · www.Eisoap.com
         </Text>
       </Container>
     </Body>

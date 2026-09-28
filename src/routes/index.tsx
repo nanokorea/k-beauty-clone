@@ -42,6 +42,21 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+function HeroLinks({ positionClass }: { positionClass: string }) {
+  const linkClass =
+    "pointer-events-auto whitespace-nowrap rounded-sm border border-ink/25 bg-background/85 px-4 py-2 text-[11px] font-normal tracking-wide text-ink shadow-sm backdrop-blur-sm transition-colors hover:bg-oxide hover:text-primary-foreground sm:px-5 sm:py-2.5 sm:text-[13px]";
+  return (
+    <div className={`absolute z-20 flex -translate-x-1/2 gap-2 sm:gap-3 ${positionClass}`}>
+      <Link to="/brand-story" className={linkClass}>
+        Brand History
+      </Link>
+      <Link to="/guide" className={linkClass}>
+        EI 미용비누는?
+      </Link>
+    </div>
+  );
+}
+
 function DesktopHero() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -78,6 +93,7 @@ function DesktopHero() {
           />
         ))}
       </div>
+      <HeroLinks positionClass="left-[27%] top-[84%]" />
     </section>
   );
 }
@@ -118,6 +134,7 @@ function MobileHero() {
           />
         ))}
       </div>
+      <HeroLinks positionClass="left-1/2 top-[80%]" />
     </section>
   );
 }

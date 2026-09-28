@@ -93,7 +93,7 @@ function DesktopHero() {
           />
         ))}
       </div>
-      <HeroLinks positionClass="left-[27%] top-[79%]" />
+      <HeroLinks positionClass="left-[27%] top-[84%]" />
     </section>
   );
 }

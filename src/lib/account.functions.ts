@@ -67,3 +67,19 @@ export const deleteMyAccount = createServerFn({ method: "POST" })
     if (error) throw new Error("회원 탈퇴 처리 중 오류가 발생했습니다.");
     return { ok: true };
   });
+
+export const adminDeleteMember = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((data: { userId: string }) => z.object({ userId: z.string().uuid() }).parse(data))
+  .handler(async ({ data, context }) => {
+    const { data: isAdmin } = await context.supabase.rpc("has_role", {
+      _user_id: context.userId,
+      _role: "admin",
+    });
+    if (!isAdmin) throw new Error("관리자만 삭제할 수 있습니다.");
+    if (data.userId === context.userId) throw new Error("본인 계정은 여기서 삭제할 수 없습니다.");
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin.auth.admin.deleteUser(data.userId);
+    if (error) throw new Error("회원 삭제 중 오류가 발생했습니다.");
+    return { ok: true };
+  });

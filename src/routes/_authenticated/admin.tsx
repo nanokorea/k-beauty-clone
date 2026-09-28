@@ -8,6 +8,8 @@ import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { formatPrice } from "@/lib/cart";
+import { useServerFn } from "@tanstack/react-start";
+import { adminDeleteMember } from "@/lib/account.functions";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   staticData: { sitemap: false },
@@ -340,15 +342,16 @@ function ProductsAdmin() {
 
 function OrdersAdmin() {
   const qc = useQueryClient();
+  const [search, setSearch] = useState("");
   const { data } = useQuery({
     queryKey: ["admin-orders"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("orders")
         .select("*, order_items(*)")
-        .order("created_at", { ascending: false });
+        .order("created_at", { ascending: true });
       if (error) throw error;
-      return data;
+      return data.map((o, i) => ({ ...o, no: i + 1 })).reverse();
     },
   });
 
@@ -366,17 +369,47 @@ function OrdersAdmin() {
     },
   });
 
+  const remove = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("orders").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success("주문을 삭제했습니다.");
+      qc.invalidateQueries({ queryKey: ["admin-orders"] });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const list = (data ?? []).filter((o) =>
+    matches(search, [
+      o.no,
+      o.order_no,
+      o.orderer_name,
+      o.phone,
+      o.email,
+      o.address,
+      ...o.order_items.map((it) => it.product_name),
+    ]),
+  );
+
   return (
+    <div className="space-y-4">
+    <SearchBox value={search} onChange={setSearch} placeholder="번호, 주문번호, 주문자, 연락처, 이메일, 상품명으로 검색" count={list.length} />
     <ul className="space-y-4">
-      {(data ?? []).map((o) => (
+      {list.map((o) => (
         <li key={o.id} className="border border-border bg-card p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-sm font-medium">{o.order_no}</p>
+              <p className="text-sm font-medium">
+                <span className="mr-2 rounded-sm bg-secondary px-2 py-0.5 text-xs text-primary">No. {o.no}</span>
+                {o.order_no}
+              </p>
               <p className="text-xs text-muted-foreground">
                 {o.orderer_name} · {o.phone} · {new Date(o.created_at).toLocaleString("ko-KR")}
               </p>
             </div>
+            <div className="flex items-center gap-3">
             <select
               className="rounded-sm border border-input px-2 py-1 text-sm"
               value={o.status}
@@ -388,6 +421,16 @@ function OrdersAdmin() {
                 </option>
               ))}
             </select>
+            <button
+              type="button"
+              className="text-xs text-destructive underline"
+              onClick={() => {
+                if (confirm(`주문 ${o.order_no}을(를) 삭제할까요? 되돌릴 수 없습니다.`)) remove.mutate(o.id);
+              }}
+            >
+              삭제
+            </button>
+            </div>
           </div>
           <p className="mt-2 text-xs text-muted-foreground">
             {o.postcode} {o.address} {o.address_detail}
@@ -410,20 +453,22 @@ function OrdersAdmin() {
         </li>
       ))}
     </ul>
+    </div>
   );
 }
 
 function InquiriesAdmin() {
   const qc = useQueryClient();
+  const [search, setSearch] = useState("");
   const { data } = useQuery({
     queryKey: ["admin-inquiries"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("inquiries")
         .select("*")
-        .order("created_at", { ascending: false });
+        .order("created_at", { ascending: true });
       if (error) throw error;
-      return data;
+      return data.map((q, i) => ({ ...q, no: i + 1 })).reverse();
     },
   });
 
@@ -438,14 +483,34 @@ function InquiriesAdmin() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ["admin-inquiries"] }),
   });
 
+  const remove = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("inquiries").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success("문의를 삭제했습니다.");
+      qc.invalidateQueries({ queryKey: ["admin-inquiries"] });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const list = (data ?? []).filter((q) =>
+    matches(search, [q.no, q.name, q.email, q.phone, q.subject, q.message]),
+  );
+
   return (
+    <div className="space-y-4">
+    <SearchBox value={search} onChange={setSearch} placeholder="번호, 이름, 이메일, 연락처, 제목, 내용으로 검색" count={list.length} />
     <ul className="space-y-4">
-      {(data ?? []).map((q) => (
+      {list.map((q) => (
         <li key={q.id} className="border border-border bg-card p-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="text-sm font-medium">
+              <span className="mr-2 rounded-sm bg-secondary px-2 py-0.5 text-xs text-primary">No. {q.no}</span>
               {q.name} · {q.email} {q.phone ? `· ${q.phone}` : ""}
             </p>
+            <div className="flex items-center gap-3">
             <select
               className="rounded-sm border border-input px-2 py-1 text-xs"
               value={q.status}
@@ -455,6 +520,16 @@ function InquiriesAdmin() {
               <option value="in_progress">처리중</option>
               <option value="done">완료</option>
             </select>
+            <button
+              type="button"
+              className="text-xs text-destructive underline"
+              onClick={() => {
+                if (confirm("이 문의를 삭제할까요?")) remove.mutate(q.id);
+              }}
+            >
+              삭제
+            </button>
+            </div>
           </div>
           <p className="mt-1 text-xs text-muted-foreground">
             {new Date(q.created_at).toLocaleString("ko-KR")}
@@ -464,19 +539,22 @@ function InquiriesAdmin() {
         </li>
       ))}
     </ul>
+    </div>
   );
 }
 
 function MembersAdmin() {
   const qc = useQueryClient();
+  const deleteMember = useServerFn(adminDeleteMember);
+  const [search, setSearch] = useState("");
   const { data } = useQuery({
     queryKey: ["admin-members"],
     queryFn: async () => {
       const [{ data, error }, { data: tx, error: txErr }] = await Promise.all([
         supabase
           .from("profiles")
-          .select("id, username, full_name, email, phone, created_at, marketing_agreed_at")
-          .order("created_at", { ascending: false }),
+          .select("id, member_no, username, full_name, email, phone, created_at, marketing_agreed_at")
+          .order("member_no", { ascending: true }),
         supabase.from("point_transactions").select("user_id, amount"),
       ]);
       if (error) throw error;
@@ -487,6 +565,15 @@ function MembersAdmin() {
     },
   });
   const [grant, setGrant] = useState<Record<string, { amount: string; reason: string }>>({});
+
+  const removeMember = useMutation({
+    mutationFn: async (userId: string) => deleteMember({ data: { userId } }),
+    onSuccess: () => {
+      toast.success("회원을 삭제했습니다.");
+      qc.invalidateQueries({ queryKey: ["admin-members"] });
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
 
   const give = useMutation({
     mutationFn: async (payload: { userId: string; amount: number; reason: string }) => {
@@ -505,18 +592,35 @@ function MembersAdmin() {
     onError: () => toast.error("포인트 반영에 실패했습니다."),
   });
 
+  const list = (data ?? []).filter((m) =>
+    matches(search, [m.member_no, m.username, m.full_name, m.email, m.phone]),
+  );
+
   return (
+    <div className="space-y-4">
+    <SearchBox value={search} onChange={setSearch} placeholder="회원번호, 아이디, 이름, 이메일, 연락처로 검색" count={list.length} />
     <ul className="space-y-3">
-      {(data ?? []).map((m) => {
+      {list.map((m) => {
         const g = grant[m.id] ?? { amount: "", reason: "" };
         return (
           <li key={m.id} className="border border-border bg-card p-4 text-sm">
             <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-sm bg-secondary px-2 py-0.5 text-xs text-primary">No. {m.member_no ?? "-"}</span>
               <span className="font-medium">{m.username ?? "-"}</span>
               <span>{m.full_name ?? "-"}</span>
               <span className="text-muted-foreground">{m.email}</span>
               <span className="text-muted-foreground">{m.phone ?? "-"}</span>
               <span className="font-semibold text-primary">{m.points.toLocaleString("ko-KR")}P</span>
+              <button
+                type="button"
+                className="text-xs text-destructive underline"
+                disabled={removeMember.isPending}
+                onClick={() => {
+                  if (confirm(`${m.username ?? m.email} 회원을 삭제할까요? 되돌릴 수 없습니다.`)) removeMember.mutate(m.id);
+                }}
+              >
+                회원 삭제
+              </button>
               <span className="ml-auto text-xs text-muted-foreground">
                 {new Date(m.created_at).toLocaleDateString("ko-KR")}
                 {m.marketing_agreed_at ? " · 마케팅 동의" : ""}
@@ -555,6 +659,38 @@ function MembersAdmin() {
         );
       })}
     </ul>
+    </div>
+  );
+}
+
+function matches(q: string, fields: unknown[]) {
+  const s = q.trim().toLowerCase();
+  if (!s) return true;
+  return fields.some((f) => f != null && String(f).toLowerCase().includes(s));
+}
+
+function SearchBox({
+  value,
+  onChange,
+  placeholder,
+  count,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  placeholder: string;
+  count: number;
+}) {
+  return (
+    <div className="flex items-center gap-3">
+      <input
+        type="search"
+        className={fieldClass}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+      <span className="shrink-0 text-xs text-muted-foreground">{count}건</span>
+    </div>
   );
 }
 

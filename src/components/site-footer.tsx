@@ -41,7 +41,7 @@ function FacebookIcon() {
 }
 const sns = [
   { label: "Instagram", Icon: InstagramIcon },
-  { label: "KakaoTalk", Icon: KakaoIcon },
+  { label: "Facebook", Icon: FacebookIcon },
 ];
 
 type NavLink = { label: string; to: string; params?: Record<string, string> };

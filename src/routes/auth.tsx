@@ -35,6 +35,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { TERMS_OF_SERVICE } from "@/data/terms";
@@ -210,11 +211,28 @@ function SignupForm() {
   });
   const [busy, setBusy] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [usernameStatus, setUsernameStatus] = useState<"idle" | "checking" | "available" | "unavailable">("idle");
 
   const detailRef = useRef<HTMLInputElement>(null);
 
-  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
+  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [k]: e.target.value });
+    if (k === "username") setUsernameStatus("idle");
+  };
+
+  const checkUsernameAvailability = async () => {
+    setUsernameStatus("checking");
+    try {
+      const { available } = await verifyUsername({ data: { username: form.username } });
+      setUsernameStatus(available ? "available" : "unavailable");
+    } catch (err) {
+      setUsernameStatus("idle");
+      toast.error(err instanceof Error ? err.message : "아이디를 확인하지 못했습니다.");
+    }
+  };
+
+  const passwordAvailable = form.password.length >= 6;
+  const passwordsMatch = form.password2.length > 0 && form.password === form.password2;
 
   const searchAddress = async () => {
     try {
@@ -244,11 +262,16 @@ function SignupForm() {
       toast.error("비밀번호가 일치하지 않습니다.");
       return;
     }
+    if (!passwordAvailable) {
+      toast.error("비밀번호는 6자 이상 입력해 주세요.");
+      return;
+    }
+    if (usernameStatus !== "available") {
+      toast.error("아이디 중복 확인을 완료해 주세요.");
+      return;
+    }
     setBusy(true);
     try {
-      const { available } = await verifyUsername({ data: { username: form.username } });
-      if (!available) throw new Error("이미 사용 중인 아이디입니다.");
-
       const { data, error } = await supabase.auth.signUp({
         email: form.email.trim(),
         password: form.password,
@@ -282,11 +305,16 @@ function SignupForm() {
 
   if (emailSent) {
     return (
-      <p className="mt-10 rounded-sm border border-primary bg-secondary/60 p-6 text-center text-sm leading-7">
-        입력하신 이메일로 인증 메일을 보냈습니다.
-        <br />
-        메일의 링크를 눌러 가입을 완료해 주세요.
-      </p>
+      <div className="mt-10 rounded-sm border border-primary bg-secondary/60 p-6 text-center text-sm leading-7">
+        <p className="font-semibold">회원가입 신청이 완료되었습니다.</p>
+        <dl className="mx-auto mt-4 grid max-w-sm grid-cols-[5rem_1fr] gap-y-1 text-left">
+          <dt className="text-muted-foreground">아이디</dt>
+          <dd>{form.username}</dd>
+          <dt className="text-muted-foreground">이메일</dt>
+          <dd className="break-all">{form.email}</dd>
+        </dl>
+        <p className="mt-4">입력하신 이메일로 인증 메일을 보냈습니다.<br />메일의 링크를 눌러 가입을 완료해 주세요.</p>
+      </div>
     );
   }
 
@@ -299,14 +327,23 @@ function SignupForm() {
         </div>
         <div className={rowClass}>
           <span className={labelClass}>아이디</span>
-          <input
-            required
-            className={inputClass}
-            value={form.username}
-            onChange={set("username")}
-            placeholder="영문·숫자 4~20자"
-            autoComplete="username"
-          />
+          <div className="w-full">
+            <div className="flex gap-2">
+              <input
+                required
+                className={inputClass}
+                value={form.username}
+                onChange={set("username")}
+                placeholder="영문·숫자 4~20자"
+                autoComplete="username"
+              />
+              <Button type="button" variant="outline" className="h-auto shrink-0 rounded-sm" onClick={checkUsernameAvailability} disabled={usernameStatus === "checking" || !form.username.trim()}>
+                {usernameStatus === "checking" ? "확인 중" : "중복 확인"}
+              </Button>
+            </div>
+            {usernameStatus === "available" ? <p className="mt-1 text-xs text-primary">사용 가능한 아이디입니다.</p> : null}
+            {usernameStatus === "unavailable" ? <p className="mt-1 text-xs text-destructive">이미 사용 중인 아이디입니다.</p> : null}
+          </div>
         </div>
         <div className={rowClass}>
           <span className={labelClass}>비밀번호</span>
@@ -319,6 +356,9 @@ function SignupForm() {
             placeholder="비밀번호"
             autoComplete="new-password"
           />
+          <p className={`w-full text-xs sm:pl-40 ${form.password.length > 0 && !passwordAvailable ? "text-destructive" : "text-muted-foreground"}`}>
+            {form.password.length === 0 ? "6자 이상 입력해 주세요." : passwordAvailable ? "사용 가능한 비밀번호입니다." : "비밀번호는 6자 이상이어야 합니다."}
+          </p>
         </div>
         <div className={rowClass}>
           <span className={labelClass}>비밀번호 확인</span>
@@ -330,6 +370,11 @@ function SignupForm() {
             onChange={set("password2")}
             autoComplete="new-password"
           />
+          {form.password2.length > 0 ? (
+            <p className={`w-full text-xs sm:pl-40 ${passwordsMatch ? "text-primary" : "text-destructive"}`}>
+              {passwordsMatch ? "비밀번호가 일치합니다." : "비밀번호가 일치하지 않습니다."}
+            </p>
+          ) : null}
         </div>
         <div className={rowClass}>
           <span className={labelClass}>이메일</span>

@@ -29,7 +29,7 @@ const guideMenu: MenuLink[] = [
 const supportMenu: MenuLink[] = [
   { label: "공지사항", to: "/news" },
   { label: "자주 묻는 질문", to: "/faq" },
-  { label: "문의하기", to: "/contact" },
+  { label: "1:1 문의하기", to: "/contact" },
 ];
 
 function Dropdown({ label, items }: { label: string; items: MenuLink[] }) {
@@ -235,6 +235,7 @@ export function SiteHeader() {
               items={[
                 { label: "마이페이지", to: "/mypage" },
                 { label: "회원정보 변경", to: "/mypage" },
+                { label: "1:1 문의하기", to: "/contact" },
                 { label: "주문내역", to: "/orders" },
                 { label: "장바구니", to: "/cart" },
               ]}

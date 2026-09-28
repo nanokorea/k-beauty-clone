@@ -11,12 +11,12 @@ export const Route = createFileRoute("/contact")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "문의하기 | JUNCO CLASSIC 한국" },
+      { title: "1:1 문의하기 | JUNCO CLASSIC 한국" },
       {
         name: "description",
         content: "JUNCO CLASSIC 제품 구매 및 유통 문의는 문의 폼 또는 전화로 연락해 주세요.",
       },
-      { property: "og:title", content: "문의하기 | JUNCO CLASSIC 한국" },
+      { property: "og:title", content: "1:1 문의하기 | JUNCO CLASSIC 한국" },
       { property: "og:description", content: "제품 및 유통 문의 안내." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -60,7 +60,7 @@ function Contact() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="py-16">
-        <SectionHeading title="문의하기" sub="Contact" />
+        <SectionHeading title="1:1 문의하기" sub="CONTACT" />
         <div className="mx-auto mt-12 max-w-[720px] px-4">
           <div className="rounded-sm border border-border bg-card p-6 text-center">
             <p className="text-3xl font-semibold text-primary">{contact.phone}</p>
@@ -136,7 +136,7 @@ function Contact() {
                 disabled={busy}
                 className="w-full rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
               >
-                문의 보내기
+                1:1 문의 보내기
               </button>
             </form>
           )}

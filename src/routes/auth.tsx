@@ -313,11 +313,10 @@ function SignupForm() {
           <input
             required
             type="password"
-            minLength={6}
             className={inputClass}
             value={form.password}
             onChange={set("password")}
-            placeholder="6자 이상"
+            placeholder="비밀번호"
             autoComplete="new-password"
           />
         </div>
@@ -326,7 +325,6 @@ function SignupForm() {
           <input
             required
             type="password"
-            minLength={6}
             className={inputClass}
             value={form.password2}
             onChange={set("password2")}

@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 const usernameSchema = z
   .string()
@@ -53,4 +54,13 @@ export const signInWithUsername = createServerFn({ method: "POST" })
     if (!res.ok) throw new Error("아이디 또는 비밀번호가 올바르지 않습니다.");
     const session = (await res.json()) as { access_token: string; refresh_token: string };
     return { access_token: session.access_token, refresh_token: session.refresh_token };
+  });
+
+export const deleteMyAccount = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin.auth.admin.deleteUser(context.userId);
+    if (error) throw new Error("회원 탈퇴 처리 중 오류가 발생했습니다.");
+    return { ok: true };
   });

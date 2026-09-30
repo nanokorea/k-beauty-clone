@@ -23,26 +23,6 @@ function Title({ children }: { children: string }) {
   return <p className="text-xs font-medium tracking-[0.2em] text-muted-foreground">{children}</p>;
 }
 
-function InstagramIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-function FacebookIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="size-6" fill="currentColor">
-      <path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v8h4v-8H17l.5-4h-4V8.8c0-.5.3-.8.5-.8z" />
-    </svg>
-  );
-}
-const sns = [
-  { label: "Instagram", Icon: InstagramIcon },
-  { label: "Facebook", Icon: FacebookIcon },
-];
 
 type NavLink = { label: string; to: string; params?: Record<string, string> };
 
@@ -180,12 +160,6 @@ export function SiteFooter() {
               className="block size-14 overflow-hidden rounded-full transition-opacity hover:opacity-80">
               <img src={kakaoChannelMark.url} alt="카카오 채널" className="size-full object-cover" />
             </a>
-            {sns.map(({ label, Icon }) => (
-              <span key={label} role="img" aria-label={label}
-                className="flex size-14 items-center justify-center rounded-full bg-muted text-background">
-                <Icon />
-              </span>
-            ))}
           </div>
         </div>
       </div>

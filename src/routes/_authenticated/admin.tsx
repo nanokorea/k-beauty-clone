@@ -39,7 +39,7 @@ const STATUSES = [
   { key: "cancelled", label: "주문 취소" },
 ];
 
-type Tab = "products" | "orders" | "inquiries" | "posts" | "members";
+type Tab = "products" | "orders" | "inquiries" | "posts" | "faqs" | "members";
 
 function AdminPage() {
   const { isAdmin, loading } = useAuth();
@@ -72,6 +72,7 @@ function AdminPage() {
             { key: "orders", label: "주문 관리" },
             { key: "inquiries", label: "문의하기" },
             { key: "posts", label: "공지 · 가이드" },
+            { key: "faqs", label: "자주 묻는 질문" },
             { key: "members", label: "회원 관리" },
           ].map((t) => (
             <button
@@ -94,6 +95,7 @@ function AdminPage() {
           {tab === "orders" ? <OrdersAdmin /> : null}
           {tab === "inquiries" ? <InquiriesAdmin /> : null}
           {tab === "posts" ? <PostsAdmin /> : null}
+          {tab === "faqs" ? <FaqsAdmin /> : null}
           {tab === "members" ? <MembersAdmin /> : null}
         </div>
       </main>
@@ -758,7 +760,7 @@ function PostsAdmin() {
         </select>
         <input required className={fieldClass} placeholder="제목" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
         <input className={fieldClass} placeholder="요약" value={form.excerpt} onChange={(e) => setForm({ ...form, excerpt: e.target.value })} />
-        <input className={fieldClass} placeholder="사진 주소(URL)" value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} />
+        <ImageField value={form.image_url} onChange={(url) => setForm((f) => ({ ...f, image_url: url }))} />
         <textarea className={fieldClass} rows={5} placeholder="내용" value={form.content} onChange={(e) => setForm({ ...form, content: e.target.value })} />
         <button className="rounded-sm bg-primary px-6 py-2 text-sm text-primary-foreground">등록</button>
       </form>
@@ -769,12 +771,125 @@ function PostsAdmin() {
             <span className="rounded-sm bg-secondary px-2 py-1 text-xs text-primary">
               {p.category === "notice" ? "공지" : "가이드"}
             </span>
+            {p.image_url ? <img src={p.image_url} alt="" className="size-10 object-cover" /> : null}
             <span className="min-w-0 flex-1 truncate text-sm">{p.title}</span>
             <button
               type="button"
               className="text-xs text-destructive underline"
               onClick={() => {
                 if (confirm("이 글을 삭제할까요?")) remove.mutate(p.id);
+              }}
+            >
+              삭제
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+type FaqForm = { question: string; answer: string; image_url: string; sort_order: number };
+const emptyFaq: FaqForm = { question: "", answer: "", image_url: "", sort_order: 0 };
+
+function FaqsAdmin() {
+  const qc = useQueryClient();
+  const { data } = useQuery({
+    queryKey: ["admin-faqs"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("faqs").select("*").order("sort_order");
+      if (error) throw error;
+      return data;
+    },
+  });
+  const [form, setForm] = useState<FaqForm>(emptyFaq);
+  const [editId, setEditId] = useState<string | null>(null);
+
+  const refresh = () => {
+    qc.invalidateQueries({ queryKey: ["admin-faqs"] });
+    qc.invalidateQueries({ queryKey: ["faqs"] });
+  };
+
+  const save = useMutation({
+    mutationFn: async () => {
+      const payload = { ...form, image_url: form.image_url || null };
+      const { error } = editId
+        ? await supabase.from("faqs").update(payload).eq("id", editId)
+        : await supabase.from("faqs").insert(payload);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success(editId ? "수정했습니다." : "등록했습니다.");
+      setForm(emptyFaq);
+      setEditId(null);
+      refresh();
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  const remove = useMutation({
+    mutationFn: async (id: string) => {
+      const { error } = await supabase.from("faqs").delete().eq("id", id);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      toast.success("삭제했습니다.");
+      refresh();
+    },
+    onError: (e: Error) => toast.error(e.message),
+  });
+
+  return (
+    <div className="space-y-8">
+      <form
+        className="grid gap-3 border border-border bg-card p-5"
+        onSubmit={(e) => {
+          e.preventDefault();
+          save.mutate();
+        }}
+      >
+        <p className="text-sm font-medium">{editId ? "질문 수정" : "새 질문 등록"}</p>
+        <input required className={fieldClass} placeholder="질문" value={form.question} onChange={(e) => setForm({ ...form, question: e.target.value })} />
+        <textarea required className={fieldClass} rows={5} placeholder="답변" value={form.answer} onChange={(e) => setForm({ ...form, answer: e.target.value })} />
+        <ImageField value={form.image_url} onChange={(url) => setForm((f) => ({ ...f, image_url: url }))} />
+        <label className="flex items-center gap-2 text-sm">
+          표시 순서
+          <input type="number" className={`${fieldClass} max-w-[120px]`} value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
+        </label>
+        <div className="flex gap-2">
+          <button className="rounded-sm bg-primary px-6 py-2 text-sm text-primary-foreground">
+            {editId ? "수정 저장" : "등록"}
+          </button>
+          {editId ? (
+            <button type="button" className="rounded-sm border border-border px-6 py-2 text-sm" onClick={() => { setEditId(null); setForm(emptyFaq); }}>
+              취소
+            </button>
+          ) : null}
+        </div>
+      </form>
+
+      <ul className="space-y-3">
+        {(data ?? []).map((f) => (
+          <li key={f.id} className="flex items-center gap-3 border border-border bg-card p-4">
+            <span className="text-xs text-muted-foreground">{f.sort_order}</span>
+            {f.image_url ? <img src={f.image_url} alt="" className="size-10 object-cover" /> : null}
+            <span className="min-w-0 flex-1 truncate text-sm">{f.question}</span>
+            <button
+              type="button"
+              className="text-xs underline"
+              onClick={() => {
+                setEditId(f.id);
+                setForm({ question: f.question, answer: f.answer, image_url: f.image_url ?? "", sort_order: f.sort_order });
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              수정
+            </button>
+            <button
+              type="button"
+              className="text-xs text-destructive underline"
+              onClick={() => {
+                if (confirm("이 질문을 삭제할까요?")) remove.mutate(f.id);
               }}
             >
               삭제

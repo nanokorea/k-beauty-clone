@@ -19,6 +19,7 @@ export type Database = {
           answer: string
           created_at: string
           id: string
+          image_url: string | null
           question: string
           sort_order: number
         }
@@ -26,6 +27,7 @@ export type Database = {
           answer: string
           created_at?: string
           id?: string
+          image_url?: string | null
           question: string
           sort_order?: number
         }
@@ -33,6 +35,7 @@ export type Database = {
           answer?: string
           created_at?: string
           id?: string
+          image_url?: string | null
           question?: string
           sort_order?: number
         }

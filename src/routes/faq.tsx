@@ -57,7 +57,12 @@ function FaqPage() {
                     />
                   </button>
                   {isOpen ? (
-                    <p className="pb-5 text-sm leading-7 text-foreground/80">{f.answer}</p>
+                    <div className="pb-5">
+                      <p className="whitespace-pre-line text-sm leading-7 text-foreground/80">{f.answer}</p>
+                      {f.image_url ? (
+                        <img src={f.image_url} alt={f.question} className="mt-4 max-w-full" loading="lazy" />
+                      ) : null}
+                    </div>
                   ) : null}
                 </li>
               );

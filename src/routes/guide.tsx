@@ -17,7 +17,7 @@ import beforeImg from "@/assets/feat-before.jpg.asset.json";
 import afterImg from "@/assets/feat-after.jpg.asset.json";
 import soapImg from "@/assets/feat-soap.jpg.asset.json";
 import dry1 from "@/assets/feat-dry1.jpg.asset.json";
-import dry2 from "@/assets/feat-dry2.jpg.asset.json";
+import dry2 from "@/assets/feat-dry2-factory.jpg";
 
 export const Route = createFileRoute("/guide")({
   staticData: { sitemap: true },
@@ -209,7 +209,7 @@ function GuidePage() {
             </table>
             <div className="mx-auto flex w-full max-w-[220px] flex-col gap-3">
               <img src={dry1.url} alt="틀 제조법 자연 건조 과정 1" className="w-full" loading="lazy" />
-              <img src={dry2.url} alt="틀 제조법 자연 건조 과정 2" className="w-full" loading="lazy" />
+              <img src={dry2} alt="공장 숙성실의 틀 제조법 자연 건조 과정" className="w-full" loading="lazy" />
             </div>
           </div>
 

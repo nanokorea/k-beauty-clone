@@ -251,13 +251,25 @@ function Home() {
         </section>
 
 
-        <section>
+        <section className="relative">
           <img
             src={homeBottomBanner.url}
             alt="JUNCO CLASSIC 비누 제품 컬렉션"
             className="w-full object-cover"
             loading="lazy"
           />
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-ink/45 via-ink/15 to-transparent"
+            aria-hidden="true"
+          />
+          <div className="pointer-events-none absolute left-[6%] right-[6%] top-[9%] z-10 text-primary-foreground sm:left-[5.5%]">
+            <p className="text-[20px] font-light leading-[1.45] sm:text-[clamp(22px,2.6vw,40px)]">
+              비누 하나로 완성하는
+            </p>
+            <p className="mt-1 text-[22px] font-semibold leading-[1.35] sm:text-[clamp(26px,3vw,46px)]">
+              데일리 케어
+            </p>
+          </div>
         </section>
 
       </main>

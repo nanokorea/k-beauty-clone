@@ -57,21 +57,43 @@ function HeroLinks({ positionClass }: { positionClass: string }) {
   );
 }
 
+function HeroOrnamentDivider() {
+  return (
+    <div className="flex items-center justify-center gap-2 sm:gap-3" aria-hidden="true">
+      <span className="h-px w-14 bg-antique-gold/80 sm:w-24" />
+      <span className="text-[9px] leading-none text-antique-gold sm:text-[11px]">◆</span>
+      <span className="h-px w-14 bg-antique-gold/80 sm:w-24" />
+    </div>
+  );
+}
+
 function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
   return (
     <div
       className={
         mobile
-          ? "pointer-events-none absolute left-[6%] right-[6%] top-[14%] z-10 text-ink"
-          : "pointer-events-none absolute left-[5.5%] top-[9%] z-10 max-w-[58%] text-primary-foreground"
+          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-primary-foreground"
+          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-primary-foreground"
       }
     >
-      <p className={mobile ? "text-[22px] font-light leading-[1.45]" : "text-[clamp(24px,3vw,48px)] font-light leading-[1.45]"}>
+      <HeroOrnamentDivider />
+      <p
+        className={`mt-3 text-center font-serif-kr font-light leading-[1.55] tracking-wide sm:mt-4 ${
+          mobile ? "text-[22px]" : "text-[clamp(22px,2.8vw,44px)]"
+        }`}
+      >
         EI 비누 한 조각을 만들기 위해,
       </p>
-      <p className={mobile ? "mt-1 text-[26px] font-semibold leading-[1.4]" : "mt-1 text-[clamp(28px,3.4vw,54px)] font-semibold leading-[1.35]"}>
+      <p
+        className={`text-center font-serif-kr font-bold leading-[1.45] tracking-wide ${
+          mobile ? "text-[26px]" : "text-[clamp(26px,3.2vw,50px)]"
+        }`}
+      >
         100일의 시간이 필요합니다.
       </p>
+      <div className="mt-3 sm:mt-4">
+        <HeroOrnamentDivider />
+      </div>
     </div>
   );
 }

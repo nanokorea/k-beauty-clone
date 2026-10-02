@@ -158,6 +158,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  .font-serif-kr {
+    font-family: "PT Serif", "Noto Serif KR", "Noto Sans KR", serif;
+  }
+
   h1,
   h2,
   h3 {

@@ -57,6 +57,25 @@ function HeroLinks({ positionClass }: { positionClass: string }) {
   );
 }
 
+function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <div
+      className={
+        mobile
+          ? "pointer-events-none absolute left-[6%] right-[6%] top-[14%] z-10 text-ink"
+          : "pointer-events-none absolute left-[5.5%] top-[9%] z-10 max-w-[58%] text-primary-foreground"
+      }
+    >
+      <p className={mobile ? "text-[22px] font-light leading-[1.45]" : "text-[clamp(24px,3vw,48px)] font-light leading-[1.45]"}>
+        EI 비누 한 조각을 만들기 위해,
+      </p>
+      <p className={mobile ? "mt-1 text-[26px] font-semibold leading-[1.4]" : "mt-1 text-[clamp(28px,3.4vw,54px)] font-semibold leading-[1.35]"}>
+        100일의 시간이 필요합니다.
+      </p>
+    </div>
+  );
+}
+
 function DesktopHero() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -79,6 +98,10 @@ function DesktopHero() {
             }`}
           />
         ))}
+        <div className={`pointer-events-none absolute inset-x-0 top-0 h-[55%] bg-gradient-to-b from-ink/65 via-ink/20 to-transparent transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden="true" />
+        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
+          <SecondSlideCaption />
+        </div>
       </div>
       <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
         {desktopSlides.map((src, idx) => (
@@ -120,6 +143,9 @@ function MobileHero() {
             }`}
           />
         ))}
+        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
+          <SecondSlideCaption mobile />
+        </div>
       </div>
       <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
         {mobileSlides.map((src, idx) => (

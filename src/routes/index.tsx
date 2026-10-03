@@ -72,20 +72,25 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
     <div
       className={
         mobile
-          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-primary-foreground"
-          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-primary-foreground"
+          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-porcelain"
+          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-porcelain"
       }
     >
       <HeroOrnamentDivider />
       <p
-        className={`mt-3 text-center font-serif-kr font-light leading-[1.55] tracking-wide sm:mt-4 ${
+        className={`mt-3 text-center font-light leading-[1.55] tracking-wide sm:mt-4 ${
           mobile ? "text-[22px]" : "text-[clamp(22px,2.8vw,44px)]"
         }`}
       >
-        EI 비누 한 조각을 만들기 위해,
+        <img
+          src={eiMarkSquare.url}
+          alt="EI 마크"
+          className="mr-2 inline-block h-[1.15em] w-auto -translate-y-[0.12em] sm:mr-3"
+        />
+        비누 한 조각을 만들기 위해,
       </p>
       <p
-        className={`text-center font-serif-kr font-bold leading-[1.45] tracking-wide ${
+        className={`font-semibold leading-[1.45] tracking-wide ${
           mobile ? "text-[26px]" : "text-[clamp(26px,3.2vw,50px)]"
         }`}
       >

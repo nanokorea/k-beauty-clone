@@ -18,6 +18,7 @@ const mobileSlides = [
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
+import eiMarkSquare from "@/assets/ei-mark-square.png.asset.json";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },

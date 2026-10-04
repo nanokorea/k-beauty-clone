@@ -5,8 +5,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { ScrollHighlight } from "@/components/scroll-highlight";
 import { products } from "@/data/site";
+import correctedFourthHero from "@/assets/pc-hero-4-corrected.jpg";
 
-const desktopSlides = ["/pc-hero-1.jpg", "/pc-hero-2.jpg", "/pc-hero-3.jpg", "/pc-hero-4.jpg"];
+const desktopSlides = ["/pc-hero-1.jpg", "/pc-hero-2.jpg", "/pc-hero-3.jpg", correctedFourthHero];
 const mobileSlides = [
   "/mobile-hero-v2-1.jpg",
   "/mobile-hero-v2-2.jpg",

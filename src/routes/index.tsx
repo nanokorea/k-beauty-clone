@@ -73,8 +73,8 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
     <div
       className={
         mobile
-          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-porcelain"
-          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-porcelain"
+          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-primary-foreground drop-shadow-[0_2px_10px_rgba(36,30,20,0.55)]"
+          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-primary-foreground drop-shadow-[0_2px_10px_rgba(36,30,20,0.55)]"
       }
     >
       <HeroOrnamentDivider />

@@ -205,7 +205,7 @@ function ForgotPassword() {
       <ul className="mt-2 list-disc pl-5 text-muted-foreground">
         <li>아이디를 잊으셨다면 가입할 때 사용한 <b>이메일 주소</b>로도 로그인할 수 있습니다.</li>
         <li>비밀번호를 잊으셨다면 가입할 때 사용한 이메일로 재설정 링크를 받아 새 비밀번호로 바꿀 수 있습니다.</li>
-        <li>이메일이 기억나지 않으시면 고객센터 <a href="tel:070-4517-0773" className="underline">070-4517-0773</a> 또는 <a href="mailto:contact@Eisoap.com" className="underline">contact@Eisoap.com</a>으로 연락해 주세요.</li>
+        <li>이메일이 기억나지 않으시면 고객센터 <a href="tel:070-4517-0773" className="underline">070-4517-0773</a> 또는 <a href="mailto:info@Eisoap.com" className="underline">info@Eisoap.com</a>으로 연락해 주세요.</li>
       </ul>
       {sent ? (
         <p className="mt-3 text-primary">입력하신 이메일로 비밀번호 재설정 메일을 보냈습니다. 메일의 링크를 눌러 새 비밀번호를 설정해 주세요.</p>

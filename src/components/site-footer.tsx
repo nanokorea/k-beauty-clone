@@ -175,8 +175,8 @@ export function SiteFooter() {
           <p>
             ADDRESS : {company.address} <span className="mx-2">|</span> CS CENTER : {company.phone}
             <span className="mx-2">|</span> EMAIL :{" "}
-            <a href={`mailto:${company.email}`} className="font-semibold text-foreground/80 hover:text-primary">
-              {company.email}
+            <a href={`mailto:${company.bottomEmail}`} className="font-semibold text-foreground/80 hover:text-primary">
+              {company.bottomEmail}
             </a>
           </p>
           <p>

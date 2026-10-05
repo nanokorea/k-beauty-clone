@@ -287,11 +287,7 @@ function Home() {
             className="w-full object-cover"
             loading="lazy"
           />
-          <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-[45%] bg-gradient-to-b from-ink/45 via-ink/15 to-transparent"
-            aria-hidden="true"
-          />
-          <div className="pointer-events-none absolute left-[6%] right-[6%] top-[9%] z-10 text-primary-foreground sm:left-[5.5%]">
+          <div className="pointer-events-none absolute left-[6%] right-[6%] top-[9%] z-10 text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)] sm:left-[5.5%]">
             <p className="text-[20px] font-light leading-[1.45] sm:text-[clamp(22px,2.6vw,40px)]">
               비누 하나로 완성하는
             </p>

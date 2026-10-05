@@ -15,6 +15,7 @@ const company = {
   address: "경기도 화성시 마도면 마도공단로 202 1F",
   phone: "070-4517-0773",
   email: "info@Eisoap.com",
+  bottomEmail: "contact@Eisoap.com",
   privacyOfficer: "송인재",
   bank: "기업은행 000-000000-00-000",
 };

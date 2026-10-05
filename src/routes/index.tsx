@@ -19,7 +19,7 @@ const mobileSlides = [
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
-import eiMarkSquare from "@/assets/ei-mark-square.png.asset.json";
+import eiMarkSquare from "@/assets/ei-mark-hero.png.asset.json";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -74,14 +74,14 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
     <div
       className={
         mobile
-          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-primary-foreground drop-shadow-[0_2px_10px_rgba(36,30,20,0.55)]"
-          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-primary-foreground drop-shadow-[0_2px_10px_rgba(36,30,20,0.55)]"
+          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
       }
     >
       <HeroOrnamentDivider />
       <p
-        className={`mt-3 text-center font-light leading-[1.55] tracking-wide sm:mt-4 ${
-          mobile ? "text-[22px]" : "text-[clamp(22px,2.8vw,44px)]"
+        className={`mt-3 text-center font-light leading-[1.45] sm:mt-4 ${
+          mobile ? "text-[20px]" : "text-[clamp(22px,2.6vw,40px)]"
         }`}
       >
         <img
@@ -92,8 +92,8 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
         비누 한 조각을 만들기 위해,
       </p>
       <p
-        className={`font-semibold leading-[1.45] tracking-wide ${
-          mobile ? "text-[26px]" : "text-[clamp(26px,3.2vw,50px)]"
+        className={`font-semibold leading-[1.35] ${
+          mobile ? "text-[22px]" : "text-[clamp(26px,3vw,46px)]"
         }`}
       >
         100일의 시간이 필요합니다.

@@ -174,7 +174,7 @@ function MobileHero() {
           />
         ))}
         <div
-          className={`pointer-events-none absolute inset-x-4 top-[7%] z-10 flex items-center justify-center gap-2.5 transition-opacity duration-700 motion-reduce:transition-none ${
+          className={`pointer-events-none absolute inset-x-4 top-[11%] z-10 flex items-center justify-center gap-2.5 transition-opacity duration-700 motion-reduce:transition-none ${
             i === 0 ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden={i !== 0}
@@ -182,9 +182,9 @@ function MobileHero() {
           <img
             src={mobileHeroMark.url}
             alt="EI"
-            className="size-8 shrink-0 rounded-[2px] shadow-sm min-[390px]:size-9"
+            className="size-[clamp(24px,6.5vw,32px)] shrink-0 rounded-[2px] shadow-sm"
           />
-          <p className="whitespace-nowrap text-[clamp(17px,5vw,22px)] font-semibold leading-none text-oxide drop-shadow-[0_1px_5px_rgba(255,250,240,0.75)]">
+          <p className="whitespace-nowrap text-[clamp(20px,6.5vw,32px)] font-semibold leading-none text-oxide drop-shadow-[0_1px_5px_rgba(255,250,240,0.75)]">
             비누는 조금 다릅니다.
           </p>
         </div>

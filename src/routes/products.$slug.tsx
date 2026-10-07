@@ -4,6 +4,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { products } from "@/data/site";
 import { juncoIngredients } from "@/data/junco-ingredients";
+import { ProductDetailTabs } from "@/components/product-detail-tabs";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/products/$slug")({
   staticData: { sitemap: true },
@@ -41,17 +43,17 @@ function ProductPage() {
           <img src={product.image} alt={product.name} className="w-full rounded-sm" />
           <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
             <p className="font-medium text-foreground">{product.summary}</p>
-            {product.body.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
             {product.buyUrl ? (
+              <Button asChild size="lg" className="mt-4">
               <a
                 href={product.buyUrl}
                 className="mt-4 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
               >
                 바로 구매하기
               </a>
+              </Button>
             ) : product.slug === "junco-classic" ? (
+              <Button asChild size="lg" className="mt-4">
               <Link
                 to="/shop/$slug"
                 params={{ slug: "junco-classic-100g" }}
@@ -59,27 +61,31 @@ function ProductPage() {
               >
                 바로 구매하기
               </Link>
+              </Button>
             ) : (
+              <Button asChild size="lg" className="mt-4">
               <Link
                 to="/shop"
                 className="mt-4 inline-flex items-center rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90"
               >
                 스토어 바로가기
               </Link>
+              </Button>
             )}
           </div>
         </div>
 
-        {product.detailImages?.length ? (
-          <div className="mx-auto mt-16 max-w-[900px] space-y-8 px-4">
-            {product.detailImages.map((src) => (
+        <ProductDetailTabs key={product.slug} slug={product.slug} detail={
+          <div className="mx-auto max-w-[900px] space-y-6">
+            <h2 className="text-xl font-semibold">{product.sub}</h2>
+            <p className="text-[15px] leading-8">{product.summary}</p>
+            {product.body.map((line) => <p key={line} className="text-[15px] leading-8">{line}</p>)}
+            {product.detailImages?.map((src) => (
               <img key={src} src={src} alt={`${product.name} 상세 이미지`} className="w-full rounded-sm" loading="lazy" />
             ))}
           </div>
-        ) : null}
-
-        {product.slug === "junco-classic" ? (
-          <section className="mx-auto mt-20 max-w-[1000px] px-4">
+        } ingredients={product.slug === "junco-classic" ? (
+          <section className="mx-auto max-w-[1000px]">
             <p className="text-center text-[11px] tracking-[0.3em] text-muted-foreground">FULL INGREDIENT LIST</p>
             <h3 className="mt-2 text-center text-xl font-semibold text-foreground">JUNCO CLASSIC 전성분</h3>
             <div className="mt-8 overflow-x-auto">
@@ -105,7 +111,7 @@ function ProductPage() {
               </table>
             </div>
           </section>
-        ) : null}
+        ) : undefined} />
 
 
 

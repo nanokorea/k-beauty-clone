@@ -54,7 +54,7 @@ export function ProductDetailTabs({ slug, detail, ingredients }: { slug: string;
       <div role="tablist" aria-label="제품 상세 정보" className="grid grid-cols-4 gap-1 border-b border-border py-5 sm:py-8">
         {tabs.map((item) => (
           <Button key={item.id} id={`tab-${item.id}`} role="tab" aria-selected={tab === item.id} aria-controls={`panel-${item.id}`} variant="ghost"
-            onClick={() => changeTab(item.id)} className={`h-12 gap-1 px-0 text-xs sm:gap-2 sm:text-base ${tab === item.id ? "font-semibold text-foreground" : "font-normal text-muted-foreground"}`}>
+            onClick={() => changeTab(item.id)} className={`h-12 gap-1 rounded-none px-0 text-xs hover:bg-transparent hover:text-foreground sm:gap-2 sm:text-base ${tab === item.id ? "font-semibold text-foreground" : "font-normal text-muted-foreground"}`}>
             {item.label}{item.count !== undefined && <span className="inline-flex min-w-4 items-center justify-center rounded-sm bg-muted px-1 text-[10px] text-muted-foreground sm:text-xs">{item.count}</span>}
           </Button>
         ))}

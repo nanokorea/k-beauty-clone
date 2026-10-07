@@ -6,13 +6,14 @@ import { SectionHeading } from "@/components/section-heading";
 import { ScrollHighlight } from "@/components/scroll-highlight";
 import { products } from "@/data/site";
 import correctedFourthHero from "@/assets/pc-hero-4-corrected.jpg";
+import cleanedFourthMobileHero from "@/assets/mobile-hero-4-clean.jpg";
 
 const desktopSlides = ["/pc-hero-1.jpg", "/pc-hero-2.jpg", "/pc-hero-3.jpg", correctedFourthHero];
 const mobileSlides = [
   "/mobile-hero-v2-1.jpg",
   "/mobile-hero-v2-2.jpg",
   "/mobile-hero-v2-3.jpg",
-  "/mobile-hero-v2-4.jpg",
+  cleanedFourthMobileHero,
 ];
 
 
@@ -20,6 +21,7 @@ const mobileSlides = [
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
 import eiMarkSquare from "@/assets/ei-mark-hero.png.asset.json";
+import mobileHeroMark from "@/assets/ei-mobile-hero-mark.png.asset.json";
 import mobileHeroName from "@/assets/eiichi-ishino-mobile.png.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -173,13 +175,22 @@ function MobileHero() {
             }`}
           />
         ))}
-        <img
-          src={mobileHeroName.url}
-          alt="Eiichi Ishino"
-          className={`pointer-events-none absolute left-[3.2%] top-[10.8%] z-10 h-auto w-[25%] transition-opacity duration-700 motion-reduce:transition-none ${
+        <div
+          className={`pointer-events-none absolute left-[5%] right-[5%] top-[11%] z-10 flex items-center justify-center gap-2.5 text-oxide transition-opacity duration-700 motion-reduce:transition-none ${
             i === 0 ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden={i !== 0}
+        >
+          <img src={mobileHeroMark.url} alt="EI" className="size-12 shrink-0 object-contain" />
+          <p className="text-[24px] font-medium leading-none">비누는 조금 다릅니다.</p>
+        </div>
+        <img
+          src={mobileHeroName.url}
+          alt="Eiichi Ishino"
+          className={`pointer-events-none absolute left-[5%] top-[8%] z-10 h-auto w-[30%] transition-opacity duration-700 motion-reduce:transition-none ${
+            i === 3 ? "opacity-100" : "opacity-0"
+          }`}
+          aria-hidden={i !== 3}
         />
         <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
           <SecondSlideCaption mobile />

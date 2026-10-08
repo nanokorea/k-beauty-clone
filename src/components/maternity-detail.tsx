@@ -4,47 +4,15 @@ import royalJelly from "@/assets/maternity-royal-jelly.jpg.asset.json";
 import propolis from "@/assets/maternity-propolis.jpg.asset.json";
 import conchiolin from "@/assets/maternity-conchiolin.jpg.asset.json";
 import original from "@/assets/maternity-original.jpg.asset.json";
-import pointFoam from "@/assets/maternity-point-foam.jpg.asset.json";
-import pointPlantOils from "@/assets/maternity-point-plant-oils.jpg.asset.json";
-import pointWakuneri from "@/assets/maternity-point-wakuneri.jpg.asset.json";
-import pointPurified from "@/assets/maternity-point-purified.jpg.asset.json";
-import pointRitual from "@/assets/maternity-point-ritual.jpg.asset.json";
+import pearl from "@/assets/maternity-pearl.jpg.asset.json";
+import craft from "@/assets/maternity-craft.jpg.asset.json";
+import foam from "@/assets/maternity-foam.jpg.asset.json";
 import { StickyHighlight } from "@/components/scroll-highlight";
 
 const points = [
-  {
-    no: "01",
-    image: pointFoam.url,
-    title: "쫀쫀하고 촘촘한 크리미 거품",
-    text: "거품망에 문지르면 풍성하고 부드러운 생크림 같은 거품이 만들어집니다. 거품을 얼굴에 올려 가볍게 마사지하듯 세안하세요.",
-  },
-  {
-    no: "02",
-    image: pointPlantOils.url,
-    title: "식물성 오일로 만든 비누 베이스",
-    text: "9가지 식물성 오일 유래 지방산과 해수 유래 가성소다로 만든 식물성 비누 베이스를 사용했습니다. 공급사 자료 기준 pH 8의 약알칼리성으로 부드럽게 세정합니다.",
-    note: "※ pH 값은 공급사 제공 자료 기준입니다.",
-  },
-  {
-    no: "03",
-    image: pointWakuneri.url,
-    title: "와쿠네리(枠練り) 제법 · 90일 숙성",
-    text: "비누 반죽을 틀에 넣어 서서히 열을 가하고 자연 냉각·자연 건조하는 일본 전통 방식입니다. 약 90일간 숙성시켜 단단하고 오래 쓰기 좋은 비누로 완성합니다.",
-  },
-  {
-    no: "04",
-    image: pointPurified.url,
-    title: "정제수로 완성한 깨끗한 베이스",
-    text: "제조 과정에서 역삼투압(RO) 필터 방식으로 정제한 물을 사용합니다.",
-    note: "※ 공급사 제공 자료 기준입니다.",
-  },
-  {
-    no: "05",
-    image: pointRitual.url,
-    title: "한 개로 즐기는 올인원 세안",
-    text: "얼굴 세안은 물론 거품을 올려 두는 거품 팩, 바디 세정까지. 115g 한 개로 하루 2회 사용 시 약 4개월간 쓸 수 있어요.",
-    note: "※ 사용 기간은 사용량·환경에 따라 달라질 수 있습니다.",
-  },
+  { image: pearl.url, label: "01 · GENTLE CARE", title: "민감한 피부를 위한 부드러운 시작", text: "JUNCO CLASSIC BABY를 기반으로 미용·살균·소취 효과 성분을 더해, 민감성 피부나 피부가 약한 분을 위해 개발한 고급 비누입니다." },
+  { image: craft.url, label: "02 · PURE FORMULA", title: "덜어내고, 순수함을 담다", text: "향료·색소·방부제를 일절 포함하지 않은 순천연·무첨가 제품입니다. 매일의 세안을 부드럽고 편안하게 만들어 줍니다." },
+  { image: foam.url, label: "03 · DAILY RITUAL", title: "얼굴부터 전신까지, 비누 하나로", text: "얼굴뿐 아니라 전신에 사용 가능합니다. 이중 세안으로 메이크업 잔여물도 깨끗하게 씻어낼 수 있습니다." },
 ];
 
 export function MaternityDetail() {
@@ -71,19 +39,12 @@ export function MaternityDetail() {
 
       <section className="bg-detail-paper px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-[900px]">
-          <p className="text-center text-xs text-primary">WHY ISHINO SOAP</p>
-          <h2 className="mt-4 text-center text-2xl sm:text-3xl">이시노 비누가 특별한 이유</h2>
-          <p className="mt-3 text-center text-sm text-muted-foreground">제조 방식부터 원료까지, 5가지 포인트</p>
-          <div className="mt-14 space-y-16 sm:space-y-24">{points.map((point, i) => <div key={point.no} className="grid items-center gap-8 md:grid-cols-2">
-            <img src={point.image} alt={point.title} className={`aspect-square w-full rounded-sm object-cover ${i % 2 ? "md:order-2" : ""}`} loading="lazy" />
-            <div>
-              <p className="text-3xl font-semibold text-oxide">{point.no}</p>
-              <h3 className="mt-3 text-xl leading-8 sm:text-2xl">{point.title}</h3>
-              <p className="mt-5 text-[15px] leading-8 text-muted-foreground">{point.text}</p>
-              {point.note && <p className="mt-3 text-xs leading-6 text-muted-foreground/80">{point.note}</p>}
-            </div>
+          <p className="text-center text-xs text-primary">THE MATERNITY DIFFERENCE</p>
+          <h2 className="mt-4 text-center text-2xl sm:text-3xl">마터니티가 특별한 이유</h2>
+          <div className="mt-14 space-y-16 sm:space-y-24">{points.map((point, i) => <div key={point.label} className="grid items-center gap-8 md:grid-cols-2">
+            <img src={point.image} alt={point.title} className={`aspect-square w-full object-contain ${i % 2 ? "md:order-2" : ""}`} loading="lazy" />
+            <div><p className="text-xs text-primary">{point.label}</p><h3 className="mt-4 text-xl leading-8 sm:text-2xl">{point.title}</h3><p className="mt-5 text-[15px] leading-8 text-muted-foreground">{point.text}</p></div>
           </div>)}</div>
-          <p className="mt-14 text-center text-xs leading-6 text-muted-foreground">위 내용은 공급사 제공 자료를 기준으로 작성되었습니다.</p>
         </div>
       </section>
 

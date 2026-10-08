@@ -64,6 +64,8 @@
   --color-oxide: var(--oxide);
   --color-antique-gold: var(--antique-gold);
   --color-story-ivory: var(--story-ivory);
+  --color-detail-paper: var(--detail-paper);
+  --color-detail-blush: var(--detail-blush);
   --font-display: "PT Serif", "Noto Sans KR", sans-serif;
   --font-sans: "Roboto", "Noto Sans KR", sans-serif;
 }
@@ -107,9 +109,13 @@
   --oxide: oklch(0.47 0.16 28);
   --antique-gold: oklch(0.72 0.09 82);
   --story-ivory: oklch(0.955 0.012 78);
+  --detail-paper: oklch(0.995 0.002 80);
+  --detail-blush: oklch(0.965 0.012 15);
 }
 
 .dark {
+  --detail-paper: oklch(0.22 0.01 30);
+  --detail-blush: oklch(0.26 0.018 15);
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
@@ -185,4 +191,13 @@
   select {
     font-family: "Roboto", "Noto Sans KR", sans-serif;
   }
+}
+
+.page-scroll-reveal {
+  opacity: 0.4;
+  transition: opacity 1000ms ease-out;
+}
+.page-scroll-reveal.scroll-in-view { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .page-scroll-reveal { opacity: 1; transition: none; }
 }

@@ -72,12 +72,19 @@ export function MaternityDetail() {
 
       <section className="bg-detail-paper px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-[900px]">
-          <p className="text-center text-xs text-primary">THE MATERNITY DIFFERENCE</p>
-          <h2 className="mt-4 text-center text-2xl sm:text-3xl">마터니티가 특별한 이유</h2>
-          <div className="mt-14 space-y-16 sm:space-y-24">{points.map((point, i) => <div key={point.label} className="grid items-center gap-8 md:grid-cols-2">
-            <img src={point.image} alt={point.title} className={`aspect-square w-full object-contain ${i % 2 ? "md:order-2" : ""}`} loading="lazy" />
-            <div><p className="text-xs text-primary">{point.label}</p><h3 className="mt-4 text-xl leading-8 sm:text-2xl">{point.title}</h3><p className="mt-5 text-[15px] leading-8 text-muted-foreground">{point.text}</p></div>
+          <p className="text-center text-xs text-primary">WHY ISHINO SOAP</p>
+          <h2 className="mt-4 text-center text-2xl sm:text-3xl">이시노 비누가 특별한 이유</h2>
+          <p className="mt-3 text-center text-sm text-muted-foreground">제조 방식부터 원료까지, 5가지 포인트</p>
+          <div className="mt-14 space-y-16 sm:space-y-24">{points.map((point, i) => <div key={point.no} className="grid items-center gap-8 md:grid-cols-2">
+            <img src={point.image} alt={point.title} className={`aspect-square w-full rounded-sm object-cover ${i % 2 ? "md:order-2" : ""}`} loading="lazy" />
+            <div>
+              <p className="text-3xl font-semibold text-oxide">{point.no}</p>
+              <h3 className="mt-3 text-xl leading-8 sm:text-2xl">{point.title}</h3>
+              <p className="mt-5 text-[15px] leading-8 text-muted-foreground">{point.text}</p>
+              {point.note && <p className="mt-3 text-xs leading-6 text-muted-foreground/80">{point.note}</p>}
+            </div>
           </div>)}</div>
+          <p className="mt-14 text-center text-xs leading-6 text-muted-foreground">위 내용은 공급사 제공 자료를 기준으로 작성되었습니다.</p>
         </div>
       </section>
 

@@ -1,5 +1,4 @@
 import snow from "@/assets/maternity-snow.jpg.asset.json";
-import craft from "@/assets/maternity-craft.jpg.asset.json";
 import packaging from "@/assets/maternity-package.jpg.asset.json";
 import royalJelly from "@/assets/maternity-royal-jelly.jpg.asset.json";
 import propolis from "@/assets/maternity-propolis.jpg.asset.json";

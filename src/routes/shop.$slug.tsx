@@ -64,7 +64,9 @@ function ProductPage() {
   });
 
   const soldOut = !!product && product.stock <= 0;
-  const gallery = product ? (product.gallery?.length ? product.gallery : [product.image_url ?? ""]) : [];
+  const gallery = product
+    ? Array.from(new Set([product.image_url, ...(product.gallery ?? [])].filter((image): image is string => !!image)))
+    : [];
 
   const addToCart = () => {
     if (!product) return;

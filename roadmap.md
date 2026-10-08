@@ -1,4 +1,6 @@
 # Product detail tabs
+- [x] Restore original maternity photo design and add a separate reusable five-point text table to product introductions.
+- [x] Verify preserved maternity sections and shared table rendering.
 - [x] Design maternity detail with original supplied photos and 115g copy.
 - [x] Apply accessible scroll brightening across current and future pages.
 - [x] Verify maternity detail, images, tabs and scroll effect.

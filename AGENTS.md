@@ -14,3 +14,4 @@
 - Product introduction routes share ProductDetailTabs; customer feedback uses authenticated server functions and RLS with safe public projections to keep personal account data private.
 - Mount PageScrollReveal once in the root layout to progressively brighten current and future content, excluding forms, navigation and explicitly managed animations so controls remain usable.
 - Product-specific editorial details live in focused components passed to ProductDetailTabs; uploaded compositions are cropped into original photo assets and their copy is rendered as editable text to avoid outdated printed specifications.
+- Product introductions append IshinoSoapReasons as a shared text table separate from product-specific editorial layouts; product-specific claims are opt-in so shared presentation does not imply identical formulations.

@@ -8,6 +8,7 @@ import { ProductDetailTabs } from "@/components/product-detail-tabs";
 import { Button } from "@/components/ui/button";
 import { MaternityDetail } from "@/components/maternity-detail";
 import maternityOriginal from "@/assets/maternity-original.jpg.asset.json";
+import { IshinoSoapReasons } from "@/components/ishino-soap-reasons";
 
 export const Route = createFileRoute("/products/$slug")({
   staticData: { sitemap: true },
@@ -78,7 +79,7 @@ function ProductPage() {
           </div>
         </div>
 
-        <ProductDetailTabs key={product.slug} slug={product.slug} detail={product.slug === "junco-classic-maternity" ? <MaternityDetail /> :
+        <ProductDetailTabs key={product.slug} slug={product.slug} detail={<>{product.slug === "junco-classic-maternity" ? <MaternityDetail /> :
           <div className="mx-auto max-w-[900px] space-y-6">
             <h2 className="text-xl font-semibold">{product.sub}</h2>
             <p className="text-[15px] leading-8">{product.summary}</p>
@@ -87,7 +88,7 @@ function ProductPage() {
               <img key={src} src={src} alt={`${product.name} 상세 이미지`} className="w-full rounded-sm" loading="lazy" />
             ))}
           </div>
-        } ingredients={product.slug === "junco-classic" ? (
+        }<div className="-mx-4"><IshinoSoapReasons maternity={product.slug === "junco-classic-maternity"} /></div></>} ingredients={product.slug === "junco-classic" ? (
           <section className="mx-auto max-w-[1000px]">
             <p className="text-center text-[11px] tracking-[0.3em] text-muted-foreground">FULL INGREDIENT LIST</p>
             <h3 className="mt-2 text-center text-xl font-semibold text-foreground">JUNCO CLASSIC 전성분</h3>

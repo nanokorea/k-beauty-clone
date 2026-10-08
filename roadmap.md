@@ -1,5 +1,5 @@
 # Product detail tabs
-- [ ] Replace ingredient imagery with photorealistic generated images and clarify the daily ritual product photo; verify displayed assets.
+- [x] Replace ingredient imagery with photorealistic generated images and clarify the daily ritual product photo; verify displayed assets.
 - [x] Restore original maternity photo design and add a separate reusable five-point text table to product introductions.
 - [x] Verify preserved maternity sections and shared table rendering.
 - [x] Design maternity detail with original supplied photos and 115g copy.

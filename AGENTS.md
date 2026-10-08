@@ -12,3 +12,5 @@
 - Every route declares `staticData.sitemap`; the sitemap includes public content and excludes account, checkout, cart, auth, and admin pages so crawlers only discover indexable pages.
 - Account password changes reauthenticate with the current password before updating it, preventing unauthorized changes from an unattended session.
 - Product introduction routes share ProductDetailTabs; customer feedback uses authenticated server functions and RLS with safe public projections to keep personal account data private.
+- Mount PageScrollReveal once in the root layout to progressively brighten current and future content, excluding forms, navigation and explicitly managed animations so controls remain usable.
+- Product-specific editorial details live in focused components passed to ProductDetailTabs; uploaded compositions are cropped into original photo assets and their copy is rendered as editable text to avoid outdated printed specifications.

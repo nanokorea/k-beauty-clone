@@ -34,6 +34,7 @@ export function ScrollHighlight({ children, className, delay = 0 }: ScrollHighli
   return (
     <div
       ref={ref}
+      data-reveal-managed
       className={cn(
         "translate-y-3 opacity-30 transition-[opacity,transform] duration-1000 ease-out motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none",
         active && "translate-y-0 opacity-100",
@@ -91,7 +92,7 @@ export function StickyHighlight({ eyebrow, title, lines, children, className }: 
   }, [lines.length]);
 
   return (
-    <div ref={sectionRef} className={cn("lg:min-h-[165vh]", className)}>
+    <div ref={sectionRef} data-reveal-managed className={cn("lg:min-h-[165vh]", className)}>
       <div className="lg:sticky lg:top-32">
         <p className="text-xs font-medium uppercase text-primary">{eyebrow}</p>
         <h2 className="mt-3 text-3xl font-bold leading-10 text-ink">{title}</h2>

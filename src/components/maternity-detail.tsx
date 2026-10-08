@@ -1,18 +1,18 @@
 import snow from "@/assets/maternity-snow.jpg.asset.json";
 import packaging from "@/assets/maternity-package.jpg.asset.json";
-import royalJelly from "@/assets/maternity-royal-jelly.jpg.asset.json";
-import propolis from "@/assets/maternity-propolis.jpg.asset.json";
-import conchiolin from "@/assets/maternity-conchiolin.jpg.asset.json";
+import royalJelly from "@/assets/maternity-royal-jelly-real.jpg";
+import propolis from "@/assets/maternity-propolis-real.jpg";
+import conchiolin from "@/assets/maternity-conchiolin-real.jpg";
 import original from "@/assets/maternity-original.jpg.asset.json";
 import pearl from "@/assets/maternity-pearl.jpg.asset.json";
 import craft from "@/assets/maternity-craft.jpg.asset.json";
-import foam from "@/assets/maternity-foam.jpg.asset.json";
+import dailyRitual from "@/assets/maternity-daily-ritual-clear.jpg";
 import { StickyHighlight } from "@/components/scroll-highlight";
 
 const points = [
   { image: pearl.url, label: "01 · GENTLE CARE", title: "민감한 피부를 위한 부드러운 시작", text: "JUNCO CLASSIC BABY를 기반으로 미용·살균·소취 효과 성분을 더해, 민감성 피부나 피부가 약한 분을 위해 개발한 고급 비누입니다." },
   { image: craft.url, label: "02 · PURE FORMULA", title: "덜어내고, 순수함을 담다", text: "향료·색소·방부제를 일절 포함하지 않은 순천연·무첨가 제품입니다. 매일의 세안을 부드럽고 편안하게 만들어 줍니다." },
-  { image: foam.url, label: "03 · DAILY RITUAL", title: "얼굴부터 전신까지, 비누 하나로", text: "얼굴뿐 아니라 전신에 사용 가능합니다. 이중 세안으로 메이크업 잔여물도 깨끗하게 씻어낼 수 있습니다." },
+  { image: dailyRitual, label: "03 · DAILY RITUAL", title: "얼굴부터 전신까지, 비누 하나로", text: "얼굴뿐 아니라 전신에 사용 가능합니다. 이중 세안으로 메이크업 잔여물도 깨끗하게 씻어낼 수 있습니다." },
 ];
 
 export function MaternityDetail() {
@@ -42,7 +42,7 @@ export function MaternityDetail() {
           <p className="text-center text-xs text-primary">THE MATERNITY DIFFERENCE</p>
           <h2 className="mt-4 text-center text-2xl sm:text-3xl">마터니티가 특별한 이유</h2>
           <div className="mt-14 space-y-16 sm:space-y-24">{points.map((point, i) => <div key={point.label} className="grid items-center gap-8 md:grid-cols-2">
-            <img src={point.image} alt={point.title} className={`aspect-square w-full object-contain ${i % 2 ? "md:order-2" : ""}`} loading="lazy" />
+            <img src={point.image} alt={point.title} width={1024} height={1024} className={`aspect-square w-full object-contain ${i % 2 ? "md:order-2" : ""}`} loading="lazy" />
             <div><p className="text-xs text-primary">{point.label}</p><h3 className="mt-4 text-xl leading-8 sm:text-2xl">{point.title}</h3><p className="mt-5 text-[15px] leading-8 text-muted-foreground">{point.text}</p></div>
           </div>)}</div>
         </div>
@@ -51,12 +51,12 @@ export function MaternityDetail() {
       <section className="bg-detail-blush px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-[900px]">
           <p className="text-center text-xs text-primary">KEY INGREDIENTS</p><h2 className="mt-4 text-center text-2xl sm:text-3xl">피부를 생각한 주요 보습 성분</h2>
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">{[
-            [royalJelly.url, "로열젤리 추출물", "촉촉한 세안을 위한 보습 성분"],
-            [conchiolin.url, "가수분해 콘키올린", "진주 유래의 보습 성분"],
-            [propolis.url, "프로폴리스 추출물", "피부를 건강하게 유지하는 보습 성분"],
-          ].map(([image, title, text]) => <article key={title}><img src={image} alt={title} className="aspect-[2/1] w-full object-cover" loading="lazy" /><h3 className="mt-5 text-base">{title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{text}</p></article>)}</div>
-          <p className="mt-8 text-center text-xs leading-6 text-muted-foreground">주요 배합 성분 안내입니다. 전성분표는 자료 등록 후 별도 안내합니다.</p>
+          <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-6">{[
+            [royalJelly, "로열젤리 추출물", "촉촉한 세안을 위한 보습 성분"],
+            [conchiolin, "가수분해 콘키올린", "진주 유래의 보습 성분"],
+            [propolis, "프로폴리스 추출물", "피부를 건강하게 유지하는 보습 성분"],
+          ].map(([image, title, text]) => <article key={title}><img src={image} alt={`${title}의 원료를 표현한 이미지`} width={1024} height={1024} className="aspect-square w-full object-cover" loading="lazy" /><div className="mt-5 border-t border-border pt-4"><h3 className="text-base leading-7">{title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{text}</p></div></article>)}</div>
+          <p className="mt-8 text-center text-xs leading-6 text-muted-foreground">원료를 표현한 AI 연출 이미지입니다. 주요 배합 성분 안내이며, 전성분표는 자료 등록 후 별도 안내합니다.</p>
         </div>
       </section>
 

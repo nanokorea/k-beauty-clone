@@ -185,9 +185,9 @@ function MobileHero() {
           <p className="text-[24px] font-medium leading-none">비누는 조금 다릅니다.</p>
         </div>
         <img
-          src={mobileHeroName.url}
-          alt="Eiichi Ishino"
-          className={`pointer-events-none absolute left-[5%] top-[8%] z-10 h-auto w-[30%] transition-opacity duration-700 motion-reduce:transition-none ${
+          src={mobileHeroMark.url}
+          alt="EI 마크"
+          className={`pointer-events-none absolute left-[5%] top-[8%] z-10 h-14 w-auto object-contain transition-opacity duration-700 motion-reduce:transition-none sm:h-16 ${
             i === 3 ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden={i !== 3}

@@ -73,7 +73,6 @@ export function MaternityDetail() {
       <section className="bg-detail-blush px-6 py-16 sm:py-24"><div className="mx-auto max-w-[900px]">
         <p className="text-center text-xs text-primary">HOW TO USE</p><h2 className="mt-4 text-center text-2xl sm:text-3xl">매일의 부드러운 클렌징</h2>
         <ol className="mt-12 grid gap-8 sm:grid-cols-3">{[["거품 내기", "비누를 물에 적셔 충분히 거품을 내 주세요."], ["부드럽게 세안", "거품으로 얼굴과 몸을 부드럽게 씻어 주세요. 메이크업 잔여물은 이중 세안으로 마무리해 주세요."], ["헹구고 보관", "미온수로 충분히 헹군 뒤, 물기가 잘 빠지는 곳에 비누를 보관해 주세요."]].map(([title, text], i) => <li key={title} className="border-t border-border pt-5"><span className="text-2xl text-primary">0{i + 1}</span><h3 className="mt-3 text-base">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{text}</p></li>)}</ol>
-        <div className="mt-12 border-t border-border pt-8"><h3 className="text-sm">사용 시 주의사항</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">눈과 입에 들어가지 않도록 주의하세요. 눈에 들어간 경우 깨끗한 물로 씻어 주세요. 사용 중 자극이나 이상 증상이 나타나면 사용을 중단하고 전문가와 상담하세요. 개인에 따라 사용감은 다를 수 있습니다.</p></div>
       </div></section>
     </div>
   );

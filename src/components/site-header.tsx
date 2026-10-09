@@ -118,7 +118,7 @@ export function SiteHeader() {
           <Link
             to="/"
             aria-label="홈으로 이동"
-            className="inline-flex items-center transition-opacity hover:opacity-70"
+            className="hidden items-center transition-opacity hover:opacity-70 sm:inline-flex"
           >
             <img
               src={eiWordmark.url}

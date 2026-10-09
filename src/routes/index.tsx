@@ -22,7 +22,6 @@ import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
 import eiMarkSquare from "@/assets/ei-mark-hero.png.asset.json";
 import mobileHeroMark from "@/assets/ei-mobile-hero-mark.png.asset.json";
-import mobileHeroName from "@/assets/eiichi-ishino-mobile.png.asset.json";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
@@ -185,9 +184,9 @@ function MobileHero() {
           <p className="text-[24px] font-medium leading-none">비누는 조금 다릅니다.</p>
         </div>
         <img
-          src={mobileHeroName.url}
-          alt="Eiichi Ishino"
-          className={`pointer-events-none absolute left-[5%] top-[8%] z-10 h-auto w-[30%] transition-opacity duration-700 motion-reduce:transition-none ${
+          src={mobileHeroMark.url}
+          alt="EI 마크"
+          className={`pointer-events-none absolute left-[5%] top-[8%] z-10 h-14 w-auto object-contain transition-opacity duration-700 motion-reduce:transition-none sm:h-16 ${
             i === 3 ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden={i !== 3}

@@ -1,4 +1,6 @@
 # Product detail tabs
+- [ ] Create JUNCO CLASSIC editorial detail from supplied photos and copy; preserve shared tabs and reasons table.
+- [ ] Verify classic detail photos and layout on desktop and narrow screens.
 - [x] Replace ingredient imagery with photorealistic generated images and clarify the daily ritual product photo; verify displayed assets.
 - [x] Restore original maternity photo design and add a separate reusable five-point text table to product introductions.
 - [x] Verify preserved maternity sections and shared table rendering.

@@ -22,7 +22,6 @@ import aboutImg from "@/assets/about-ei.jpg.asset.json";
 import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
 import eiMarkSquare from "@/assets/ei-mark-hero.png.asset.json";
 import mobileHeroMark from "@/assets/ei-mobile-hero-mark.png.asset.json";
-import mobileHeroName from "@/assets/eiichi-ishino-mobile.png.asset.json";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },

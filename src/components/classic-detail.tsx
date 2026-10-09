@@ -67,8 +67,8 @@ export function ClassicDetail() {
           <div className="mx-auto mt-10 max-w-[900px]">
             <img src={botanicals} alt="식물 원료와 맑은 물을 선명하게 보정한 이미지" width={1600} height={812} className="hidden w-full sm:block" loading="lazy" />
             <div className="grid gap-4 sm:hidden">
-              <img src={botanicals} alt="선명하게 보정한 식물 원료 사진" width={800} height={812} className="aspect-square w-full object-cover object-left" loading="lazy" />
-              <img src={botanicals} alt="숲과 맑은 물 사진" width={800} height={812} className="aspect-square w-full object-cover object-right" loading="lazy" />
+              <div className="aspect-[688/768] overflow-hidden"><img src={botanicals} alt="선명하게 보정한 식물 원료 사진" className="h-full w-[200%] max-w-none" loading="lazy" /></div>
+              <div className="aspect-[688/768] overflow-hidden"><img src={botanicals} alt="숲과 맑은 물 사진" className="relative -left-full h-full w-[200%] max-w-none" loading="lazy" /></div>
             </div>
           </div>
           <div className="mt-10 grid gap-8 sm:grid-cols-3">{ingredients.map((ingredient) => <article key={ingredient.name} className="border-t border-border pt-5"><h3 className="text-lg">{ingredient.name}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{ingredient.text}</p></article>)}</div>

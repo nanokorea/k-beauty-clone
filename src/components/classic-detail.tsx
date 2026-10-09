@@ -2,8 +2,8 @@ import productSet from "@/assets/classic-detail-set.png.asset.json";
 import soap from "@/assets/classic-detail-soap.jpg.asset.json";
 import overhead from "@/assets/classic-detail-overhead.jpg.asset.json";
 import artisan from "@/assets/classic-artisan.jpg.asset.json";
-import woodSoap from "@/assets/classic-wood-soap.jpg.asset.json";
-import botanicals from "@/assets/classic-botanicals.jpg.asset.json";
+import productInformation from "@/assets/classic-product-information.jpg.asset.json";
+import botanicals from "@/assets/classic-botanicals-clear.jpg";
 
 const ingredients = [
   { name: "토르말린", text: "준코 클래식의 배합에 담긴 미네랄 원료" },
@@ -64,7 +64,13 @@ export function ClassicDetail() {
           <p className="text-center text-xs text-oxide">BOTANICAL FORMULA</p>
           <h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">자연에서 고르고,<br />피부를 생각해 담다</h2>
           <p className="mx-auto mt-6 max-w-2xl text-center text-[15px] leading-8 text-muted-foreground">1000여 종의 한방 식물 중 엄선한 식물 추출물을 배합하고, 아시아인의 피부에 맞추어 개발했습니다. 토르말린을 비롯한 30종 이상의 천연 성분으로 매일의 세안에 보습과 유연함을 더합니다.</p>
-          <img src={botanicals.url} alt="제공 자료의 식물 원료와 맑은 물 이미지" width={549} height={279} className="mx-auto mt-10 w-full max-w-[700px]" loading="lazy" />
+          <div className="mx-auto mt-10 max-w-[900px]">
+            <img src={botanicals} alt="식물 원료와 맑은 물을 선명하게 보정한 이미지" width={1600} height={812} className="hidden w-full sm:block" loading="lazy" />
+            <div className="grid gap-4 sm:hidden">
+              <div className="aspect-[688/768] overflow-hidden"><img src={botanicals} alt="선명하게 보정한 식물 원료 사진" className="h-full w-[200%] max-w-none" loading="lazy" /></div>
+              <div className="aspect-[688/768] overflow-hidden"><img src={botanicals} alt="숲과 맑은 물 사진" className="relative -left-full h-full w-[200%] max-w-none" loading="lazy" /></div>
+            </div>
+          </div>
           <div className="mt-10 grid gap-8 sm:grid-cols-3">{ingredients.map((ingredient) => <article key={ingredient.name} className="border-t border-border pt-5"><h3 className="text-lg">{ingredient.name}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{ingredient.text}</p></article>)}</div>
           <p className="mt-8 text-xs leading-6 text-muted-foreground">주요 배합 원료에 관한 공급사 제공 안내입니다. 원료의 특성이 완제품의 효능을 보장하지 않으며, 개인에 따라 사용감은 다를 수 있습니다. 전체 성분은 전성분표 탭에서 확인해 주세요.</p>
         </div>
@@ -88,7 +94,7 @@ export function ClassicDetail() {
 
       <section className="bg-detail-blush px-6 py-16 sm:py-24">
         <div className="mx-auto grid max-w-[900px] items-center gap-10 md:grid-cols-2">
-          <img src={woodSoap.url} alt="목재 상자에 놓인 준코 클래식 투명 비누" width={348} height={425} className="mx-auto w-full max-w-[400px]" loading="lazy" />
+          <img src={productInformation.url} alt="준코 클래식 붉은 비누와 거품을 담은 제품 안내 사진" width={663} height={417} className="mx-auto w-full" loading="lazy" />
           <div>
             <p className="text-xs text-oxide">PRODUCT INFORMATION</p><h2 className="mt-4 text-2xl">준코 클래식 제품 안내</h2>
             <dl className="mt-8 text-sm">{[["제품명", "JUNCO CLASSIC SOAP"], ["브랜드", "EIICHI ISHINO"], ["출시", "1995년"], ["제조국", "일본"], ["사용 용도", "세안용 미용비누"], ["구성 안내", "비누 · 동봉 거품망"]].map(([label, value]) => <div key={label} className="grid grid-cols-[80px_1fr] gap-4 border-b border-border py-4"><dt className="text-muted-foreground">{label}</dt><dd className="break-words leading-6">{value}</dd></div>)}</dl>
@@ -96,7 +102,6 @@ export function ClassicDetail() {
         </div>
         <div className="mx-auto mt-12 max-w-[900px] space-y-7 border-t border-border pt-8">
           <div><h3 className="text-base">품질 관련 안내</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">제공된 제품 자료에 따르면, 2017년 5월 9일 일본식품분석센터의 식품 안전 검사에 합격했습니다. 이는 공급사 자료에 따른 안내이며, 비누의 섭취 가능 여부나 눈에 대한 안전성, 완제품의 미백 효능을 보장하지 않습니다.</p></div>
-          <div><h3 className="text-base">사용 시 주의사항</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">눈과 입에 들어가지 않도록 주의하세요. 눈에 들어간 경우 깨끗한 물로 씻어 주세요. 사용 중 자극이나 이상 증상이 나타나면 사용을 중단하고 전문가와 상담하세요.</p></div>
         </div>
       </section>
     </div>

@@ -1,4 +1,6 @@
 # Product detail tabs
+- [x] Remove the quoted caution block sitewide and replace Classic product-information photo with the supplied image.
+- [x] Restore botanical photo clarity and verify Classic presentation on phones and desktop.
 - [x] Create JUNCO CLASSIC editorial detail from supplied photos and copy; preserve shared tabs and reasons table.
 - [x] Verify classic detail photos and layout on desktop and narrow screens.
 - [x] Replace ingredient imagery with photorealistic generated images and clarify the daily ritual product photo; verify displayed assets.

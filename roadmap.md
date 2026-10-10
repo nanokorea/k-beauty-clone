@@ -1,4 +1,6 @@
 # Product detail tabs
+- [x] Create Clear Kakitannin detail from supplied HTML/photos with detailed, qualified deodorizing explanation.
+- [x] Verify Kakitannin photos, tabs and layout on desktop and phones.
 - [x] Remove the quoted caution block sitewide and replace Classic product-information photo with the supplied image.
 - [x] Restore botanical photo clarity and verify Classic presentation on phones and desktop.
 - [x] Create JUNCO CLASSIC editorial detail from supplied photos and copy; preserve shared tabs and reasons table.

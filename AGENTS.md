@@ -15,5 +15,6 @@
 - Mount PageScrollReveal once in the root layout to progressively brighten current and future content, excluding forms, navigation and explicitly managed animations so controls remain usable.
 - Product-specific editorial details live in focused components passed to ProductDetailTabs; uploaded compositions are cropped into original photo assets and their copy is rendered as editable text to avoid outdated printed specifications.
 - Classic editorial content uses the shared product-introduction route without modifying store records or galleries, keeping storytelling separate from commerce data.
+- Clear Kakitannin editorial content uses a focused component in the shared product-introduction route; supplied media stays in asset pointers and store records/galleries remain unchanged to separate editorial presentation from commerce.
 - Product introductions append IshinoSoapReasons as a shared text table separate from product-specific editorial layouts; product-specific claims are opt-in so shared presentation does not imply identical formulations.
 - Store detail galleries show the product's image_url first and retain existing gallery photos afterward, so representative-photo updates do not replace additional photographs.

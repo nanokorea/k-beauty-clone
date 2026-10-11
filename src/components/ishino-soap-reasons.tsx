@@ -18,11 +18,11 @@ const maternityDetails = [
 
 export function IshinoSoapReasons({ maternity = false }: { maternity?: boolean }) {
   return (
-    <section aria-label="이시노 비누가 특별한 이유" className="bg-detail-paper px-6 py-16 text-foreground sm:py-20">
+    <section aria-label="EI 미용비누가 특별한 이유" className="bg-detail-paper px-6 py-16 text-foreground sm:py-20">
       <div className="mx-auto max-w-[900px]">
         <div className="border-b-2 border-foreground pb-7">
           <p className="text-xs text-primary">WHY ISHINO SOAP</p>
-          <h2 className="mt-4 text-2xl leading-relaxed sm:text-3xl">이시노 비누가 특별한 이유</h2>
+          <h2 className="mt-4 text-2xl leading-relaxed sm:text-3xl">EI 미용비누가 특별한 이유</h2>
           <p className="mt-3 text-sm text-muted-foreground">제조 방식부터 매일의 세안까지</p>
         </div>
         <dl className="divide-y divide-border border-b border-border">

@@ -1,4 +1,6 @@
 # Product detail tabs
+- [ ] Create Pure Collagen editorial using supplied photos with Chinese wording removed and Korean/English copy.
+- [ ] Verify Pure Collagen photos, default details and shared tabs on desktop and narrow screens.
 - [x] Create Clear Kakitannin detail from supplied HTML/photos with detailed, qualified deodorizing explanation.
 - [x] Verify Kakitannin photos, tabs and layout on desktop and phones.
 - [x] Remove the quoted caution block sitewide and replace Classic product-information photo with the supplied image.

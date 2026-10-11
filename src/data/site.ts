@@ -5,7 +5,6 @@ import productRecollection from "@/assets/product-recollection.jpg.asset.json";
 import productSdc from "@/assets/product-sdc.jpg.asset.json";
 import productKakitannin from "@/assets/product-kakitannin-v2.jpg.asset.json";
 import productPureCollagen from "@/assets/product-pure-collagen-v2.jpg.asset.json";
-import pureCollagenDetail from "@/assets/pure-collagen-detail.png.asset.json";
 
 export type Product = {
   slug: string;
@@ -56,7 +55,6 @@ export const products: Product[] = [
     sub: "준코 클래식 퓨어 콜라겐",
     image: productPureCollagen.url,
     buyUrl: "https://eisoap.com/shop/JUNCO%20CLASSIC%20Pure%20Collagen",
-    detailImages: [pureCollagenDetail.url],
     summary:
       "비누 1개(100g)당 가수분해 콜라겐 5,000mg과 코엔자임 Q10을 담아, 세안 후에도 당김 없이 촉촉함을 지켜주는 고보습 세안비누입니다.",
     body: [

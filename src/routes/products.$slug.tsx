@@ -13,6 +13,8 @@ import { ClassicDetail } from "@/components/classic-detail";
 import classicProductSet from "@/assets/classic-detail-set.png.asset.json";
 import { KakitanninDetail } from "@/components/kakitannin-detail";
 import kakitanninMain from "@/assets/kakitannin-main.png.asset.json";
+import { PureCollagenDetail } from "@/components/pure-collagen-detail";
+import pureCollagenOriginal from "@/assets/pure-collagen-original.jpg.asset.json";
 
 export const Route = createFileRoute("/products/$slug")({
   staticData: { sitemap: true },
@@ -47,7 +49,7 @@ function ProductPage() {
       <main className="py-16">
         <SectionHeading title={product.name} sub={product.sub} />
         <div className="mx-auto mt-12 grid max-w-[1100px] items-start gap-10 px-4 md:grid-cols-2">
-          <img src={product.slug === "junco-classic-maternity" ? maternityOriginal.url : product.slug === "junco-classic" ? classicProductSet.url : product.slug === "junco-classic-clear-kakitannin" ? kakitanninMain.url : product.image} alt={product.name} className="w-full rounded-sm" />
+          <img src={product.slug === "junco-classic-maternity" ? maternityOriginal.url : product.slug === "junco-classic" ? classicProductSet.url : product.slug === "junco-classic-clear-kakitannin" ? kakitanninMain.url : product.slug === "junco-classic-pure-collagen" ? pureCollagenOriginal.url : product.image} alt={product.name} className="w-full rounded-sm" />
           <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
             <p className="font-medium text-foreground">{product.summary}</p>
             {product.slug === "junco-classic-maternity" && <p className="text-sm text-primary">내용량 115g · 얼굴 및 전신용</p>}
@@ -83,7 +85,7 @@ function ProductPage() {
           </div>
         </div>
 
-        <ProductDetailTabs key={product.slug} slug={product.slug} detail={<>{product.slug === "junco-classic-maternity" ? <MaternityDetail /> : product.slug === "junco-classic" ? <ClassicDetail /> : product.slug === "junco-classic-clear-kakitannin" ? <KakitanninDetail /> :
+        <ProductDetailTabs key={product.slug} slug={product.slug} detail={<>{product.slug === "junco-classic-maternity" ? <MaternityDetail /> : product.slug === "junco-classic" ? <ClassicDetail /> : product.slug === "junco-classic-clear-kakitannin" ? <KakitanninDetail /> : product.slug === "junco-classic-pure-collagen" ? <PureCollagenDetail /> :
           <div className="mx-auto max-w-[900px] space-y-6">
             <h2 className="text-xl font-semibold">{product.sub}</h2>
             <p className="text-[15px] leading-8">{product.summary}</p>

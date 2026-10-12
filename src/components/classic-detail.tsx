@@ -23,7 +23,7 @@ export function ClassicDetail() {
         </div>
         <img src={productSet.url} alt="준코 클래식 붉은 원형 비누와 흰색 패키지, 동봉 거품망" width={768} height={768} className="mx-auto w-full max-w-[760px]" loading="lazy" />
         <div className="mx-auto max-w-[900px] px-6 pb-16 sm:pb-20">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>1995년 출시</span><span>일본 수제 비누</span><span>30종 이상의 천연 성분*</span><span>거품망 동봉</span></div>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>1995년 출시</span><span>일본 수제 비누</span><span>30종 이상의 천연 성분</span><span>거품망 동봉</span></div>
         </div>
       </section>
 

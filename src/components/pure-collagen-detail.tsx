@@ -41,7 +41,6 @@ export function PureCollagenDetail() {
           <dl className="grid grid-cols-3 gap-3 border-y border-border py-6 text-center">
             {[['100g', '비누 1개'], ['5,000mg', '가수분해 콜라겐'], ['Q10', '코엔자임']].map(([value, label]) => <div key={value}><dt className="text-xl font-semibold text-oxide sm:text-3xl">{value}</dt><dd className="mt-3 text-xs leading-6 sm:text-sm">{label}</dd></div>)}
           </dl>
-          <p className="mt-4 text-center text-xs leading-6 text-muted-foreground">배합량 및 제품 사양은 공급사 제공 자료 기준입니다.</p>
         </div>
       </section>
 
@@ -66,7 +65,6 @@ export function PureCollagenDetail() {
           <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
             {ingredients.map((item) => <article key={item.name}><img src={item.image} alt={`${item.name} 원료 연출 사진`} width={374} height={241} className="aspect-[3/2] w-full object-cover" loading="lazy" /><p className="mt-5 text-[10px] text-oxide">{item.english}</p><h3 className="mt-2 text-base sm:text-lg">{item.name}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p></article>)}
           </div>
-          <p className="mt-10 border-t border-border pt-5 text-xs leading-6 text-muted-foreground">제공된 자료에 소개된 주요 원료와 원료 연출 사진입니다. 완제품의 효능을 보장하는 설명이나 전성분 목록이 아닙니다. 전체 성분은 자료가 제공된 후 전성분표 탭에 안내합니다.</p>
         </div>
       </section>
 
@@ -88,7 +86,7 @@ export function PureCollagenDetail() {
           <h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">시간과 정성으로 완성하는<br />전통 와쿠네리 제법</h2>
           <p className="mx-auto mt-6 max-w-2xl text-center text-[15px] leading-8 text-muted-foreground">1930년부터 이어진 삼대의 비누 만들기. 비누 장인 이시노 에이이치의 전통 틀 제조법으로, 한 조각을 만들기까지 충분한 숙성과 건조의 시간을 기다립니다.</p>
           <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-6">{[[first.url,'1대 · 시작'],[second.url,'2대 · 이시노 에이이치'],[third.url,'3대 · 계승']].map(([image,label]) => <figure key={label}><img src={image} alt={label} width={240} height={317} className="aspect-[3/4] w-full object-cover" loading="lazy" /><figcaption className="mt-4 text-center text-xs leading-6 sm:text-sm">{label}</figcaption></figure>)}</div>
-          <div className="mt-12 grid gap-8 border-y border-border py-8 sm:grid-cols-2"><div><p className="text-3xl font-semibold text-oxide">90일 이상</p><h3 className="mt-3 text-lg">충분한 숙성·건조</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">공급사 설명에 따르면 90일 이상 숙성·건조하여 밀도 높고 단단한 비누로 완성합니다.</p></div><div><p className="text-3xl font-semibold text-oxide">30~40%</p><h3 className="mt-3 text-lg">미용 성분을 담는 제법</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">전통 틀 제조법은 미용 성분을 최대 30~40%까지 배합할 수 있다는 공급사 설명입니다. 이 수치는 퓨어 콜라겐 완제품의 배합률을 뜻하지 않습니다.</p></div></div>
+          <div className="mt-12 grid gap-8 border-y border-border py-8 sm:grid-cols-2"><div><p className="text-3xl font-semibold text-oxide">90일 이상</p><h3 className="mt-3 text-lg">충분한 숙성·건조</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">90일 이상 숙성·건조하여 밀도 높고 단단한 비누로 완성합니다.</p></div><div><p className="text-3xl font-semibold text-oxide">30~40%</p><h3 className="mt-3 text-lg">미용 성분을 담는 제법</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">전통 틀 제조법으로 미용 성분을 넉넉히 담아 완성합니다.</p></div></div>
         </div>
       </section>
 

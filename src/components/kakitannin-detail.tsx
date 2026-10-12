@@ -36,8 +36,7 @@ export function KakitanninDetail() {
         </div>
         <img src={main.url} alt="클리어 카키타닌 호박빛 원형 비누, 흰색 패키지, 거품망과 감 열매" width={970} height={600} className="w-full" loading="lazy" />
         <div className="mx-auto max-w-[900px] px-6 py-10">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>일본산 수제 비누</span><span>감 추출물 · 차 카테킨*</span><span>보디 세정용 · 100g</span><span>거품망 구성</span></div>
-          <p className="mt-4 text-center text-xs leading-6 text-muted-foreground">* 주요 배합 성분 및 구성은 제공된 제품 자료 기준입니다.</p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>일본산 수제 비누</span><span>감 추출물 · 차 카테킨</span><span>보디 세정용 · 100g</span><span>거품망 구성</span></div>
         </div>
       </section>
 
@@ -50,8 +49,7 @@ export function KakitanninDetail() {
           <div className="mt-10 grid gap-8 md:grid-cols-3">{odorCare.map(([number, title, text]) => <article key={number} className="border-t border-border pt-6"><p className="text-sm text-oxide">{number}</p><h3 className="mt-4 text-lg leading-7">{title}</h3><p className="mt-4 text-sm leading-8 text-muted-foreground">{text}</p></article>)}</div>
           <div className="mt-10 border-y border-border py-6 text-sm leading-7 text-muted-foreground">
             <p className="font-medium text-foreground">탈취는 향으로 가리는 것과 다릅니다.</p>
-            <p className="mt-3">여기서 말하는 탈취·소취는 냄새 성분을 줄이는 원료의 특성과 세정으로 냄새의 원인을 씻어내는 케어를 뜻합니다. 이 비누는 땀 분비를 억제하는 제품이 아니며, 모든 체취를 없애거나 샤워 후 효과가 일정 시간 지속된다는 의미는 아닙니다.</p>
-            <p className="mt-3 text-xs leading-6">감 탄닌 원료의 연구 결과와 이 완제품의 효과는 구분됩니다. 본 제품의 탈취율·지속시간에 대한 시험 자료는 제공되지 않았으며, 배합량·접촉 시간·피부 상태에 따라 사용감은 달라질 수 있습니다.</p>
+            <p className="mt-3">여기서 말하는 탈취·소취는 냄새 성분을 줄이는 원료의 특성과 세정으로 냄새의 원인을 씻어내는 케어를 뜻합니다. 이 비누는 땀 분비를 억제하는 제품이 아닙니다.</p>
             <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs"><a href="https://www.rilis.co.jp/products/about-pancil.php" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">감 탄닌 원료의 소취 특성 참고자료 ↗</a><a href="https://cosmetic-ingredients.org/deodrant-agents/persimmon-tannin/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">감 탄닌 성분 해설 ↗</a></div>
           </div>
         </div>
@@ -61,8 +59,7 @@ export function KakitanninDetail() {
         <div className="mx-auto grid max-w-[900px] items-center gap-10 md:grid-cols-2 md:gap-14">
           <img src={botanicals.url} alt="감 열매와 차 잎, 호박빛 클리어 카키타닌 비누" className="w-full" loading="lazy" />
           <div><p className="text-xs text-oxide">BOTANICAL BODY CARE</p><h2 className="mt-4 text-2xl leading-relaxed sm:text-3xl">감에서 찾고,<br />차에서 더한 산뜻함</h2>
-            <dl className="mt-8 space-y-7"><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">감 추출물 · 감 탄닌</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">자연적으로 탄닌을 함유한 감 추출물을 배합했습니다. 감 탄닌의 소취 특성에 주목해, 땀냄새와 체취가 신경 쓰이는 보디 클렌징을 생각했습니다.</dd></div><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">차 카테킨 · 폴리페놀</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">제공 자료에 소개된 녹차 유래 카테킨을 함께 담았습니다. 식물 유래 성분을 더한 산뜻한 데일리 보디 케어입니다.</dd></div></dl>
-            <p className="mt-8 text-xs leading-6 text-muted-foreground">공급사 제공 주요 성분 안내입니다. 원료의 특성이 완제품의 효능을 보장하지 않습니다. 전체 성분은 자료 확인 후 전성분표에 안내합니다.</p>
+            <dl className="mt-8 space-y-7"><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">감 추출물 · 감 탄닌</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">자연적으로 탄닌을 함유한 감 추출물을 배합했습니다. 감 탄닌의 소취 특성에 주목해, 땀냄새와 체취가 신경 쓰이는 보디 클렌징을 생각했습니다.</dd></div><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">차 카테킨 · 폴리페놀</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">녹차 유래 카테킨을 함께 담았습니다. 식물 유래 성분을 더한 산뜻한 데일리 보디 케어입니다.</dd></div></dl>
           </div>
         </div>
       </section>

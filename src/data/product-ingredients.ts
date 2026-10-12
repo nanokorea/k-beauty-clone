@@ -23,7 +23,7 @@ const ingredients: Record<string, Ingredient> = {
   rice: { name: "쌀배아오일", english: "Rice germ oil", role: "피부 유연" },
   hyaluronate: { name: "소듐하이알루로네이트", english: "Sodium Hyaluronate", role: "보습" },
   licorice: { name: "감초추출물", english: "Licorice extract", role: "피부 컨디셔닝" },
-  rose: { name: "장미오일", english: "Rose oil", role: "향 · 피부 컨디셔닝", note: "원문에 식물의 세부 종명이 없어 일반명으로 표시했습니다." },
+  rose: { name: "장미오일", english: "Rose oil", role: "향 · 피부 컨디셔닝" },
   dipotassium: { name: "다이포타슘글리시리제이트", english: "Dipotassium Glycyrrhizate", role: "피부 컨디셔닝" },
   ginseng: { name: "인삼추출물", english: "Ginseng extract", role: "피부 컨디셔닝" },
   mulberry: { name: "뽕나무뿌리껍질추출물", english: "Mulberry root bark extract", role: "피부 컨디셔닝" },

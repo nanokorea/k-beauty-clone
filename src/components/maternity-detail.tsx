@@ -56,7 +56,7 @@ export function MaternityDetail() {
             [conchiolin, "가수분해 콘키올린", "진주 유래의 보습 성분"],
             [propolis, "프로폴리스 추출물", "피부를 건강하게 유지하는 보습 성분"],
           ].map(([image, title, text]) => <article key={title}><img src={image} alt={`${title}의 원료를 표현한 이미지`} width={1024} height={1024} className="aspect-square w-full object-cover" loading="lazy" /><div className="mt-5 border-t border-border pt-4"><h3 className="text-base leading-7">{title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{text}</p></div></article>)}</div>
-          <p className="mt-8 text-center text-xs leading-6 text-muted-foreground">원료를 표현한 AI 연출 이미지입니다. 주요 배합 성분 안내이며, 제공 자료의 전체 목록은 전성분표 탭에서 확인할 수 있습니다.</p>
+          <p className="mt-8 text-center text-xs leading-6 text-muted-foreground">주요 배합 성분 안내이며, 전체 성분은 전성분표 탭에서 확인할 수 있습니다.</p>
         </div>
       </section>
 
@@ -67,7 +67,7 @@ export function MaternityDetail() {
             <dl className="mt-8 text-sm">{[["제품명", "JUNCO CLASSIC MATERNITY"], ["내용량", "115g"], ["제조국", "일본"], ["사용 부위", "얼굴 · 전신"], ["추천 대상", "민감성 피부, 피부가 약한 분, 임신 중이거나 출산 후의 여성"]].map(([label, value]) => <div key={label} className="grid grid-cols-[80px_1fr] gap-4 border-b border-border py-4"><dt className="text-muted-foreground">{label}</dt><dd className="leading-6">{value}</dd></div>)}</dl>
           </div>
         </div>
-        <div className="mx-auto mt-12 max-w-[900px] border-t border-border pt-8"><h3 className="text-base">품질 관련 안내</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">제공된 제품 자료에 따르면, 2017년 5월 9일 일본식품분석센터의 식품 안전 검사에 합격했습니다. 이는 섭취 가능 여부나 눈에 대한 안전성을 보장하는 안내가 아닙니다.</p></div>
+        <div className="mx-auto mt-12 max-w-[900px] border-t border-border pt-8"><h3 className="text-base">품질 이력</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">2017년 5월 9일, 본 제품은 일본식품분석센터의 식품 안전 검사에 합격했습니다.</p></div>
       </section>
 
       <section className="bg-detail-blush px-6 py-16 sm:py-24"><div className="mx-auto max-w-[900px]">

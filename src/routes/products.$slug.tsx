@@ -3,7 +3,10 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { products } from "@/data/site";
-import { juncoIngredients } from "@/data/junco-ingredients";
+import { productIngredientSheets } from "@/data/product-ingredients";
+import { ProductIngredientTable } from "@/components/product-ingredient-table";
+import { BabyDetail } from "@/components/baby-detail";
+import babyOriginal from "@/assets/baby-original.jpg.asset.json";
 import { ProductDetailTabs } from "@/components/product-detail-tabs";
 import { Button } from "@/components/ui/button";
 import { MaternityDetail } from "@/components/maternity-detail";
@@ -42,6 +45,7 @@ export const Route = createFileRoute("/products/$slug")({
 
 function ProductPage() {
   const product = Route.useLoaderData();
+  const ingredientSheet = productIngredientSheets[product.slug];
 
   return (
     <div className="min-h-screen">
@@ -49,7 +53,7 @@ function ProductPage() {
       <main className="py-16">
         <SectionHeading title={product.name} sub={product.sub} />
         <div className="mx-auto mt-12 grid max-w-[1100px] items-start gap-10 px-4 md:grid-cols-2">
-          <img src={product.slug === "junco-classic-maternity" ? maternityOriginal.url : product.slug === "junco-classic" ? classicProductSet.url : product.slug === "junco-classic-clear-kakitannin" ? kakitanninMain.url : product.slug === "junco-classic-pure-collagen" ? pureCollagenOriginal.url : product.image} alt={product.name} className="w-full rounded-sm" />
+          <img src={product.slug === "junco-classic-maternity" ? maternityOriginal.url : product.slug === "junco-classic" ? classicProductSet.url : product.slug === "junco-classic-clear-kakitannin" ? kakitanninMain.url : product.slug === "junco-classic-pure-collagen" ? pureCollagenOriginal.url : product.slug === "junco-classic-baby" ? babyOriginal.url : product.image} alt={product.name} className="w-full rounded-sm" />
           <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
             <p className="font-medium text-foreground">{product.summary}</p>
             {product.slug === "junco-classic-maternity" && <p className="text-sm text-primary">내용량 115g · 얼굴 및 전신용</p>}
@@ -85,7 +89,7 @@ function ProductPage() {
           </div>
         </div>
 
-        <ProductDetailTabs key={product.slug} slug={product.slug} detail={<>{product.slug === "junco-classic-maternity" ? <MaternityDetail /> : product.slug === "junco-classic" ? <ClassicDetail /> : product.slug === "junco-classic-clear-kakitannin" ? <KakitanninDetail /> : product.slug === "junco-classic-pure-collagen" ? <PureCollagenDetail /> :
+        <ProductDetailTabs key={product.slug} slug={product.slug} detail={<>{product.slug === "junco-classic-maternity" ? <MaternityDetail /> : product.slug === "junco-classic" ? <ClassicDetail /> : product.slug === "junco-classic-clear-kakitannin" ? <KakitanninDetail /> : product.slug === "junco-classic-pure-collagen" ? <PureCollagenDetail /> : product.slug === "junco-classic-baby" ? <BabyDetail /> :
           <div className="mx-auto max-w-[900px] space-y-6">
             <h2 className="text-xl font-semibold">{product.sub}</h2>
             <p className="text-[15px] leading-8">{product.summary}</p>
@@ -94,34 +98,7 @@ function ProductPage() {
               <img key={src} src={src} alt={`${product.name} 상세 이미지`} className="w-full rounded-sm" loading="lazy" />
             ))}
           </div>
-        }<div className="-mx-4"><IshinoSoapReasons maternity={product.slug === "junco-classic-maternity"} /></div></>} ingredients={product.slug === "junco-classic" ? (
-          <section className="mx-auto max-w-[1000px]">
-            <p className="text-center text-[11px] tracking-[0.3em] text-muted-foreground">FULL INGREDIENT LIST</p>
-            <h3 className="mt-2 text-center text-xl font-semibold text-foreground">JUNCO CLASSIC 전성분</h3>
-            <div className="mt-8 overflow-x-auto">
-              <table className="w-full min-w-[640px] border-t-2 border-foreground text-left text-[13px] leading-7">
-                <thead>
-                  <tr className="border-b border-border text-foreground">
-                    <th className="w-12 py-3 pl-2 font-semibold">No.</th>
-                    <th className="py-3 font-semibold">Ingredient (INCI / 한글)</th>
-                    <th className="py-3 font-semibold">Origin / Source</th>
-                    <th className="py-3 font-semibold">Key Benefits</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {juncoIngredients.map(([name, origin, benefit], i) => (
-                    <tr key={name} className="border-b border-border/60 even:bg-secondary/40">
-                      <td className="py-2 pl-2 text-muted-foreground">{i + 1}</td>
-                      <td className="py-2 pr-3 font-medium text-foreground">{name}</td>
-                      <td className="py-2 pr-3 text-foreground/80">{origin}</td>
-                      <td className="py-2 text-primary">{benefit}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-        ) : undefined} />
+        }<div className="-mx-4"><IshinoSoapReasons maternity={product.slug === "junco-classic-maternity"} /></div></>} ingredients={ingredientSheet ? <ProductIngredientTable name={product.name} sheet={ingredientSheet} /> : undefined} />
 
 
 

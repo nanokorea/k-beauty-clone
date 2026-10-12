@@ -1,4 +1,6 @@
 # Product detail tabs
+- [x] Create Baby editorial with supplied original photos and attributed development/test claims.
+- [x] Add document-based ingredient tables for Classic, Baby, Maternity, SDC and Recollection; verify photos and tabs.
 - [x] Create Pure Collagen editorial using supplied photos with Chinese wording removed and Korean/English copy.
 - [x] Verify Pure Collagen photos, default details and shared tabs on desktop and narrow screens.
 - [x] Create Clear Kakitannin detail from supplied HTML/photos with detailed, qualified deodorizing explanation.

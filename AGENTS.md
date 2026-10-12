@@ -19,3 +19,6 @@
 - Pure Collagen editorial uses a focused component in the shared product-introduction route, with text-free crops of supplied compositions and editable Korean/English copy to keep translated presentation separate from store records and galleries.
 - Product introductions append IshinoSoapReasons as a shared text table separate from product-specific editorial layouts; product-specific claims are opt-in so shared presentation does not imply identical formulations.
 - Store detail galleries show the product's image_url first and retain existing gallery photos afterward, so representative-photo updates do not replace additional photographs.
+
+- Product ingredient tabs use a shared table and per-product document-transcribed sheets with source pages and uncertainty notes, keeping supplier references distinct from verified current labels.
+- Baby editorial stays in a focused component on the shared introduction route; original photo assets and attributed claims remain separate from commerce records.

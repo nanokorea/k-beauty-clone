@@ -56,7 +56,7 @@ export function MaternityDetail() {
             [conchiolin, "가수분해 콘키올린", "진주 유래의 보습 성분"],
             [propolis, "프로폴리스 추출물", "피부를 건강하게 유지하는 보습 성분"],
           ].map(([image, title, text]) => <article key={title}><img src={image} alt={`${title}의 원료를 표현한 이미지`} width={1024} height={1024} className="aspect-square w-full object-cover" loading="lazy" /><div className="mt-5 border-t border-border pt-4"><h3 className="text-base leading-7">{title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{text}</p></div></article>)}</div>
-          <p className="mt-8 text-center text-xs leading-6 text-muted-foreground">원료를 표현한 AI 연출 이미지입니다. 주요 배합 성분 안내이며, 전성분표는 자료 등록 후 별도 안내합니다.</p>
+          <p className="mt-8 text-center text-xs leading-6 text-muted-foreground">원료를 표현한 AI 연출 이미지입니다. 주요 배합 성분 안내이며, 제공 자료의 전체 목록은 전성분표 탭에서 확인할 수 있습니다.</p>
         </div>
       </section>
 

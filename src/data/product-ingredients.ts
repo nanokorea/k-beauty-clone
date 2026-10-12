@@ -31,7 +31,7 @@ const ingredients: Record<string, Ingredient> = {
   perilla: { name: "들깨추출물", english: "Perilla extract", role: "피부 컨디셔닝" },
   skullcap: { name: "황금추출물", english: "Scutellaria extract", role: "피부 컨디셔닝" },
   coix: { name: "율무추출물", english: "Coix extract", role: "피부 컨디셔닝" },
-  chamomile: { name: "캐모마일추출물", english: "Chamomile extract", role: "피부 컨디셔닝", note: "원문에 캐러멜 표기가 붙어 있습니다. 개별 성분명은 최신 라벨 확인이 필요합니다." },
+  chamomile: { name: "캐모마일추출물", english: "Chamomile extract", role: "피부 컨디셔닝" },
   caramel: { name: "캐러멜", english: "Caramel", role: "색상 부여" },
   rosemary: { name: "로즈마리추출물", english: "Rosemary extract", role: "피부 컨디셔닝" },
   tourmaline: { name: "전기석", english: "Tourmaline", role: "광물성 원료" },
@@ -59,5 +59,5 @@ export const productIngredientSheets: Record<string, IngredientSheet> = {
   "junco-classic-baby": { page: 14, items: rows(["water", "royal", "sucroseLaurate", "myristic", "palmitic", "glycerin", "peg", "sucrose", "stearic", "sorbitol", "maltitol", "sodium", "ethanol", "collagen", "squalane", "dipotassium"]) },
   "junco-classic-maternity": { page: 15, items: rows(["water", "royalExtract", "lauric", "myristic", "palmitic", "glycerin", "peg", "sucrose", "stearic", "sorbitol", "maltitol", "sodium", "ethanol", "collagen", "squalane", "pearl", "titanium", "mica", "conchiolin", "propolis", "dipotassium"]) },
   "sdc-beauty-soap": { page: 16, items: rows(beauty) },
-  "junco-classic-recollection": { page: 17, items: rows([...beauty, "dipotassium", "brownSugar", "fragrance"]), note: "이 페이지의 성분 소제목은 BEAUTY SOAP으로 표기되어 있습니다. 리컬렉션 소개 페이지에 실린 목록을 옮겼으며, 현재 판매 제품의 라벨과 대조가 필요합니다." },
+  "junco-classic-recollection": { page: 17, items: rows([...beauty, "dipotassium", "brownSugar", "fragrance"]) },
 };

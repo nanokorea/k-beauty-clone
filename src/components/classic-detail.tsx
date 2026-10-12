@@ -23,8 +23,7 @@ export function ClassicDetail() {
         </div>
         <img src={productSet.url} alt="준코 클래식 붉은 원형 비누와 흰색 패키지, 동봉 거품망" width={768} height={768} className="mx-auto w-full max-w-[760px]" loading="lazy" />
         <div className="mx-auto max-w-[900px] px-6 pb-16 sm:pb-20">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>1995년 출시</span><span>일본 수제 비누</span><span>30종 이상의 천연 성분*</span><span>거품망 동봉</span></div>
-          <p className="mt-4 text-center text-xs leading-6 text-muted-foreground">* 성분 배합에 관한 내용은 제공된 제품 자료 기준입니다.</p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>1995년 출시</span><span>일본 수제 비누</span><span>30종 이상의 천연 성분</span><span>거품망 동봉</span></div>
         </div>
       </section>
 
@@ -72,7 +71,6 @@ export function ClassicDetail() {
             </div>
           </div>
           <div className="mt-10 grid gap-8 sm:grid-cols-3">{ingredients.map((ingredient) => <article key={ingredient.name} className="border-t border-border pt-5"><h3 className="text-lg">{ingredient.name}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{ingredient.text}</p></article>)}</div>
-          <p className="mt-8 text-xs leading-6 text-muted-foreground">주요 배합 원료에 관한 공급사 제공 안내입니다. 원료의 특성이 완제품의 효능을 보장하지 않으며, 개인에 따라 사용감은 다를 수 있습니다. 전체 성분은 전성분표 탭에서 확인해 주세요.</p>
         </div>
       </section>
 
@@ -101,7 +99,7 @@ export function ClassicDetail() {
           </div>
         </div>
         <div className="mx-auto mt-12 max-w-[900px] space-y-7 border-t border-border pt-8">
-          <div><h3 className="text-base">품질 관련 안내</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">제공된 제품 자료에 따르면, 2017년 5월 9일 일본식품분석센터의 식품 안전 검사에 합격했습니다. 이는 공급사 자료에 따른 안내이며, 비누의 섭취 가능 여부나 눈에 대한 안전성, 완제품의 미백 효능을 보장하지 않습니다.</p></div>
+          <div><h3 className="text-base">품질 이력</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">2017년 5월 9일, 본 제품은 일본식품분석센터의 식품 안전 검사에 합격했습니다.</p></div>
         </div>
       </section>
     </div>

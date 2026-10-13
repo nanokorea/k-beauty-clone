@@ -82,9 +82,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
+      { title: "일본비누,수제비누,일본 명품수제비누,Ei 비누,준코,일본미용비누" },
       { name: "description", content: "일본 제일의 비누 장인이 만든 미용비누 JUNCO 시리즈. 수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
-      { property: "og:title", content: "수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
+      { property: "og:title", content: "일본비누,수제비누,일본 명품수제비누,Ei 비누,준코,일본미용비누" },
       { property: "og:description", content: "일본 제일의 비누 장인이 만든 미용비누 JUNCO 시리즈. 수제비누, 일본 명품 수제비누, Ei 비누, 준코클래식, 일본 미용비누" },
       { property: "og:type", content: "website" },
       { name: "naver-site-verification", content: "7f01411e8cd762e62c1fe564409ccdc2935b1c4d" },

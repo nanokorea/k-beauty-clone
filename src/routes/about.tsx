@@ -13,13 +13,13 @@ export const Route = createFileRoute("/about")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "EI 스토리 · 제품 히스토리 | EI 이시노 에이이치" },
+      { title: "제품 히스토리 | EI 이시노 에이이치" },
       {
         name: "description",
         content:
-          "비누 장인 이시노 에이이치의 EI 스토리와 1972년부터 이어진 제품 개발·출시 역사를 소개합니다.",
+          "1972년 설립부터 SDC BEAUTY SOAP을 비롯한 EI 제품 개발 히스토리를 소개합니다.",
       },
-      { property: "og:title", content: "EI 스토리 · 제품 히스토리 | EI 이시노 에이이치" },
+      { property: "og:title", content: "제품 히스토리 | EI 이시노 에이이치" },
       {
         property: "og:description",
         content: "비누 장인 이시노 에이이치의 이야기와 1972년부터 이어진 제품 히스토리.",
@@ -50,7 +50,7 @@ function About() {
         <div className="mx-auto w-full max-w-[1004px] px-4">
           {/* 경로 표시 */}
           <div className="relative border-b border-[#ccc] pb-1 text-[12px] leading-[15px] text-[#999]">
-            홈 &gt; 브랜드 소개
+            홈 &gt; 제품 히스토리
             <img
               src={nrsyIcon.url}
               alt=""
@@ -67,10 +67,10 @@ function About() {
                   Eiichi Ishino
                 </div>
                 <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
-                  ABOUT
+                  HISTORY
                 </div>
                 <div className="mt-4 text-[13px] text-[#666]">
-                  Eiichi Ishino 소개
+                  제품 히스토리
                 </div>
               </ScrollHighlight>
             </div>

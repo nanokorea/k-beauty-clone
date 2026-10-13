@@ -137,13 +137,8 @@ function HistorySection() {
                 )}
                 <div className="min-w-0">
                   <h3 className="break-words text-xl leading-8 text-ink sm:text-2xl">{item.title}</h3>
-                  {item.body ? (
+                  {item.body && (
                     <p className="mt-4 max-w-3xl text-[15px] leading-8 text-muted-foreground">{item.body}</p>
-                  ) : (
-                    <dl className="mt-5 space-y-3 text-sm text-muted-foreground">
-                      <div className="flex flex-wrap gap-x-5 gap-y-1"><dt>연구·개발</dt><dd className="text-foreground">{item.developed}년</dd></div>
-                      <div className="flex flex-wrap gap-x-5 gap-y-1"><dt>판매 시작</dt><dd className="text-foreground">{item.launched}년</dd></div>
-                    </dl>
                   )}
                 </div>
               </div>

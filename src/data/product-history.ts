@@ -11,49 +11,41 @@ const productHistory = [
   {
     name: "SDC BEAUTY SOAP",
     image: historySdc.url,
-    developed: "1982",
     launched: "1983",
   },
   {
     name: "JUNCO CLASSIC SOAP",
     image: historyJunco.url,
-    developed: "1994",
     launched: "1995",
   },
   {
     name: "PENELOPI MOON JUNOA",
     image: historyJunoa.url,
-    developed: "2009",
     launched: "2010",
   },
   {
     name: "PENELOPI MOON TALISA",
     image: historyTalisa.url,
-    developed: "2009",
     launched: "2010",
   },
   {
     name: "PENELOPI MOON MASHA",
     image: historyMasha.url,
-    developed: "2011",
     launched: "2012",
   },
   {
     name: "JUNCO CLASSIC BABY",
     image: historyBaby.url,
-    developed: "2010",
     launched: "2013",
   },
   {
     name: "RECOLLECTION",
     image: historyRecollection.url,
-    developed: "2014",
     launched: "2015",
   },
   {
     name: "JUNCO CLASSIC MATERNITY",
     image: historyMaternity.url,
-    developed: "2015",
     launched: "2016",
   },
 ];
@@ -77,8 +69,6 @@ export type HistoryEvent = {
   date: string;
   title: string;
   image?: string;
-  developed?: string;
-  launched?: string;
   body?: string;
 };
 
@@ -88,8 +78,6 @@ export const historyEvents: HistoryEvent[] = [
     date: item.launched,
     title: item.name,
     image: item.image,
-    developed: item.developed,
-    launched: item.launched,
   })),
   ...corporateHistory.map((item) => ({
     date: item.year,

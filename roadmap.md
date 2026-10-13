@@ -1,4 +1,5 @@
 # Product detail tabs
+- [ ] Rename and redesign EI Story product history chronologically from 1972, removing era labels; verify date order and screen.
 - [x] Create Baby editorial with supplied original photos and attributed development/test claims.
 - [x] Add document-based ingredient tables for Classic, Baby, Maternity, SDC and Recollection; verify photos and tabs.
 - [x] Create Pure Collagen editorial using supplied photos with Chinese wording removed and Korean/English copy.

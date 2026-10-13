@@ -6,30 +6,23 @@ import frameTop from "@/assets/about-nr-t.gif.asset.json";
 import frameMid from "@/assets/about-nr-m.gif.asset.json";
 import frameEnd from "@/assets/about-nr-e.gif.asset.json";
 import nrsyIcon from "@/assets/nrsy-icon.gif.asset.json";
-import historyMaternity from "@/assets/history-maternity.jpg.asset.json";
-import historyRecollection from "@/assets/history-recollection.jpg.asset.json";
-import historyBaby from "@/assets/history-baby.jpg.asset.json";
-import historyMasha from "@/assets/history-masha.jpg.asset.json";
-import historyTalisa from "@/assets/history-talisa.jpg.asset.json";
-import historyJunoa from "@/assets/history-junoa.jpg.asset.json";
-import historyJunco from "@/assets/history-junco.jpg.asset.json";
-import historySdc from "@/assets/history-sdc.jpg.asset.json";
+import { historyEvents } from "@/data/product-history";
 import historyBanner from "@/assets/history-banner.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "브랜드 소개 | EI 이시노 에이이치" },
+      { title: "제품 히스토리 | EI 이시노 에이이치" },
       {
         name: "description",
         content:
-          "반세기 넘게 비누 업계를 이끌어 온 장인 이시노 에이이치(石野栄一)와 EI 브랜드의 이야기를 소개합니다.",
+          "1972년 설립부터 SDC BEAUTY SOAP을 비롯한 EI 제품 개발 히스토리를 소개합니다.",
       },
-      { property: "og:title", content: "브랜드 소개 | EI 이시노 에이이치" },
+      { property: "og:title", content: "제품 히스토리 | EI 이시노 에이이치" },
       {
         property: "og:description",
-        content: "비누 장인 이시노 에이이치(石野栄一)와 EI 브랜드 이야기.",
+        content: "비누 장인 이시노 에이이치의 이야기와 1972년부터 이어진 제품 히스토리.",
       },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -57,7 +50,7 @@ function About() {
         <div className="mx-auto w-full max-w-[1004px] px-4">
           {/* 경로 표시 */}
           <div className="relative border-b border-[#ccc] pb-1 text-[12px] leading-[15px] text-[#999]">
-            홈 &gt; 브랜드 소개
+            홈 &gt; 제품 히스토리
             <img
               src={nrsyIcon.url}
               alt=""
@@ -74,10 +67,10 @@ function About() {
                   Eiichi Ishino
                 </div>
                 <div className="mt-8 text-[44px] font-light leading-none tracking-[0.18em] text-[#333]">
-                  ABOUT
+                  HISTORY
                 </div>
                 <div className="mt-4 text-[13px] text-[#666]">
-                  Eiichi Ishino 소개
+                  제품 히스토리
                 </div>
               </ScrollHighlight>
             </div>
@@ -116,192 +109,48 @@ function About() {
   );
 }
 
-const productHistory = [
-  {
-    name: "JUNCO CLASSIC MATERNITY",
-    image: historyMaternity.url,
-    developed: "2015",
-    launched: "2016",
-    side: "left" as const,
-  },
-  {
-    name: "RECOLLECTION",
-    image: historyRecollection.url,
-    developed: "2014",
-    launched: "2015",
-    side: "right" as const,
-  },
-  {
-    name: "JUNCO CLASSIC BABY",
-    image: historyBaby.url,
-    developed: "2010",
-    launched: "2013",
-    side: "left" as const,
-  },
-  {
-    name: "PENELOPI MOON MASHA",
-    image: historyMasha.url,
-    developed: "2011",
-    launched: "2012",
-    side: "right" as const,
-  },
-  {
-    name: "PENELOPI MOON TALISA",
-    image: historyTalisa.url,
-    developed: "2009",
-    launched: "2010",
-    side: "left" as const,
-  },
-  {
-    name: "PENELOPI MOON JUNOA",
-    image: historyJunoa.url,
-    developed: "2009",
-    launched: "2010",
-    side: "right" as const,
-  },
-  {
-    name: "JUNCO CLASSIC SOAP",
-    image: historyJunco.url,
-    developed: "1994",
-    launched: "1995",
-    side: "left" as const,
-  },
-  {
-    name: "SDC BEAUTY SOAP",
-    image: historySdc.url,
-    developed: "1982",
-    launched: "1983",
-    side: "right" as const,
-  },
-];
-
-const corporateHistory = [
-  {
-    year: "1996",
-    era: "Heisei 8",
-    body: "주식회사 SDC(요코하마)에서 분리 독립하였습니다. 기초 화장품, 그중에서도 투명 수제 비누 생산에 있어 전통 제법을 새롭게 바꾸는 과감한 시도를 이어갔습니다. 끊임없는 연구로 독자적인 배합과 기술, 공정을 완성하였고, 이를 바탕으로 태어난 새로운 제품은 민감성 피부(피부염을 포함)를 가진 분들도 안심하고 쓸 수 있는 비누를 목표로 삼았습니다. 당사의 제품은 여러 의과대학 피부과 전문의들의 신뢰를 받았으며, 팩처럼 피부를 가꾸는 세안 비누로서 다수의 유명 화장품 브랜드로부터 수제 비누 제품의 개발과 생산을 의뢰받았습니다.",
-  },
-  {
-    year: "1987. 02",
-    era: "Showa 62",
-    body: "주식회사 SDC(요코하마시 나카구 노게초)와 합병하였습니다.",
-  },
-  {
-    year: "1972. 07",
-    era: "Showa 47",
-    body: "교에이 유화 주식회사를 설립하고 투명 비누의 제조·판매를 시작하였습니다.",
-  },
-];
-
 function HistorySection() {
   return (
-    <section className="mt-24">
-      {/* 상단 브라운 배너 */}
-      <img
-        src={historyBanner.url}
-        alt="Eiichi Ishino"
-        className="w-full"
-        loading="lazy"
-      />
-
-      <div className="mt-6 border-b border-[#ccc] pb-1 text-[12px] leading-[15px] text-[#999]">
-        홈 &gt; 브랜드 연혁
+    <section className="mt-24 text-foreground" aria-labelledby="product-history-title">
+      <img src={historyBanner.url} alt="Eiichi Ishino" className="w-full" loading="lazy" />
+      <div className="mt-6 border-b border-border pb-2 text-xs text-muted-foreground">
+        홈 &gt; 제품 히스토리
       </div>
-
-      <div className="sticky top-[150px] z-10 mt-14 bg-white py-4 text-center">
+      <header className="py-14 text-center sm:py-20">
         <ScrollHighlight>
-          <div className="text-[40px] font-light leading-none tracking-[0.18em] text-[#333]">
-            HISTORY
-          </div>
-          <div className="mt-4 text-[13px] tracking-[0.1em] text-[#a98c48]">
-            브랜드 연혁
-          </div>
+          <p className="text-xs text-primary">EIICHI ISHINO · PRODUCT HISTORY</p>
+          <h2 id="product-history-title" className="mt-4 text-3xl sm:text-4xl">제품 히스토리</h2>
+          <div className="mx-auto mt-6 h-px w-12 bg-antique-gold" aria-hidden="true" />
         </ScrollHighlight>
-      </div>
-
-      {/* 제품 연혁 */}
-      <div className="mx-auto mt-16 max-w-[922px]">
-        <ul className="space-y-14">
-          {productHistory.map((item, index) => (
-            <li key={item.name}>
-              <ScrollHighlight
-                delay={index % 3}
-                className={`group flex flex-col gap-6 md:flex-row md:items-center md:gap-10 ${
-                  item.side === "right" ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="md:w-1/2">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="mx-auto w-full max-w-[380px] object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <div
-                  className={`md:w-1/2 ${
-                    item.side === "right" ? "md:text-right" : "md:text-left"
-                  }`}
-                >
-                  <h3 className="text-[21px] font-normal tracking-[0.04em] text-[#c9b489] transition-colors duration-1000 group-[.opacity-100]:text-[#a98c48]">
-                    {item.name}
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-[1.9] text-[#9a9a9a] transition-colors duration-1000 group-[.opacity-100]:text-[#555]">
-                    {item.developed}년 연구·개발
-                    <br />
-                    {item.launched}년 판매 시작
-                  </p>
-                </div>
-              </ScrollHighlight>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* 회사 연혁 */}
-      <div className="relative mx-auto mt-24 max-w-[1000px] border border-[#e3d7bd] bg-[#fdf6e6] px-6 py-14 md:px-16">
-        <Corner className="left-3 top-3" />
-        <Corner className="right-3 top-3 rotate-90" />
-        <Corner className="right-3 bottom-3 rotate-180" />
-        <Corner className="bottom-3 left-3 -rotate-90" />
-        <ul className="space-y-14">
-          {corporateHistory.map((item, index) => (
-            <li key={item.year}>
-              <ScrollHighlight
-                delay={index % 3}
-                className={`group flex flex-col gap-4 md:flex-row md:items-start md:gap-10 ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                <div
-                  className={`md:w-[34%] ${
-                    index % 2 === 1 ? "md:text-left" : "md:text-right"
-                  }`}
-                >
-                  <div className="font-serif text-[26px] leading-none tracking-[0.08em] text-[#8d8d8d] transition-colors duration-1000 group-[.opacity-100]:text-[#333]">
-                    {item.year}
+      </header>
+      <ol className="mx-auto max-w-[922px] border-l border-antique-gold/50 pl-6 sm:pl-10">
+        {historyEvents.map((item, index) => (
+          <li key={`${item.date}-${item.title}`} className="relative border-b border-border py-10 first:pt-0 last:border-b-0 sm:py-14">
+            <span className="absolute -left-[29px] top-12 size-[9px] rounded-full bg-antique-gold sm:-left-[45px] sm:top-16 in-[li:first-child]:top-2" aria-hidden="true" />
+            <ScrollHighlight delay={index % 3}>
+              <p className="text-3xl font-medium tabular-nums text-primary sm:text-4xl">{item.date}</p>
+              <div className={`mt-6 grid items-center gap-7 ${item.image ? "md:grid-cols-2 md:gap-12" : ""}`}>
+                {item.image && (
+                  <div className="flex min-w-0 items-center justify-center bg-detail-paper p-4 sm:p-6">
+                    <img src={item.image} alt={item.title} className="max-h-[320px] w-full object-contain" loading="lazy" />
                   </div>
-                  <div className="mt-2 text-[12px] tracking-[0.16em] text-[#c9b489] transition-colors duration-1000 group-[.opacity-100]:text-[#a98c48]">
-                    {item.era}
-                  </div>
+                )}
+                <div className="min-w-0">
+                  <h3 className="break-words text-xl leading-8 text-ink sm:text-2xl">{item.title}</h3>
+                  {item.body ? (
+                    <p className="mt-4 max-w-3xl text-[15px] leading-8 text-muted-foreground">{item.body}</p>
+                  ) : (
+                    <dl className="mt-5 space-y-3 text-sm text-muted-foreground">
+                      <div className="flex flex-wrap gap-x-5 gap-y-1"><dt>연구·개발</dt><dd className="text-foreground">{item.developed}년</dd></div>
+                      <div className="flex flex-wrap gap-x-5 gap-y-1"><dt>판매 시작</dt><dd className="text-foreground">{item.launched}년</dd></div>
+                    </dl>
+                  )}
                 </div>
-                <p className="text-[14px] leading-[1.9] text-[#a3a3a3] transition-colors duration-1000 group-[.opacity-100]:text-[#666] md:w-[66%]">
-                  {item.body}
-                </p>
-              </ScrollHighlight>
-            </li>
-          ))}
-        </ul>
-      </div>
+              </div>
+            </ScrollHighlight>
+          </li>
+        ))}
+      </ol>
     </section>
-  );
-}
-
-function Corner({ className }: { className: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={`pointer-events-none absolute h-6 w-6 border-l border-t border-[#d8c49a] ${className}`}
-    />
   );
 }

@@ -22,4 +22,5 @@
 
 - Product ingredient tabs use a shared table and per-product document-transcribed sheets with source pages and uncertainty notes, keeping supplier references distinct from verified current labels.
 - Baby editorial stays in a focused component on the shared introduction route; original photo assets and attributed claims remain separate from commerce records.
+- Recollection and SDC editorials share a presentation component with separate product content and original document-photo crops; store records and galleries remain untouched to separate storytelling from commerce.
 - EI Story history uses a shared, tested chronological event list, ordering products by launch date and retaining research dates alongside them to keep mixed company/product milestones in date order.

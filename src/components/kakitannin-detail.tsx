@@ -15,7 +15,7 @@ import set from "@/assets/kakitannin-set.jpg.asset.json";
 const odorCare = [
   ["01", "땀 자체보다, 피부에 남은 원인", "땀은 대부분 물로 이루어져 있지만, 피부에 남은 땀·피지 등이 피부의 미생물에 의해 분해되면서 냄새가 생길 수 있습니다. 운동 후나 더운 날의 샤워는 냄새의 원인이 되는 잔여물을 씻어내는 데 중요합니다."],
   ["02", "감 탄닌이 냄새를 만나는 방식", "감의 떫은맛을 내는 탄닌은 폴리페놀의 한 종류입니다. 감 탄닌 원료에 관한 연구에서는 일부 냄새 성분과 결합하거나 상호작용해 냄새를 줄이는 특성이 보고되어 있습니다. 향으로 냄새를 덮는 것과는 다른, 원료의 소취 특성에 주목한 접근입니다."],
-  ["03", "거품으로 씻고, 물로 헹구는 개운함", "비누의 거품은 피부에 남은 피지와 노폐물을 물과 함께 씻어내도록 돕습니다. 감 추출물을 배합한 클리어 카키타닌은 이러한 세정 과정으로 땀과 체취가 신경 쓰이는 일상의 보디 케어를 제안합니다."],
+  ["03", "거품으로 씻고, 물로 헹구는 개운함", "비누의 거품은 피부에 남은 피지와 노폐물을 물과 함께 씻어내도록 돕습니다. 감 추출물을 배합한 클리어 카키타닌은 이러한 세정 과정으로 땀과 체취가 신경 쓰이는 일상의 목욕 케어를 제안합니다."],
 ];
 
 const steps = [
@@ -32,11 +32,11 @@ export function KakitanninDetail() {
         <div className="mx-auto max-w-3xl px-6 py-14 text-center sm:py-20">
           <p className="text-xs text-oxide">JUNCO CLASSIC · CLEAR KAKITANNIN</p>
           <h2 className="mt-5 text-3xl leading-relaxed sm:text-4xl">자연에서 찾은 개운함!</h2>
-          <p className="mt-5 text-lg leading-8">일본 전통 장인의 손길로 만든<br />감탄닌(Persimmon) 프리미엄 보디 비누</p>
+          <p className="mt-5 text-lg leading-8">일본 전통 장인의 손길로 만든<br />감탄닌(Persimmon) 프리미엄 목욕 비누</p>
         </div>
         <img src={main.url} alt="클리어 카키타닌 호박빛 원형 비누, 흰색 패키지, 거품망과 감 열매" width={970} height={600} className="w-full" loading="lazy" />
         <div className="mx-auto max-w-[900px] px-6 py-10">
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>일본산 수제 비누</span><span>감 추출물 · 차 카테킨</span><span>보디 세정용 · 100g</span><span>거품망 구성</span></div>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 border-y border-border py-5 text-sm"><span>일본산 수제 비누</span><span>감 추출물 · 차 카테킨</span><span>목욕용 · 100g</span><span>거품망 구성</span></div>
         </div>
       </section>
 
@@ -44,7 +44,7 @@ export function KakitanninDetail() {
         <div className="mx-auto max-w-[900px]">
           <p className="text-center text-xs text-oxide">PERSIMMON TANNIN · DEODORIZING CARE</p>
           <h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">땀과 체취가 신경 쓰이는 날,<br />감 탄닌의 개운한 세정</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-[15px] leading-8 text-muted-foreground">활동 후 남은 땀, 피부에 쌓인 피지와 노폐물. 클리어 카키타닌은 감 추출물의 소취 특성과 비누의 세정력을 생각한 데일리 보디 비누입니다.</p>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-[15px] leading-8 text-muted-foreground">활동 후 남은 땀, 피부에 쌓인 피지와 노폐물. 클리어 카키타닌은 감 추출물의 소취 특성과 비누의 세정력을 생각한 데일리 목욕 비누입니다.</p>
           <img src={scene.url} alt="감 열매와 함께 놓인 클리어 카키타닌 비누와 거품망 세트" className="mt-10 w-full" loading="lazy" />
           <div className="mt-10 grid gap-8 md:grid-cols-3">{odorCare.map(([number, title, text]) => <article key={number} className="border-t border-border pt-6"><p className="text-sm text-oxide">{number}</p><h3 className="mt-4 text-lg leading-7">{title}</h3><p className="mt-4 text-sm leading-8 text-muted-foreground">{text}</p></article>)}</div>
           <div className="mt-10 border-y border-border py-6 text-sm leading-7 text-muted-foreground">
@@ -59,7 +59,7 @@ export function KakitanninDetail() {
         <div className="mx-auto grid max-w-[900px] items-center gap-10 md:grid-cols-2 md:gap-14">
           <img src={botanicals.url} alt="감 열매와 차 잎, 호박빛 클리어 카키타닌 비누" className="w-full" loading="lazy" />
           <div><p className="text-xs text-oxide">BOTANICAL BODY CARE</p><h2 className="mt-4 text-2xl leading-relaxed sm:text-3xl">감에서 찾고,<br />차에서 더한 산뜻함</h2>
-            <dl className="mt-8 space-y-7"><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">감 추출물 · 감 탄닌</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">자연적으로 탄닌을 함유한 감 추출물을 배합했습니다. 감 탄닌의 소취 특성에 주목해, 땀냄새와 체취가 신경 쓰이는 보디 클렌징을 생각했습니다.</dd></div><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">차 카테킨 · 폴리페놀</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">녹차 유래 카테킨을 함께 담았습니다. 식물 유래 성분을 더한 산뜻한 데일리 보디 케어입니다.</dd></div></dl>
+            <dl className="mt-8 space-y-7"><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">감 추출물 · 감 탄닌</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">자연적으로 탄닌을 함유한 감 추출물을 배합했습니다. 감 탄닌의 소취 특성에 주목해, 땀냄새와 체취가 신경 쓰이는 목욕 시 세정을 생각했습니다.</dd></div><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">차 카테킨 · 폴리페놀</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">녹차 유래 카테킨을 함께 담았습니다. 식물 유래 성분을 더한 산뜻한 데일리 목욕 케어입니다.</dd></div></dl>
           </div>
         </div>
       </section>
@@ -72,13 +72,13 @@ export function KakitanninDetail() {
 
       <section className="bg-detail-paper px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-[900px]"><p className="text-center text-xs text-oxide">A SIMPLE DAILY BODY RITUAL</p><h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">쫀쫀한 거품으로 씻고,<br />개운함으로 하루를 마무리</h2>
-          <div className="mt-10 grid gap-8 md:grid-cols-2"><figure><img src={foam.url} alt="클리어 카키타닌과 거품망으로 만든 풍성한 거품" className="aspect-square w-full object-cover" loading="lazy" /><figcaption className="mt-5"><h3 className="text-lg">밀도 높은 풍성한 거품</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">함께 구성된 거품망으로 곱고 풍성한 거품을 손쉽게 만듭니다. 거품을 충분히 내어 부드럽게 몸을 씻어 주세요.</p></figcaption></figure><figure><img src={rinse.url} alt="물에 젖은 호박빛 클리어 카키타닌 비누" className="aspect-square w-full object-cover" loading="lazy" /><figcaption className="mt-5"><h3 className="text-lg">가볍고 산뜻한 헹굼</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">운동 후, 땀이 많은 날, 하루의 끝에. 피부의 노폐물을 씻어내고 촉촉하고 매끄러운 사용감을 생각한 데일리 보디 케어입니다.</p></figcaption></figure></div>
+          <div className="mt-10 grid gap-8 md:grid-cols-2"><figure><img src={foam.url} alt="클리어 카키타닌과 거품망으로 만든 풍성한 거품" className="aspect-square w-full object-cover" loading="lazy" /><figcaption className="mt-5"><h3 className="text-lg">밀도 높은 풍성한 거품</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">함께 구성된 거품망으로 곱고 풍성한 거품을 손쉽게 만듭니다. 거품을 충분히 내어 부드럽게 몸을 씻어 주세요.</p></figcaption></figure><figure><img src={rinse.url} alt="물에 젖은 호박빛 클리어 카키타닌 비누" className="aspect-square w-full object-cover" loading="lazy" /><figcaption className="mt-5"><h3 className="text-lg">가볍고 산뜻한 헹굼</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">운동 후, 땀이 많은 날, 하루의 끝에. 피부의 노폐물을 씻어내고 촉촉하고 매끄러운 사용감을 생각한 데일리 목욕 케어입니다.</p></figcaption></figure></div>
           <h3 className="mt-16 border-t border-border pt-8 text-xl">거품망과 함께하는 네 단계</h3><ol className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4">{steps.map((step, i) => <li key={step.title}><img src={step.image} alt={step.title} className="aspect-square w-full object-cover" loading="lazy" /><p className="mt-4 text-xs text-oxide">STEP 0{i + 1}</p><h4 className="mt-2 text-sm font-semibold leading-6">{step.title}</h4><p className="mt-3 text-sm leading-7 text-muted-foreground">{step.text}</p></li>)}</ol><p className="mt-8 text-sm leading-7 text-muted-foreground">손으로도 거품을 낼 수 있습니다. 사용 후에는 비누와 거품망의 물기를 빼서 보관해 주세요.</p>
         </div>
       </section>
 
       <section className="bg-story-ivory px-6 py-16 sm:py-24">
-        <div className="mx-auto grid max-w-[900px] items-center gap-10 md:grid-cols-2"><img src={set.url} alt="클리어 카키타닌 비누 한 개, 패키지와 거품망 구성" className="w-full" loading="lazy" /><div><p className="text-xs text-oxide">PRODUCT INFORMATION</p><h2 className="mt-4 text-2xl leading-relaxed">클리어 카키타닌 제품 안내</h2><dl className="mt-8 text-sm">{[["제품명", "JUNCO CLASSIC Clear Kakitannin"], ["제조국", "일본"], ["내용량", "100g"], ["사용 용도", "보디 세정용 비누"], ["구성", "비누 1개 · 거품망 1개"], ["주요 성분", "감 추출물(감 탄닌) · 차 카테킨"]].map(([label, value]) => <div key={label} className="grid grid-cols-[76px_1fr] gap-4 border-b border-border py-4"><dt className="text-muted-foreground">{label}</dt><dd className="break-words leading-7">{value}</dd></div>)}</dl></div></div>
+        <div className="mx-auto grid max-w-[900px] items-center gap-10 md:grid-cols-2"><img src={set.url} alt="클리어 카키타닌 비누 한 개, 패키지와 거품망 구성" className="w-full" loading="lazy" /><div><p className="text-xs text-oxide">PRODUCT INFORMATION</p><h2 className="mt-4 text-2xl leading-relaxed">클리어 카키타닌 제품 안내</h2><dl className="mt-8 text-sm">{[["제품명", "JUNCO CLASSIC Clear Kakitannin"], ["제조국", "일본"], ["내용량", "100g"], ["사용 용도", "목욕 비누"], ["구성", "비누 1개 · 거품망 1개"], ["주요 성분", "감 추출물(감 탄닌) · 차 카테킨"]].map(([label, value]) => <div key={label} className="grid grid-cols-[76px_1fr] gap-4 border-b border-border py-4"><dt className="text-muted-foreground">{label}</dt><dd className="break-words leading-7">{value}</dd></div>)}</dl></div></div>
       </section>
     </div>
   );

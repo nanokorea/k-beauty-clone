@@ -1,6 +1,6 @@
 # Product detail tabs
-- [ ] Create Recollection and SDC editorial details from existing photos, descriptions and supplied ingredient document.
-- [ ] Verify both product details, photos and ingredient tabs on desktop and phones.
+- [x] Create Recollection and SDC editorial details from existing photos, descriptions and supplied ingredient document.
+- [x] Verify both product details, photos and ingredient tabs on desktop and phones.
 - [x] Update requested homepage search title and check Naver search fundamentals; preview title verified, public robots/sitemap and Naver tag accessible, live title awaits publishing.
 - [x] Rename and redesign EI Story product history chronologically from 1972, removing era labels; verify date order and screen.
 - [x] Create Baby editorial with supplied original photos and attributed development/test claims.

@@ -64,7 +64,7 @@ export function KakitanninDetail() {
         </div>
       </section>
 
-      <section className="bg-story-ivory px-6 py-16 sm:py-24">
+      <section className="bg-detail-paper px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-[900px]">
           <p className="text-center text-xs text-oxide">PERSIMMON TANNIN · DEODORIZING CARE</p>
           <h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">땀과 체취가 신경 쓰이는 날,<br />감 탄닌의 개운한 세정</h2>
@@ -85,12 +85,6 @@ export function KakitanninDetail() {
           <div><p className="text-xs text-oxide">BOTANICAL BODY CARE</p><h2 className="mt-4 text-2xl leading-relaxed sm:text-3xl">감에서 찾고,<br />차에서 더한 산뜻함</h2>
             <dl className="mt-8 space-y-7"><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">감 추출물 · 감 탄닌</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">자연적으로 탄닌을 함유한 감 추출물을 배합했습니다. 감 탄닌의 소취 특성에 주목해, 땀냄새와 체취가 신경 쓰이는 목욕 시 세정을 생각했습니다.</dd></div><div className="border-t border-border pt-5"><dt className="text-lg font-semibold">차 카테킨 · 폴리페놀</dt><dd className="mt-3 text-sm leading-8 text-muted-foreground">녹차 유래 카테킨을 함께 담았습니다. 식물 유래 성분을 더한 산뜻한 데일리 목욕 케어입니다.</dd></div></dl>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-detail-blush px-6 py-16 sm:py-24">
-        <div className="mx-auto max-w-[900px]"><p className="text-center text-xs text-oxide">JAPANESE SOAP MAKING TRADITION</p><h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">배합부터 마무리까지,<br />일본 전통 수제 제법의 정성</h2><p className="mx-auto mt-6 max-w-2xl text-center text-[15px] leading-8 text-muted-foreground">일본 비누 제조 전통을 바탕으로 원료를 배합하고 성형한 뒤, 하나하나 검수해 포장합니다. 빠른 세정만이 아니라 거품의 밀도와 매일의 사용감까지 생각한 비누입니다.</p>
-          <div className="mt-12 grid gap-8 sm:grid-cols-3">{[{ image: blending.url, title: "01 · 배합", text: "엄선한 원료를 섞어 비누 베이스를 만듭니다." }, { image: crafting.url, title: "02 · 성형", text: "전통 제조 방식으로 비누의 형태를 완성합니다." }, { image: finishing.url, title: "03 · 검수와 포장", text: "완성된 비누를 확인하고 정성껏 포장합니다." }].map((item) => <figure key={item.title}><img src={item.image} alt={item.title} className="aspect-[4/5] w-full object-cover" loading="lazy" /><figcaption className="mt-5"><h3 className="text-base">{item.title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p></figcaption></figure>)}</div>
         </div>
       </section>
 

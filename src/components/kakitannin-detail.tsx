@@ -4,7 +4,6 @@ import botanicals from "@/assets/kakitannin-botanicals.jpg.asset.json";
 import foam from "@/assets/kakitannin-foam.jpg.asset.json";
 import rinse from "@/assets/kakitannin-rinse.jpg.asset.json";
 import pancilHero from "@/assets/kakitannin-pancil-hero.jpg.asset.json";
-import pancilBotanical from "@/assets/kakitannin-pancil-botanical.jpg.asset.json";
 import pancilSteps from "@/assets/kakitannin-pancil-steps.jpg.asset.json";
 import pancilPeople from "@/assets/kakitannin-pancil-people.jpg.asset.json";
 import wet from "@/assets/kakitannin-step-wet.jpg.asset.json";
@@ -57,10 +56,6 @@ export function KakitanninDetail() {
           <h3 className="mt-14 text-center text-xl leading-relaxed">판실(PANCIL)의 과학적 작동 원리</h3>
           <p className="mt-3 text-center text-sm text-muted-foreground">결합하고, 중화하고, 오래 유지합니다. 세 단계로 작동합니다.</p>
           <div className="mt-10 grid gap-8 md:grid-cols-3">{pancilMechanism.map(([number, title, text]) => <article key={number} className="border-t border-border pt-6"><p className="text-sm text-oxide">{number}</p><h4 className="mt-4 text-lg leading-7">{title}</h4><p className="mt-4 text-sm leading-8 text-muted-foreground">{text}</p></article>)}</div>
-          <div className="mt-12 grid items-center gap-10 md:grid-cols-2">
-            <img src={pancilBotanical.url} alt="감, 녹차 잎과 함께 놓인 감 탄닌 비누" className="w-full" loading="lazy" />
-            <div><h3 className="text-xl leading-relaxed">감 탄닌과 녹차 카테킨,<br />식물 유래 두 가지 성분</h3><dl className="mt-6 space-y-6"><div className="border-t border-border pt-5"><dt className="text-base font-semibold">감 추출물</dt><dd className="mt-2 text-sm leading-8 text-muted-foreground">자연 유래 탄닌을 함유한 감 추출물을 담았습니다.</dd></div><div className="border-t border-border pt-5"><dt className="text-base font-semibold">녹차 카테킨</dt><dd className="mt-2 text-sm leading-8 text-muted-foreground">녹차에서 얻은 카테킨을 함께 담았습니다.</dd></div></dl><p className="mt-6 text-sm leading-8 text-muted-foreground">매일 하는 세정으로 깨끗하고 산뜻한 피부를. 품질을 믿을 수 있는 일본 제조 제품입니다.</p></div>
-          </div>
         </div>
       </section>
 

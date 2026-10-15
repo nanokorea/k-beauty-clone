@@ -65,6 +65,25 @@ export function KakitanninDetail() {
         </div>
       </section>
 
+      <section className="bg-detail-blush px-6 py-16 sm:py-24">
+        <div className="mx-auto max-w-[900px]">
+          <p className="text-center text-xs text-oxide">4 ODORS PANCIL CARES FOR</p>
+          <h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">판실이 케어하는 4가지 체취</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-[15px] leading-8 text-muted-foreground">판실의 감 탄닌이 각 악취 분자와 결합해 중화하는 과정을 확인해 보세요.</p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">{pancilOdors.map(([name, en, text]) => <article key={name} className="border border-border bg-detail-paper p-6"><h3 className="text-lg font-semibold leading-7">{name}</h3><p className="mt-1 text-xs text-oxide">{en}</p><p className="mt-4 text-sm leading-8 text-muted-foreground">{text}</p></article>)}</div>
+          <div className="mt-10 border-y border-border py-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm">
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full bg-oxide" />감 탄닌의 수산기(-OH)</span>
+              <span className="text-muted-foreground">+</span>
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full bg-muted-foreground" />악취 분자</span>
+              <span className="text-muted-foreground">→</span>
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full border border-oxide" />결합 후 안정 상태</span>
+            </div>
+            <p className="mt-4 text-center text-xs leading-6 text-muted-foreground">감 탄닌의 수산기(-OH)가 악취 분자와 결합하면, 냄새가 발생하지 않는 안정된 상태로 바뀝니다.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-detail-paper px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-[900px]">
           <p className="text-center text-xs text-oxide">PERSIMMON TANNIN · DEODORIZING CARE</p>

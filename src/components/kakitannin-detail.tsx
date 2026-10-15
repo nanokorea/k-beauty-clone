@@ -100,7 +100,7 @@ export function KakitanninDetail() {
       </section>
 
       <section className="bg-story-ivory px-6 py-16 sm:py-24">
-        <div className="mx-auto grid max-w-[900px] items-center gap-10 md:grid-cols-2"><img src={set.url} alt="클리어 카키타닌 비누 한 개, 패키지와 거품망 구성" className="w-full" loading="lazy" /><div><p className="text-xs text-oxide">PRODUCT INFORMATION</p><h2 className="mt-4 text-2xl leading-relaxed">클리어 카키타닌 제품 안내</h2><dl className="mt-8 text-sm">{[["제품명", "JUNCO CLASSIC Clear Kakitannin"], ["제조국", "일본"], ["내용량", "100g"], ["사용 용도", "목욕 비누"], ["구성", "비누 1개 · 거품망 1개"], ["주요 성분", "감 추출물(감 탄닌) · 차 카테킨"]].map(([label, value]) => <div key={label} className="grid grid-cols-[76px_1fr] gap-4 border-b border-border py-4"><dt className="text-muted-foreground">{label}</dt><dd className="break-words leading-7">{value}</dd></div>)}</dl></div></div>
+        <div className="mx-auto grid max-w-[900px] items-center gap-10 md:grid-cols-2"><img src={set.url} alt="클리어 카키타닌 비누 한 개, 패키지와 거품망 구성" className="w-full" loading="lazy" /><div><p className="text-xs text-oxide">PRODUCT INFORMATION</p><h2 className="mt-4 text-2xl leading-relaxed">클리어 카키타닌 제품 안내</h2><dl className="mt-8 text-sm">{[["제품명", "JUNCO CLASSIC Clear Kakitannin"], ["제조국", "일본"], ["내용량", "100g"], ["사용 용도", "목욕 비누"], ["구성", "비누 1개 · 거품망 1개"], ["주요 성분", "감 추출물(감 탄닌) · 차 카테킨"], ["적용 원료", "판실(PANCIL) 감 탄닌 소취 원료"]].map(([label, value]) => <div key={label} className="grid grid-cols-[76px_1fr] gap-4 border-b border-border py-4"><dt className="text-muted-foreground">{label}</dt><dd className="break-words leading-7">{value}</dd></div>)}</dl></div></div>
       </section>
     </div>
   );

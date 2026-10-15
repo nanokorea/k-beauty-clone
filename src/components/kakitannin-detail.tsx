@@ -4,8 +4,6 @@ import botanicals from "@/assets/kakitannin-botanicals.jpg.asset.json";
 import foam from "@/assets/kakitannin-foam.jpg.asset.json";
 import rinse from "@/assets/kakitannin-rinse.jpg.asset.json";
 import pancilHero from "@/assets/kakitannin-pancil-hero.jpg.asset.json";
-import pancilBotanical from "@/assets/kakitannin-pancil-botanical.jpg.asset.json";
-import pancilSteps from "@/assets/kakitannin-pancil-steps.jpg.asset.json";
 import pancilPeople from "@/assets/kakitannin-pancil-people.jpg.asset.json";
 import wet from "@/assets/kakitannin-step-wet.jpg.asset.json";
 import lather from "@/assets/kakitannin-step-foam.jpg.asset.json";
@@ -23,6 +21,13 @@ const pancilMechanism = [
   ["1", "페놀성 수산기(-OH)의 강력한 결합력", "감 탄닌 속 무수한 -OH 기가 악취 유발 성분과 즉각적으로 화학 결합을 형성합니다."],
   ["2", "근본적인 악취 화학 중화", "냄새 성분을 캡처하고 변형시켜, 악취가 발생하지 않는 안정된 상태로 바꿉니다."],
   ["3", "지속적인 억제력", "모공 주변의 피지 산화를 방지하고 유해균 증식을 억제해 상쾌함이 오랫동안 유지되도록 돕습니다."],
+];
+
+const pancilOdors = [
+  ["2-노네날", "2-Nonenal", "40대 이후 발생하는 노화 체취, 묵은 냄새를 케어합니다."],
+  ["이소발레르산", "Isovaleric Acid", "땀 냄새와 발 냄새의 원인 물질을 중화합니다."],
+  ["암모니아 · 트리메틸아민", "Ammonia / Trimethylamine", "알칼리성 악취와 땀 냄새 원인 분자를 케어합니다."],
+  ["아세트알데히드", "Acetaldehyde", "담배 냄새와 숙취 관련 체취를 케어합니다."],
 ];
 
 const steps = [
@@ -57,9 +62,24 @@ export function KakitanninDetail() {
           <h3 className="mt-14 text-center text-xl leading-relaxed">판실(PANCIL)의 과학적 작동 원리</h3>
           <p className="mt-3 text-center text-sm text-muted-foreground">결합하고, 중화하고, 오래 유지합니다. 세 단계로 작동합니다.</p>
           <div className="mt-10 grid gap-8 md:grid-cols-3">{pancilMechanism.map(([number, title, text]) => <article key={number} className="border-t border-border pt-6"><p className="text-sm text-oxide">{number}</p><h4 className="mt-4 text-lg leading-7">{title}</h4><p className="mt-4 text-sm leading-8 text-muted-foreground">{text}</p></article>)}</div>
-          <div className="mt-12 grid items-center gap-10 md:grid-cols-2">
-            <img src={pancilBotanical.url} alt="감, 녹차 잎과 함께 놓인 감 탄닌 비누" className="w-full" loading="lazy" />
-            <div><h3 className="text-xl leading-relaxed">감 탄닌과 녹차 카테킨,<br />식물 유래 두 가지 성분</h3><dl className="mt-6 space-y-6"><div className="border-t border-border pt-5"><dt className="text-base font-semibold">감 추출물</dt><dd className="mt-2 text-sm leading-8 text-muted-foreground">자연 유래 탄닌을 함유한 감 추출물을 담았습니다.</dd></div><div className="border-t border-border pt-5"><dt className="text-base font-semibold">녹차 카테킨</dt><dd className="mt-2 text-sm leading-8 text-muted-foreground">녹차에서 얻은 카테킨을 함께 담았습니다.</dd></div></dl><p className="mt-6 text-sm leading-8 text-muted-foreground">매일 하는 세정으로 깨끗하고 산뜻한 피부를. 품질을 믿을 수 있는 일본 제조 제품입니다.</p></div>
+        </div>
+      </section>
+
+      <section className="bg-detail-blush px-6 py-16 sm:py-24">
+        <div className="mx-auto max-w-[900px]">
+          <p className="text-center text-xs text-oxide">4 ODORS PANCIL CARES FOR</p>
+          <h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">판실이 케어하는 4가지 체취</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-[15px] leading-8 text-muted-foreground">판실의 감 탄닌이 각 악취 분자와 결합해 중화하는 과정을 확인해 보세요.</p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">{pancilOdors.map(([name, en, text]) => <article key={name} className="border border-border bg-detail-paper p-6"><h3 className="text-lg font-semibold leading-7">{name}</h3><p className="mt-1 text-xs text-oxide">{en}</p><p className="mt-4 text-sm leading-8 text-muted-foreground">{text}</p></article>)}</div>
+          <div className="mt-10 border-y border-border py-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm">
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full bg-oxide" />감 탄닌의 수산기(-OH)</span>
+              <span className="text-muted-foreground">+</span>
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full bg-muted-foreground" />악취 분자</span>
+              <span className="text-muted-foreground">→</span>
+              <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full border border-oxide" />결합 후 안정 상태</span>
+            </div>
+            <p className="mt-4 text-center text-xs leading-6 text-muted-foreground">감 탄닌의 수산기(-OH)가 악취 분자와 결합하면, 냄새가 발생하지 않는 안정된 상태로 바뀝니다.</p>
           </div>
         </div>
       </section>
@@ -91,7 +111,7 @@ export function KakitanninDetail() {
       <section className="bg-detail-paper px-6 py-16 sm:py-24">
         <div className="mx-auto max-w-[900px]"><p className="text-center text-xs text-oxide">A SIMPLE DAILY BODY RITUAL</p><h2 className="mt-4 text-center text-2xl leading-relaxed sm:text-3xl">쫀쫀한 거품으로 씻고,<br />개운함으로 하루를 마무리</h2>
           <div className="mt-10 grid gap-8 md:grid-cols-2"><figure><img src={foam.url} alt="클리어 카키타닌과 거품망으로 만든 풍성한 거품" className="aspect-square w-full object-cover" loading="lazy" /><figcaption className="mt-5"><h3 className="text-lg">밀도 높은 풍성한 거품</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">함께 구성된 거품망으로 곱고 풍성한 거품을 손쉽게 만듭니다. 거품을 충분히 내어 부드럽게 몸을 씻어 주세요.</p></figcaption></figure><figure><img src={rinse.url} alt="물에 젖은 호박빛 클리어 카키타닌 비누" className="aspect-square w-full object-cover" loading="lazy" /><figcaption className="mt-5"><h3 className="text-lg">가볍고 산뜻한 헹굼</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">운동 후, 땀이 많은 날, 하루의 끝에. 피부의 노폐물을 씻어내고 촉촉하고 매끄러운 사용감을 생각한 데일리 목욕 케어입니다.</p></figcaption></figure></div>
-          <h3 className="mt-16 border-t border-border pt-8 text-xl">거품망과 함께하는 네 단계</h3><p className="mt-4 text-sm leading-7 text-muted-foreground">손으로 거품을 내면 거품이 굵고 펴 바르는 데 시간이 더 걸리지만, 거품망을 쓰면 더 곱고 풍성한 거품이 쉽고 빠르게 완성됩니다.</p><img src={pancilSteps.url} alt="거품망 사용 4단계 사진" className="mt-8 w-full" loading="lazy" /><ol className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4">{steps.map((step, i) => <li key={step.title}><img src={step.image} alt={step.title} className="aspect-square w-full object-cover" loading="lazy" /><p className="mt-4 text-xs text-oxide">STEP 0{i + 1}</p><h4 className="mt-2 text-sm font-semibold leading-6">{step.title}</h4><p className="mt-3 text-sm leading-7 text-muted-foreground">{step.text}</p></li>)}</ol><p className="mt-8 text-sm leading-7 text-muted-foreground">손으로도 거품을 낼 수 있습니다. 사용 후에는 비누와 거품망의 물기를 빼서 보관해 주세요.</p>
+          <h3 className="mt-16 border-t border-border pt-8 text-xl">거품망과 함께하는 네 단계</h3><p className="mt-4 text-sm leading-7 text-muted-foreground">손으로 거품을 내면 거품이 굵고 펴 바르는 데 시간이 더 걸리지만, 거품망을 쓰면 더 곱고 풍성한 거품이 쉽고 빠르게 완성됩니다.</p><ol className="mt-8 grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4">{steps.map((step) => <li key={step.title}><img src={step.image} alt={step.title} className="aspect-square w-full object-cover" loading="lazy" /><h4 className="mt-2 text-sm font-semibold leading-6">{step.title}</h4><p className="mt-3 text-sm leading-7 text-muted-foreground">{step.text}</p></li>)}</ol><p className="mt-8 text-sm leading-7 text-muted-foreground">손으로도 거품을 낼 수 있습니다. 사용 후에는 비누와 거품망의 물기를 빼서 보관해 주세요.</p>
         </div>
       </section>
 

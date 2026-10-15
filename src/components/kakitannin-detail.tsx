@@ -4,7 +4,6 @@ import botanicals from "@/assets/kakitannin-botanicals.jpg.asset.json";
 import foam from "@/assets/kakitannin-foam.jpg.asset.json";
 import rinse from "@/assets/kakitannin-rinse.jpg.asset.json";
 import pancilHero from "@/assets/kakitannin-pancil-hero.jpg.asset.json";
-import pancilSteps from "@/assets/kakitannin-pancil-steps.jpg.asset.json";
 import pancilPeople from "@/assets/kakitannin-pancil-people.jpg.asset.json";
 import wet from "@/assets/kakitannin-step-wet.jpg.asset.json";
 import lather from "@/assets/kakitannin-step-foam.jpg.asset.json";
@@ -22,6 +21,13 @@ const pancilMechanism = [
   ["1", "페놀성 수산기(-OH)의 강력한 결합력", "감 탄닌 속 무수한 -OH 기가 악취 유발 성분과 즉각적으로 화학 결합을 형성합니다."],
   ["2", "근본적인 악취 화학 중화", "냄새 성분을 캡처하고 변형시켜, 악취가 발생하지 않는 안정된 상태로 바꿉니다."],
   ["3", "지속적인 억제력", "모공 주변의 피지 산화를 방지하고 유해균 증식을 억제해 상쾌함이 오랫동안 유지되도록 돕습니다."],
+];
+
+const pancilOdors = [
+  ["2-노네날", "2-Nonenal", "40대 이후 발생하는 노화 체취, 묵은 냄새를 케어합니다."],
+  ["이소발레르산", "Isovaleric Acid", "땀 냄새와 발 냄새의 원인 물질을 중화합니다."],
+  ["암모니아 · 트리메틸아민", "Ammonia / Trimethylamine", "알칼리성 악취와 땀 냄새 원인 분자를 케어합니다."],
+  ["아세트알데히드", "Acetaldehyde", "담배 냄새와 숙취 관련 체취를 케어합니다."],
 ];
 
 const steps = [

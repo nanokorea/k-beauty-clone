@@ -98,9 +98,6 @@ export function ClassicDetail() {
             <dl className="mt-8 text-sm">{[["제품명", "JUNCO CLASSIC SOAP"], ["브랜드", "EIICHI ISHINO"], ["출시", "1995년"], ["제조국", "일본"], ["사용 용도", "세안용 미용비누"], ["구성 안내", "비누 · 동봉 거품망"]].map(([label, value]) => <div key={label} className="grid grid-cols-[80px_1fr] gap-4 border-b border-border py-4"><dt className="text-muted-foreground">{label}</dt><dd className="break-words leading-6">{value}</dd></div>)}</dl>
           </div>
         </div>
-        <div className="mx-auto mt-12 max-w-[900px] space-y-7 border-t border-border pt-8">
-          <div><h3 className="text-base">품질 이력</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">2017년 5월 9일, 본 제품은 일본식품분석센터의 식품 안전 검사에 합격했습니다.</p></div>
-        </div>
       </section>
     </div>
   );

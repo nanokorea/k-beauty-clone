@@ -16,5 +16,9 @@ export function ProductIngredientTable({ name, sheet }: { name: string; sheet: I
         <td className="break-words px-2 py-5 align-top text-xs leading-6 text-muted-foreground sm:px-4 sm:text-sm">{item.role}</td>
       </tr>)}</tbody>
     </table>
-  </section>;
+      {sheet.quality?.length ? <div className="mt-10 border-t border-border pt-6">
+        <h3 className="text-base">품질 이력</h3>
+        {sheet.quality.map((line) => <p key={line} className="mt-3 text-sm leading-7 text-muted-foreground">{line}</p>)}
+      </div> : null}
+    </section>;
 }

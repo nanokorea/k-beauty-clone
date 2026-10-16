@@ -28,4 +28,11 @@ describe("Supplied ingredient sheet assignments", () => {
     assert.equal(productIngredientSheets["junco-classic-pure-collagen"], undefined);
     assert.equal(productIngredientSheets["junco-classic-clear-kakitannin"], undefined);
   });
+  test("Quality history lives only in the ingredient sheets, not the detail pages", () => {
+    const passed = "일본식품분석센터의 식품 안전 검사에 합격했습니다.";
+    assert.equal(productIngredientSheets["junco-classic"]?.quality?.[0]?.includes(passed) && productIngredientSheets["junco-classic"]?.quality?.[0]?.includes("2017년 5월 9일"), true);
+    assert.equal(productIngredientSheets["junco-classic-maternity"]?.quality?.[0]?.includes("2017년 5월 9일"), true);
+    assert.equal(productIngredientSheets["junco-classic-baby"]?.quality?.[0]?.includes("2015년 11월 12일"), true);
+    assert.equal(productIngredientSheets["sdc-beauty-soap"]?.quality, undefined);
+  });
 });

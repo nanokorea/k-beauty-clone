@@ -1,5 +1,5 @@
 export type Ingredient = { name: string; english: string; role: string; note?: string };
-export type IngredientSheet = { page: number; items: Ingredient[]; note?: string };
+export type IngredientSheet = { page: number; items: Ingredient[]; note?: string; quality?: string[] };
 
 const ingredients: Record<string, Ingredient> = {
   soap: { name: "비누 베이스", english: "Soap base", role: "세정 베이스" },
@@ -55,9 +55,9 @@ const rows = (ids: string[]): Ingredient[] => ids.map((id) => {
 // Source: uploaded 성분표.pdf, pages 13–17. Keep each sheet's listed order.
 const beauty = ["soap", "sucroseStearate", "sucrose", "palmitic", "myristic", "glycerin", "peg", "sorbitol", "ethanol", "sodium", "water", "stearic", "collagen", "squalane", "rice"];
 export const productIngredientSheets: Record<string, IngredientSheet> = {
-  "junco-classic": { page: 13, items: rows(["soap", "sucroseStearate", "palmitic", "myristic", "sucrose", "glycerin", "ethanol", "water", "sorbitol", "sodium", "stearic", "peg", "squalane", "honey", "collagen", "rice", "hyaluronate", "licorice", "rose", "dipotassium", "ginseng", "mulberry", "reishi", "perilla", "skullcap", "coix", "chamomile", "caramel", "rosemary", "tourmaline"]) },
-  "junco-classic-baby": { page: 14, items: rows(["water", "royal", "sucroseLaurate", "myristic", "palmitic", "glycerin", "peg", "sucrose", "stearic", "sorbitol", "maltitol", "sodium", "ethanol", "collagen", "squalane", "dipotassium"]) },
-  "junco-classic-maternity": { page: 15, items: rows(["water", "royalExtract", "lauric", "myristic", "palmitic", "glycerin", "peg", "sucrose", "stearic", "sorbitol", "maltitol", "sodium", "ethanol", "collagen", "squalane", "pearl", "titanium", "mica", "conchiolin", "propolis", "dipotassium"]) },
+  "junco-classic": { page: 13, quality: ["2017년 5월 9일, 본 제품은 일본식품분석센터의 식품 안전 검사에 합격했습니다."], items: rows(["soap", "sucroseStearate", "palmitic", "myristic", "sucrose", "glycerin", "ethanol", "water", "sorbitol", "sodium", "stearic", "peg", "squalane", "honey", "collagen", "rice", "hyaluronate", "licorice", "rose", "dipotassium", "ginseng", "mulberry", "reishi", "perilla", "skullcap", "coix", "chamomile", "caramel", "rosemary", "tourmaline"]) },
+  "junco-classic-baby": { page: 14, quality: ["2015년 11월 12일, 본 제품은 일본식품분석센터의 식품 안전 검사에 합격했습니다."], items: rows(["water", "royal", "sucroseLaurate", "myristic", "palmitic", "glycerin", "peg", "sucrose", "stearic", "sorbitol", "maltitol", "sodium", "ethanol", "collagen", "squalane", "dipotassium"]) },
+  "junco-classic-maternity": { page: 15, quality: ["2017년 5월 9일, 본 제품은 일본식품분석센터의 식품 안전 검사에 합격했습니다."], items: rows(["water", "royalExtract", "lauric", "myristic", "palmitic", "glycerin", "peg", "sucrose", "stearic", "sorbitol", "maltitol", "sodium", "ethanol", "collagen", "squalane", "pearl", "titanium", "mica", "conchiolin", "propolis", "dipotassium"]) },
   "sdc-beauty-soap": { page: 16, items: rows(beauty) },
   "junco-classic-recollection": { page: 17, items: rows([...beauty, "dipotassium", "brownSugar", "fragrance"]) },
 };

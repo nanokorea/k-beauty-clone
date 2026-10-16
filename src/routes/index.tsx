@@ -77,7 +77,7 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
       className={
         mobile
           ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
-          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          : "pointer-events-none absolute inset-x-0 top-[8%] z-10 mx-auto flex w-fit max-w-[80%] flex-col items-center text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
       }
     >
       <HeroOrnamentDivider />
@@ -113,7 +113,7 @@ function ThirdSlideCaption({ mobile = false }: { mobile?: boolean }) {
       className={
         mobile
           ? "pointer-events-none absolute left-[5%] right-[5%] top-[11%] z-10 flex items-center justify-center gap-2.5 text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
-          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          : "pointer-events-none absolute inset-x-0 top-[8%] z-10 mx-auto flex w-fit max-w-[80%] flex-col items-center text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
       }
     >
       {mobile ? (
@@ -167,11 +167,11 @@ function DesktopHero() {
             }`}
           />
         ))}
-        <div className={`pointer-events-none absolute inset-x-0 top-0 h-[55%] bg-gradient-to-b from-ink/65 via-ink/20 to-transparent transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden="true" />
-        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
+        <div className={`pointer-events-none absolute inset-x-0 top-0 h-[55%] bg-gradient-to-b from-ink/65 via-ink/20 to-transparent absolute inset-0 transition-[opacity,visibility] motion-reduce:transition-none ${i === 1 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden="true" />
+        <div className={`absolute inset-0 transition-[opacity,visibility] motion-reduce:transition-none ${i === 1 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden={i !== 1}>
           <SecondSlideCaption />
         </div>
-        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 2 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 2}>
+        <div className={`absolute inset-0 transition-[opacity,visibility] motion-reduce:transition-none ${i === 2 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden={i !== 2}>
           <ThirdSlideCaption />
         </div>
       </div>
@@ -232,10 +232,10 @@ function MobileHero() {
           }`}
           aria-hidden={i !== 3}
         />
-        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
+        <div className={`absolute inset-0 transition-[opacity,visibility] motion-reduce:transition-none ${i === 1 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden={i !== 1}>
           <SecondSlideCaption mobile />
         </div>
-        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 2 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 2}>
+        <div className={`absolute inset-0 transition-[opacity,visibility] motion-reduce:transition-none ${i === 2 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden={i !== 2}>
           <ThirdSlideCaption mobile />
         </div>
       </div>

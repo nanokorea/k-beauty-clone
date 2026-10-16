@@ -167,7 +167,7 @@ function DesktopHero() {
             }`}
           />
         ))}
-        <div className={`pointer-events-none absolute inset-x-0 top-0 h-[55%] bg-gradient-to-b from-ink/65 via-ink/20 to-transparent absolute inset-0 transition-[opacity,visibility] motion-reduce:transition-none ${i === 1 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden="true" />
+        <div className={`pointer-events-none absolute inset-x-0 top-0 h-[55%] bg-gradient-to-b from-ink/65 via-ink/20 to-transparent transition-[opacity,visibility] motion-reduce:transition-none ${i === 1 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden="true" />
         <div className={`absolute inset-0 transition-[opacity,visibility] motion-reduce:transition-none ${i === 1 ? "visible opacity-100 duration-700" : "invisible opacity-0 duration-200"}`} aria-hidden={i !== 1}>
           <SecondSlideCaption />
         </div>

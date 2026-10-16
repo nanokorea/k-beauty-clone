@@ -107,6 +107,44 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
   );
 }
 
+function ThirdSlideCaption({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <div
+      className={
+        mobile
+          ? "pointer-events-none absolute left-[5%] right-[5%] top-[11%] z-10 flex items-center justify-center gap-2.5 text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          : "pointer-events-none absolute left-[5.5%] top-[8%] z-10 max-w-[58%] text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+      }
+    >
+      {mobile ? (
+        <>
+          <img
+            src={eiMarkSquare.url}
+            alt="EI 마크"
+            className="size-12 shrink-0 object-contain"
+          />
+          <p className="text-[24px] font-medium leading-none">비누는 거품이 다릅니다.</p>
+        </>
+      ) : (
+        <>
+          <HeroOrnamentDivider />
+          <p className="mt-3 text-center font-light leading-[1.45] sm:mt-4 text-[clamp(22px,2.6vw,40px)]">
+            <img
+              src={eiMarkSquare.url}
+              alt="EI 마크"
+              className="mr-2 inline-block h-[1.15em] w-auto -translate-y-[0.12em] sm:mr-3"
+            />
+            비누는 거품이 다릅니다.
+          </p>
+          <div className="mt-3 sm:mt-4">
+            <HeroOrnamentDivider />
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function DesktopHero() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -132,6 +170,9 @@ function DesktopHero() {
         <div className={`pointer-events-none absolute inset-x-0 top-0 h-[55%] bg-gradient-to-b from-ink/65 via-ink/20 to-transparent transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden="true" />
         <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
           <SecondSlideCaption />
+        </div>
+        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 2 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 2}>
+          <ThirdSlideCaption />
         </div>
       </div>
       <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
@@ -193,6 +234,9 @@ function MobileHero() {
         />
         <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
           <SecondSlideCaption mobile />
+        </div>
+        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 2 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 2}>
+          <ThirdSlideCaption mobile />
         </div>
       </div>
       <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">

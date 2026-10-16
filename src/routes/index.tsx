@@ -235,6 +235,9 @@ function MobileHero() {
         <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 1 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 1}>
           <SecondSlideCaption mobile />
         </div>
+        <div className={`transition-opacity duration-700 motion-reduce:transition-none ${i === 2 ? "opacity-100" : "opacity-0"}`} aria-hidden={i !== 2}>
+          <ThirdSlideCaption mobile />
+        </div>
       </div>
       <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
         {mobileSlides.map((src, idx) => (

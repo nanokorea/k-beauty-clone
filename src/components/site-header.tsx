@@ -218,9 +218,14 @@ export function SiteHeader() {
                     로그인
                   </Link>
                   <span className="text-ink/25">|</span>
-                  <Link to="/auth" onClick={close}>
-                    회원가입
-                  </Link>
+                  <span className="relative inline-flex items-center">
+                    <Link to="/auth" onClick={close}>
+                      회원가입
+                    </Link>
+                    <span className="signup-badge-float ml-1.5 rounded-sm bg-ink px-1.5 py-0.5 text-[10px] font-semibold leading-none text-porcelain">
+                      +3,000P
+                    </span>
+                  </span>
                 </>
               )}
               <span className="text-ink/25">|</span>

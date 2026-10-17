@@ -166,7 +166,7 @@ function CheckoutPage() {
         {!loading && !userId && !guest && items.length > 0 ? (
           <div className="mx-auto mt-12 max-w-[420px] space-y-3 text-center">
             <p className="text-sm text-muted-foreground">
-              회원으로 주문하시면 가입 축하 5,000포인트와 구매 금액의 5% 적립 혜택을 받으실 수 있습니다.
+              회원으로 주문하시면 가입 축하 3,000포인트와 구매 금액의 5% 적립 혜택을 받으실 수 있습니다.
             </p>
             <Link
               to="/auth"

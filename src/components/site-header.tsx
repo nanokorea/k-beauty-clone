@@ -148,13 +148,24 @@ export function SiteHeader() {
             >
               <Search className="size-5" />
             </Link>
-            <Link
-              to={session ? "/mypage" : "/auth"}
-              className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
-            >
-              <User className="size-5" />
-              {session ? "MY" : "로그인"}
-            </Link>
+            <span className="relative inline-flex">
+              <Link
+                to={session ? "/mypage" : "/auth"}
+                className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
+              >
+                <User className="size-5" />
+                {session ? "MY" : "로그인"}
+              </Link>
+              {!session ? (
+                <Link
+                  to="/auth"
+                  className="signup-badge-float absolute left-1/2 top-full z-40 mt-2 -translate-x-1/2 whitespace-nowrap rounded-sm bg-ink px-2.5 py-1 text-[11px] font-semibold text-porcelain shadow-md transition-opacity hover:opacity-90"
+                >
+                  <span className="absolute -top-1 left-1/2 size-2 -translate-x-1/2 rotate-45 bg-ink" aria-hidden="true" />
+                  회원가입 +3,000P
+                </Link>
+              ) : null}
+            </span>
             <Link
               to="/cart"
               className="relative inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
@@ -207,9 +218,14 @@ export function SiteHeader() {
                     로그인
                   </Link>
                   <span className="text-ink/25">|</span>
-                  <Link to="/auth" onClick={close}>
-                    회원가입
-                  </Link>
+                  <span className="relative inline-flex items-center">
+                    <Link to="/auth" onClick={close}>
+                      회원가입
+                    </Link>
+                    <span className="signup-badge-float ml-1.5 rounded-sm bg-ink px-1.5 py-0.5 text-[10px] font-semibold leading-none text-porcelain">
+                      +3,000P
+                    </span>
+                  </span>
                 </>
               )}
               <span className="text-ink/25">|</span>

@@ -200,6 +200,24 @@
   transition: opacity 1000ms ease-out;
 }
 .page-scroll-reveal.scroll-in-view { opacity: 1; }
+
+@keyframes signup-badge-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.signup-badge-float {
+  animation: signup-badge-float 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .signup-badge-float {
+    animation: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .page-scroll-reveal { opacity: 1; transition: none; }
 }

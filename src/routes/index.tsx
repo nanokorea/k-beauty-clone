@@ -76,8 +76,8 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
     <div
       className={
         mobile
-          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
-          : "pointer-events-none absolute inset-x-0 top-[8%] z-10 mx-auto flex w-fit max-w-[80%] flex-col items-center text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          ? "pointer-events-none absolute left-[6%] right-[6%] top-[12%] z-10 text-hero-ink drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          : "pointer-events-none absolute inset-x-0 top-[8%] z-10 mx-auto flex w-fit max-w-[80%] flex-col items-center text-hero-ink drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
       }
     >
       <HeroOrnamentDivider />
@@ -112,8 +112,8 @@ function ThirdSlideCaption({ mobile = false }: { mobile?: boolean }) {
     <div
       className={
         mobile
-          ? "pointer-events-none absolute left-[5%] right-[5%] top-[11%] z-10 flex items-center justify-center gap-2.5 text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
-          : "pointer-events-none absolute inset-x-0 top-[8%] z-10 mx-auto flex w-fit max-w-[80%] flex-col items-center text-oxide drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          ? "pointer-events-none absolute left-[5%] right-[5%] top-[11%] z-10 flex items-center justify-center gap-2.5 text-hero-ink drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
+          : "pointer-events-none absolute inset-x-0 top-[8%] z-10 mx-auto flex w-fit max-w-[80%] flex-col items-center text-hero-ink drop-shadow-[0_1px_6px_rgba(255,250,240,0.6)]"
       }
     >
       {mobile ? (
@@ -123,12 +123,12 @@ function ThirdSlideCaption({ mobile = false }: { mobile?: boolean }) {
             alt="EI 마크"
             className="size-12 shrink-0 object-contain"
           />
-          <p className="text-[24px] font-medium leading-none">비누는 거품이 다릅니다.</p>
+          <p className="text-[24px] font-bold leading-none">비누는 거품이 다릅니다.</p>
         </>
       ) : (
         <>
           <HeroOrnamentDivider />
-          <p className="mt-3 text-center font-light leading-[1.45] sm:mt-4 text-[clamp(22px,2.6vw,40px)]">
+          <p className="mt-3 text-center font-bold leading-[1.45] sm:mt-4 text-[clamp(22px,2.6vw,40px)]">
             <img
               src={eiMarkSquare.url}
               alt="EI 마크"
@@ -155,7 +155,7 @@ function DesktopHero() {
   }, []);
 
   return (
-    <section className="relative hidden overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:block">
+    <section data-reveal-managed className="relative hidden overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:block">
       <div className="relative aspect-[1600/720] w-full">
         {desktopSlides.map((src, idx) => (
           <img
@@ -203,7 +203,7 @@ function MobileHero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:hidden">
+    <section data-reveal-managed className="relative overflow-hidden border-b border-antique-gold/35 bg-porcelain sm:hidden">
       <div className="relative mx-auto aspect-[4/5] w-full">
         {mobileSlides.map((src, idx) => (
           <img

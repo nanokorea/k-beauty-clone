@@ -29,7 +29,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const fieldClass =
-  "mt-2 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary";
+  "mt-2 w-full rounded-sm border border-input bg-secondary/70 px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:bg-background";
 
 function Contact() {
   const { user, loading } = useAuth();
@@ -97,7 +97,7 @@ function Contact() {
 
           {sent ? (
             <p className="mt-10 rounded-sm border border-primary bg-secondary/60 p-6 text-center text-sm">
-              문의가 접수되었습니다. 영업일 기준 3일 이내에 담당자가 연락드립니다.
+              문의가 접수되었습니다. 문의하신 내용은 즉시 검토하여 최대한 빠르게 담당자가 연락드리겠습니다.
             </p>
           ) : (
             <form className="mt-10 space-y-5" onSubmit={submit}>
@@ -148,7 +148,7 @@ function Contact() {
                   className={fieldClass}
                   value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  placeholder="예: 도매 문의"
+                  placeholder="예: 제품문의"
                 />
               </label>
               <label className="block text-sm font-medium">

@@ -149,5 +149,5 @@ export const news: NewsItem[] = [
 
 export const contact = {
   phone: "070-4517-0773",
-  hours: "접수 시간: 10:00 ~ 17:00 (토·일·공휴일)",
+  hours: "접수 시간: 10:00 ~ 17:00 (토·일·공휴일 제외)",
 };

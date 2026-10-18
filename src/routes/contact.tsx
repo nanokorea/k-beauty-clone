@@ -1,11 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SectionHeading } from "@/components/section-heading";
 import { supabase } from "@/integrations/supabase/client";
 import { contact } from "@/data/site";
+import { useAuth } from "@/hooks/use-auth";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/contact")({
   staticData: { sitemap: true },
@@ -29,6 +31,8 @@ const fieldClass =
   "mt-2 w-full rounded-sm border border-input bg-background px-3 py-2.5 text-sm outline-none transition-colors focus:border-primary";
 
 function Contact() {
+  const { user, loading } = useAuth();
+  const [profileLoading, setProfileLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [form, setForm] = useState({
@@ -39,6 +43,25 @@ function Contact() {
     subject: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (loading) return;
+    let active = true;
+    setForm((current) => ({ ...current, name: "", email: "", phone: "" }));
+    if (!user) { setProfileLoading(false); return; }
+    setProfileLoading(true);
+    supabase.from("profiles").select("full_name,email,phone").eq("id", user.id).maybeSingle()
+      .then(({ data, error }) => {
+        if (!active) return;
+        setForm((current) => ({ ...current,
+          name: data?.full_name ?? "",
+          email: data?.email || user.email || "",
+          phone: data?.phone ?? "",
+        }));
+        if (error) toast.error("회원 정보를 불러오지 못했습니다. 직접 입력해 주세요.");
+      }).finally(() => { if (active) setProfileLoading(false); });
+    return () => { active = false; };
+  }, [user?.id, loading]);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,6 +100,7 @@ function Contact() {
                 이름
                 <input
                   required
+                  disabled={loading || profileLoading}
                   className={fieldClass}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -88,6 +112,7 @@ function Contact() {
                 <input
                   required
                   type="email"
+                  disabled={loading || profileLoading}
                   className={fieldClass}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -97,6 +122,7 @@ function Contact() {
               <label className="block text-sm font-medium">
                 연락처
                 <input
+                  disabled={loading || profileLoading}
                   className={fieldClass}
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -131,13 +157,13 @@ function Contact() {
                   placeholder="문의하실 내용을 적어 주세요."
                 />
               </label>
-              <button
+              <Button
                 type="submit"
-                disabled={busy}
+                disabled={busy || loading || profileLoading}
                 className="w-full rounded-sm bg-primary px-8 py-3 text-sm text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
               >
                 1:1 문의 보내기
-              </button>
+              </Button>
             </form>
           )}
         </div>

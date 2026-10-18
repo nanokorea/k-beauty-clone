@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { contact } from "@/data/site";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
+import { inquiryContact } from "@/lib/inquiry-contact";
 
 export const Route = createFileRoute("/contact")({
   staticData: { sitemap: true },
@@ -50,16 +51,20 @@ function Contact() {
     setForm((current) => ({ ...current, name: "", email: "", phone: "" }));
     if (!user) { setProfileLoading(false); return; }
     setProfileLoading(true);
-    supabase.from("profiles").select("full_name,email,phone").eq("id", user.id).maybeSingle()
-      .then(({ data, error }) => {
+    const fillContact = async () => {
+      try {
+        const { data, error } = await supabase.from("profiles").select("full_name,email,phone").eq("id", user.id).maybeSingle();
         if (!active) return;
-        setForm((current) => ({ ...current,
-          name: data?.full_name ?? "",
-          email: data?.email || user.email || "",
-          phone: data?.phone ?? "",
-        }));
+        setForm((current) => ({ ...current, ...inquiryContact(data, user.email) }));
         if (error) toast.error("회원 정보를 불러오지 못했습니다. 직접 입력해 주세요.");
-      }).finally(() => { if (active) setProfileLoading(false); });
+      } catch {
+        if (active) {
+          setForm((current) => ({ ...current, ...inquiryContact(null, user.email) }));
+          toast.error("회원 정보를 불러오지 못했습니다. 직접 입력해 주세요.");
+        }
+      } finally { if (active) setProfileLoading(false); }
+    };
+    void fillContact();
     return () => { active = false; };
   }, [user?.id, loading]);
 

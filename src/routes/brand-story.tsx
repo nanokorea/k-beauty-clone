@@ -73,7 +73,7 @@ function HeritageIntro() {
       <div className="mt-7 h-px w-16 bg-antique-gold" />
       <ScrollHighlight delay={2}>
         <p className="mt-7 text-[15px] leading-7 text-foreground/80 sm:text-base">
-          1930년, 이시노 에이이치(石野栄一) 선생의 아버지인 이시노 에이지(石野栄治)가 상하이
+          1930년, 이시노 에이이치(石野栄一) 장인의 아버지인 이시노 에이지(石野栄治)가 상하이
           쿤밍로(昆明路)의 작은 공방에서 비누를 만들기 시작한 이래, 3대에 걸쳐 오직 ‘피부를 위한
           진짜 비누’만을 연구해 온 가문의 역사가 담겨 있습니다.
         </p>
@@ -186,7 +186,7 @@ function SecondGenerationLegacy() {
             </p>
             <p>
               유명 명품 비누들의 레시피를 직접 개발하고 OEM 제조를 주도해 온 이시노 에이이치(石野栄一)
-              선생이 자신의 이름을 직접 내걸고(EI = Eiichi ISHINO) 탄생시킨 유일한 독자 브랜드가 바로
+              장인이 자신의 이름을 직접 내걸고(EI = Eiichi ISHINO) 탄생시킨 유일한 독자 브랜드가 바로
               EI입니다.
             </p>
           </div>

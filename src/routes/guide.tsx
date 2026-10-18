@@ -79,7 +79,7 @@ function GuidePage() {
           <div className="mt-12 grid items-start gap-10 md:grid-cols-[1fr_300px]">
             <ScrollHighlight className="space-y-5 border-t border-[#ddd] pt-8 text-[15px] leading-7 text-foreground/85">
               <p>
-                50여 년 동안 이시노 에이이치(石野栄一) 선생이 개발한 '수제비누'는 천여 종에
+                50여 년 동안 이시노 에이이치(石野栄一) 장인이 개발한 '수제비누'는 천여 종에
                 이릅니다. HACCI 꿀 비누, Penelopi Moon 문라이트 비누, Moisteane 등 이름난
                 브랜드의 비누가 모두 그의 손에서 태어났습니다.
               </p>
@@ -116,7 +116,7 @@ function GuidePage() {
           <ScrollHighlight className="mt-6 font-sans">
             <h3 className="font-sans text-lg font-bold text-ink">계면활성 처방 – 거품의 입자가 다릅니다.</h3>
             <p className="mt-2 text-[14px] leading-7 text-foreground/85">
-              이시노 에이이치(石野栄一) 선생은 세안 비누의 원료를 연구하면서, 업계에 없던
+              이시노 에이이치(石野栄一) 장인은 세안 비누의 원료를 연구하면서, 업계에 없던
               독자적인 세정 성분인 '계면활성' 처방을 개발해 업계의 빈자리를 채웠습니다.
             </p>
             <div className="mt-4 grid gap-px border-y border-ink/15 sm:grid-cols-2">
@@ -161,7 +161,7 @@ function GuidePage() {
               },
               {
                 img: step4.url,
-                d: "이렇게 세정·영양 케어·장시간 보습이 하나로 이어지는 이시노 선생의 피부 미용 철학이 완성됩니다.",
+                d: "이렇게 세정·영양 케어·장시간 보습이 하나로 이어지는 이시노 장인의 피부 미용 철학이 완성됩니다.",
               },
             ].map((s, i) => (
               <ScrollHighlight key={i} delay={i % 3}>
@@ -180,7 +180,7 @@ function GuidePage() {
             <h3 className="font-sans text-lg font-bold text-ink">틀 제조법 – 비누 한 조각을 만들기 위해 90일 숙성 과정을 거칩니다.</h3>
             <ScrollHighlight>
               <p className="mt-2 font-sans text-[14px] leading-7 text-foreground/85">
-                이시노 에이이치(石野栄一) 선생은 수제비누의 '틀 제조법(框錬製法)'이라는
+                이시노 에이이치(石野栄一) 장인은 수제비누의 '틀 제조법(框錬製法)'이라는
                 시대를 앞서간 생산 공정을 독자적으로 만들어 냈습니다. 비누 한 조각을 만들기 위해 90일간의 자연 숙성 과정을 거치면 비누 조각의 크기는 반으로 줄어들지만
                 영양 성분은 농축·보존하는 방식으로, 이 공법은 일반 세안
                 비누의 영양 성분이 적고 효과가 단조로웠던 한계를 해결하는 동시에, 세안과
@@ -294,7 +294,7 @@ function GuidePage() {
             <p>
               일본의 물은 세계적으로 이름난 양질의 연수입니다. 수제비누를 만들 때 물은 매우
               중요한 재료로, 산·알칼리도와 경도, 순도가 거품과 세정력에 그대로 영향을 줍니다.
-              그래서 이시노 선생은 물을 수제비누의 피와 같다고 말합니다.
+              그래서 이시노 장인은 물을 수제비누의 피와 같다고 말합니다.
             </p>
             <p>
               더 좋은 비누를 만들기 위해 '역삼투압 여과 방식'의 정수 장치로 물을 정제합니다.
@@ -325,7 +325,7 @@ function GuidePage() {
 
           <ScrollHighlight className="mt-6">
             <p className="mt-3 text-[15px] leading-7 text-foreground/85">
-              이시노 에이이치(石野栄一) 선생이 세운 Eiichi Ishino 브랜드의 모든 수제비누에는 새로운
+              이시노 에이이치(石野栄一) 장인이 세운 Eiichi Ishino 브랜드의 모든 수제비누에는 새로운
               역할이 담겨 있습니다. 효과적인 세안, 깊은 피부 관리, 오래가는 아름다움을 하나로 모아
               간편한 스킨케어 습관을 만들어 주며, 각 제품은 여러 소비자층의 두터운 신뢰를 받고 있습니다.
             </p>

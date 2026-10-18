@@ -162,7 +162,7 @@ function DesktopHero() {
             key={src}
             src={src}
             alt={`JUNCO CLASSIC 배너 ${idx + 1}`}
-            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
+            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${idx === 2 ? "origin-[46%_53%] scale-150" : ""} ${
               idx === i ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -210,7 +210,7 @@ function MobileHero() {
             key={src}
             src={src}
             alt={`JUNCO CLASSIC 모바일 배너 ${idx + 1}`}
-            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${
+            className={`absolute inset-0 size-full object-cover object-center transition-opacity duration-700 motion-reduce:transition-none ${idx === 2 ? "origin-[10%_58%] scale-150" : ""} ${
               idx === i ? "opacity-100" : "opacity-0"
             }`}
           />

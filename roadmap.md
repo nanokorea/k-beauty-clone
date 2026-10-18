@@ -1,4 +1,6 @@
 # Product detail tabs
+- [x] Implement tested member contact autofill, remove holiday wording, and verify third hero photo at 1.5× on desktop/mobile with unchanged captions.
+- [ ] Verify contact autofill with a real signed-in member — blocked: no matching requesting-user account; preview sign-in needed.
 - [x] Create Recollection and SDC editorial details from existing photos, descriptions and supplied ingredient document.
 - [x] Verify both product details, photos and ingredient tabs on desktop and phones.
 - [x] Update requested homepage search title and check Naver search fundamentals; preview title verified, public robots/sitemap and Naver tag accessible, live title awaits publishing.

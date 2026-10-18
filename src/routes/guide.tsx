@@ -15,7 +15,7 @@ import ing5 from "@/assets/feat-ing5.jpg.asset.json";
 import pureWater from "@/assets/feat-pure-ko.png.asset.json";
 import beforeImg from "@/assets/feat-before.jpg.asset.json";
 import afterImg from "@/assets/feat-after.jpg.asset.json";
-import soapImg from "@/assets/feat-soap.jpg.asset.json";
+import soapImg from "@/assets/ei5-soap-hand.jpg.asset.json";
 import dry1 from "@/assets/feat-dry1-aligned.jpg";
 import dry2 from "@/assets/feat-dry2-factory.jpg";
 
@@ -332,7 +332,7 @@ function GuidePage() {
           </ScrollHighlight>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5 text-center">
-            <img src={soapImg.url} alt="JUNCO CLASSIC 비누" className="w-[120px]" loading="lazy" />
+            <img src={soapImg.url} alt="JUNCO CLASSIC 비누 (직접 촬영)" className="w-[120px] rounded-lg object-cover" loading="lazy" />
             <span className="text-2xl text-[#a98c48]">=</span>
             {["클렌징 오일", "폼 클렌저", "시트 마스크"].map((t, i) => (
               <span key={t} className="flex items-center gap-5">

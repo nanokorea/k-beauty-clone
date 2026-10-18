@@ -332,7 +332,7 @@ function GuidePage() {
           </ScrollHighlight>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5 text-center">
-            <img src={soapImg.url} alt="JUNCO CLASSIC 비누" className="w-[120px]" loading="lazy" />
+            <img src={soapImg.url} alt="JUNCO CLASSIC 비누 (직접 촬영)" className="w-[120px] rounded-lg object-cover" loading="lazy" />
             <span className="text-2xl text-[#a98c48]">=</span>
             {["클렌징 오일", "폼 클렌저", "시트 마스크"].map((t, i) => (
               <span key={t} className="flex items-center gap-5">

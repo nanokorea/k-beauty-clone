@@ -8,6 +8,11 @@ import { ProductIngredientTable } from "@/components/product-ingredient-table";
 import { BabyDetail } from "@/components/baby-detail";
 import babyOriginal from "@/assets/baby-original.jpg.asset.json";
 import { ProductDetailTabs } from "@/components/product-detail-tabs";
+import { ProductDescriptionSlider } from "@/components/product-description-slider";
+import classicSlide1 from "@/assets/junco-classic-slide-1.jpg.asset.json";
+import classicSlide2 from "@/assets/junco-classic-slide-2.jpg.asset.json";
+import classicSlide3 from "@/assets/junco-classic-slide-3.jpg.asset.json";
+import classicSlide4 from "@/assets/junco-classic-slide-4.jpg.asset.json";
 import { Button } from "@/components/ui/button";
 import { MaternityDetail } from "@/components/maternity-detail";
 import maternityOriginal from "@/assets/maternity-original.jpg.asset.json";
@@ -56,7 +61,7 @@ function ProductPage() {
       <main className="py-16">
         <SectionHeading title={product.name} sub={product.sub} />
         <div className="mx-auto mt-12 grid max-w-[1100px] items-start gap-10 px-4 md:grid-cols-2">
-          {product.slug === "junco-classic" ? <ProductDescriptionSlider slides={[classicSlide1, classicSlide2, classicSlide3, classicSlide4].map((s, i) => ({ src: s.url, alt: `JUNCO CLASSIC 사진 ${i + 1}` }))} /> : <img src={product.slug === "junco-classic-maternity" ? maternityOriginal.url : product.slug === "junco-classic" ? classicProductSet.url : product.slug === "junco-classic-clear-kakitannin" ? kakitanninMain.url : product.slug === "junco-classic-pure-collagen" ? pureCollagenOriginal.url : product.slug === "junco-classic-baby" ? babyOriginal.url : product.slug === "junco-classic-recollection" ? recollectionOriginal.url : product.slug === "sdc-beauty-soap" ? sdcOriginal.url : product.image} alt={product.name} className="w-full rounded-sm" />
+          {product.slug === "junco-classic" ? <ProductDescriptionSlider slides={[classicSlide1, classicSlide2, classicSlide3, classicSlide4].map((s, i) => ({ src: s.url, alt: `JUNCO CLASSIC 사진 ${i + 1}` }))} /> : <img src={product.slug === "junco-classic-maternity" ? maternityOriginal.url : product.slug === "junco-classic" ? classicProductSet.url : product.slug === "junco-classic-clear-kakitannin" ? kakitanninMain.url : product.slug === "junco-classic-pure-collagen" ? pureCollagenOriginal.url : product.slug === "junco-classic-baby" ? babyOriginal.url : product.slug === "junco-classic-recollection" ? recollectionOriginal.url : product.slug === "sdc-beauty-soap" ? sdcOriginal.url : product.image} alt={product.name} className="w-full rounded-sm" />}
           <div className="space-y-4 text-[15px] leading-7 text-foreground/85">
             <p className="font-medium text-foreground">{product.summary}</p>
             {product.slug === "junco-classic-maternity" && <p className="text-sm text-primary">내용량 115g · 얼굴 및 전신용</p>}

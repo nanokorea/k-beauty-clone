@@ -6,6 +6,20 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice, useCart } from "@/lib/cart";
+import { ProductDescriptionSlider, type DescriptionSlide } from "@/components/product-description-slider";
+import classicSlide1 from "@/assets/junco-classic-slide-1.jpg.asset.json";
+import classicSlide2 from "@/assets/junco-classic-slide-2.jpg.asset.json";
+import classicSlide3 from "@/assets/junco-classic-slide-3.jpg.asset.json";
+import classicSlide4 from "@/assets/junco-classic-slide-4.jpg.asset.json";
+
+const descriptionSlides: Record<string, DescriptionSlide[]> = {
+  "junco-classic-100g": [
+    { src: classicSlide1.url, alt: "거품과 함께 놓인 붉은 JUNCO CLASSIC 비누" },
+    { src: classicSlide2.url, alt: "꽃무늬 천 위에 놓인 투명한 JUNCO CLASSIC 비누" },
+    { src: classicSlide3.url, alt: "비누 받침 위의 JUNCO CLASSIC 비누" },
+    { src: classicSlide4.url, alt: "JUNCO CLASSIC 비누와 흰색 선물 상자" },
+  ],
+};
 
 export const Route = createFileRoute("/shop/$slug")({
   staticData: { sitemap: true },
@@ -64,6 +78,7 @@ function ProductPage() {
   });
 
   const soldOut = !!product && product.stock <= 0;
+  const slides = product ? descriptionSlides[product.slug] : undefined;
   const gallery = product
     ? Array.from(new Set([product.image_url, ...(product.gallery ?? [])].filter((image): image is string => !!image)))
     : [];
@@ -141,9 +156,6 @@ function ProductPage() {
                 <p className="mt-1 text-sm text-muted-foreground">{product.subtitle}</p>
 
                 <p className="mt-5 text-2xl text-primary">{formatPrice(product.price)}</p>
-                {product.origin_price ? (
-                  <p className="mt-1 text-xs text-muted-foreground">일본 공식 판매가 {product.origin_price}</p>
-                ) : null}
 
                 <p className={`mt-4 text-sm ${soldOut ? "text-muted-foreground" : "text-foreground"}`}>
                   {product.stock_note || (soldOut ? "품절" : "재고 있음")}
@@ -204,16 +216,21 @@ function ProductPage() {
 
             <section className="mt-16 border-t border-border pt-10">
               <h2 className="text-lg font-semibold">상품 설명</h2>
-              <p className="mt-5 whitespace-pre-line text-[15px] leading-7 text-foreground/85">
-                {product.description || product.summary}
-              </p>
+              <div className={slides ? "mt-6 grid items-start gap-8 md:grid-cols-2 md:gap-10" : ""}>
+                {slides ? <ProductDescriptionSlider slides={slides} /> : null}
+                <div>
+                  <p className={`whitespace-pre-line text-[15px] leading-7 text-foreground/85 ${slides ? "" : "mt-5"}`}>
+                    {product.description || product.summary}
+                  </p>
 
-              {product.features ? (
-                <div className="mt-8 bg-secondary p-6">
-                  <h3 className="text-sm font-semibold">[ 상품 특징 ]</h3>
-                  <p className="mt-3 text-[15px] leading-7 text-foreground/85">{product.features}</p>
+                  {product.features ? (
+                    <div className="mt-8 bg-secondary p-6">
+                      <h3 className="text-sm font-semibold">[ 상품 특징 ]</h3>
+                      <p className="mt-3 text-[15px] leading-7 text-foreground/85">{product.features}</p>
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
+              </div>
             </section>
 
             {related && related.length > 0 ? (

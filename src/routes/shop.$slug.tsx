@@ -6,7 +6,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { supabase } from "@/integrations/supabase/client";
 import { formatPrice, useCart } from "@/lib/cart";
-import { ProductDescriptionSlider, type DescriptionSlide } from "@/components/product-description-slider";
+import { type DescriptionSlide } from "@/components/product-description-slider";
+import classicProductSet from "@/assets/classic-detail-set.png.asset.json";
 import classicSlide1 from "@/assets/junco-classic-slide-1.jpg.asset.json";
 import classicSlide2 from "@/assets/junco-classic-slide-2.jpg.asset.json";
 import classicSlide3 from "@/assets/junco-classic-slide-3.jpg.asset.json";
@@ -217,7 +218,7 @@ function ProductPage() {
             <section className="mt-16 border-t border-border pt-10">
               <h2 className="text-lg font-semibold">상품 설명</h2>
               <div className={slides ? "mt-6 grid items-start gap-8 md:grid-cols-2 md:gap-10" : ""}>
-                {slides ? <ProductDescriptionSlider slides={slides} /> : null}
+                {slides ? <img src={classicProductSet.url} alt="JUNCO CLASSIC 제품 구성" className="w-full rounded-sm" /> : null}
                 <div>
                   <p className={`whitespace-pre-line text-[15px] leading-7 text-foreground/85 ${slides ? "" : "mt-5"}`}>
                     {product.description || product.summary}

@@ -19,7 +19,7 @@ const mobileSlides = [
 
 
 import aboutImg from "@/assets/about-ei.jpg.asset.json";
-import homeBottomBanner from "@/assets/home-bottom-kakitannin-v2.png.asset.json";
+import homeBottomBanner from "@/assets/home-bottom-kakitannin-hd.jpg.asset.json";
 import eiMarkSquare from "@/assets/ei-mark-hero.png.asset.json";
 import mobileHeroMark from "@/assets/ei-mobile-hero-mark.png.asset.json";
 
@@ -222,7 +222,7 @@ function MobileHero() {
           aria-hidden={i !== 0}
         >
           <img src={mobileHeroMark.url} alt="EI" className="size-12 shrink-0 object-contain" />
-          <p className="text-[24px] font-medium leading-none">비누는 조금 다릅니다.</p>
+          <p className="text-[24px] font-medium leading-none">비누는 다릅니다.</p>
         </div>
         <img
           src={mobileHeroMark.url}

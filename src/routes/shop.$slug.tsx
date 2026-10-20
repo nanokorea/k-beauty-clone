@@ -78,6 +78,7 @@ function ProductPage() {
   });
 
   const soldOut = !!product && product.stock <= 0;
+  const slides = product ? descriptionSlides[product.slug] : undefined;
   const gallery = product
     ? Array.from(new Set([product.image_url, ...(product.gallery ?? [])].filter((image): image is string => !!image)))
     : [];
@@ -218,7 +219,7 @@ function ProductPage() {
               <div className={slides ? "mt-6 grid items-start gap-8 md:grid-cols-2 md:gap-10" : ""}>
                 {slides ? <ProductDescriptionSlider slides={slides} /> : null}
                 <div>
-                  <p className={`whitespace-pre-line text-[15px] leading-7 text-foreground/85 ${descriptionSlides[product.slug] ? "" : "mt-5"}`}>
+                  <p className={`whitespace-pre-line text-[15px] leading-7 text-foreground/85 ${slides ? "" : "mt-5"}`}>
                     {product.description || product.summary}
                   </p>
 

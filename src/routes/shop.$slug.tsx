@@ -215,10 +215,8 @@ function ProductPage() {
 
             <section className="mt-16 border-t border-border pt-10">
               <h2 className="text-lg font-semibold">상품 설명</h2>
-              <div className={descriptionSlides[product.slug] ? "mt-6 grid items-start gap-8 md:grid-cols-2 md:gap-10" : ""}>
-                {descriptionSlides[product.slug] ? (
-                  <ProductDescriptionSlider slides={descriptionSlides[product.slug]} />
-                ) : null}
+              <div className={slides ? "mt-6 grid items-start gap-8 md:grid-cols-2 md:gap-10" : ""}>
+                {slides ? <ProductDescriptionSlider slides={slides} /> : null}
                 <div>
                   <p className={`whitespace-pre-line text-[15px] leading-7 text-foreground/85 ${descriptionSlides[product.slug] ? "" : "mt-5"}`}>
                     {product.description || product.summary}

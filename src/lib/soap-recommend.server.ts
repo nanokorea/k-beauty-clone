@@ -52,7 +52,7 @@ export async function runSoapRecommendation(input: SoapRecommendationInput, sign
       model: provider.responses(MODEL),
       instructions,
       messages: [{ role: "user", content: userText }],
-      abortSignal: signal,
+      ...(signal ? { abortSignal: signal } : {}),
       maxRetries: 0,
       output: Output.object({
         schema: jsonSchema<ModelOutput>({

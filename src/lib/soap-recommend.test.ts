@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import { describe, it } from "node:test";
+import assert from "node:assert/strict";
 import { normalizeRecommendations } from "./soap-recommend";
 
 const slugs = ["junco-classic", "junco-classic-baby", "sdc-beauty-soap", "junco-classic-recollection"];
@@ -6,7 +7,7 @@ const slugs = ["junco-classic", "junco-classic-baby", "sdc-beauty-soap", "junco-
 describe("normalizeRecommendations", () => {
   it("drops products that are not sold on the site", () => {
     const result = normalizeRecommendations([{ slug: "other-brand", reason: "x" }, { slug: "junco-classic", reason: "보습" }], slugs);
-    expect(result.map((r) => r.slug)).toEqual(["junco-classic"]);
+    assert.deepEqual(result.map((r) => r.slug), ["junco-classic"]);
   });
 
   it("recommends at most 3 products without duplicates", () => {
@@ -20,10 +21,10 @@ describe("normalizeRecommendations", () => {
       ],
       slugs,
     );
-    expect(result.map((r) => r.slug)).toEqual(["junco-classic", "junco-classic-baby", "sdc-beauty-soap"]);
+    assert.deepEqual(result.map((r) => r.slug), ["junco-classic", "junco-classic-baby", "sdc-beauty-soap"]);
   });
 
   it("drops recommendations without a reason", () => {
-    expect(normalizeRecommendations([{ slug: "junco-classic", reason: "  " }], slugs)).toEqual([]);
+    assert.deepEqual(normalizeRecommendations([{ slug: "junco-classic", reason: "  " }], slugs), []);
   });
 });

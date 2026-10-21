@@ -2,7 +2,7 @@ import productClassic from "@/assets/product-classic-zoom.jpg.asset.json";
 import productMaternity from "@/assets/product-maternity-zoom.jpg.asset.json";
 import productBaby from "@/assets/product-baby.jpg.asset.json";
 import productRecollection from "@/assets/product-recollection-zoom.jpg.asset.json";
-import productSdc from "@/assets/product-sdc.jpg.asset.json";
+import productSdc from "@/assets/product-sdc-zoom.jpg.asset.json";
 import productKakitannin from "@/assets/product-kakitannin-v2.jpg.asset.json";
 import productPureCollagen from "@/assets/product-pure-collagen-v2.jpg.asset.json";
 

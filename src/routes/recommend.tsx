@@ -14,9 +14,9 @@ export const Route = createFileRoute("/recommend")({
   staticData: { sitemap: true },
   head: () => ({
     meta: [
-      { title: "나에게 맞는 비누 찾기 | JUNCO CLASSIC 한국" },
+      { title: "나에게 맞는 EI비누 찾기 | JUNCO CLASSIC 한국" },
       { name: "description", content: "피부 타입과 원하는 관리 효과를 고르면 나에게 맞는 JUNCO CLASSIC 미용비누를 이유와 함께 추천해 드립니다." },
-      { property: "og:title", content: "나에게 맞는 비누 찾기 | JUNCO CLASSIC 한국" },
+      { property: "og:title", content: "나에게 맞는 EI비누 찾기 | JUNCO CLASSIC 한국" },
       { property: "og:description", content: "피부 타입과 관리 효과로 찾는 맞춤 JUNCO CLASSIC 비누 추천." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -60,9 +60,9 @@ function RecommendPage() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="mx-auto max-w-[900px] px-4 py-16">
-        <SectionHeading title="나에게 맞는 비누 찾기" sub="SOAP FINDER" />
+        <SectionHeading title="나에게 맞는 EI비누 찾기" sub="SOAP FINDER" />
         <p className="mx-auto mt-6 max-w-[620px] text-center text-[15px] leading-7 text-foreground/80">
-          피부 타입과 원하는 관리 효과를 골라 주세요. AI가 JUNCO CLASSIC 제품 중에서 잘 맞는 비누를 이유와 함께 추천해 드립니다.
+          피부 타입과 원하는 관리 효과를 골라 주세요. JUNCO CLASSIC 제품 중에서 잘 맞는 비누를 이유와 함께 추천해 드립니다.
         </p>
 
         <form onSubmit={onSubmit} className="mt-12 space-y-10 rounded-sm border border-border bg-card p-6 sm:p-10">

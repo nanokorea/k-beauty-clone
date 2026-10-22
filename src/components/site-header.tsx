@@ -24,7 +24,7 @@ const brandMenu: MenuLink[] = [
 const guideMenu: MenuLink[] = [
   { label: "EI 미용비누는?", to: "/guide" },
   { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
-  { label: "나에게 맞는 비누 찾기", to: "/recommend" },
+  { label: "나에게 맞는 EI비누 찾기", to: "/recommend" },
 ];
 
 const supportMenu: MenuLink[] = [

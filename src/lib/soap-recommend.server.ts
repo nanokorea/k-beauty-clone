@@ -3,8 +3,10 @@ import { APICallError, NoObjectGeneratedError, Output, jsonSchema, streamText } 
 import { products } from "@/data/site";
 import { createLovableAiGatewayRunIdFetch } from "./ai-run-id.server";
 import {
+  FLAGSHIP_SLUG,
   MAX_RECOMMENDATIONS,
   buildCatalog,
+  ensureFlagship,
   normalizeRecommendations,
   type RawRecommendation,
   type SoapRecommendationInput,
@@ -14,7 +16,7 @@ import {
 const GATEWAY_URL = "https://ai.gateway.lovable.dev/v1";
 const MODEL = "openai/gpt-6-astra";
 
-type ModelOutput = { recommendations: RawRecommendation[]; tip: string };
+type ModelOutput = { recommendations: RawRecommendation[]; flagshipReason: string; tip: string };
 
 export async function runSoapRecommendation(input: SoapRecommendationInput, signal?: AbortSignal): Promise<SoapRecommendationResult> {
   const apiKey = process.env["LOVABLE_API_KEY"];
@@ -61,7 +63,7 @@ export async function runSoapRecommendation(input: SoapRecommendationInput, sign
         schema: jsonSchema<ModelOutput>({
           type: "object",
           additionalProperties: false,
-          required: ["recommendations", "tip"],
+          required: ["recommendations", "flagshipReason", "tip"],
           properties: {
             recommendations: {
               type: "array",
@@ -72,6 +74,7 @@ export async function runSoapRecommendation(input: SoapRecommendationInput, sign
                 properties: { slug: { type: "string", enum: slugs }, reason: { type: "string" } },
               },
             },
+            flagshipReason: { type: "string" },
             tip: { type: "string" },
           },
         }),
@@ -88,7 +91,7 @@ export async function runSoapRecommendation(input: SoapRecommendationInput, sign
     });
 
     const output = await result.output;
-    const recommendations = normalizeRecommendations(output.recommendations ?? [], slugs);
+    const recommendations = ensureFlagship(normalizeRecommendations(output.recommendations ?? [], slugs), output.flagshipReason ?? "");
     if (recommendations.length === 0) return { ok: false, message: "추천 결과를 만들지 못했습니다. 조건을 바꿔 다시 시도해 주세요." };
     return { ok: true, recommendations, tip: (output.tip ?? "").trim() };
   } catch (error) {

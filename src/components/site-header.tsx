@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 import eiHomeLogo from "@/assets/ei-eiichi-ishino-logo.jpg.asset.json";
 import eiWordmark from "@/assets/ei-home-wordmark.png.asset.json";
@@ -24,7 +24,7 @@ const brandMenu: MenuLink[] = [
 const guideMenu: MenuLink[] = [
   { label: "EI 미용비누는?", to: "/guide" },
   { label: "올바른 거품 팩 세안법", to: "/how-to-wash" },
-  { label: "나에게 맞는 비누 찾기", to: "/recommend" },
+  { label: "나에게 맞는 EI비누 찾기", to: "/recommend" },
 ];
 
 const supportMenu: MenuLink[] = [
@@ -34,19 +34,59 @@ const supportMenu: MenuLink[] = [
 ];
 
 function Dropdown({ label, items }: { label: string; items: MenuLink[] }) {
+  // 마우스는 올리면 열리고, 태블릿 등 터치 화면은 눌러서 열고 닫습니다.
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
   return (
-    <div className="group relative">
-      <button className={navLinkClass} type="button">
+    <div
+      ref={rootRef}
+      className="relative"
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") setOpen(true);
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") setOpen(false);
+      }}
+    >
+      <button
+        className={navLinkClass}
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+      >
         {label}
-        <ChevronDown className="size-3.5 opacity-60" />
+        <ChevronDown className={`size-3.5 opacity-60 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
-      <div className="invisible absolute left-1/2 z-50 w-72 -translate-x-1/2 pt-4 opacity-0 transition group-hover:visible group-hover:opacity-100">
+      <div
+        className={`absolute left-1/2 z-50 w-72 -translate-x-1/2 pt-4 transition ${
+          open ? "visible opacity-100" : "invisible pointer-events-none opacity-0"
+        }`}
+      >
         <ul className="rounded-sm border border-border bg-background py-2 shadow-lg">
           {items.map((item) => (
             <li key={`${item.to}-${item.label}`}>
               <Link
                 to={item.to}
                 params={item.params as never}
+                onClick={() => setOpen(false)}
                 className="block px-4 py-2.5 text-sm font-normal text-ink transition-colors hover:bg-secondary hover:text-oxide"
               >
                 {item.label}

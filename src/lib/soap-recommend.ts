@@ -48,3 +48,18 @@ export function normalizeRecommendations(raw: RawRecommendation[], validSlugs: s
   }
   return out;
 }
+
+/** 대표 제품(JUNCO CLASSIC SOAP)의 slug. */
+export const FLAGSHIP_SLUG = "junco-classic";
+
+/**
+ * 대표 제품이 추천 목록에 없으면 반드시 포함시킵니다.
+ * 자리가 남으면 뒤에 추가하고, 3개가 꽉 차 있으면 마지막 추천을 대표 제품으로 바꿉니다.
+ */
+export function ensureFlagship(recs: SoapRecommendation[], flagshipReason: string, flagshipSlug: string = FLAGSHIP_SLUG): SoapRecommendation[] {
+  const reason = flagshipReason?.trim();
+  if (recs.some((r) => r.slug === flagshipSlug) || !reason) return recs;
+  const flagship = { slug: flagshipSlug, reason };
+  if (recs.length < MAX_RECOMMENDATIONS) return [...recs, flagship];
+  return [...recs.slice(0, MAX_RECOMMENDATIONS - 1), flagship];
+}

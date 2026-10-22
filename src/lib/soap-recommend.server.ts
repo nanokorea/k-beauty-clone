@@ -73,18 +73,20 @@ export async function runSoapRecommendation(input: SoapRecommendationInput, sign
         schema: jsonSchema<ModelOutput>({
           type: "object",
           additionalProperties: false,
-          required: ["recommendations", "flagshipReason", "tip"],
+          required: ["analysis", "recommendations", "flagshipReason", "flagshipKeyPoints", "tip"],
           properties: {
+            analysis: { type: "string" },
             recommendations: {
               type: "array",
               items: {
                 type: "object",
                 additionalProperties: false,
-                required: ["slug", "reason"],
-                properties: { slug: { type: "string", enum: slugs }, reason: { type: "string" } },
+                required: ["slug", "reason", "keyPoints"],
+                properties: { slug: { type: "string", enum: slugs }, reason: { type: "string" }, keyPoints: keyPointsSchema },
               },
             },
             flagshipReason: { type: "string" },
+            flagshipKeyPoints: keyPointsSchema,
             tip: { type: "string" },
           },
         }),
@@ -101,9 +103,13 @@ export async function runSoapRecommendation(input: SoapRecommendationInput, sign
     });
 
     const output = await result.output;
-    const recommendations = ensureFlagship(normalizeRecommendations(output.recommendations ?? [], slugs), output.flagshipReason ?? "");
+    const recommendations = ensureFlagship(
+      normalizeRecommendations(output.recommendations ?? [], slugs),
+      output.flagshipReason ?? "",
+      output.flagshipKeyPoints ?? [],
+    );
     if (recommendations.length === 0) return { ok: false, message: "추천 결과를 만들지 못했습니다. 조건을 바꿔 다시 시도해 주세요." };
-    return { ok: true, recommendations, tip: (output.tip ?? "").trim() };
+    return { ok: true, analysis: (output.analysis ?? "").trim(), recommendations, tip: (output.tip ?? "").trim() };
   } catch (error) {
     if (NoObjectGeneratedError.isInstance(error)) {
       return { ok: false, message: "추천 결과를 만들지 못했습니다. 다시 시도해 주세요." };

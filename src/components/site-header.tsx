@@ -16,6 +16,32 @@ const topBarLinkClass =
 
 type MenuLink = { label: string; to: string; params?: Record<string, string> };
 
+/**
+ * 평소에는 영문(제품명과 같은 세리프 폰트), 마우스를 올리거나 메뉴가 열리면 한글로 바뀌는 라벨.
+ * 두 글자를 같은 칸에 겹쳐 두어 바뀔 때 메뉴 폭이 흔들리지 않습니다.
+ */
+function SwapLabel({ en, ko, active = false }: { en: string; ko: string; active?: boolean }) {
+  return (
+    <span className="grid justify-items-center [&>*]:col-start-1 [&>*]:row-start-1">
+      <span
+        aria-hidden="true"
+        className={`font-display text-[15px] uppercase tracking-[0.12em] transition-all duration-300 group-hover/nav:-translate-y-1 group-hover/nav:opacity-0 group-focus-visible/nav:-translate-y-1 group-focus-visible/nav:opacity-0 ${
+          active ? "-translate-y-1 opacity-0" : ""
+        }`}
+      >
+        {en}
+      </span>
+      <span
+        className={`text-[15px] tracking-wide transition-all duration-300 group-hover/nav:translate-y-0 group-hover/nav:opacity-100 group-focus-visible/nav:translate-y-0 group-focus-visible/nav:opacity-100 ${
+          active ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0"
+        }`}
+      >
+        {ko}
+      </span>
+    </span>
+  );
+}
+
 const brandMenu: MenuLink[] = [
   { label: "BRAND HISTORY", to: "/brand-story" },
   { label: "EI STORY", to: "/about" },
@@ -33,7 +59,7 @@ const supportMenu: MenuLink[] = [
   { label: "1:1 문의하기", to: "/contact" },
 ];
 
-function Dropdown({ label, items }: { label: string; items: MenuLink[] }) {
+function Dropdown({ label, en, items }: { label: string; en: string; items: MenuLink[] }) {
   // 마우스는 올리면 열리고, 태블릿 등 터치 화면은 눌러서 열고 닫습니다.
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -66,13 +92,13 @@ function Dropdown({ label, items }: { label: string; items: MenuLink[] }) {
       }}
     >
       <button
-        className={navLinkClass}
+        className={`group/nav ${navLinkClass}`}
         type="button"
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
       >
-        {label}
+        <SwapLabel en={en} ko={label} active={open} />
         <ChevronDown className={`size-3.5 opacity-60 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       <div
@@ -171,11 +197,11 @@ export function SiteHeader() {
 
 
         <nav className="hidden items-center gap-8 xl:flex">
-          <Dropdown label="브랜드 스토리" items={brandMenu} />
-          <Dropdown label="제품" items={shopMenu} />
-          <Dropdown label="사용 가이드" items={guideMenu} />
-          <Dropdown label="고객센터" items={supportMenu} />
-          <Link to="/shop" className={`${navLinkClass} text-oxide`}>
+          <Dropdown label="브랜드 스토리" en="Brand Story" items={brandMenu} />
+          <Dropdown label="제품" en="Products" items={shopMenu} />
+          <Dropdown label="사용 가이드" en="Guide" items={guideMenu} />
+          <Dropdown label="고객센터" en="Support" items={supportMenu} />
+          <Link to="/shop" className={`${navLinkClass} font-display tracking-[0.12em] text-oxide`}>
             STORE
           </Link>
         </nav>
@@ -192,10 +218,10 @@ export function SiteHeader() {
             <span className="relative inline-flex">
               <Link
                 to={session ? "/mypage" : "/auth"}
-                className="inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
+                className="group/nav inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
               >
                 <User className="size-5" />
-                {session ? "MY" : "로그인"}
+                {session ? <SwapLabel en="My" ko="마이페이지" /> : <SwapLabel en="Login" ko="로그인" />}
               </Link>
               {!session ? (
                 <Link
@@ -209,10 +235,10 @@ export function SiteHeader() {
             </span>
             <Link
               to="/cart"
-              className="relative inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
+              className="group/nav relative inline-flex items-center gap-1.5 whitespace-nowrap text-[15px] font-normal text-ink transition-colors hover:text-oxide"
             >
               <ShoppingCart className="size-5" />
-              장바구니
+              <SwapLabel en="Cart" ko="장바구니" />
               {count > 0 ? (
                 <span className="ml-0.5 rounded-full bg-oxide px-1.5 py-0.5 text-[10px] leading-none text-primary-foreground">
                   {count}

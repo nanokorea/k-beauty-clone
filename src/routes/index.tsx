@@ -94,7 +94,7 @@ function SecondSlideCaption({ mobile = false }: { mobile?: boolean }) {
         비누 한 조각을 만들기 위해,
       </p>
       <p
-        className={`font-semibold leading-[1.35] ${
+        className={`text-center font-semibold leading-[1.35] ${
           mobile ? "text-[22px]" : "text-[clamp(26px,3vw,46px)]"
         }`}
       >

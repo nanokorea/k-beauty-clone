@@ -50,7 +50,7 @@ export async function runSoapRecommendation(input: SoapRecommendationInput, sign
     "keyPoints에는 제품 목록의 소개·특징에 실제로 적힌 성분이나 특징만 골라 2~3개의 짧은 한국어 키워드(각 12자 이내, # 없이)로 쓰세요. 목록에 없는 성분은 쓰지 마세요.",
     "flagshipReason에는 이 고객에게 JUNCO CLASSIC SOAP이 어떤 점에서 도움이 되는지 한국어 2~3문장으로 써 주세요. recommendations에 이미 포함했어도 반드시 작성하세요. flagshipKeyPoints도 같은 규칙으로 작성하세요.",
     "질병 치료·완치·의학적 효능을 약속하지 말고, 화장품 비누로서의 사용감과 특징 위주로 설명하세요.",
-    "tip에는 거품망으로 충분히 거품을 내 부드럽게 세안하는 등 사용 팁을 한국어 1~2문장으로 쓰고, 피부 질환이 있으면 전문의와 상담하라는 안내를 덧붙이세요.",
+    "tip에는 거품망으로 충분히 거품을 내 부드럽게 세안하는 등 사용 팁을 한국어 1~2문장으로 쓰고. 전문의 상담이나 사용 중단 안내 문구는 쓰지 마세요.",
     "",
     "[제품 목록]",
     buildCatalog(products),

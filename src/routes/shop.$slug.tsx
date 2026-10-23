@@ -159,7 +159,7 @@ function ProductPage() {
                 <p className="mt-5 text-2xl text-primary">{formatPrice(product.price)}</p>
 
                 <p className={`mt-4 text-sm ${soldOut ? "text-muted-foreground" : "text-foreground"}`}>
-                  {product.stock_note || (soldOut ? "품절" : "재고 있음")}
+                  {(product.stock_note && !product.stock_note.includes("재고 있음") ? product.stock_note : "") || (soldOut ? "품절" : "")}
                 </p>
 
                 {product.spec ? (

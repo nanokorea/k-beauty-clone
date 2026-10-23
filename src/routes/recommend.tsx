@@ -18,7 +18,6 @@ import {
   ShieldCheck,
   SlidersHorizontal,
   Smile,
-  Soup,
   Sparkles,
   WandSparkles,
   Wind,
@@ -340,7 +339,7 @@ function LoadingCard({ step }: { step: number }) {
       <div className="relative mx-auto mb-7 size-20">
         <div className="absolute inset-0 rounded-full border-4 border-finder-line border-t-finder-earth motion-safe:animate-spin" />
         <div className="absolute inset-3 rounded-full bg-finder-ecru" />
-        <Soup className="absolute inset-0 m-auto size-7 text-finder-earth motion-safe:animate-bounce" />
+        <Droplets className="absolute inset-0 m-auto size-7 text-finder-earth motion-safe:animate-bounce" />
       </div>
       <p className="text-xl font-bold text-finder-ink">피부 조건에 맞는 비누를 찾고 있어요</p>
       <ul className="mx-auto mt-5 max-w-xs space-y-2 text-left text-sm">

@@ -28,3 +28,4 @@
 - [x] Replace Kakitannin body-soap wording with 목욕 비누 and verify display.
 - [x] Edit the first frame-manufacturing maturation photo to align soaps evenly in the blue trays and verify display.
 - [x] Rename soap finder to 나에게 맞는 EI비누 찾기, drop "AI" from intro, prioritize JUNCO CLASSIC SOAP, and make center menus tap-to-open on tablets.
+- [x] Redesign soap finder with ecru/rose/sage cards, icon choices, quick concern tags, loading steps and skin-analysis results.

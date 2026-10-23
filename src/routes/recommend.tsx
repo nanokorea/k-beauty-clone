@@ -507,7 +507,7 @@ function ResultView({
           </div>
         ) : null}
 
-        <p className="text-center text-xs text-finder-ink/45">추천 결과는 참고용입니다. 피부에 이상이 있으면 사용을 중단하고 전문의와 상담해 주세요.</p>
+        <p className="text-center text-xs text-finder-ink/45">추천 결과는 참고용입니다.</p>
       </div>
     </section>
   );

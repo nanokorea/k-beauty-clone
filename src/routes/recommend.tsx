@@ -190,7 +190,7 @@ function RecommendPage() {
               <legend className="w-full">
                 <StepTitle n={1} title="피부 타입을 선택해 주세요" hint="* 필수" />
               </legend>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
                 {SKIN_TYPES.map((t) => {
                   const { icon: IconCmp, desc, tone } = SKIN_META[t];
                   const on = skinType === t;
@@ -201,22 +201,24 @@ function RecommendPage() {
                       aria-pressed={on}
                       onClick={() => setSkinType(t)}
                       className={cn(
-                        "group relative flex flex-col items-center justify-center rounded-2xl border p-4 text-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-finder-earth sm:p-5",
+                        "group relative flex items-center gap-2 rounded-xl border px-2.5 py-2 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-finder-earth",
                         on
-                          ? "-translate-y-0.5 border-finder-earth bg-finder-ecru shadow-finder-lift ring-2 ring-finder-earth/30"
-                          : "border-finder-line bg-finder-cream hover:-translate-y-0.5 hover:border-finder-earth/50 hover:shadow-finder-lift",
+                          ? "border-finder-earth bg-finder-ecru shadow-finder-lift ring-2 ring-finder-earth/30"
+                          : "border-finder-line bg-finder-cream hover:border-finder-earth/50 hover:shadow-finder-lift",
                       )}
                     >
                       {on ? (
-                        <span className="absolute right-3 top-3 flex size-5 items-center justify-center rounded-full bg-finder-earth text-finder-on-deep">
-                          <Check className="size-3" />
+                        <span className="absolute right-1.5 top-1.5 flex size-4 items-center justify-center rounded-full bg-finder-earth text-finder-on-deep">
+                          <Check className="size-2.5" />
                         </span>
                       ) : null}
-                      <span className={cn("mb-2.5 flex size-12 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-105", toneBg[tone])}>
-                        <IconCmp className="size-5" />
+                      <span className={cn("flex size-8 shrink-0 items-center justify-center rounded-full", toneBg[tone])}>
+                        <IconCmp className="size-4" />
                       </span>
-                      <span className="text-sm font-semibold text-finder-ink sm:text-base">{t}</span>
-                      <span className="mt-1 text-xs text-finder-ink/55">{desc}</span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-semibold text-finder-ink">{t}</span>
+                        <span className="block text-[11px] leading-tight text-finder-ink/55">{desc}</span>
+                      </span>
                     </button>
                   );
                 })}

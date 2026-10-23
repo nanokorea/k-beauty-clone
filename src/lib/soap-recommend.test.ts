@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { ensureFlagship, normalizeKeyPoints, normalizeRecommendations } from "./soap-recommend";
+import { ensureFlagship, normalizeKeyPoints, normalizeRecommendations, type SoapRecommendation } from "./soap-recommend";
 
 describe("ensureFlagship", () => {
   it("adds JUNCO CLASSIC SOAP when there is room", () => {
@@ -21,7 +21,7 @@ describe("ensureFlagship", () => {
   });
 
   it("keeps the list unchanged when JUNCO CLASSIC SOAP is already recommended", () => {
-    const recs = [{ slug: "junco-classic-baby", reason: "a", keyPoints: [] }, { slug: "junco-classic", reason: "b", keyPoints: [] }];
+    const recs: SoapRecommendation[] = [{ slug: "junco-classic-baby", reason: "a", keyPoints: [] }, { slug: "junco-classic", reason: "b", keyPoints: [] }];
     assert.deepEqual(ensureFlagship(recs, "대표"), recs);
   });
 });
